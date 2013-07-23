@@ -1,0 +1,274 @@
+%% Thesis template
+%% PMC, University of Minho
+%% if required, comment unused packages
+\documentclass[12pt,english]{book}
+% \usepackage[portuguese]{babel}
+% \usepackage[utf8]{inputenc} 
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Bold symbol macro for standard LaTeX users
+\newcommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
+
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ \usepackage{verbatim}
+ \newenvironment{lyxlist}[1]
+   {\begin{list}{}
+     {\settowidth{\labelwidth}{#1}
+      \setlength{\leftmargin}{\labelwidth}
+      \addtolength{\leftmargin}{\labelsep}
+      \renewcommand{\makelabel}[1]{##1\hfil}}}
+   {\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{url}
+\input{epsf}
+\newcommand{\single}{\renewcommand\baselinestretch{1.0}}
+\newcommand{\onehalf}{\renewcommand\baselinestretch{1.5}}
+\newcommand{\double}{\renewcommand\baselinestretch{2.0}}
+\fancyhead{}
+\fancyhead[LE]{\slshape \leftmark}
+\fancyhead[RO]{\slshape \rightmark}
+\cfoot{\thepage}
+\setlength{\parskip}{2mm}
+
+\usepackage{babel}
+\makeatother
+\begin{document}
+\begin{minipage}[c]{1.0\columnwidth}%
+\begin{doublespace}
+\vspace{2cm}
+\begin{center}{\huge A new Framework to enable rapid innovation in Cloud Datacenter through a SDN approach.}\end{center}{\huge \par}
+\end{doublespace}
+
+\vspace{2cm}
+\begin{center}{\large Jos\'{e} Teixeira}\end{center}{\large \par}
+\vspace{2cm}
+
+\begin{quote}
+\begin{center}A thesis submitted to the University of Minho in the
+subject of Informatics, for the degree of
+% or Doctor of Philosophy 
+Master of Science, under scientific supervision of Prof. Stefano Giordano and Prof. Alexandre Santos\end{center}\vspace{3cm}
+
+\end{quote}
+\begin{singlespace}
+\begin{center}University of Minho\end{center}
+
+\begin{center}School of Engineering\end{center}
+
+\begin{center}Department of Informatics\end{center}
+\end{singlespace}
+
+\begin{center}{\large September, 2009}\end{center}\end{minipage}%
+\thispagestyle{empty}
+
+\pagenumbering{roman}
+
+
+\newpage
+
+
+\chapter*{Acknowledgments}
+
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+\noindent I would like...
+
+\medskip{}
+\noindent I also...
+
+\chapter*{Abstract}
+
+\addcontentsline{toc}{chapter}{Abstract}
+
+\begin{singlespace}
+In the last years, the widespread of Cloud computing as the main paradigm to deliver a large plethora of virtualized services significantly increased the complexity of Datacenters management and raised new performance issues for the intra-Datacenter network.
+Providing heterogeneous services and satisfying user\'s experience is really challenging for Cloud service providers, since system (IT resources) and network administration functions are definitely separated. 
+In this scenario, a recent approach to programmable networks (i.e., Software-Defined Networking -  SDN) seems to be a promising way to satisfy DC network requirements[7].
+SDN based architecture decouples control and data planes: the most deployed SDN protocol is OpenFlow (OF)[9][8], which allows to set into OF compliant switches forwarding rules established by a centralized intelligence called controller. 
+
+Since SDN allows to re-define and re-configure network functionalities (possibly up to the  physical layer), the basic idea is to introduce a new framework that allows to develop and test new OpenFlow\-based controllers for Cloud Datacenters and also new  policies that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
+Fix REFERENCES
+\end{singlespace}
+
+\newpage
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Contents}\tableofcontents{}
+
+\cleardoublepage
+
+\chapter*{List of Acronyms}
+
+\addcontentsline{toc}{chapter}{List of Acronyms}
+
+\markboth{LIST OF ACRONYMS}{LIST OF ACRONYMS}
+
+\begin{lyxlist}{00.00.0000}
+\begin{singlespace}
+\item ...
+\item [DSCP]Diffserv Code Point 
+\item ....
+\item [IP]Internet Protocol 
+\item ...
+\end{singlespace}
+\end{lyxlist}
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{List of Figures}\listoffigures
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{List of Tables}\listoftables
+
+\cleardoublepage
+
+\setcounter{page}{0}
+
+\pagenumbering{arabic}
+
+
+\chapter{Introduction\label{cha:introduction}}
+
+\section{Introduction}
+Communication networks...
+
+\section{Motivation and objectives\label{sec:motobj}}
+
+\section{Dissertation layout}
+
+In the present Chapter \ref{cha:introduction} - ...
+
+\chapter{State of art \label{cha:stateofart} }
+
+Usually background and related work ...
+
+\section{Current solutions}
+
+\section{Virtual Machine Allocation Policies}
+% Uncomment to include file.pdf
+%\begin{figure}%[H]
+%\begin{center}\includegraphics[scale=0.8]{file}\end{center}
+%\caption{Legend \label{fig:LABEL}}
+%\end{figure}
+
+
+\chapter{Architecture and design \label{cha:arqdes} }
+
+Conceptual view and architecture of the proposed solution (implementation details can go into a different chapter, if required)...
+
+\section{Framework architecture}
+
+Generically talk about the architecture...
+
+
+\section{Framework modules: Mininet}
+
+\subsection{Topology Generator}
+
+\subsection{Traffic Generator}
+
+\begin{itemize}
+	\item Talk generally about the traffic generator
+	\item Talk about the one's we tried (pros and cons)
+\end{itemize}
+
+\section{Framework modules: Controller}
+
+Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+
+\subsection{Topology Discovery}
+
+\subsection{OF Rules Handler}
+
+\subsection{Statistics Handler}
+
+\subsection{VM Request Handler}
+
+\subsection{VMM - Virtual Machines Manager}
+
+\subsection{Network Traffic Requester}
+
+\subsection{User Defined Logic}
+
+
+\section{Framework modules: Web Platform}
+
+\section{Framework modules: VM Requester}
+
+\section{Using the framework}
+
+Describe how to use the framework and how to access the API..
+
+\chapter{Framework extensions \label{cha:} }
+
+\section{Enabling QoS}
+\subsection{State of art: QoS in SDN}
+\subsection{QoS in the framework}
+
+\section{Enabling Virtual Machine migration}
+\subsection{State of art: Virtual Machine Migration Policies}
+\subsection{Virtual Machine migration in the framework}
+
+
+\chapter{Validation and tests \label{cha:valtes} }
+
+Usually test and validation of the proposed solution ...
+
+\section{Framework Validation}
+
+Show 
+
+\section{Performance Evaluation}
+
+Get the tests from
+
+\section{Migration tests}
+
+Should they be included here or on the section "Enabling Virtual MAchine migration"?
+
+\chapter{Conclusions\label{cha:conclusions}}
+
+This chapter provides ...
+
+\section{Main contributions}
+
+\section{Future work}
+
+\appendix
+
+\chapter{Name of the Appendix}
+
+\cleardoublepage
+
+\markright{\slshape Appendix}
+
+\bibliographystyle{unsrt}
+\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}
+
+%% Add file.bib
+\bibliography{sigproc}
+
+
+\end{document}
