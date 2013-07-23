@@ -78,7 +78,7 @@ Master of Science, under scientific supervision of Prof. Stefano Giordano and Pr
 \begin{center}Department of Informatics\end{center}
 \end{singlespace}
 
-\begin{center}{\large September, 2009}\end{center}\end{minipage}%
+\begin{center}{\large September, 2013}\end{center}\end{minipage}%
 \thispagestyle{empty}
 
 \pagenumbering{roman}
@@ -189,6 +189,8 @@ Generically talk about the architecture...
 
 \subsection{Traffic Generator}
 
+Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+
 \begin{itemize}
 	\item Talk generally about the traffic generator
 	\item Talk about the one's we tried (pros and cons)
@@ -210,16 +212,24 @@ Describe each module, it's functionalities, limitations, how it can be used/impr
 
 \subsection{Network Traffic Requester}
 
-\subsection{User Defined Logic}
+\subsection{POX Modules}
 
+\subsection{User Defined Logic}
 
 \section{Framework modules: Web Platform}
 
+Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+
 \section{Framework modules: VM Requester}
+
+Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
 
 \section{Using the framework}
 
+\subsection{Emulator}
 Describe how to use the framework and how to access the API..
+
+\subsection{Real Environment}
 
 \chapter{Framework extensions \label{cha:} }
 
@@ -238,13 +248,29 @@ Usually test and validation of the proposed solution ...
 
 \section{Framework Validation}
 
-Show 
+\begin{itemize}
+	\item Show how Bf goes against WF with server driven algorithm (show server occupation)
+	\item Show how Bf goes against WF with network driven algorithm (show network occupation) (although the behaviour is similar is allow to say that net algorithm may use switch statistics)
+\end{itemize}
 
 \section{Performance Evaluation}
 
-Get the tests from
+Get the tests from the submitted paper.
 
-\section{Migration tests}
+\section{Real environment tests}
+
+\begin{itemize}
+	\item Talk about the environment which was setup
+	\begin{itemize}
+		\item Chosen hypervisor
+		\item Talk about Xen api and the alternative solution (ssh each server and run a script to clone the vm)
+		\item OpenVswitches VS NetFPGA problems
+		\item 
+	\end{itemize}
+\end{itemize}
+
+
+\section{Migration test}
 
 Should they be included here or on the section "Enabling Virtual MAchine migration"?
 
