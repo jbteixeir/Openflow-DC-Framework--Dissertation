@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  23 JUL 2013 17:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  24 JUL 2013 12:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -122,6 +122,11 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 )
 \@float@every@algorithm=\toks19
 \c@algorithm=\count94
@@ -334,60 +339,56 @@ Underfull \vbox (badness 1728) has occurred while \output is active []
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 154.
-[1
-
-] [2
-
-]
-Chapter 2.
-[3] [4
-
-]
-Chapter 3.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 188.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 195.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 157.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
- [5]
-Underfull \vbox (badness 1442) has occurred while \output is active []
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
+ [1
 
- [6]
-[7] [8
+] [2]
+Chapter 2.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 188.
+[3
+
+] [4]
+Chapter 3.
+[5
+
+] [6] [7] [8] [9] [10
 
 ]
 Chapter 4.
-[9] [10
-
-]
-Chapter 5.
 [11] [12]
-Chapter 6.
+Chapter 5.
 [13
 
-] [14
+] [14] [15] [16]
+Chapter 6.
+[17
+
+] [18
 
 ]
 Appendix A.
-[15] [16
+[19] [20
 
 ] (./sig-alternate.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [17
+) [21
 
 
 ] (./sig-alternate.aux) ) 
 Here is how much of TeX's memory you used:
- 2877 strings out of 495059
- 38463 string characters out of 3182030
- 96929 words of memory out of 3000000
- 5972 multiletter control sequences out of 15000+200000
+ 2967 strings out of 495059
+ 39592 string characters out of 3182030
+ 96850 words of memory out of 3000000
+ 6059 multiletter control sequences out of 15000+200000
  30949 words of font info for 41 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  38i,12n,43p,377b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -396,10 +397,10 @@ Here is how much of TeX's memory you used:
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb>
-Output written on sig-alternate.pdf (33 pages, 68228 bytes).
+Output written on sig-alternate.pdf (37 pages, 71069 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

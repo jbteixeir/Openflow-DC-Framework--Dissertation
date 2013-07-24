@@ -14,7 +14,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{setspace}
-\onehalfspacing
+\usepackage{cite}\onehalfspacing
 
 \makeatletter
 
@@ -152,9 +152,26 @@ Fix REFERENCES
 \chapter{Introduction\label{cha:introduction}}
 
 \section{Introduction}
-Communication networks...
 
+\begin{itemize}
+	\item DataCenter
+	\item Cloud
+	\item Cloud DataCenter
+	\item SDN - Software define Networks
+	\item Openflow
+	\item ...
+\end{itemize}
+
+% \pagebreak
 \section{Motivation and objectives\label{sec:motobj}}
+
+\begin{itemize}
+	\item Understanding the basic features of SDN paradigm
+	\item Studying the problematics in cloud DC VM allocations
+	\item Apply the SDN paradigm to better exploit the DC resources
+	\item Develop a framework for Cloud Datacenter emulation and new VM allocation policies
+	\item ...
+\end{itemize}
 
 \section{Dissertation layout}
 
@@ -164,9 +181,27 @@ In the present Chapter \ref{cha:introduction} - ...
 
 Usually background and related work ...
 
-\section{Current solutions}
+\section{Available solutions}
 
+Write something generic
+
+\subsection{CloudSim}
+
+\subsection{NetFPGA Emulation}
+
+\subsection{Meridian}
+
+\subsection{Networkcloudsim}
+
+\subsection{Greencloud}
+
+\subsection{icancloud}
+
+\newpage
 \section{Virtual Machine Allocation Policies}
+
+\newpage
+
 % Uncomment to include file.pdf
 %\begin{figure}%[H]
 %\begin{center}\includegraphics[scale=0.8]{file}\end{center}
@@ -196,6 +231,9 @@ Describe each module, it's functionalities, limitations, how it can be used/impr
 	\item Talk about the one's we tried (pros and cons)
 \end{itemize}
 
+\newpage
+
+
 \section{Framework modules: Controller}
 
 Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
@@ -216,26 +254,39 @@ Describe each module, it's functionalities, limitations, how it can be used/impr
 
 \subsection{User Defined Logic}
 
+\newpage
+
+
 \section{Framework modules: Web Platform}
 
 Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+
+\newpage
+
 
 \section{Framework modules: VM Requester}
 
 Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
 
+\newpage
+
+
 \section{Using the framework}
 
 \subsection{Emulator}
-Describe how to use the framework and how to access the API..
+
+Describe how to use the framework (emulation part) and how to access the API..
 
 \subsection{Real Environment}
+
+Describe what changes in the real environment (the modules that are disabled and the ones that need to be enabled)
 
 \chapter{Framework extensions \label{cha:} }
 
 \section{Enabling QoS}
 \subsection{State of art: QoS in SDN}
 \subsection{QoS in the framework}
+\newpage
 
 \section{Enabling Virtual Machine migration}
 \subsection{State of art: Virtual Machine Migration Policies}
@@ -252,13 +303,15 @@ Usually test and validation of the proposed solution ...
 	\item Show how Bf goes against WF with server driven algorithm (show server occupation)
 	\item Show how Bf goes against WF with network driven algorithm (show network occupation) (although the behaviour is similar is allow to say that net algorithm may use switch statistics)
 \end{itemize}
+\newpage
+
 
 \section{Performance Evaluation}
 
 Get the tests from the submitted paper.
+\newpage
 
 \section{Real environment tests}
-
 \begin{itemize}
 	\item Talk about the environment which was setup
 	\begin{itemize}
@@ -268,11 +321,14 @@ Get the tests from the submitted paper.
 		\item 
 	\end{itemize}
 \end{itemize}
+\newpage
 
 
 \section{Migration test}
 
 Should they be included here or on the section "Enabling Virtual MAchine migration"?
+\newpage
+
 
 \chapter{Conclusions\label{cha:conclusions}}
 
@@ -290,11 +346,13 @@ This chapter provides ...
 
 \markright{\slshape Appendix}
 
+\cleardoublepage
 \bibliographystyle{unsrt}
-\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}
+\addcontentsline{toc}{chapter}{\bibname}
 
 %% Add file.bib
 \bibliography{sigproc}
+
 
 
 \end{document}
