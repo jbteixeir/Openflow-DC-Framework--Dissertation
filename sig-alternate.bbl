@@ -1,3 +1,129 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
+
+\bibitem{ibmnec}
+J.~Oltsik and B.~Laliberte.
+\newblock Ibm and nec bring sdn/openflow to enterprise data center networks.
+
+\bibitem{onf}
+{Open Networking Foundation Home Page}.
+\newblock {\em https://www.opennetworking.org.}
+
+\bibitem{openflow}
+{OpenFlow Home Page}.
+\newblock {\em http://www.openflow.org.}
+
+\bibitem{dc_arch}
+K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
+  N.~Min-Allah, L.~Wang, and D.~Chen.
+\newblock A comparative study of data center network architectures.
+\newblock In {\em European Conference on Modelling and Simulation}, 2012.
+
+\bibitem{amazon}
+{AWS Home Page}.
+\newblock {\em http://aws.amazon.com.}
+
+\bibitem{baldonado}
+{O. Baldonado, SDN, OpenFlow, and next-generation data center networks}.
+\newblock {\em http://www.eetimes.com/design/embedded/43715
+  43/SDN--OpenFlow--and-next-generation-data-center-networks.}
+
+\bibitem{mininet}
+{Mininet Home Page}.
+\newblock {\em https://mininet.github.com.}
+
+\bibitem{pox}
+{POX Home Page}.
+\newblock {\em http://ww.noxrepo.org.}
+
+\bibitem{im2013}
+D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
+\newblock Effective resource control strategies using openflow in cloud data
+  center.
+\newblock In {\em International Symposium on Integrated Network Management}.
+  IEEE/IFIP, 2013.
+
+\bibitem{ns3}
+{NS3}.
+\newblock {\em http://www.nsnam.org.}
+
+\bibitem{openstack}
+{Openstack Home Page}.
+\newblock {\em http://www.openstack.org.}
+
+\bibitem{scp}
+{IBM Smart Cloud Provisioning Home Page}.
+\newblock {\em http://www-01.ibm.com/software/tivoli/products
+  /smartcloud-provisioning.}
+
+\bibitem{cloudsim}
+N.~Calheiros, R.~Ranjan, A.~Beloglazov, C.A.F. De~Rose, and R.~Buyya.
+\newblock Cloudsim: A toolkit for modeling and simulation of cloud computing
+  environments and evaluation of resource provisioning algorithms.
+\newblock {\em Software: Practice and Experience}, 41(1):23--50, 2011.
+
+\bibitem{cloudsim2}
+K.~Garg and R.~Buyya.
+\newblock Networkcloudsim: Modelling parallel applications in cloud
+  simulations.
+\newblock In {\em Internation Conference on Utility and Cloud Computing}. IEEE,
+  2011.
+
+\bibitem{box}
+J.D. Ellithorpe, Z.~Tan, and R.H. Katz.
+\newblock Internet-in-a-box: Emulating datacenter network architectures using
+  fpga's.
+\newblock In {\em Design Automation Conference}. ACM/IEEE, 2009.
+
+\bibitem{of_virtual}
+J.~Matia, E.~Jacob, D.~Sanchez, and Y.~Demchenko.
+\newblock An openflow based network virtualization framework for the cloud.
+\newblock In {\em International Conference on Coud Computing Technology and
+  Science}. IEEE, 2011.
+
+\bibitem{hedera}
+M.~Al-Fares, S.~Radhakrishnan, B.~Raghavan, N.~Huang, and A.~Vahdat.
+\newblock Hedera: Dynamic flow scheduling for data center networks.
+\newblock In {\em NSDI}. ACM, 2010.
+
+\bibitem{graph_query}
+R.~Raghavendra, J.~Lobo, and K.W. Lee.
+\newblock Dynamic graph query primitives for sdn-based cloud network
+  management.
+\newblock In {\em HotSDN}. ACM, 2012.
+
+\bibitem{nox_dc}
+A.~Tavakoli, M.~Casado, T.~Koponen, and S.~Shenker.
+\newblock Applying nox to the datacenter.
+\newblock In {\em HotNets}. ACM, 2009.
+
+\bibitem{icancloud}
+A.~Nunez, J.L. Vázquez-Poletti, A.C. Caminero, G.G. Castañé, J.~Carretero, and
+  I.M. Llorente.
+\newblock icancloud: A flexible and scalable cloud infrastructure simulator.
+\newblock {\em Journal of Grid Computing}, 2012.
+
+\bibitem{meridian}
+M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
+\newblock Meridian: An sdn platform for cloud network services.
+\newblock {\em Communications Magazine}, 2013.
+
+\bibitem{groudsim}
+S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
+\newblock Groudsim: An event-based simulation framework for computational grids
+  and clouds.
+\newblock {\em Euro-Par 2010 Parallel Processing Workshops}, 2011.
+
+\bibitem{greencloud}
+D.~Kliazovich, P.~Bouvry, and S.U. Khan.
+\newblock Greencloud: A packet-level simulator of energy-aware cloud computing
+  data centers.
+\newblock In {\em Globecom}. IEEE, 2010.
+
+\bibitem{gitg}
+A.~Pescapè A.~Dainotti, A.~Botta.
+\newblock A tool for the generation of realistic network workload for emerging
+  networking scenarios.
+\newblock {\em Computer Networks (Elsevier), 2012, Volume 56, Issue 15, pp
+  3531-3547}, 2012.
 
 \end{thebibliography}

@@ -102,13 +102,21 @@ Master of Science, under scientific supervision of Prof. Stefano Giordano and Pr
 
 \begin{singlespace}
 In the last years, the widespread of Cloud computing as the main paradigm to deliver a large plethora of virtualized services significantly increased the complexity of Datacenters management and raised new performance issues for the intra-Datacenter network.
-Providing heterogeneous services and satisfying user\'s experience is really challenging for Cloud service providers, since system (IT resources) and network administration functions are definitely separated. 
-In this scenario, a recent approach to programmable networks (i.e., Software-Defined Networking -  SDN) seems to be a promising way to satisfy DC network requirements[7].
-SDN based architecture decouples control and data planes: the most deployed SDN protocol is OpenFlow (OF)[9][8], which allows to set into OF compliant switches forwarding rules established by a centralized intelligence called controller. 
+Providing heterogeneous services and satisfying user\'s experience is really challenging for Cloud service providers, since system (IT resources) and network administration functions are definitely separated.
 
-Since SDN allows to re-define and re-configure network functionalities (possibly up to the  physical layer), the basic idea is to introduce a new framework that allows to develop and test new OpenFlow\-based controllers for Cloud Datacenters and also new  policies that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
-Fix REFERENCES
+In this scenario, a recent approach to programmable networks (i.e., Software-Defined Networking - SDN) seems to be a promising way to satisfy DC network requirements\cite{ibmnec}.
+SDN based architecture decouples control and data planes: the most deployed SDN protocol is OpenFlow (OF)\cite{onf}\cite{openflow}, which allows to set into OF compliant switches forwarding rules established by a centralized intelligence called controller. 
+
+Since SDN allows to re-define and re-configure network functionalities (possibly up to the physical layer), the basic idea is to introduce a new framework that allows to develop and test new policies that enables a more efficient, agile, scalable and simple use of both server and network resources.
+
+More specifically, the framework enhances both POX (an OF controller written in python) and Mininet (a well-known SDN emulator), with all the extensions necessary to experiment novel control and management strategies of IT and network resources.
+
+... talk about obtained results and conclusions(not finished yet)
+
 \end{singlespace}
+
+\paragraph{Keywords:}
+Datacenter, Cloud, SDN, OpenFlow.
 
 \newpage
 
@@ -126,11 +134,12 @@ Fix REFERENCES
 
 \begin{lyxlist}{00.00.0000}
 \begin{singlespace}
-\item ...
-\item [DSCP]Diffserv Code Point 
-\item ....
+\item [DC]Datacenter
+\item [SDN]Software Defined Networking
+\item [OF]Openflow
+\item [VM]Virtual Machine
 \item [IP]Internet Protocol 
-\item ...
+\item Add as needed...
 \end{singlespace}
 \end{lyxlist}
 
@@ -152,6 +161,25 @@ Fix REFERENCES
 \chapter{Introduction\label{cha:introduction}}
 
 \section{Introduction}
+
+A Cloud Datacenter consists of virtualized resources that are dynamically allocated, in a seamless and automatic way, to a plethora of heterogeneous applications.
+In Cloud Datacenters, services are no more tightly bounded to physical servers, as occurred in traditional DCs, but are provided by Virtual Machines that can migrate from a physical server to another, increasing both scalability and reliability.
+
+Software virtualization technologies allow a better usage of DC resources; DC management, however, becomes much more difficult, due to the strict separation between systems (\textit{i.e.}, servers, VMs and virtual switches) and network (\textit{i.e.}, physical switches) administration.
+Moreover, new issues arise, such as isolation and connectivity of VMs.
+Services performance may suffer from the fragmentation of resources as well as the rigidity and the constraints imposed by the intra-DC network architecture (usually a multilayer 2-tier or 3-tier fat-tree composed of Edge, Aggregation and Core switches\cite{dc_arch}).
+Therefore, Cloud service providers (\textit{e.g.},\cite{amazon}) ask for a next generation of intra-DC networks meeting the following features: 1) efficiency, \textit{i.e.}, high server utilization; 2) agility, \textit{i.e.}, fast network response to server/VMs provisioning; 3) scalability, \textit{i.e.}, consolidation and migration of VMs based on applications' requirements; 4) simplicity, \textit{i.e.}, performing all those tasks easily\cite{baldonado}.
+
+In this scenario, a recent approach to programmable networks (\textit{i.e.}, Software-Defined Networking) seems to be a promising way to satisfy DC network requirements\cite{ibmnec}. 
+
+NOTE: To agressive this next sentense paragraph
+
+SDN--based architecture decouples control and data planes: the most deployed SDN protocol is OpenFlow (OF)\cite{openflow}\cite{onf}, which allows to set into OF--compliant switches forwarding rules established by a centralized intelligence called controller.
+Since SDN allows to re-define and re-configure network functionalities (possibly up to the physical layer), the basic idea is to introduce an SDN cloud-DC controller that enables a more efficient, agile, scalable and simple use of both VMs and network resources. Nevertheless, before deploying the novel architectural solutions, huge test campaigns must be performed in experimental environments reproducing a real DC.
+
+To this aim, we introduce a novel framework that enhances both Mininet\cite{mininet} and POX\cite{pox} with all the software modules necessary to emulate an SDN-based intra-DC network, such as DC topology discovery, network traffic generation, etc. Specifically designed for DC environments, our framework allows to develop and assess novel SDN-Cloud-DC controllers, and to compare the performance of control and management strategies jointly considering both IT and network resources\cite{im2013}. It is worth highlighting that the developed software modules may be ported in a real controller without changes, as our framework inherits such basic feature from Mininet.
+
+The rest of the paper is organized as follows: section \ref{sec:rw} provides a short survey of related works, whereas section \ref{sec:dc} details the architecture and the functionalities of our framework. Section \ref{sec:usec} presents an use case while section \ref{sec:perf} evaluates the performance of the framework. Finally, section \ref{sec:conc} concludes the paper with some final remarks.
 
 \begin{itemize}
 	\item DataCenter
@@ -291,7 +319,7 @@ Describe what changes in the real environment (the modules that are disabled and
 \section{Enabling Virtual Machine migration}
 \subsection{State of art: Virtual Machine Migration Policies}
 \subsection{Virtual Machine migration in the framework}
-
+\subsection{Usecase}
 
 \chapter{Validation and tests \label{cha:valtes} }
 
@@ -323,13 +351,6 @@ Get the tests from the submitted paper.
 \end{itemize}
 \newpage
 
-
-\section{Migration test}
-
-Should they be included here or on the section "Enabling Virtual MAchine migration"?
-\newpage
-
-
 \chapter{Conclusions\label{cha:conclusions}}
 
 This chapter provides ...
@@ -352,6 +373,7 @@ This chapter provides ...
 
 %% Add file.bib
 \bibliography{sigproc}
+\nocite{*}
 
 
 
