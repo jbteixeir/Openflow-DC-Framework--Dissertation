@@ -1,17 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{ibmnec}
-J.~Oltsik and B.~Laliberte.
-\newblock Ibm and nec bring sdn/openflow to enterprise data center networks.
-
-\bibitem{onf}
-{Open Networking Foundation Home Page}.
-\newblock {\em https://www.opennetworking.org.}
-
-\bibitem{openflow}
-{OpenFlow Home Page}.
-\newblock {\em http://www.openflow.org.}
-
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
   N.~Min-Allah, L.~Wang, and D.~Chen.
@@ -27,13 +15,17 @@ K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
 \newblock {\em http://www.eetimes.com/design/embedded/43715
   43/SDN--OpenFlow--and-next-generation-data-center-networks.}
 
-\bibitem{mininet}
-{Mininet Home Page}.
-\newblock {\em https://mininet.github.com.}
+\bibitem{ibmnec}
+J.~Oltsik and B.~Laliberte.
+\newblock Ibm and nec bring sdn/openflow to enterprise data center networks.
 
-\bibitem{pox}
-{POX Home Page}.
-\newblock {\em http://ww.noxrepo.org.}
+\bibitem{openflow}
+{OpenFlow Home Page}.
+\newblock {\em http://www.openflow.org.}
+
+\bibitem{onf}
+{Open Networking Foundation Home Page}.
+\newblock {\em https://www.opennetworking.org.}
 
 \bibitem{im2013}
 D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
@@ -46,6 +38,10 @@ D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
 {NS3}.
 \newblock {\em http://www.nsnam.org.}
 
+\bibitem{mininet}
+{Mininet Home Page}.
+\newblock {\em https://mininet.github.com.}
+
 \bibitem{openstack}
 {Openstack Home Page}.
 \newblock {\em http://www.openstack.org.}
@@ -54,6 +50,10 @@ D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
 {IBM Smart Cloud Provisioning Home Page}.
 \newblock {\em http://www-01.ibm.com/software/tivoli/products
   /smartcloud-provisioning.}
+
+\bibitem{pox}
+{POX Home Page}.
+\newblock {\em http://ww.noxrepo.org.}
 
 \bibitem{cloudsim}
 N.~Calheiros, R.~Ranjan, A.~Beloglazov, C.A.F. De~Rose, and R.~Buyya.
