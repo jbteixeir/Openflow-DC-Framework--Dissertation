@@ -189,14 +189,15 @@ When developing an Openflow controller, the administrator/network engineer goals
 The currently available controllers already provide some abstraction, which varies according to the type of programming language, but they are still too low level to allow rapid innovation. 
 Following the implementation, tests campaigns must be performed and for it a controlled environment should be set.
 Although Openflow allows the use of slices of the real network for testing purposes, it is more convenient to use an emulator since the DC size can be dynamic, different scenarios can be easily produced and it only needs a single computer -- Mininet is such an emulator.
-Despite its flexible API, Mininet is not DC--oriented and does not support any type of traffic generator, which contributes to the deceleration of the development.
+Despite its flexible API, Mininet does not provide any type of traffic generator and is not DC--oriented: poor topology generation regarding DCs; no support for VMs;
 
-Complete with the objectives that "culmatam" estas "falhas". (ultimo paragrafo, mais falar de tudo o que está para cima)
+A whole framework composed by a modified OF controller that the access to both IT and network resources through an easy-to-use but full featured API, and a testing environment that communicates with it to provide a real DC emulation is the the main objective.
+The ultimate objective is to endue the administrator/network engineer with all the tools needed to quickly develop, test and deploy his/her VM and network management strategies into a DC.
 
-When the admin wants to try new DC VM allocation algorithms, first it takes to long to develop since the current controllers are still low level, and second if they want to test, or they try on their own DC (which could compromise the normal functioning and unless they try on a small part of the DC the result wont be accurate since they would be influences by the usual workload.
-Or they would use simulators(the problem with simulator is that usually you have to rewrite the algorithms that you will implement, and the results might not be accurate (correspond to the real environment)).
-At the same time, a whole framework that provides support to develop and test only the logic that the admin wants would also be cool, since they could focus on making new VM allocations that consider multiple factor (this is where OF helps since it has info about network)
-Maybe also talk a little about allowing to be easily expandable, extended.
+% When the admin wants to try new DC VM allocation algorithms, first it takes to long to develop since the current controllers are still low level, and second if they want to test, or they try on their own DC (which could compromise the normal functioning and unless they try on a small part of the DC the result wont be accurate since they would be influences by the usual workload.
+% Or they would use simulators(the problem with simulator is that usually you have to rewrite the algorithms that you will implement, and the results might not be accurate (correspond to the real environment)).
+% At the same time, a whole framework that provides support to develop and test only the logic that the admin wants would also be cool, since they could focus on making new VM allocations that consider multiple factor (this is where OF helps since it has info about network)
+% Maybe also talk a little about allowing to be easily expandable, extended.
 
 \begin{itemize}
 	\item Understanding the basic features of SDN paradigm
