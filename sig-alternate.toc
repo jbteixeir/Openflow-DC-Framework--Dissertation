@@ -9,49 +9,49 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Introduction}{1}
 \contentsline {section}{\numberline {1.2}Motivation and objectives}{2}
-\contentsline {section}{\numberline {1.3}Dissertation layout}{2}
-\contentsline {chapter}{\numberline {2}State of art }{3}
-\contentsline {section}{\numberline {2.1}Available solutions}{3}
-\contentsline {subsection}{\numberline {2.1.1}CloudSim}{3}
-\contentsline {subsection}{\numberline {2.1.2}NetFPGA Emulation}{3}
-\contentsline {subsection}{\numberline {2.1.3}Meridian}{3}
-\contentsline {subsection}{\numberline {2.1.4}Networkcloudsim, Greencloud and icancloud}{4}
-\contentsline {section}{\numberline {2.2}Openflow Controllers}{5}
-\contentsline {section}{\numberline {2.3}Virtual Machine Allocation Policies}{6}
-\contentsline {section}{\numberline {2.4}Virtual Machine Migration Policies}{7}
-\contentsline {section}{\numberline {2.5}QoS in SDN}{8}
-\contentsline {chapter}{\numberline {3}The Framework }{9}
-\contentsline {section}{\numberline {3.1}Requirements}{9}
-\contentsline {section}{\numberline {3.2}Framework architecture}{10}
-\contentsline {section}{\numberline {3.3}Framework modules: Mininet Environment}{11}
-\contentsline {subsection}{\numberline {3.3.1}Topology Generator}{11}
-\contentsline {subsection}{\numberline {3.3.2}Traffic Generator}{11}
-\contentsline {section}{\numberline {3.4}Framework modules: Controller}{12}
-\contentsline {subsection}{\numberline {3.4.1}Topology Discovery}{12}
-\contentsline {subsection}{\numberline {3.4.2}OF Rules Handler}{12}
-\contentsline {subsection}{\numberline {3.4.3}Statistics Handler}{12}
-\contentsline {subsection}{\numberline {3.4.4}VM Request Handler}{12}
-\contentsline {subsection}{\numberline {3.4.5}VMM - Virtual Machines Manager}{12}
-\contentsline {subsection}{\numberline {3.4.6}Network Traffic Requester}{12}
-\contentsline {subsection}{\numberline {3.4.7}POX Modules}{12}
-\contentsline {subsection}{\numberline {3.4.8}User Defined Logic}{12}
-\contentsline {section}{\numberline {3.5}Framework modules: Web Platform}{13}
-\contentsline {section}{\numberline {3.6}Framework modules: VM Requester}{14}
-\contentsline {section}{\numberline {3.7}Using the framework}{15}
-\contentsline {subsection}{\numberline {3.7.1}Emulator}{15}
-\contentsline {subsection}{\numberline {3.7.2}Real Environment}{15}
-\contentsline {chapter}{\numberline {4}Framework extensions }{17}
-\contentsline {section}{\numberline {4.1}Enabling QoS}{17}
-\contentsline {subsection}{\numberline {4.1.1}QoS in the framework}{17}
-\contentsline {section}{\numberline {4.2}Enabling Virtual Machine migration}{18}
-\contentsline {subsection}{\numberline {4.2.1}Virtual Machine migration in the framework}{18}
-\contentsline {subsection}{\numberline {4.2.2}Usecase}{18}
-\contentsline {chapter}{\numberline {5}Validation and tests }{19}
-\contentsline {section}{\numberline {5.1}Framework Validation}{19}
-\contentsline {section}{\numberline {5.2}Performance Evaluation}{20}
-\contentsline {section}{\numberline {5.3}Real environment tests}{21}
-\contentsline {chapter}{\numberline {6}Conclusions}{23}
-\contentsline {section}{\numberline {6.1}Main contributions}{23}
-\contentsline {section}{\numberline {6.2}Future work}{23}
-\contentsline {chapter}{\numberline {A}Name of the Appendix}{25}
-\contentsline {chapter}{Bibliography}{27}
+\contentsline {section}{\numberline {1.3}Dissertation layout}{3}
+\contentsline {chapter}{\numberline {2}State of art }{5}
+\contentsline {section}{\numberline {2.1}Available solutions}{5}
+\contentsline {subsection}{\numberline {2.1.1}CloudSim}{5}
+\contentsline {subsection}{\numberline {2.1.2}NetFPGA Emulation}{5}
+\contentsline {subsection}{\numberline {2.1.3}Meridian}{5}
+\contentsline {subsection}{\numberline {2.1.4}Networkcloudsim, Greencloud and icancloud}{6}
+\contentsline {section}{\numberline {2.2}Openflow Controllers}{7}
+\contentsline {section}{\numberline {2.3}Virtual Machine Allocation Policies}{8}
+\contentsline {section}{\numberline {2.4}Virtual Machine Migration Policies}{9}
+\contentsline {section}{\numberline {2.5}QoS in SDN}{10}
+\contentsline {chapter}{\numberline {3}The Framework }{11}
+\contentsline {section}{\numberline {3.1}Requirements}{11}
+\contentsline {section}{\numberline {3.2}Framework architecture}{12}
+\contentsline {section}{\numberline {3.3}Framework modules: Mininet Environment}{13}
+\contentsline {subsection}{\numberline {3.3.1}Topology Generator}{13}
+\contentsline {subsection}{\numberline {3.3.2}Traffic Generator}{13}
+\contentsline {section}{\numberline {3.4}Framework modules: Controller}{14}
+\contentsline {subsection}{\numberline {3.4.1}Topology Discovery}{14}
+\contentsline {subsection}{\numberline {3.4.2}OF Rules Handler}{14}
+\contentsline {subsection}{\numberline {3.4.3}Statistics Handler}{14}
+\contentsline {subsection}{\numberline {3.4.4}VM Request Handler}{14}
+\contentsline {subsection}{\numberline {3.4.5}VMM - Virtual Machines Manager}{14}
+\contentsline {subsection}{\numberline {3.4.6}Network Traffic Requester}{14}
+\contentsline {subsection}{\numberline {3.4.7}POX Modules}{14}
+\contentsline {subsection}{\numberline {3.4.8}User Defined Logic}{14}
+\contentsline {section}{\numberline {3.5}Framework modules: Web Platform}{15}
+\contentsline {section}{\numberline {3.6}Framework modules: VM Requester}{16}
+\contentsline {section}{\numberline {3.7}Using the framework}{17}
+\contentsline {subsection}{\numberline {3.7.1}Emulator}{17}
+\contentsline {subsection}{\numberline {3.7.2}Real Environment}{17}
+\contentsline {chapter}{\numberline {4}Framework extensions }{19}
+\contentsline {section}{\numberline {4.1}Enabling QoS}{19}
+\contentsline {subsection}{\numberline {4.1.1}QoS in the framework}{19}
+\contentsline {section}{\numberline {4.2}Enabling Virtual Machine migration}{20}
+\contentsline {subsection}{\numberline {4.2.1}Virtual Machine migration in the framework}{20}
+\contentsline {subsection}{\numberline {4.2.2}Usecase}{20}
+\contentsline {chapter}{\numberline {5}Validation and tests }{21}
+\contentsline {section}{\numberline {5.1}Framework Validation}{21}
+\contentsline {section}{\numberline {5.2}Performance Evaluation}{22}
+\contentsline {section}{\numberline {5.3}Real environment tests}{23}
+\contentsline {chapter}{\numberline {6}Conclusions}{25}
+\contentsline {section}{\numberline {6.1}Main contributions}{25}
+\contentsline {section}{\numberline {6.2}Future work}{25}
+\contentsline {chapter}{\numberline {A}Name of the Appendix}{27}
+\contentsline {chapter}{Bibliography}{29}

@@ -169,19 +169,35 @@ Therefore, Cloud service providers (\textit{e.g.},\cite{amazon}) ask for a next 
 In this scenario, a recent approach to programmable networks (\textit{i.e.}, Software-Defined Networking) seems to be a promising way to satisfy DC network requirements\cite{ibmnec}. 
 Unlike the classic approach where network devices forward traffic according to the adjacent devices, SDN is a new network paradigm that decouples routing decisions (control plane) from the traffic forwarding (data plane). This routing decisions are made by a programmable centralized intelligence called controller that helps make this architecture more dynamic, automated and manageable.
 
-Following the SDN--based architecture the most deployed SDN protocol is OpenFlow\cite{openflow}\cite{onf}, as it is the open standard protocol to communicate and control OF-compliant network devices.
-[continue later with the same logic as the sentence below]
- that allows to set into OF--compliant switches forwarding rules established by a centralized intelligence called controller.
+Following the SDN--based architecture the most deployed SDN protocol is OpenFlow\cite{openflow}\cite{onf}, and it is the open standard protocol to communicate and control OF-compliant network devices.
+Openflow allows a controller to install into OF--compliant network devices forwarding rules which are defined by the administrator/network engineer and match specific traffic flows.
 
-Since SDN allows to re-define and re-configure network functionalities (possibly up to the physical layer), the basic idea is to introduce an SDN-cloud-DC controller that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
+Since SDN allows to re-define and re-configure network functionalities, the basic idea is to introduce an SDN-cloud-DC controller that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
 Nevertheless, before deploying the novel architectural solutions, huge test campaigns must be performed in experimental environments reproducing a real DC.
-
 To this aim, a novel framework is introduced that allows to develop and assess novel SDN-Cloud-DC controllers, and to compare the performance of control and management strategies jointly considering both IT and network resources\cite{im2013}.
+
+TODO:should describe better openflow and SDN
+% \begin{quote}''OpenFlow allows, for the first time, an external control plane to abstract the entire underlying network fabric so that fabric is universally addressable and all topology and state information is commonly managed''{ --- \textup{ Jason Matlof}, vice president of marketing at Big Switch}\end{quote}
 
 % \pagebreak
 \section{Motivation and objectives\label{sec:motobj}}
 
-Being the 
+Although SDN came as a solution to fulfill the network requirements of the DCs, the only point of interaction with the IT resources is the generated traffic.
+By definition SDN does not go further, but if there could be a controller that manages both IT and network resources, all the information could be shared easily and both of them could greatly benefit: the network could start to anticipate IT actions and adapt itself to have higher performance, more redundancy, etc; the IT because the resources could be better managed so that the network, not only stops being the bottleneck, but actually helps the IT complete the tasks faster and without affecting adjacent resources.
+
+When developing an Openflow controller, the administrator/network engineer goals are to implement the desired behaviour and to test it (making sure it suits the requirements).
+The currently available controllers already provide some abstraction, which varies according to the type of programming language, but they are still too low level to allow rapid innovation. 
+Following the implementation, tests campaigns must be performed and for it a controlled environment should be set.
+Although Openflow allows the use of slices of the real network for testing purposes, it is more convenient to use an emulator since the DC size can be dynamic, different scenarios can be easily produced and it only needs a single computer -- Mininet is such an emulator.
+Despite its flexible API, Mininet is not DC--oriented and does not support any type of traffic generator, which contributes to the deceleration of the development.
+
+Complete with the objectives that "culmatam" estas "falhas". (ultimo paragrafo, mais falar de tudo o que está para cima)
+
+When the admin wants to try new DC VM allocation algorithms, first it takes to long to develop since the current controllers are still low level, and second if they want to test, or they try on their own DC (which could compromise the normal functioning and unless they try on a small part of the DC the result wont be accurate since they would be influences by the usual workload.
+Or they would use simulators(the problem with simulator is that usually you have to rewrite the algorithms that you will implement, and the results might not be accurate (correspond to the real environment)).
+At the same time, a whole framework that provides support to develop and test only the logic that the admin wants would also be cool, since they could focus on making new VM allocations that consider multiple factor (this is where OF helps since it has info about network)
+Maybe also talk a little about allowing to be easily expandable, extended.
+
 \begin{itemize}
 	\item Understanding the basic features of SDN paradigm
 	\item Studying the problematics in cloud DC VM allocations
@@ -193,6 +209,7 @@ Being the
 \section{Dissertation layout}
 
 In the present Chapter \ref{cha:introduction} - ...
+
 
 \chapter{State of art \label{cha:stateofart} }
 
