@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{meridian}
+M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
+\newblock Meridian: An sdn platform for cloud network services.
+\newblock {\em Communications Magazine}, 2013.
+
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
   N.~Min-Allah, L.~Wang, and D.~Chen.
@@ -34,27 +39,6 @@ D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
 \newblock In {\em International Symposium on Integrated Network Management}.
   IEEE/IFIP, 2013.
 
-\bibitem{ns3}
-{NS3}.
-\newblock {\em http://www.nsnam.org.}
-
-\bibitem{mininet}
-{Mininet Home Page}.
-\newblock {\em https://mininet.github.com.}
-
-\bibitem{openstack}
-{Openstack Home Page}.
-\newblock {\em http://www.openstack.org.}
-
-\bibitem{scp}
-{IBM Smart Cloud Provisioning Home Page}.
-\newblock {\em http://www-01.ibm.com/software/tivoli/products
-  /smartcloud-provisioning.}
-
-\bibitem{pox}
-{POX Home Page}.
-\newblock {\em http://ww.noxrepo.org.}
-
 \bibitem{cloudsim}
 N.~Calheiros, R.~Ranjan, A.~Beloglazov, C.A.F. De~Rose, and R.~Buyya.
 \newblock Cloudsim: A toolkit for modeling and simulation of cloud computing
@@ -68,11 +52,54 @@ K.~Garg and R.~Buyya.
 \newblock In {\em Internation Conference on Utility and Cloud Computing}. IEEE,
   2011.
 
+\bibitem{cloudsim3}
+A.~Kumar, N.~Siddhartha, A.~Soni, and K.~Dubey.
+\newblock http://search.iiit.ac.in/uploads/cloudsim.pdf.
+
 \bibitem{box}
 J.D. Ellithorpe, Z.~Tan, and R.H. Katz.
 \newblock Internet-in-a-box: Emulating datacenter network architectures using
   fpga's.
 \newblock In {\em Design Automation Conference}. ACM/IEEE, 2009.
+
+\bibitem{openstack}
+{Openstack Home Page}.
+\newblock {\em http://www.openstack.org.}
+
+\bibitem{scp}
+{IBM Smart Cloud Provisioning Home Page}.
+\newblock {\em http://www-01.ibm.com/software/tivoli/products
+  /smartcloud-provisioning.}
+
+\bibitem{icancloud}
+A.~Nunez, J.L. Vázquez-Poletti, A.C. Caminero, G.G. Castañé, J.~Carretero, and
+  I.M. Llorente.
+\newblock icancloud: A flexible and scalable cloud infrastructure simulator.
+\newblock {\em Journal of Grid Computing}, 2012.
+
+\bibitem{greencloud}
+D.~Kliazovich, P.~Bouvry, and S.U. Khan.
+\newblock Greencloud: A packet-level simulator of energy-aware cloud computing
+  data centers.
+\newblock In {\em Globecom}. IEEE, 2010.
+
+\bibitem{groudsim}
+S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
+\newblock Groudsim: An event-based simulation framework for computational grids
+  and clouds.
+\newblock {\em Euro-Par 2010 Parallel Processing Workshops}, 2011.
+
+\bibitem{mininet}
+{Mininet Home Page}.
+\newblock {\em https://mininet.github.com.}
+
+\bibitem{ns3}
+{NS3}.
+\newblock {\em http://www.nsnam.org.}
+
+\bibitem{pox}
+{POX Home Page}.
+\newblock {\em http://ww.noxrepo.org.}
 
 \bibitem{of_virtual}
 J.~Matia, E.~Jacob, D.~Sanchez, and Y.~Demchenko.
@@ -95,29 +122,6 @@ R.~Raghavendra, J.~Lobo, and K.W. Lee.
 A.~Tavakoli, M.~Casado, T.~Koponen, and S.~Shenker.
 \newblock Applying nox to the datacenter.
 \newblock In {\em HotNets}. ACM, 2009.
-
-\bibitem{icancloud}
-A.~Nunez, J.L. Vázquez-Poletti, A.C. Caminero, G.G. Castañé, J.~Carretero, and
-  I.M. Llorente.
-\newblock icancloud: A flexible and scalable cloud infrastructure simulator.
-\newblock {\em Journal of Grid Computing}, 2012.
-
-\bibitem{meridian}
-M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
-\newblock Meridian: An sdn platform for cloud network services.
-\newblock {\em Communications Magazine}, 2013.
-
-\bibitem{groudsim}
-S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
-\newblock Groudsim: An event-based simulation framework for computational grids
-  and clouds.
-\newblock {\em Euro-Par 2010 Parallel Processing Workshops}, 2011.
-
-\bibitem{greencloud}
-D.~Kliazovich, P.~Bouvry, and S.U. Khan.
-\newblock Greencloud: A packet-level simulator of energy-aware cloud computing
-  data centers.
-\newblock In {\em Globecom}. IEEE, 2010.
 
 \bibitem{gitg}
 A.~Pescapè A.~Dainotti, A.~Botta.

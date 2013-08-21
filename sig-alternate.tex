@@ -1,7 +1,7 @@
 %% Thesis template
 %% PMC, University of Minho
 %% if required, comment unused packages
-\documentclass[12pt,english]{book}
+\documentclass[12pt,english,oneside]{book}
 % \usepackage[portuguese]{babel}
 % \usepackage[utf8]{inputenc} 
 \usepackage{times}
@@ -101,6 +101,7 @@ Master of Science, under scientific supervision of Prof. Stefano Giordano and Pr
 \addcontentsline{toc}{chapter}{Abstract}
 
 \begin{singlespace}
+\hspace{0.6cm}
 In the last years, the widespread of Cloud computing as the main paradigm to deliver a large plethora of virtualized services significantly increased the complexity of Datacenters management and raised new performance issues for the intra-Datacenter network.
 Providing heterogeneous services and satisfying users' experience is really challenging for Cloud service providers, since system (IT resources) and network administration functions are definitely separated.
 
@@ -116,11 +117,9 @@ Datacenter, Cloud, SDN, OpenFlow.
 
 \newpage
 
-\cleardoublepage
-
 \addcontentsline{toc}{chapter}{Contents}\tableofcontents{}
 
-\cleardoublepage
+\clearpage
 
 \chapter*{List of Acronyms}
 
@@ -131,23 +130,22 @@ Datacenter, Cloud, SDN, OpenFlow.
 \begin{lyxlist}{00.00.0000}
 \begin{singlespace}
 \item [DC]Datacenter
-\item [SDN]Software Defined Networking
-\item [OF]Openflow
-\item [VM]Virtual Machine
 \item [IP]Internet Protocol 
+\item [IT]Information Technology
+\item [OF]Openflow
+\item [QoS] Quality of Service
+\item [SDN]Software Defined Networking
+\item [VM]Virtual Machine
 \item Add as needed...
 \end{singlespace}
 \end{lyxlist}
 
-\cleardoublepage
 
 \addcontentsline{toc}{chapter}{List of Figures}\listoffigures
 
-\cleardoublepage
 
 \addcontentsline{toc}{chapter}{List of Tables}\listoftables
 
-\cleardoublepage
 
 \setcounter{page}{0}
 
@@ -157,6 +155,7 @@ Datacenter, Cloud, SDN, OpenFlow.
 \chapter{Introduction\label{cha:introduction}}
 
 \section{Introduction}
+\hspace{0.6cm}
 
 A Cloud DC consists of virtualized resources that are dynamically allocated, in a seamless and automatic way, to a plethora of heterogeneous applications.
 In Cloud DCs, services are no more tightly bounded to physical servers, as occurred in traditional DCs, but are provided by Virtual Machines that can migrate from a physical server to another increasing both scalability and reliability.
@@ -179,8 +178,9 @@ To this aim, a novel framework is introduced that allows to develop and assess n
 TODO:should describe better openflow and SDN
 % \begin{quote}''OpenFlow allows, for the first time, an external control plane to abstract the entire underlying network fabric so that fabric is universally addressable and all topology and state information is commonly managed''{ --- \textup{ Jason Matlof}, vice president of marketing at Big Switch}\end{quote}
 
-% \pagebreak
+% \newpage
 \section{Motivation and objectives\label{sec:motobj}}
+\hspace{0.6cm}
 
 Although SDN came as a solution to fulfill the network requirements of the DCs, the only point of interaction with the IT resources is the generated traffic.
 By definition SDN does not go further, but if there could be a controller that manages both IT and network resources, all the information could be shared easily and both of them could greatly benefit: the network could start to anticipate IT actions and adapt itself to have higher performance, more redundancy, etc; the IT because the resources could be better managed so that the network, not only stops being the bottleneck, but actually helps the IT complete the tasks faster and without affecting adjacent resources.
@@ -191,66 +191,114 @@ Following the implementation, tests campaigns must be performed and for it a con
 Although Openflow allows the use of slices of the real network for testing purposes, it is more convenient to use an emulator since the DC size can be dynamic, different scenarios can be easily produced and it only needs a single computer -- Mininet is such an emulator.
 Despite its flexible API, Mininet does not provide any type of traffic generator and is not DC--oriented: poor topology generation regarding DCs; no support for VMs;
 
-A whole framework composed by a modified OF controller that the access to both IT and network resources through an easy-to-use but full featured API, and a testing environment that communicates with it to provide a real DC emulation is the the main objective.
-The ultimate objective is to endue the administrator/network engineer with all the tools needed to quickly develop, test and deploy his/her VM and network management strategies into a DC.
+A whole framework composed by a modified OF controller that allows the access to both IT and network resources through an easy-to-use but full featured API, and a testing environment that communicates with it to provide a real DC emulation is the the main objective.
+With this is is expected to endue the administrator/network engineer with all the tools needed to quickly develop, test and deploy VM and network management strategies into a DC.
 
 % When the admin wants to try new DC VM allocation algorithms, first it takes to long to develop since the current controllers are still low level, and second if they want to test, or they try on their own DC (which could compromise the normal functioning and unless they try on a small part of the DC the result wont be accurate since they would be influences by the usual workload.
 % Or they would use simulators(the problem with simulator is that usually you have to rewrite the algorithms that you will implement, and the results might not be accurate (correspond to the real environment)).
 % At the same time, a whole framework that provides support to develop and test only the logic that the admin wants would also be cool, since they could focus on making new VM allocations that consider multiple factor (this is where OF helps since it has info about network)
 % Maybe also talk a little about allowing to be easily expandable, extended.
 
-\begin{itemize}
-	\item Understanding the basic features of SDN paradigm
-	\item Studying the problematics in cloud DC VM allocations
-	\item Apply the SDN paradigm to better exploit the DC resources
-	\item Develop a framework for Cloud Datacenter emulation and new VM allocation policies
-	\item ...
-\end{itemize}
+% \begin{itemize}
+% 	\item Understanding the basic features of SDN paradigm
+% 	\item Studying the problematics in cloud DC VM allocations
+% 	\item Apply the SDN paradigm to better exploit the DC resources
+% 	\item Develop a framework for Cloud Datacenter emulation and new VM allocation policies
+% 	\item ...
+% \end{itemize}
 
-\section{Dissertation layout}
 
-In the present Chapter \ref{cha:introduction} - ...
+\section{Thesis layout}
+\hspace{0.6cm}
+
+This thesis is structured into five chapters: the present Chapter \ref{cha:introduction} is a brief introduction of the proposed work, its motivation and objectives; the second is the state of art, it addresses the currently available solutions relating innovation in DCs, OF controllers and VM allocation and migration algorithms; the third one fully describes the framework, its evolution, extensions and how it can be used; in the forth chapter is presented the framework validation and performance tests; and in the last chapter are made conclusions about the developed work, as well as suggestions for future work.
+
 
 
 \chapter{State of art \label{cha:stateofart} }
 
-Usually background and related work ...
-
 \section{Available solutions}
 
-Write something generic
+A number of research efforts have focused on novel solutions for emulation/simulation of Cloud DCs.
+The available solutions provide a reference and material to analise and explore the concepts addressed along this thesis. 
+This section presents and overview of them, highlighting their architecture, features and limitations.
 
 \subsection{CloudSim}
+\hspace{0.6cm}
 
-Calheiros et al.[6] proposed a Java-based platform, called Cloudsim, that allows to estimate cloud servers performance using a workflow model to simulate applications behaviour. 
+Calheiros et al.\cite{cloudsim} proposed a Java-based platform, called Cloudsim, that allows to estimate cloud servers performance using a workflow model to simulate applications behaviour.
+By providing a framework for managing most key aspect of a Cloud infrastructure (DC hardware and software, VM placement algorithm, Applications for VM, Storage access, Bandwidth provisioning) and by taking into consideration factors as energy-aware computational resources and costs, it helps to identify possible bottlenecks and improve overall efficiency.
 
-\subsection{NetFPGA Emulation}
+Regarding the network aspect of Clousim, Garg et al.\cite{cloudsim2} extended such a system with both a new intra--DC network topology generator and a flow--based approach for collecting the value of network latency. However, in such a simulator, networks are considered only to introduce delay, therefore it is not possible to calculate other parameters (\textit{e.g.}, Jitter).
+A SDN extension for Cloudsim as already been thought, Kumar et al.\cite{cloudsim3}, but it still just an architecture design, meaning it has not been implemented yet.
 
-Ellithorpe et al.[7] proposed, an FPGA emulation platform that allows to emulate up-to 256 network nodes on a single chip. However, the cost of a single board is approximately 2, 000 dollars making this solution less attractive than one based on open--source software.
+Although it allows to predict how the management strategies will behave, as a simulator, it does not allow to run real applications and deploying the tested management logic in a real environment still requires everything to be developed.
+
+\subsection{FPGA Emulation}
+\hspace{0.6cm}
+
+Ellithorpe et al.\cite{box} proposed, a FPGA emulation platform that allows to emulate up-to 256 network nodes on a single chip.
+\begin{quotation}
+''Our basic approach to emulation involves constructing a model of the target architecture by composing simplified hardware models
+of key datacenter building blocks, including switches, routers, links, and servers. Since models in our system are implemented in programmable hardware, designers have full control over emulated buffer sizes, line rates, topologies, and many other network properties.''
+
+\hfill Ellithorpe et al.\cite{box}
+\end{quotation}
+
+This platform also allows the emulation of full SPARC v8 ISA compatible processor, which along with full system control provides a greater system visibility.
+However, hardware programming skills might be a requirement and the cost of a single board is approximately 2, 000 dollars making this solution less attractive than ones based on just open--source software.
 
 \subsection{Meridian}
+\hspace{0.6cm}
 
-Following the new shiny SDN paradigm, Banikazemi et al.[4] proposed Meridian, an SDN--based controller
-framework for cloud services in real environments: such a platform allows to create and manage different kind
-of logical network topologies, but it works on top of a cloud Iaas platform (i.e., Openstack[18], IBM Smart
-Cloud Provisioning[9]) while our solution is a flexible, standalone software that could even run in a virtualized environment.
+Following the new shiny SDN paradigm, Banikazemi et al.\cite{meridian} proposed Meridian, an SDN--based controller
+framework for cloud services in real environments.
 
-\subsection{Networkcloudsim, Greencloud and icancloud}
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/meridian_arch.png}
+        \caption{Meridian SDN cloud networking platform architecture (Banikazemi et al.\cite{meridian})}
+        \label{fig:meridian_arch}
+\end{figure}
 
-Other well--known open--source cloud simulators are[13][11] and[19], but in none of them (even in Cloudsim) SDN features are available.
+As shown in figure \ref{fig:meridian_arch}, the architecture is divided into three main layers: Network abstractions and API, where the network information can be accessed and manipulated (\textit{e.g.} access controlling policies, prioritizing traffic); Network Orchestration, translates the command provided by the API into physical network commands and orchestrates them for more complex operations. it also reveals the network topology and its variations; finally the ''drivers'' layer is an interface for underlying the network devices so several network devices and tools can be used.
+
+Generally, this platform allows to create and manage different kind of logical network topologies and use their information for providing a greater control of the DC.
+But as it works on top of a cloud Iaas platform (i.e., Openstack\cite{openstack}, IBM SmartCloud Provisioning\cite{scp}), it is limited to their management strategies and is only useful if one already has this type of infrastructure. Not having a testing environment is also a downside since the normal operation can be compromised and also alter the testing results.
+
+\subsection{ICanCloud, GreenCloud and GroudSim}
+\hspace{0.6cm}
+
+Other well--known open--source cloud simulators are ICancloud\cite{icancloud}, GreenCloud\cite{greencloud} and GroudSim\cite{groudsim}, but in none of them SDN features are available.
+
+\newpage
+\subsection{Mininet}
+\hspace{0.6cm}
+\begin{quotation}
+
+''Mininet is a network emulator which creates a network of virtual hosts, switches, controllers, and links. Mininet hosts run standard Linux network software, and its switches support OpenFlow for highly flexible custom routing and Software-Defined Networking.''
+
+\hfill Mininet \cite{mininet}
+\end{quotation}
+
+As a network emulator for SDN systems, mininet can generate OF compliant networks that connect to real controllers without the need of hardware resources. Such features derives from the use of Open vSwitch and enables the assessment of the operation of an OF controller before its deployment in a real environment.
+
+It also provides tools for automatically generating topologies, however, as they can be basic, an API is available to reproduce any type of topology and experiments.
+Mininet hosts behave just like real hosts, can run any program as long as it does not depend on non linux kernels, and can send packets through emulated interfaces.
+But as they share the same host file system and PID space, a special attention is required when killing/running programs.
+
+Despite its flexibility, Mininet lacks of a complete set of tools that easily allow to emulate the behaviour of a cloud DC, thus raising the following questions:
+ 
+\begin{itemize}
+\item How to easily generate and configure typical DC topologies?
+\item How to simulate VMs allocation requests?
+\item How to emulate the inter and in/out DC traffic?
+\end{itemize}
 
 \newpage
 \section{Openflow Controllers}
+\hspace{0.6cm}
 
-\newpage
-\section{Virtual Machine Allocation Policies}
-
-\newpage
-\section{Virtual Machine Migration Policies}
-
-\newpage
-\section{QoS in SDN}
-\newpage
 
 % Uncomment to include file.pdf
 %\begin{figure}%[H]
@@ -260,33 +308,62 @@ Other well--known open--source cloud simulators are[13][11] and[19], but in none
 
 
 \chapter{The Framework \label{cha:framework} }
+\hspace{0.6cm}
 
 Provide the user with a full package for the development and test of DC SDN Controller was one of the main purposes of the framework.
-Aiming for such goal, but without discarding the deployment in a real DC, a single software environment was designed and developed.
-Because the requirements change according to the controller being in the development or the deployment phase, so does the environment in order to best suit each of them.
+Aiming for such goal, but without discarding the deployment in a real DC, a single software platform was designed and developed.
+Because the requirements change according to the controller being in the development or the deployment phase, so does the platform by creating and environment that best suits each of them.
 
 \section{Requirements}
 
-Explain the different requirements in a development \& test versus deployment phase.
+\paragraph{Development \& Testing Phase}
+\hspace{0.6cm}
 
+-easy and fast to develop the desired logic 
+  -easy access to information (switch and servers information, statistics)
+  -easy management(installation/deletion) of OF Rules
+  -automatic topology detection (switches and servers) on the controller
+  -Easy communication with hypervisor
+
+Testing environment
+-VM Requests generator: generate automatic VM requests
+-DC Topology generator: Tree and Fat tree topologies with variable breath
+-Traffic generator: correctly "imitate" DC traffic from/to VM as they get allocated
+
+\paragraph{Deployment Phase}
+\hspace{0.6cm}
+
+Ditch the whole testing environment
+-place for people to make requests manually
+-easy configuration
+
+Explain the different requirements in a development \& test versus deployment phase.
+ 
 This environment can be seen as two main components: the DC oriented controller and the DC Topology.
 
 The first one, a full featured python controller for OF switches called POX was used as groundwork. It has ready-to-use modules that are helpful when it comes to making a controller, as they provide some abstraction.
 However, POX API is too low level for a user that aims to implement a new DC controller, which prevents the rapid development of the logic thought by the user.
 To fill this gap, the controller available in the framework includes all the abstraction levels needed for quickly building a DC oriented controller while still being fully dynamic.
 
-As for the second component, since performing tests and debug in a real topology can be challenging operations
+As for the second component, since performing tests and debug in a real topology can be challenging operation
 
-the starting point was Mininet, a network emulator for SDN systems, which provides an API to reproduce any kind of topology without the need of hardware resources.
-Therefore, Mininet enables the assessment of the operation of an OF controller before its deployment in a real environment.
-Despite its flexibility, Mininet lacks of a complete set of tools that easily allow to emulate the behaviour of a cloud DC, thus raising the following questions:
- 
-\begin{itemize}
-\item How to easily generate and configure typical DC topologies?
-\item How to simulate VMs allocation requests?
-\item How to emulate the inter and in/out DC traffic?
-\end{itemize}
+\section{Chosen technologies}
+\hspace{0.6cm}
 
+-Controller: POX
+  -derives from the first OF controller made by the same people who created OF, which in some way should follow the same guidelines
+  -Python as a programming language (higher level)
+  -Object and Event oriented programming, more interactivaty
+
+-DC Emulator: Mininet
+  -Chosen by OF as platform for testing OF controllers
+  -Provides and API for development of custom made topologies and experiments (in python)
+  -Although no traffic generator is included, hosts can run any program (with few restrictions)
+
+-Virtualization platform: XCP 1.6 (Xen Cloud Platform)
+  -Free and Opensource solution
+  -Thought for the cloud
+  -Xen python API
 
 \section{Framework architecture}
 
@@ -296,6 +373,8 @@ Despite its flexibility, Mininet lacks of a complete set of tools that easily al
         \caption{The framework}
         \label{fig:framework}
 \end{figure}
+
+Framework is divided into two main parts
 
 \section{Framework modules: Mininet Environment}
 
@@ -358,17 +437,30 @@ Describe how to use the framework (emulation part) and how to access the API..
 
 \subsection{Real Environment}
 
+-Figura com o esquema da configuração
 Describe what changes in the real environment (the modules that are disabled and the ones that need to be enabled)
+\subsubsection{Real environment tests}
+\begin{itemize}
+  \item Talk about the environment which was setup
+  \begin{itemize}
+    \item Chosen hypervisor
+    \item Talk about Xen api and the alternative solution (ssh each server and run a script to clone the vm)
+    \item OpenVswitches VS NetFPGA problems
+    \item 
+  \end{itemize}
+\end{itemize}
 
-\chapter{Framework extensions \label{cha:} }
+\section{Framework extensions \label{Sec:fraext} }
 
-\section{Enabling QoS}
-\subsection{QoS in the framework}
+\subsection{Enabling QoS}
+\subsubsection{State of art: QoS in SDN}
+\subsubsection{QoS in the framework}
 \newpage
 
-\section{Enabling Virtual Machine migration}
-\subsection{Virtual Machine migration in the framework}
-\subsection{Usecase}
+\subsection{Enabling Virtual Machine migration}
+\subsubsection{State of art: Virtual Machine migration}
+\subsubsection{Virtual Machine migration in the framework}
+\subsubsection{Usecase}
 
 \chapter{Validation and tests \label{cha:valtes} }
 
@@ -386,18 +478,6 @@ Usually test and validation of the proposed solution ...
 \section{Performance Evaluation}
 
 Get the tests from the submitted paper.
-\newpage
-
-\section{Real environment tests}
-\begin{itemize}
-	\item Talk about the environment which was setup
-	\begin{itemize}
-		\item Chosen hypervisor
-		\item Talk about Xen api and the alternative solution (ssh each server and run a script to clone the vm)
-		\item OpenVswitches VS NetFPGA problems
-		\item 
-	\end{itemize}
-\end{itemize}
 \newpage
 
 \chapter{Conclusions\label{cha:conclusions}}
