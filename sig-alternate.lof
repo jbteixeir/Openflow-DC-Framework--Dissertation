@@ -3,7 +3,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Meridian SDN cloud networking platform architecture (Banikazemi et al.\cite {meridian})}}{7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The framework}}{12}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture}}{12}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic}}{20}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Average Host Link Ratio vs number of Hosts}}{21}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host}}{22}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated}}{22}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Host-PC Memory Utilization vs number of Hosts}}{23}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  21 AUG 2013 17:09
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  22 AUG 2013 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -362,24 +362,58 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 Chapter 3.
 [10
 
-] <figures/emulator_new.png, id=67, 986.68625pt x 664.4825pt>
+] [11] <figures/emulator_new.png, id=71, 986.68625pt x 664.4825pt>
 File: figures/emulator_new.png Graphic file (type png)
 
 <use figures/emulator_new.png>
-Package pdftex.def Info: figures/emulator_new.png used on input line 372.
-(pdftex.def)             Requested size: 322.50345pt x 217.19122pt.
- [11] [12 <./figures/emulator_new.png>] [13]
-[14] [15] [16] [17]
+Package pdftex.def Info: figures/emulator_new.png used on input line 376.
+(pdftex.def)             Requested size: 368.57838pt x 248.2171pt.
+ [12 <./figures/emulator_new.png>] [13] [14]
+[15] [16] [17] [18]
 Chapter 4.
-[18
+[19
 
-] [19]
+] <figures/bw_utilization.png, id=97, 642.4pt x 481.8pt>
+File: figures/bw_utilization.png Graphic file (type png)
+
+<use figures/bw_utilization.png>
+Package pdftex.def Info: figures/bw_utilization.png used on input line 518.
+(pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
+ <figures/topo.png, id=98, 642.4pt x 481.8pt>
+File: figures/topo.png Graphic file (type png)
+
+<use figures/topo.png>
+Package pdftex.def Info: figures/topo.png used on input line 530.
+(pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
+ [20 <./figures/bw_utilization.png>]
+<figures/out_hosts_ratio.png, id=104, 642.4pt x 481.8pt>
+File: figures/out_hosts_ratio.png Graphic file (type png)
+
+<use figures/out_hosts_ratio.png>
+Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 544.
+(pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
+
+<figures/mem1_utilization.png, id=105, 642.4pt x 481.8pt>
+File: figures/mem1_utilization.png Graphic file (type png)
+
+<use figures/mem1_utilization.png>
+Package pdftex.def Info: figures/mem1_utilization.png used on input line 550.
+(pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
+
+<figures/mem2_utilization.png, id=106, 642.4pt x 481.8pt>
+File: figures/mem2_utilization.png Graphic file (type png)
+
+<use figures/mem2_utilization.png>
+Package pdftex.def Info: figures/mem2_utilization.png used on input line 568.
+(pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
+ [21 <./figures/topo.png>] [22 <./figures/out_hosts_ratio.png> <./figures/mem1_
+utilization.png>] [23 <./figures/mem2_utilization.png>]
 Chapter 5.
-[20
+[24
 
 ]
 Appendix A.
-[21
+[25
 
 ] (./sig-alternate.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 19--22
@@ -398,7 +432,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--58
 []\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
  []
 
-[22
+[26
 
 
 
@@ -408,25 +442,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--73
 tp://www-
  []
 
-[23]) [24] (./sig-alternate.aux) ) 
+[27]) [28] (./sig-alternate.aux) ) 
 Here is how much of TeX's memory you used:
- 3014 strings out of 495059
- 40224 string characters out of 3182030
- 97912 words of memory out of 3000000
- 6100 multiletter control sequences out of 15000+200000
+ 3045 strings out of 495059
+ 40963 string characters out of 3182030
+ 97978 words of memory out of 3000000
+ 6126 multiletter control sequences out of 15000+200000
  33797 words of font info for 43 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,11n,43p,654b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,654b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on sig-alternate.pdf (32 pages, 266420 bytes).
+s/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on sig-alternate.pdf (36 pages, 307176 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 158 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

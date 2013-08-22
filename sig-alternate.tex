@@ -353,7 +353,7 @@ As for the second component, since performing tests and debug in a real topology
 -Controller: POX
   -derives from the first OF controller made by the same people who created OF, which in some way should follow the same guidelines
   -Python as a programming language (higher level)
-  -Object and Event oriented programming, more interactivaty
+  -Object and Event oriented programming, more interactivity
 
 -DC Emulator: Mininet
   -Chosen by OF as platform for testing OF controllers
@@ -365,16 +365,43 @@ As for the second component, since performing tests and debug in a real topology
   -Thought for the cloud
   -Xen python API
 
+-Possibility to write all the code in one programming language helps keeping the platform consistent.
+\newpage
+
 \section{Framework architecture}
+\hspace{0.6cm}
 
 \begin{figure}[htbp]
         \centering
-        \includegraphics[width=0.7\textwidth]{figures/emulator_new.png}
-        \caption{The framework}
+        \includegraphics[width=0.8\textwidth]{figures/emulator_new.png}
+        \caption{Framework Architecture}
         \label{fig:framework}
 \end{figure}
 
-Framework is divided into two main parts
+The framework architecture, shown in figure \ref{fig:framework}, gives an overview of the its modules and their interaction.
+The framework is divided into two main parts: the mininet environment - an extended version of mininet; and the controller - a modified, improved version of POX;
+
+The mininet environment is made to be only used when testing the controller.
+It is composed by the mininet platform with two extra modules that explore its API.
+One of them is the {\it Topology Generator}, which allows to easily create a fat tree or tree DC topologies.
+The other one is the {\it Traffic Generator} that allows to correctly simulate the allocation of VM into each server by generating traffic from that server to the exterior of the DC. It also allows to simulate inter VM communication.
+
+As for the controller, it automatically manages the modules in order to only use the ones that are needed for each phase (testing or deployment).
+In the figure \ref{fig:framework}, in the controller part, it can be seen a darker area which corresponds to the modules that are used in both phases. These modules are:
+\begin{itemize}
+  \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests.
+  \item OF Rules Handler -- Manages and keeps track of the installation/removal of the OF rules from the switches.
+  \item Topology Discover -- Manages all the information regarding the switches, links, servers and its detection.
+  \item Statistics Handler -- Collects statistics about the switches and links, can be periodical or manual.
+  \item User-defined Logic -- Space for the administrator/network engineer to develop the desired DC management logic
+\end{itemize}
+
+Regarding the other modules: the {\it Network Traffic Requester} which is only used when performing tests to tell the mininet environment how much, when, from where and where to the traffic should be generated; and the {\it VMM Handler} which in only active when the controller is in a real environment, and its purpose is to communicate with the hypervisor to do all the operation regarding the VMs (allocate, deallocate, upgrade, etc).
+
+All the modules are independent from each other and they can be changed, removed or added in order to fulfill all the user requirements.
+
+
+-Talk about the VM request how they can be made
 
 \section{Framework modules: Mininet Environment}
 
@@ -476,8 +503,72 @@ Usually test and validation of the proposed solution ...
 
 
 \section{Performance Evaluation}
+\label{sec:perf}
+\hspace{0.6cm}
 
-Get the tests from the submitted paper.
+TODO: CHANGE THIS FOR NOT BEING IN THE SECOND PERSON OF THE PLURAL
+TODO: PUT IMAGES IN THE RIGHT PLACE (ALONG WITH THE TEXT)
+
+We evaluated the actual performance of the proposed framework through a variety of experiments using a PC equipped with an Intel i5 3GHz and 8GB of DD3 RAM (\textit{i.e.}, from now on we will call it Host-PC).
+The first tests have been carried out to inspect the impact of the amount of generated traffic, the DC topology size and the number of outside hosts on the host link ratio.
+Firstly, we generate a static topology (\textit{i.e}, $2$ outside hosts, $2$ core switches, $4$ aggregation switches, $8$ edge switches, $8$ hosts), then we started measuring the host link ratio increasing the generated traffic per host.
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/bw_utilization.png}
+        \caption{Average Host link Ratio vs per Host Generated Traffic}
+        \label{fig:bw}
+\end{figure}
+
+As shown in figure \ref{fig:bw} we were able to generate up to few Mbps of traffic per host.
+Then the host link ratio decreases as the generated traffic grows.
+We point out that such limitation does not affect any kind of DC performance tests made with our framework,
+because we can scale the link speed as much as we want during the DC initialization phase, reaching every time 100\% of host link ratio.
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/topo.png}
+        \caption{Average Host Link Ratio vs number of Hosts}
+        \label{fig:topo}
+\end{figure}
+
+In order to test the impact of the DC topology size on the
+host link ratio we kept the amount of the generated aggregated traffic 
+constant while exponentially increasing the number of switches and hosts.
+We started from the previous test topology.
+
+On DC initialization phase, we set the link speed in order to fully saturate the host links.
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/out_hosts_ratio.png}
+        \caption{Average Host Link Ratio vs number of Hosts per Outside Host}
+        \label{fig:hosts}
+\end{figure}
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/mem1_utilization.png}
+        \caption{Host-PC Memory Utilization vs per Host Traffic Generated}
+        \label{fig:mem1}
+\end{figure}
+
+The results in figure \ref{fig:topo} show that regardless of the hosts number, the host link ratio remains constant.
+This means that as long as the total amount of generated traffic per host and the links speed can guarantee the link saturation, the system can scale indefinitely, being the only limits the Mininet itself, or the controller. 
+Finally we investigated the relationship between the number of hosts connected to just one outside host and the average link ratio.
+Figure \ref{fig:hosts} shows that a maximum of $8$ hosts can be managed by just one outside host (\textit{i.e.}, the host link speed is set in order to have a link saturation).
+
+Such a result gives to the user an important constraint that should be used during the DC configuration phase.
+We point out that this limitation is native of the Mininet environment and it is not due to our framework.
+The second tests have been carried out to inspect the impact of both the amount of generated traffic and the DC topology size on the amount of memory the Host-PC needs.
+Figure \ref{fig:mem1} shows that the memory utilization does not depend on the amount of generated traffic for each host.
+On the other hand, as shown in figure \ref{fig:mem2}, as the topology size grows, the memory usage also grows in the same proportion, which allows to conclude that it scales linearly.
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/mem2_utilization.png}
+        \caption{Host-PC Memory Utilization vs number of Hosts}
+        \label{fig:mem2}
+\end{figure}
 \newpage
 
 \chapter{Conclusions\label{cha:conclusions}}
