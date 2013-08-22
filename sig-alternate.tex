@@ -136,6 +136,7 @@ Datacenter, Cloud, SDN, OpenFlow.
 \item [QoS] Quality of Service
 \item [SDN]Software Defined Networking
 \item [VM]Virtual Machine
+\item [VMM]Virtual Machine Manager
 \item Add as needed...
 \end{singlespace}
 \end{lyxlist}
@@ -300,6 +301,9 @@ Despite its flexibility, Mininet lacks of a complete set of tools that easily al
 \hspace{0.6cm}
 
 
+\newpage
+\section{Virtualization Platforms}
+\hspace{0.6cm}
 % Uncomment to include file.pdf
 %\begin{figure}%[H]
 %\begin{center}\includegraphics[scale=0.8]{file}\end{center}
@@ -308,64 +312,50 @@ Despite its flexibility, Mininet lacks of a complete set of tools that easily al
 
 
 \chapter{The Framework \label{cha:framework} }
+
+
+\section{Requirements}
 \hspace{0.6cm}
 
 Provide the user with a full package for the development and test of DC SDN Controller was one of the main purposes of the framework.
 Aiming for such goal, but without discarding the deployment in a real DC, a single software platform was designed and developed.
-Because the requirements change according to the controller being in the development or the deployment phase, so does the platform by creating and environment that best suits each of them.
-
-\section{Requirements}
+Because the requirements change according to the controller being in the development or the deployment phase, so should the platform by creating and environment that best suits each of them.
 
 \paragraph{Development \& Testing Phase}
 \hspace{0.6cm}
 
--easy and fast to develop the desired logic 
-  -easy access to information (switch and servers information, statistics)
-  -easy management(installation/deletion) of OF Rules
-  -automatic topology detection (switches and servers) on the controller
-  -Easy communication with hypervisor
+Encourage a rapid development is one of the main requirements since it promotes innovation in the cloud DC.
+It must be simple and fast to develop the desired logic, which can be achieved by providing easy access to information and management of the network and servers.
+More specifically, automatic topology detection (and changes in it) associated with a high level API for accessing and managing switch's and server's information and statistics.
 
-Testing environment
--VM Requests generator: generate automatic VM requests
--DC Topology generator: Tree and Fat tree topologies with variable breath
--Traffic generator: correctly "imitate" DC traffic from/to VM as they get allocated
+When testing, the framework should provide an automatic way of generating the VM requests and the traffic associated to each request (for testing the VM allocation and the network behaviour).
+The traffic generator should also correctly represent the DC traffic profiles.
+Allowing an easy access outside the controller for the statistics is also important, so it is possible to analyze the logic effects on the DC.
 
 \paragraph{Deployment Phase}
 \hspace{0.6cm}
 
-Ditch the whole testing environment
--place for people to make requests manually
--easy configuration
-
-Explain the different requirements in a development \& test versus deployment phase.
- 
-This environment can be seen as two main components: the DC oriented controller and the DC Topology.
-
-The first one, a full featured python controller for OF switches called POX was used as groundwork. It has ready-to-use modules that are helpful when it comes to making a controller, as they provide some abstraction.
-However, POX API is too low level for a user that aims to implement a new DC controller, which prevents the rapid development of the logic thought by the user.
-To fill this gap, the controller available in the framework includes all the abstraction levels needed for quickly building a DC oriented controller while still being fully dynamic.
-
-As for the second component, since performing tests and debug in a real topology can be challenging operation
+For the deployment, the framework should be easy to configure and monitor, and no extra effort should be made for the framework to run on the real DC (it should adapt automatically). There should also be an intuitive way to make manual VM requests, so clients can generate and manage their own VMs.
 
 \section{Chosen technologies}
+
+\subsubsection{Openflow Controller: POX}
 \hspace{0.6cm}
 
--Controller: POX
-  -derives from the first OF controller made by the same people who created OF, which in some way should follow the same guidelines
-  -Python as a programming language (higher level)
-  -Object and Event oriented programming, more interactivity
+Being POX a python derivative of the NOX controller, which was developed by the same people who developed the Openflow protocol, adopting it would be a surplus since there is a higher chance it will continue to support Openflow, and that the new versions/features are available as soon as possible.
+Besides, being a high level (comparing to C and C++), object and event oriented programming language, helps to create the abstraction level required for agile development and turn the controller more interactive.
 
--DC Emulator: Mininet
-  -Chosen by OF as platform for testing OF controllers
-  -Provides and API for development of custom made topologies and experiments (in python)
-  -Although no traffic generator is included, hosts can run any program (with few restrictions)
+\subsubsection{Datacenter Emulator: Mininet}
+\hspace{0.6cm}
 
--Virtualization platform: XCP 1.6 (Xen Cloud Platform)
-  -Free and Opensource solution
-  -Thought for the cloud
-  -Xen python API
+Mininet comes recommended in the Openflow tutorials as the platform for testing the OF compliant controllers.
+It also provides an API in python for the development of custom made topologies and specific experiments, which along with the capacity that the virtualized hosts have of running almost any program, makes it a powerful platform.
 
--Possibility to write all the code in one programming language helps keeping the platform consistent.
+\subsubsection{Virtualization platform: XCP 1.6 (Xen Cloud Platform)}
+\hspace{0.6cm}
+
+As a free and opensource platform though for the cloud, XCP bring all the features belonging to Xen, plus it comes with ready-to-install images, making it simpler to install and configure.
+Having multiple interaction option is also an attractive feature, but having a Xen python API was decisive since hit gave the possibility to write all the code in one programming language which helps keeping the platform consistent.
 \newpage
 
 \section{Framework architecture}
@@ -387,21 +377,21 @@ One of them is the {\it Topology Generator}, which allows to easily create a fat
 The other one is the {\it Traffic Generator} that allows to correctly simulate the allocation of VM into each server by generating traffic from that server to the exterior of the DC. It also allows to simulate inter VM communication.
 
 As for the controller, it automatically manages the modules in order to only use the ones that are needed for each phase (testing or deployment).
+Depending on it, the controller will interact with the mininet environment or the Cloud DC, which represent the real Cloud DC infrastructure.
 In the figure \ref{fig:framework}, in the controller part, it can be seen a darker area which corresponds to the modules that are used in both phases. These modules are:
 \begin{itemize}
-  \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests.
-  \item OF Rules Handler -- Manages and keeps track of the installation/removal of the OF rules from the switches.
-  \item Topology Discover -- Manages all the information regarding the switches, links, servers and its detection.
-  \item Statistics Handler -- Collects statistics about the switches and links, can be periodical or manual.
-  \item User-defined Logic -- Space for the administrator/network engineer to develop the desired DC management logic
+  \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests;
+  \item OF Rules Handler -- Manages and keeps track of the installation/removal of the OF rules from the switches;
+  \item Topology Discover -- Manages all the information regarding the switches, links, servers and its detection;
+  \item Statistics Handler -- Collects statistics about the switches and links, can be periodical or manual;
+  \item User-defined Logic -- Space for the administrator/network engineer to develop the desired DC management logic;
 \end{itemize}
 
-Regarding the other modules: the {\it Network Traffic Requester} which is only used when performing tests to tell the mininet environment how much, when, from where and where to the traffic should be generated; and the {\it VMM Handler} which in only active when the controller is in a real environment, and its purpose is to communicate with the hypervisor to do all the operation regarding the VMs (allocate, deallocate, upgrade, etc).
+Regarding the other controller modules: the {\it Network Traffic Requester} which is only used when performing tests, tells the mininet environment how much, when, from where and where to, the traffic should be generated; and the {\it VMM Handler} which is only active when the controller is in a real environment, communicates with the hypervisor to perform all the operation regarding the VMs (allocate, deallocate, upgrade, etc).
 
-All the modules are independent from each other and they can be changed, removed or added in order to fulfill all the user requirements.
+The {\it WEB platform} and the {\it VM Requester} where created for making VM requests. While the first one is a platform where DC clients can request VMs that will be processed by the controller and later allocated by the hypervisor (oriented for the deployment phase), the {\it VM Requester} is an automatic full configurable VM request generator powered by random variables (oriented for the testing phase).
 
-
--Talk about the VM request how they can be made
+An important feature that was taken into consideration when designing the framework's architecture is that all the modules are independent from each other, and they can be changed, removed or added in order to fulfill all the user requirements.
 
 \section{Framework modules: Mininet Environment}
 
