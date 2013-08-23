@@ -373,11 +373,11 @@ The framework is divided into two main parts: the mininet environment - an exten
 
 The mininet environment is made to be only used when testing the controller.
 It is composed by the mininet platform with two extra modules that explore its API.
-One of them is the {\it Topology Generator}, which allows to easily create a fat tree or tree DC topologies.
+One of them is the {\it Topology Generator}, which allows to easily create multilayer 2-tier or 3-tier fat-tree DC topologies.
 The other one is the {\it Traffic Generator} that allows to correctly simulate the allocation of VM into each server by generating traffic from that server to the exterior of the DC. It also allows to simulate inter VM communication.
 
-As for the controller, it automatically manages the modules in order to only use the ones that are needed for each phase (testing or deployment).
-Depending on it, the controller will interact with the mininet environment or the Cloud DC, which represent the real Cloud DC infrastructure.
+As for the controller, it automatically manages the modules in order to only use the ones that are needed for each phase (development and testing or deployment).
+Depending on it, the controller will interact with the mininet environment or the Cloud DC, which represents the real Cloud DC infrastructure.
 In the figure \ref{fig:framework}, in the controller part, it can be seen a darker area which corresponds to the modules that are used in both phases. These modules are:
 \begin{itemize}
   \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests;
