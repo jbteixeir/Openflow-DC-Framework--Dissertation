@@ -1,0 +1,22 @@
+set   autoscale                        # scale axes automatically
+
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+      
+set xtic auto                          # set xtics automatically
+set ytic auto                          # set ytics automatically
+
+set term png
+set output "topo.png"
+
+#set title "Host-PC Memory Utilization against number of edge switches"
+set xlabel "Number of Hosts"
+set ylabel "Average Host link Ratio (%)"
+set pointsize 1.5
+
+
+set xr [8:128]
+set yr [50:120]
+set grid
+
+plot	"Topology.txt" using 1:2 with linespoints ls 1 pt 7 notitle

@@ -1,0 +1,28 @@
+set   autoscale                        # scale axes automatically
+
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+      
+set xtic auto                          # set xtics automatically
+set ytic auto                          # set ytics automatically
+
+#set term postscript eps
+set term png
+set output "bw_utilization.png"
+
+
+#set title "Bandwidth Usage"
+set xlabel "Generated Traffic per Host (Mbps)"
+set ylabel "Average Host link Ratio (%)"
+set pointsize 1.5
+
+#set style line 1 lt 0 lw 3 pt 4 
+#set style line 2 lt 1 lw 3 pt 21
+
+set xr [1:512]
+set yr [0:100]
+set grid
+
+plot	"Bandwidth.txt" using 1:2 with linespoints ls 1 pt 7 notitle
+
+

@@ -1,0 +1,28 @@
+set   autoscale                        # scale axes automatically
+
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+      
+set xtic auto                          # set xtics automatically
+set ytic auto                          # set ytics automatically
+
+#set term postscript eps
+set term png
+set output "out_hosts_ratio.png"
+
+
+#set title "Bandwidth Usage"
+set xlabel "Number of Hosts connected to an Outside Host"
+set ylabel "Average Host link Ratio (%)"
+set pointsize 1.5
+
+#set style line 1 lt 0 lw 3 pt 4 
+#set style line 2 lt 1 lw 3 pt 21
+
+set xr [1:64]
+set yr [0:1]
+set grid
+
+plot	"Hosts.txt" using 1:2 with linespoints ls 1  pt 7 notitle
+
+
