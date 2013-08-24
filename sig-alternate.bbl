@@ -5,6 +5,9 @@ M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
 \newblock Meridian: An sdn platform for cloud network services.
 \newblock {\em Communications Magazine}, 2013.
 
+\bibitem{qosof}
+{\em http://archive.openflow.org/wk/index.php/Slicing}.
+
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
   N.~Min-Allah, L.~Wang, and D.~Chen.
@@ -92,6 +95,27 @@ S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
 \bibitem{mininet}
 {Mininet Home Page}.
 \newblock {\em https://mininet.github.com.}
+
+\bibitem{ofqos2}
+S.~Civanlar, M.~Parlakisik, A.M. Tekalp, B.~Gorkemli, B.~Kaytaz, and E.~Onem.
+\newblock A qos-enabled openflow environment for scalable video streaming.
+\newblock {\em GLOBECOM Workshops (GC Wkshps), 2010 IEEE}, 2010.
+
+\bibitem{ofqos3}
+IEEE Seyhan~Civanlar Hilmi E.~Egilmez, Student~Member and IEEE A.~Murat~Tekalp,
+  Fellow.
+\newblock An optimization framework for qos-enabled adaptive video streaming
+  over openflow networks.
+\newblock {\em Multimedia, IEEE Transactions on (Volume:15 , Issue: 3 )}, April
+  2013.
+
+\bibitem{ofqos1}
+H.E. Egilmez, Turkey Koc~Univ., Istanbul, S.T. Dane, K.T. Bagci, and A.M.
+  Tekalp.
+\newblock Openqos: An openflow controller design for multimedia delivery with
+  end-to-end quality of service over software-defined networks.
+\newblock {\em Signal and Information Processing Association Annual Summit and
+  Conference (APSIPA ASC), 2012 Asia-Pacific}, 2012.
 
 \bibitem{ns3}
 {NS3}.

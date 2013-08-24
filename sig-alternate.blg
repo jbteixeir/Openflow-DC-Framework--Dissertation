@@ -7,45 +7,47 @@ Warning--empty journal in ibmnec
 Warning--empty year in ibmnec
 Warning--empty booktitle in cloudsim3
 Warning--empty year in cloudsim3
-You've used 25 entries,
+Name 1 in "Hilmi E. Egilmez, Student Member, IEEE Seyhan Civanlar, and A. Murat Tekalp, Fellow, IEEE" has a comma at the end for entry ofqos3
+while executing---line 944 of file unsrt.bst
+You've used 29 entries,
             1791 wiz_defined-function locations,
-            547 strings with 6956 characters,
-and the built_in function-call counts, 4282 in all, are:
-= -- 298
-> -- 265
+            562 strings with 7795 characters,
+and the built_in function-call counts, 4892 in all, are:
+= -- 339
+> -- 311
 < -- 0
-+ -- 100
-- -- 75
-* -- 216
-:= -- 724
-add.period$ -- 72
-call.type$ -- 25
-change.case$ -- 16
++ -- 117
+- -- 88
+* -- 249
+:= -- 833
+add.period$ -- 82
+call.type$ -- 29
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 231
-empty$ -- 476
-format.name$ -- 75
-if$ -- 953
+cite$ -- 33
+duplicate$ -- 261
+empty$ -- 532
+format.name$ -- 88
+if$ -- 1083
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 16
-newline$ -- 117
-num.names$ -- 25
-pop$ -- 136
+int.to.str$ -- 29
+missing$ -- 19
+newline$ -- 135
+num.names$ -- 28
+pop$ -- 149
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 60
+skip$ -- 74
 stack$ -- 0
 substring$ -- 19
-swap$ -- 42
+swap$ -- 46
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 4
-while$ -- 27
-width$ -- 27
-write$ -- 228
-(There were 4 warnings)
+while$ -- 30
+width$ -- 31
+write$ -- 263
+(There was 1 error message)

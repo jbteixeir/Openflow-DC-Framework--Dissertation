@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  23 AUG 2013 00:09
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  25 AUG 2013 00:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -196,7 +196,20 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(./sig-alternate.aux)
+(./sig-alternate.aux
+
+LaTeX Warning: Label `fig:realenv' multiply defined.
+
+
+LaTeX Warning: Label `fig:realenv' multiply defined.
+
+
+LaTeX Warning: Label `fig:realenv' multiply defined.
+
+
+LaTeX Warning: Label `fig:realenv' multiply defined.
+
+)
 \openout1 = `sig-alternate.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
@@ -214,7 +227,8 @@ LaTeX Font Info:    ... okay on input line 55.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-) (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
 \scratchdimen=\dimen118
@@ -330,34 +344,34 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 158.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 159.
 [2
 
 ] [3] [4]
 Chapter 2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 227.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 228.
 [5
 
 ] <figures/meridian_arch.png, id=48, 730.73pt x 405.515pt>
 File: figures/meridian_arch.png Graphic file (type png)
 
 <use figures/meridian_arch.png>
-Package pdftex.def Info: figures/meridian_arch.png used on input line 260.
+Package pdftex.def Info: figures/meridian_arch.png used on input line 261.
 (pdftex.def)             Requested size: 368.57838pt x 204.53903pt.
  [6] [7 <./figures/meridian_arch.png>]
-Overfull \hbox (2.55597pt too wide) in paragraph at lines 280--281
+Overfull \hbox (2.55597pt too wide) in paragraph at lines 281--282
 []\T1/ptm/m/n/12 ''Mininet is a net-work em-u-la-tor which cre-ates a net-work 
 of vir-tual hosts, switches,
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 294.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 295.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 294.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 295.
  [8] [9] [10]
 Chapter 3.
 [11
@@ -366,102 +380,240 @@ Chapter 3.
 File: figures/emulator_new.png Graphic file (type png)
 
 <use figures/emulator_new.png>
-Package pdftex.def Info: figures/emulator_new.png used on input line 366.
+Package pdftex.def Info: figures/emulator_new.png used on input line 367.
 (pdftex.def)             Requested size: 368.57838pt x 248.2171pt.
  [14 <./figures/emulator_new.png>] [15] [16]
-[17] [18] [19] [20] [21]
-Chapter 4.
-[22
+[17] <figures/stats_portstats.png, id=91, 316.18124pt x 343.2825pt>
+File: figures/stats_portstats.png Graphic file (type png)
 
-] <figures/bw_utilization.png, id=106, 642.4pt x 481.8pt>
+<use figures/stats_portstats.png>
+Package pdftex.def Info: figures/stats_portstats.png used on input line 483.
+(pdftex.def)             Requested size: 184.28918pt x 200.08873pt.
+
+<figures/stats_flowstats.png, id=92, 399.4925pt x 324.21124pt>
+File: figures/stats_flowstats.png Graphic file (type png)
+
+<use figures/stats_flowstats.png>
+Package pdftex.def Info: figures/stats_flowstats.png used on input line 489.
+(pdftex.def)             Requested size: 230.36061pt x 186.94934pt.
+ [18] [19 <./figures/stats_portstats.png> <./figures/stats_flowstats.png>] [20]
+ [21]
+<figures/webplat_panel.png, id=107, 1126.2075pt x 705.63625pt>
+File: figures/webplat_panel.png Graphic file (type png)
+
+<use figures/webplat_panel.png>
+Package pdftex.def Info: figures/webplat_panel.png used on input line 573.
+(pdftex.def)             Requested size: 460.72124pt x 288.6667pt.
+
+<figures/webplat_vmgroup.png, id=108, 1123.19624pt x 716.6775pt>
+File: figures/webplat_vmgroup.png Graphic file (type png)
+
+<use figures/webplat_vmgroup.png>
+Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 580.
+(pdftex.def)             Requested size: 460.72124pt x 293.9709pt.
+
+<figures/webplat_vmlist.png, id=109, 1126.2075pt x 627.34375pt>
+File: figures/webplat_vmlist.png Graphic file (type png)
+
+<use figures/webplat_vmlist.png>
+Package pdftex.def Info: figures/webplat_vmlist.png used on input line 587.
+(pdftex.def)             Requested size: 460.72124pt x 256.63824pt.
+
+<figures/webplat_vmreq.png, id=110, 1124.2pt x 655.44875pt>
+File: figures/webplat_vmreq.png Graphic file (type png)
+
+<use figures/webplat_vmreq.png>
+Package pdftex.def Info: figures/webplat_vmreq.png used on input line 594.
+(pdftex.def)             Requested size: 460.72124pt x 268.6157pt.
+ [22 <./figures/webplat_panel.png>] [23 <./figures/webplat_vmgroup.png> <./figu
+res/webplat_vmlist.png>] [24 <./figures/webplat_vmreq.png>] <figures/realenviro
+nment.jpg, id=125, 963.6pt x 722.7pt>
+File: figures/realenvironment.jpg Graphic file (type jpg)
+
+<use figures/realenvironment.jpg>
+Package pdftex.def Info: figures/realenvironment.jpg used on input line 644.
+(pdftex.def)             Requested size: 322.50345pt x 241.87717pt.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 649.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [25 <./figures/realenvironment.jpg>]
+Overfull \hbox (122.47852pt too wide) in paragraph at lines 665--665
+[]\T1/pcr/m/n/12 1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit 
+Ethernet Controller[] 
+ []
+
+
+Overfull \hbox (309.67844pt too wide) in paragraph at lines 673--673
+[]\T1/pcr/m/n/12 NIC Marvell Technology Group Ltd. Yukon Optima 88E8059 [PCIe G
+igabit Ethernet Controller with AVB] (rev 11)[] 
+ []
+
+
+Overfull \hbox (122.47852pt too wide) in paragraph at lines 682--682
+[]\T1/pcr/m/n/12 1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit 
+Ethernet Controller[] 
+ []
+
+[26] [27] [28]
+Overfull \hbox (12.1481pt too wide) in paragraph at lines 736--737
+\T1/ptm/m/n/12 ''open-flowlib.ofp_action_enqueue(port = switch_port, queue_id =
+ queue_type))'', which
+ []
+
+[29] <figures/ofqos.png, id=143, 662.475pt x 412.54124pt>
+File: figures/ofqos.png Graphic file (type png)
+
+<use figures/ofqos.png>
+Package pdftex.def Info: figures/ofqos.png used on input line 751.
+(pdftex.def)             Requested size: 368.57838pt x 229.52335pt.
+
+<figures/ofqosexample.png, id=144, 513.92pt x 71.26625pt>
+File: figures/ofqosexample.png Graphic file (type png)
+
+<use figures/ofqosexample.png>
+Package pdftex.def Info: figures/ofqosexample.png used on input line 759.
+(pdftex.def)             Requested size: 276.43555pt x 38.3342pt.
+ [30 <./figures/ofqos.png> <./figures/ofqosexample.png>] [31]
+Chapter 4.
+<figures/figure1.pdf, id=152, 722.7pt x 542.025pt>
+File: figures/figure1.pdf Graphic file (type pdf)
+ <use figures/figure1.pdf>
+Package pdftex.def Info: figures/figure1.pdf used on input line 793.
+(pdftex.def)             Requested size: 207.32315pt x 155.48773pt.
+
+[32
+
+] <figures/use_case.png, id=157, 642.4pt x 481.8pt>
+File: figures/use_case.png Graphic file (type png)
+
+<use figures/use_case.png>
+Package pdftex.def Info: figures/use_case.png used on input line 804.
+(pdftex.def)             Requested size: 207.32315pt x 155.48773pt.
+ [33 <./figures/figure1.pdf> <./figures/use_case.png>] [34] <figures/bw_utiliza
+tion.png, id=214, 642.4pt x 481.8pt>
 File: figures/bw_utilization.png Graphic file (type png)
 
 <use figures/bw_utilization.png>
-Package pdftex.def Info: figures/bw_utilization.png used on input line 508.
+Package pdftex.def Info: figures/bw_utilization.png used on input line 832.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- <figures/topo.png, id=107, 642.4pt x 481.8pt>
+ <figures/topo.png, id=215, 642.4pt x 481.8pt>
 File: figures/topo.png Graphic file (type png)
 
 <use figures/topo.png>
-Package pdftex.def Info: figures/topo.png used on input line 520.
+Package pdftex.def Info: figures/topo.png used on input line 844.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- [23 <./figures/bw_utilization.png>]
-<figures/out_hosts_ratio.png, id=114, 642.4pt x 481.8pt>
+ [35 <./figures/bw_utilization.png>]
+<figures/out_hosts_ratio.png, id=221, 642.4pt x 481.8pt>
 File: figures/out_hosts_ratio.png Graphic file (type png)
 
 <use figures/out_hosts_ratio.png>
-Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 534.
+Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 858.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
 
-<figures/mem1_utilization.png, id=115, 642.4pt x 481.8pt>
+<figures/mem1_utilization.png, id=222, 642.4pt x 481.8pt>
 File: figures/mem1_utilization.png Graphic file (type png)
 
 <use figures/mem1_utilization.png>
-Package pdftex.def Info: figures/mem1_utilization.png used on input line 540.
+Package pdftex.def Info: figures/mem1_utilization.png used on input line 864.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
-
-<figures/mem2_utilization.png, id=116, 642.4pt x 481.8pt>
+ [36 <./figures/topo.png> <./figures/out_hosts_ratio.png>] <figures/mem2_utiliz
+ation.png, id=228, 642.4pt x 481.8pt>
 File: figures/mem2_utilization.png Graphic file (type png)
 
 <use figures/mem2_utilization.png>
-Package pdftex.def Info: figures/mem2_utilization.png used on input line 558.
+Package pdftex.def Info: figures/mem2_utilization.png used on input line 882.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- [24 <./figures/topo.png>] [25 <./figures/out_hosts_ratio.png> <./figures/mem1_
-utilization.png>] [26 <./figures/mem2_utilization.png>]
+ [37 <./figures/mem1_utilization.png>]
+[38 <./figures/mem2_utilization.png>]
 Chapter 5.
-[27
+[39
 
 ]
 Appendix A.
-[28
 
-] (./sig-alternate.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 19--22
+Overfull \hbox (50.47855pt too wide) in paragraph at lines 916--916
+[]\T1/pcr/m/n/12 #host_detectacle_time - time in seconds in which the hosts sen
+d packets[] 
+ []
+
+[40
+
+]
+Overfull \hbox (21.67856pt too wide) in paragraph at lines 924--924
+[]\T1/pcr/m/n/12 #edgetoagglinkno - number of links that connect each edge swit
+ch to[] 
+ []
+
+
+Overfull \hbox (50.47855pt too wide) in paragraph at lines 926--926
+[]\T1/pcr/m/n/12 #aggtocorelinkno - number of links that connect each aggregati
+on switch[] 
+ []
+
+
+Overfull \hbox (21.67856pt too wide) in paragraph at lines 928--928
+[]\T1/pcr/m/n/12 #coretooutlinkno - number of links that connect each core swit
+ch to[] 
+ []
+
+
+Overfull \hbox (302.47844pt too wide) in paragraph at lines 949--949
+[]\T1/pcr/m/n/12 # (please use lower numbers for higher priority so the control
+ler can assign premium users to this queues)[] 
+ []
+
+[41] [42] (./sig-alternate.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 22--25
 []\T1/ptm/m/n/12 O. Bal-don-ado, SDN, Open-Flow, and next-generation data cen-t
 er net-works.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--22
+Underfull \hbox (badness 10000) in paragraph at lines 22--25
 \T1/ptm/m/it/12 http://www.eetimes.com/design/embedded/43715 43/SDN--OpenFlow--
 and-next-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
-[]\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
- []
-
-[29
+[43
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 70--73
+Underfull \hbox (badness 10000) in paragraph at lines 59--61
+[]\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
 []\T1/ptm/m/n/12 IBM Smart Cloud Pro-vi-sion-ing Home Page.  \T1/ptm/m/it/12 ht
 tp://www-
  []
 
-[30]) [31] (./sig-alternate.aux) ) 
+[44]) [45] (./sig-alternate.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3045 strings out of 495059
- 40963 string characters out of 3182030
- 97978 words of memory out of 3000000
- 6126 multiletter control sequences out of 15000+200000
- 33797 words of font info for 43 fonts, out of 3000000 for 9000
+ 3144 strings out of 495059
+ 42989 string characters out of 3182030
+ 98121 words of memory out of 3000000
+ 6208 multiletter control sequences out of 15000+200000
+ 34418 words of font info for 45 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,12n,43p,654b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on sig-alternate.pdf (39 pages, 309499 bytes).
+ 38i,12n,43p,1048b,388s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sig-alternate.pdf (53 pages, 831264 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+ 287 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

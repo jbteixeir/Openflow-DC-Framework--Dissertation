@@ -134,6 +134,7 @@ Datacenter, Cloud, SDN, OpenFlow.
 \item [IT]Information Technology
 \item [OF]Openflow
 \item [QoS] Quality of Service
+\item [QoE] Quality of Experience
 \item [SDN]Software Defined Networking
 \item [VM]Virtual Machine
 \item [VMM]Virtual Machine Manager
@@ -383,107 +384,430 @@ In the figure \ref{fig:framework}, in the controller part, it can be seen a dark
   \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests;
   \item OF Rules Handler -- Manages and keeps track of the installation/removal of the OF rules from the switches;
   \item Topology Discover -- Manages all the information regarding the switches, links, servers and its detection;
-  \item Statistics Handler -- Collects statistics about the switches and links, can be periodical or manual;
+  \item Statistics Handler -- Collects statistics about the switches and links. Can be periodical or manual;
   \item User-defined Logic -- Space for the administrator/network engineer to develop the desired DC management logic;
 \end{itemize}
 
-Regarding the other controller modules: the {\it Network Traffic Requester} which is only used when performing tests, tells the mininet environment how much, when, from where and where to, the traffic should be generated; and the {\it VMM Handler} which is only active when the controller is in a real environment, communicates with the hypervisor to perform all the operation regarding the VMs (allocate, deallocate, upgrade, etc).
+Regarding the other controller modules: the {\it Network Traffic Requester} which is only used when performing tests, tells the mininet environment how much, when, from where and where to, the traffic should be generated; and the {\it VMM Handler} which is only active when the controller is in a real environment, communicates with the hypervisor to perform all the operations regarding the VMs (allocate, deallocate, upgrade, etc).
 
-The {\it WEB platform} and the {\it VM Requester} where created for making VM requests. While the first one is a platform where DC clients can request VMs that will be processed by the controller and later allocated by the hypervisor (oriented for the deployment phase), the {\it VM Requester} is an automatic full configurable VM request generator powered by random variables (oriented for the testing phase).
+Outside of the the mininet environment and the controller there is the {\it WEB platform} and the {\it VM Requester}, that where created for making VM requests. While the first one is a platform where DC clients can request (and manage) VMs that will be processed by the controller and later allocated by the hypervisor (oriented for the deployment phase), the {\it VM Requester} is an automatic full configurable VM request generator powered by random variables (oriented for the testing phase).
 
 An important feature that was taken into consideration when designing the framework's architecture is that all the modules are independent from each other, and they can be changed, removed or added in order to fulfill all the user requirements.
 
+\section{Directory structure}
+
+-also explain that it was an evolving process, and it was change to make it easier to understand
+Explain the directory /file structure and how it maps to the architecture
+
 \section{Framework modules: Mininet Environment}
+
+Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+
+Talk about the configuration file
 
 \subsection{Topology Generator}
 
+Mininet predefined topology generator only have tree topologies and they don't have a Gateway, so after traffic reaches the core switches it goes nowhere (if it is traffic that addresses the internet).
+
+As so, using the API it was generated a costume topology.
+-allows to choose the number of edge,agg and core switches,
+- how many connection exist between them. (links are created automatically)
+-number of servers also and how much edge switches does each of them connects
+-same thing for the DC gateways with the core switches
+-links bandwidth can be chosen for each link category
+-everything can be configured by the configuration file, so it's easy to create different cenarious
+
 \subsection{Traffic Generator}
+\hspace{0.6cm}
 
-Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+Talk about the first approach:
+-Use tcpreplay with a DC traffic sample
+-Modify the sample to suit each server
+-Use server/client for ordering the starting of the traffic
+-play it at the requested speed from the servers that got the vm allocation
+-problems found: Samples must be generated with the corrrect ip addresses (takes time), short term solution was generate them previously for all the possible servers, so they can be just reproduced when ask (instead of waiting)
+-problems found: tcpreplay takes to much cpu independently of the amount of traffic that is generated
+-"amostra" de tráfego do cluster do DI com 500mb
 
-\begin{itemize}
-	\item Talk generally about the traffic generator
-	\item Talk about the one's we tried (pros and cons)
-\end{itemize}
+
+Talk about the Iperf solution
+-able to generate UDP and TCP traffic
+-although is not accurate to "imitate" DC traffic behaviour, it is good for testing the DC limits and how it behaves when is overloaded, or near overloading
+-doesn't have the problem that tcp replay had
+-included possible configuration in the configuration file for simplicity
+
+Talk about d-itg:
+-doesnt have the problem Tcpreplay has
+-its much more dynamic then iperf (allows to generate voip,...)
 
 \newpage
-
 
 \section{Framework modules: Controller}
+\hspace{0.6cm}
 
 Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
 
-\subsection{Topology Discovery}
+Talk about the configuration file, and talk about how it was before (interactive parametrization (consoles asks for info), if no config file exists, it can be created this way)
 
-\subsection{OF Rules Handler}
+\subsection{Topology}
+\hspace{0.6cm}
 
-\subsection{Statistics Handler}
+-saves all the info regarding topology (switches, hosts(servers or gateways(NOTE: non OF switches are viewed as hosts)), their interfaces, and the links)
+-saved in disctionaries for easy and fast access to information
+-responsible for discovering the topology and update the information acording to the changes that occur.
+-explain how topology is discovered and which modules are used (Pox discovery which uses lldp packets and host\_tracker which uses ping (i guess, check it))
+-explain how host tracker was modified and which events where added
+-explain to which event it listens and what does it do with them.
+
+\subsection{Rules (OF Rules Handler)}
+\hspace{0.6cm}
+
+-Saves info about the rules that were installed on each switch
+-install/deletes rules as VMs are install /expire
+-routing is defined by user, this modules just provides abstraction for the lower level methods provided by pox.
+-methods based only on dest and source ip, and more complex methods for higher traffic control.
+Future work:
+-aggregate rules?
+-suppernetting?
+-show information in webplatform (for admin and allow admin to override controller actions (change routes, shutdown links, etc))
+
+\subsection{Stats (Statistics Handler)}
+
+\subsubsection{Statistics}
+\hspace{0.6cm}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/stats_portstats.png}
+  \caption{Available port statistics}
+  \label{fig:stats_portstats}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\textwidth]{figures/stats_flowstats.png}
+  \caption{Available flow statistics}
+  \label{fig:stats_flowstats}
+\end{minipage}%
+\end{figure}
+
+In figure \ref{fig:stats_portstats}, it can be seen all the statistics available for switch ports and flows.
+
+-explain the statistics available
+-say there is no bitrate, and since it is an important one (and modifying OF protocols was not a good option) we opted by calculating the bitrate based on the time and the packet count (that's the definition of bitrate, but our approach is not 100\% accurate) (explain how it works)
+-talk about the algorithm used for showing the statistics (so its not so reactive, it was adopted a mecanism similar to the one used bu the tcp to calculate the windows size, historical ponderation can be also configured in the configuration file)
+-statistics can be retrieved periodically (the peridiodicity is indicated by the configuration file), or can be retrieved whenever is required (for example when a vm request arrives)
+
+-maybe talk about the strcuture in which they are saved and which methods are given for accessing them. 
+
+-Switch/Link ratio
+-Switch/link ratio with safe margin (for newer allocation) (configurable by the configuration file - allow over proviioning)
+
+
+\subsubsection{Statistics Exporter}
+\hspace{0.6cm}
+
+For now the Statistics exporter is just saving the values collected into '.csv' files. Two files are generated: one for switches and one for links.
+-where the files are placed can be chosen in the configuration file.
+-show an example of a file about the bitrate.
+
+Future work:
+Export the data into the webplatform.
 
 \subsection{VM Request Handler}
+\hspace{0.6cm}
 
-\subsection{VMM - Virtual Machines Manager}
+-Explain how it works (by threads and raising events)
+-Explain what it does:
+  -receives VM requests (process them - make sure they are valid)
+  -raise and event saying there is a new VM request
+  -waits doe event saying the VM as been allocated or rejected
+  -notifies about the state of the request
 
 \subsection{Network Traffic Requester}
+\hspace{0.6cm}
 
-\subsection{POX Modules}
+-when receives the event wich says the vm as been allocated, it checks if the its is connected to mininet, and if ti is, send a request saying which type of traffic (in case of D-itg - since the type of VM may request the traffic to be of some specific type). In case of iperf, just say the amount of bandwidth.
+
+\subsection{VMM - Virtual Machines Manager}
+\hspace{0.6cm}
+
+When the algortithm for choosing the server ends, the VMM contacts the hypervisor and requests the vm to be allocated. (waits for confirmation and then returns new vm ip address).
+
+Talk about the problems with xen API and what was the workaround done (ssh the hypervisor and run a script for cloning a virtual machine/start it and then the controller knows the ip the dhcp gave, so it nows the VM is up and reachable)
 
 \subsection{User Defined Logic}
+\hspace{0.6cm}
+ 
+This is a space for the Admin/network engineer to define the DC managemnt
+-choose which vm goes to which server
+-choose the path for the traffic from/to an specific virtual machine
+-choose the path for multiple vm to communicate
+-keep track of servers occupation
+-defined the policies (network or server or hybrid)
+-as all the information can be easily retrieved from the other modules, its easier to focus on the developement of the algorithms.
+
+\subsection{POX Modules used}
+\hspace{0.6cm}
+
+besides using this two modules embedded on the topology module, another modules was also used: DHCP
+-Once again, by the configuration file, all the parameters can be configured.
 
 \newpage
-
 
 \section{Framework modules: Web Platform}
+\hspace{0.6cm}
 
+-explain it follows the MVC model and it is developed in PHP
+-using sockets for communicating with the controller
+-very basic for now
+-include prints
+-allows to request a vm, view the current request, request a vm group (for multiple intervm communication)
+-mysql database
+ -talk about the tables created
 Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
 
-\newpage
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_panel.png}
+        \caption{Photo of the testing environment}
+        \label{fig:realenv}
+\end{figure}
 
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_vmgroup.png}
+        \caption{Photo of the testing environment}
+        \label{fig:realenv}
+\end{figure}
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_vmlist.png}
+        \caption{Photo of the testing environment}
+        \label{fig:realenv}
+\end{figure}
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_vmreq.png}
+        \caption{Photo of the testing environment}
+        \label{fig:realenv}
+\end{figure}
+
+Future work:
+All the information in the database and both the controller access it
+This would be good including for adding later monitoring (show statistics and everything - not only about the vm, but also about the switches (this last part just for the admin))
+-basically add to the web platform a space where the admin/network engineer can interact with the controller without shutting it down change the code and run again (controller can be overrided in extreme cases - shutdown interfaces and stuff)
+
+
+\newpage
 
 \section{Framework modules: VM Requester}
 
-Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+As explained before, this modules is only to be used when testing.
+Its purpose is to automatically generate VM requests.
+In order to do so, it was used a poisson random variable, for both the interval between requests and the caracteristics of the request (CPU, RAM, DISK and IO). (When QoS was behing studied, the type of request was also variable according to the poisson random variable)
+Its a simple python program that communicates with the controller VM request manager to send the request.
+-threads were used for receiving the status of the VM request.
+-show a print of it working
+
+Future work:
+-more random variables?
 
 \newpage
-
 
 \section{Using the framework}
 
 \subsection{Emulator}
 
+\subsubsection{Setting up the development environment}
+
 Describe how to use the framework (emulation part) and how to access the API..
+
+-add the photo
+
+-add the specifications
+
+-add image describing the structure
 
 \subsection{Real Environment}
 
+\subsubsection{Setting up the real environment}
+
 -Figura com o esquema da configuração
 Describe what changes in the real environment (the modules that are disabled and the ones that need to be enabled)
+
+\begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figures/realenvironment.jpg}
+        \caption{Photo of the testing environment}
+        \label{fig:realenv}
+\end{figure}
+
+\begin{verbatim}
+2 servers:
+
+1 Intel Xeon CPU 3075@2.66Ghz
+4 GB Ram
+900 GB HD
+NIC Intel 82566DM-2 Gigabit Network Connection
+NIC Intel 82541GI Gigabit Network Connection
+
+4 Mini-pc
+
+1 AMD Phenom 9650 Quad-Core \@ 1.16Ghz
+
+450 GB HD
+4 GiB RAM
+2 NIC Intel 82571EB Gigabit Ethernet Controller
+1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit Ethernet Controller
+1 NetFPGA 4 ports Gigabit Ethernet
+
+1 laptop
+
+1 Intel Core i5 CPU M 480 \@ 2.67GHz x 4 
+6 GiB RAM
+250 GB HD
+NIC Marvell Technology Group Ltd. Yukon Optima 88E8059 [PCIe Gigabit Ethernet Controller with AVB] (rev 11)
+
+1 external machine
+
+1 Intel Core i7 CPU 860 \@ 2.8Ghz x 8 
+4 GiB Ram
+450 GB HD
+2 NIC 3com 3c905B 100BaseTX
+1 NIC 3com 3c905C
+1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit Ethernet Controller
+
+\end{verbatim}
+
 \subsubsection{Real environment tests}
 \begin{itemize}
   \item Talk about the environment which was setup
   \begin{itemize}
     \item Chosen hypervisor
-    \item Talk about Xen api and the alternative solution (ssh each server and run a script to clone the vm)
     \item OpenVswitches VS NetFPGA problems
     \item 
   \end{itemize}
 \end{itemize}
 
+\newpage
+
 \section{Framework extensions \label{Sec:fraext} }
+\hspace{0.6cm}
+
+Framework extensions were though to allow a wider range of experiments and to show that important subjects are been taken into consideration. QoS and VM migration were the two chosen, one from the network side and the other from the IT resources.
+As most of the framework, the extensions are still a work-in-progress, thus they should only be seen as experiments.
 
 \subsection{Enabling QoS}
-\subsubsection{State of art: QoS in SDN}
+\subsubsection{State of art: QoS in Openflow}
+\hspace{0.6cm}
+
+The OF protocol as been evolving to provide support for QoS.
+However, as they argue that will bring extra complexity \cite{qosof}, until version 1.3.1 (latest) they only added support for simple queuing mechanisms.
+Version 1.0 started by bringing to queues minimum guaranteed rate but queue configuration was still done outside the OF protocol. Later, in version 1.2, maximum rate was also included.
+
+Although this features are available most research efforts focus on QoS approaches to OF using, among other techniques, dynamic routing and are oriented for either streamming\cite{ofqos2}\cite{ofqos3} or multimedia\cite{ofqos1}.
+
+Regarding mininet and its OF switches implementation, the latest version is 2.0 and contains Open VSwitch driver 1.3.4, which fully supports OF 1.0.
+More recent versions of OF can be integrated by upgrading the version of Open VSwitch, however, they are still experimental and may not include all the features provided in the protocol specification.
+
 \subsubsection{QoS in the framework}
+\hspace{0.6cm}
+
+As the framework aims for providing the administrators/network engineers the tools for developing and testing their logic, it is their responsibility to develop QoS tecniques/algorithms similar to the ones shown previously, while the framework should limit itself to help with the interaction with the OF supported QoS features and their expected usage in the cloud DC.
+
+However, as an experiment, we went for a different perspective on how QoS is used.
+It was implemented traffic differentiation for giving different type of user, different types of QoE.
+Instead of following the traffic classes, it was created classes of users/VM types (\textit{e.g.} free users vs gold users; VoIP server vs web server vs etc), where each queue corresponds to a class.
+
+Bringing QoS into the framework implied making changes in all the main modules, mostly because it is associated with the requests, and, as said before, the current implementation of queues in OF switches must be done manually.
+The following modules where modified:
+\begin{itemize}
+  \item \textbf{Mininet Environment} -- Added to \textit{Topology Generator} a method for creating for each port in each switch, the number of desired queues (classes) and their corresponding percentage of the whole bandwidth. It also takes into consideration the different link's bandwidth. \textit{Dpctl} was the tool used for creating the queues and \textit{tc} for setting the minimum rate.
+
+  \item \textbf{VM Requests Generator} -- Attached to VM Requests the type of class. The type of the VM request is chosen by the already existing poisson random variable.
+
+  \item \textbf{Controller}
+  \begin{itemize}
+    \item \textbf{VM Request Manager} -- Changed requests parsing and events thrown to include type of class.
+    \item \textbf{Rules} -- Created new methods for installing the rules that will send the flows to the specific queues. The main difference for the previous method was the action used: ''openflowlib.ofp\_action\_enqueue(port = switch\_port, queue\_id = queue\_type))'', which included not only the port where the packets should be forwarded, but also the queue.
+
+    \item \textbf{VM Allocation Manager} -- This was modified just for performing tests (this is were the desired logic would be implemented).Changed algorithms to allocate each VM type to a corresponding servers. This helps checking if the tests work, since the OF protocol does not have statistics for queues, only for ports.
+  \end{itemize}
+\end{itemize}
+
+Figure \ref{fig:ofqos} shows a representation of the mininet topology and how it was possible to test the QoS solution.
+It started by creating the shown topology and setting the links bandwidth equal for edge-to-server links and edge-to-aggregation links (so the bandwidth would have to be disputed and it was possible to see the queues in action).
+By allocating two VMs of different types into two servers that share the same edge switch, and by setting their IO requirements to the maximum bandwidth capacity of the edge-to-aggregation link that they share (first green link counting from the bottom), it should be possible to see the class with more "minimum rate" have at least the bandwidth corresponding to its class.
+The minimum rate configuration for the classes was 70\%-30\%.
+
+Unfortunately, by analysing the ratios of the blue and red links, it was not possible to see any differentiation. Both servers got half of the available bandwidth - an output that was not expected.
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figures/ofqos.png}
+        \caption{QoS - Mininet testing environment}
+        \label{fig:ofqos}
+\end{figure}
+
+A closer look to the article published online by the Openflow group\cite{qosof}, showed that the \textit{ENQUEUE} action was \textbf not supported yet, but that the queues could still be created and the flows could still be mapped to the queues by using the SET\_TOS and SET\_VLAN\_PCP OF parameters.
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/ofqosexample.png}
+        \caption{QoS - Example of installed rules. Taken from \cite{qosof}}
+        \label{fig:ofqosexample}
+\end{figure}
+As in their example they did not use any of these parameters, and the rules installed on the switches used the enqueue action (figure \ref{fig:ofqosexample}), the current implementation was misled.
+
+\textit{Note: They have been contacted regarding how to reproduce such experiment, but no answer as been given yet.}
+
 \newpage
 
 \subsection{Enabling Virtual Machine migration}
 \subsubsection{State of art: Virtual Machine migration}
+-the paper (one which does the whole review)
 \subsubsection{Virtual Machine migration in the framework}
-\subsubsection{Usecase}
+-say a diferent view can be applyed, a wider one.
+-explain how it was though to be used in the framework, and which where the goals
+-make a pseudo code about the "keeping the DC policy"
+
+\subsubsection{Example}
+
+Give two examples with best and worst fit
+images with steps is a good idea (images side by side)
 
 \chapter{Validation and tests \label{cha:valtes} }
 
 Usually test and validation of the proposed solution ...
 
 \section{Framework Validation}
+
+Understanding the impact on the DC network infrastructure of well--known VM allocation policies represents the first step for finding more and more optimized solutions. Our main concern was to validate our framework analyzing the behaviour of the system under common situations, in order to compare the obtained results with the theoretical ones. For this reason in the \textit{user-defined logic} part of the controller, we firstly implemented Best Fit (BF), then Worst Fit (WF). The BF algorithm chooses the server with the smallest available resources that still suits the requirements. On the other hand WF chooses the one with the most available resources. Therefore, we expected that as each request comes, using a BF policy, all the VMs should be allocated in one single host until it is able to fulfill the requirements. Then a new host will be selected, and so on until all the hosts have no more free space. In the second case (\textit{i.e.}, WF policy), the VMs should be firstly equally spread through all 
+the hosts. We configured the DC topology with $1$ outside host, $2$ core switches, $4$ aggregation switches, $8$ edge switches, and $16$ hosts (\textit{i.e.}, $2$ per edge). We set each host to be able to allocate up to $3$ VM, for sake of simplicity (and to easily understand the results), and all the requests equal in terms of requirements (\textit{i.e.}, CPU, RAM, amount of disk space and bandwidth). We defined the host link ratio as the amount of traffic received per host against the link speed set on the DC initialization phase. We also set the DC in order to saturate the host link when three different VMs have been allocated.
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.45\textwidth]{figures/figure1.pdf}
+        \caption{The environment}
+        \label{fig:use_case}
+\end{figure}
+
+
+Figure \ref{fig:use_case} shows an high--level vision of the proposed environment. Starting from our framework, we only added few lines of code to implement the allocation policy, since it provides all the necessary APIs to make sure that the controller can interact with the VM Requester, Traffic Generator and the DC switches. Every time the controller receives a new VM allocation request (\textit{i.e.}, generated by the VM requester according to the DC configuration) it installs the proper rules on the switches (optionally it can ask for switches statistics -- even periodically). Once this process is completed, the controller informs the VM requester about the result of the allocation process and the traffic generation starts.
+
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.45\textwidth]{figures/use_case.png}
+        \caption{WF vs BF}
+        \label{fig:wf_bf}
+\end{figure}
+
+Figure \ref{fig:wf_bf} shows the first host link ratio over the time. Using a BF allocation policy, once a VM has been allocated in a host, all the following VMs are allocated in the same host until no more could be allocated (\textit{e.g.}, useful for energy saving). Having a new VM allocation request per second, after three seconds the first host link reaches the saturation. Using the WF policy instead, the VMs should be firstly equally spread through all the hosts. In fact, being $16$ the DC hosts, and having just $1$ request per second, the first host link saturate at the $33$--th second.
+
 
 \begin{itemize}
 	\item Show how Bf goes against WF with server driven algorithm (show server occupation)
@@ -503,7 +827,7 @@ We evaluated the actual performance of the proposed framework through a variety 
 The first tests have been carried out to inspect the impact of the amount of generated traffic, the DC topology size and the number of outside hosts on the host link ratio.
 Firstly, we generate a static topology (\textit{i.e}, $2$ outside hosts, $2$ core switches, $4$ aggregation switches, $8$ edge switches, $8$ hosts), then we started measuring the host link ratio increasing the generated traffic per host.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.6\textwidth]{figures/bw_utilization.png}
         \caption{Average Host link Ratio vs per Host Generated Traffic}
@@ -515,7 +839,7 @@ Then the host link ratio decreases as the generated traffic grows.
 We point out that such limitation does not affect any kind of DC performance tests made with our framework,
 because we can scale the link speed as much as we want during the DC initialization phase, reaching every time 100\% of host link ratio.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.6\textwidth]{figures/topo.png}
         \caption{Average Host Link Ratio vs number of Hosts}
@@ -529,13 +853,13 @@ We started from the previous test topology.
 
 On DC initialization phase, we set the link speed in order to fully saturate the host links.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.6\textwidth]{figures/out_hosts_ratio.png}
         \caption{Average Host Link Ratio vs number of Hosts per Outside Host}
         \label{fig:hosts}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.6\textwidth]{figures/mem1_utilization.png}
         \caption{Host-PC Memory Utilization vs per Host Traffic Generated}
@@ -553,7 +877,7 @@ The second tests have been carried out to inspect the impact of both the amount 
 Figure \ref{fig:mem1} shows that the memory utilization does not depend on the amount of generated traffic for each host.
 On the other hand, as shown in figure \ref{fig:mem2}, as the topology size grows, the memory usage also grows in the same proportion, which allows to conclude that it scales linearly.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.6\textwidth]{figures/mem2_utilization.png}
         \caption{Host-PC Memory Utilization vs number of Hosts}
@@ -571,7 +895,74 @@ This chapter provides ...
 
 \appendix
 
-\chapter{Name of the Appendix}
+\chapter{Mininet Environment -- Configuration File\label{app:minconf}}
+
+\begin{verbatim}
+Filename: conf.ini
+
+[TopologySwitches]
+#Integer value
+#core_no - number of core switches
+#agg_no - number of aggregation switches
+#edge_no - number of edge switches
+core_no = 4
+agg_no = 8
+edge_no = 16
+
+[TopologyHosts]
+#Integer value
+#out_no - number of outside hosts
+#host_no - number of hosts per edge switch
+#host_detectacle_time - time in seconds in which the hosts send packets 
+# so the host_tracker can detect them (0 == always detectable)
+out_no = 4
+host_no = 2
+host_detectable_time = 2
+
+[TopologyLinks]
+#Integer value
+#edgetoagglinkno - number of links that connect each edge switch to 
+# aggregation switches
+#aggtocorelinkno - number of links that connect each aggregation switch 
+# to core switches
+#coretooutlinkno - number of links that connect each core switch to 
+# outside hosts
+edgetoagglinkno = 2
+aggtocorelinkno = 2
+coretooutlinkno = 1
+
+[SwitchBandwidth]
+#Float value - mbps
+#out_bw - bandwitdh for links that connect outside hosts
+#core_bw - bandwitdh for links that connect core switches
+#agg_bw - bandwitdh for links that connect aggregation switches
+#edge_bw - bandwitdh for links that connect edge switches
+out_bw = 4
+core_bw = 4
+agg_bw = 2
+edge_bw = 1
+
+[SwitchQueues]
+#Float value
+#queue_no - number of queues per switch and per port
+#queue_number = bandwidth ratio - queue minimum bandwidth 
+# (please use lower numbers for higher priority so the controller can assign premium users to this queues)  
+queue_no = 2
+queue_bw1 = 0.8
+queue_bw2 = 0.2
+
+[Traffic]
+#Iperf configuration
+#Amount of udp traffic against tcp one
+#starting port for iperf to run on each host
+udp_ratio = 0.5
+iperf_port = 16000
+
+[Socket]
+#path for the unix socket
+socket_path = /home/mininet/socket.tmp
+
+\end{verbatim}
 
 \cleardoublepage
 

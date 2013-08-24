@@ -10,6 +10,7 @@
 \@writefile{toc}{\contentsline {chapter}{List of Acronyms}{vii}}
 \@writefile{toc}{\contentsline {chapter}{List of Figures}{vii}}
 \citation{meridian}
+\citation{qosof}
 \@writefile{toc}{\contentsline {chapter}{List of Tables}{viii}}
 \citation{dc_arch}
 \citation{amazon}
@@ -67,85 +68,123 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Framework architecture}{14}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture}}{14}}
 \newlabel{fig:framework}{{3.1}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Framework modules: Mininet Environment}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Topology Generator}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Traffic Generator}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Framework modules: Controller}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Topology Discovery}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}OF Rules Handler}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Statistics Handler}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}VM Request Handler}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}VMM - Virtual Machines Manager}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.6}Network Traffic Requester}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.7}POX Modules}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.8}User Defined Logic}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Framework modules: Web Platform}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Framework modules: VM Requester}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.8}Using the framework}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.1}Emulator}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8.2}Real Environment}{20}}
-\@writefile{toc}{\contentsline {subsubsection}{Real environment tests}{20}}
-\newlabel{Sec:fraext}{{3.9}{20}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.9}Framework extensions  }{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.1}Enabling QoS}{20}}
-\@writefile{toc}{\contentsline {subsubsection}{State of art: QoS in SDN}{20}}
-\@writefile{toc}{\contentsline {subsubsection}{QoS in the framework}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.2}Enabling Virtual Machine migration}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{State of art: Virtual Machine migration}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{Virtual Machine migration in the framework}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{Usecase}{21}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Validation and tests  }{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Directory structure}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Framework modules: Mininet Environment}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Topology Generator}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Traffic Generator}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Framework modules: Controller}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Topology}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Rules (OF Rules Handler)}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Available port statistics}}{19}}
+\newlabel{fig:stats_portstats}{{3.2}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Available flow statistics}}{19}}
+\newlabel{fig:stats_flowstats}{{3.3}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Stats (Statistics Handler)}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{Statistics}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{Statistics Exporter}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.4}VM Request Handler}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.6}VMM - Virtual Machines Manager}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.7}User Defined Logic}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.8}POX Modules used}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Framework modules: Web Platform}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Photo of the testing environment}}{22}}
+\newlabel{fig:realenv}{{3.4}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Photo of the testing environment}}{23}}
+\newlabel{fig:realenv}{{3.5}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Photo of the testing environment}}{23}}
+\newlabel{fig:realenv}{{3.6}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Photo of the testing environment}}{24}}
+\newlabel{fig:realenv}{{3.7}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.8}Framework modules: VM Requester}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.9}Using the framework}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.1}Emulator}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{Setting up the development environment}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9.2}Real Environment}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{Setting up the real environment}{25}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Photo of the testing environment}}{25}}
+\newlabel{fig:realenv}{{3.8}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{Real environment tests}{27}}
+\citation{qosof}
+\citation{ofqos2}
+\citation{ofqos3}
+\citation{ofqos1}
+\newlabel{Sec:fraext}{{3.10}{28}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.10}Framework extensions  }{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.10.1}Enabling QoS}{28}}
+\@writefile{toc}{\contentsline {subsubsection}{State of art: QoS in Openflow}{28}}
+\@writefile{toc}{\contentsline {subsubsection}{QoS in the framework}{28}}
+\citation{qosof}
+\citation{qosof}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces QoS - Mininet testing environment}}{30}}
+\newlabel{fig:ofqos}{{3.9}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces QoS - Example of installed rules. Taken from \cite  {qosof}}}{30}}
+\newlabel{fig:ofqosexample}{{3.10}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.10.2}Enabling Virtual Machine migration}{31}}
+\@writefile{toc}{\contentsline {subsubsection}{State of art: Virtual Machine migration}{31}}
+\@writefile{toc}{\contentsline {subsubsection}{Virtual Machine migration in the framework}{31}}
+\@writefile{toc}{\contentsline {subsubsection}{Example}{31}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Validation and tests  }{32}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:valtes}{{4}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Framework Validation}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Performance Evaluation}{23}}
-\newlabel{sec:perf}{{4.2}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic}}{23}}
-\newlabel{fig:bw}{{4.1}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Average Host Link Ratio vs number of Hosts}}{24}}
-\newlabel{fig:topo}{{4.2}{24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host}}{25}}
-\newlabel{fig:hosts}{{4.3}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated}}{25}}
-\newlabel{fig:mem1}{{4.4}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Host-PC Memory Utilization vs number of Hosts}}{26}}
-\newlabel{fig:mem2}{{4.5}{26}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions}{27}}
+\newlabel{cha:valtes}{{4}{32}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Framework Validation}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment}}{33}}
+\newlabel{fig:use_case}{{4.1}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF}}{33}}
+\newlabel{fig:wf_bf}{{4.2}{33}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Performance Evaluation}{35}}
+\newlabel{sec:perf}{{4.2}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic}}{35}}
+\newlabel{fig:bw}{{4.3}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts}}{36}}
+\newlabel{fig:topo}{{4.4}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host}}{36}}
+\newlabel{fig:hosts}{{4.5}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated}}{37}}
+\newlabel{fig:mem1}{{4.6}{37}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts}}{38}}
+\newlabel{fig:mem2}{{4.7}{38}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions}{39}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:conclusions}{{5}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Main contributions}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Future work}{27}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Name of the Appendix}{28}}
+\newlabel{cha:conclusions}{{5}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Main contributions}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Future work}{39}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{40}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:minconf}{{A}{40}}
 \bibstyle{unsrt}
 \bibdata{sigproc}
 \bibcite{meridian}{1}
-\bibcite{dc_arch}{2}
-\bibcite{amazon}{3}
-\bibcite{baldonado}{4}
-\bibcite{ibmnec}{5}
-\bibcite{openflow}{6}
-\bibcite{onf}{7}
-\bibcite{im2013}{8}
-\bibcite{cloudsim}{9}
-\bibcite{cloudsim2}{10}
-\bibcite{cloudsim3}{11}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{29}}
-\bibcite{box}{12}
-\bibcite{openstack}{13}
-\bibcite{scp}{14}
-\bibcite{icancloud}{15}
-\bibcite{greencloud}{16}
-\bibcite{groudsim}{17}
-\bibcite{mininet}{18}
-\bibcite{ns3}{19}
-\bibcite{pox}{20}
-\bibcite{of_virtual}{21}
-\bibcite{hedera}{22}
-\bibcite{graph_query}{23}
-\bibcite{nox_dc}{24}
-\bibcite{gitg}{25}
+\bibcite{qosof}{2}
+\bibcite{dc_arch}{3}
+\bibcite{amazon}{4}
+\bibcite{baldonado}{5}
+\bibcite{ibmnec}{6}
+\bibcite{openflow}{7}
+\bibcite{onf}{8}
+\bibcite{im2013}{9}
+\bibcite{cloudsim}{10}
+\bibcite{cloudsim2}{11}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{43}}
+\bibcite{cloudsim3}{12}
+\bibcite{box}{13}
+\bibcite{openstack}{14}
+\bibcite{scp}{15}
+\bibcite{icancloud}{16}
+\bibcite{greencloud}{17}
+\bibcite{groudsim}{18}
+\bibcite{mininet}{19}
+\bibcite{ofqos2}{20}
+\bibcite{ofqos3}{21}
+\bibcite{ofqos1}{22}
+\bibcite{ns3}{23}
+\bibcite{pox}{24}
+\bibcite{of_virtual}{25}
+\bibcite{hedera}{26}
+\bibcite{graph_query}{27}
+\bibcite{nox_dc}{28}
+\bibcite{gitg}{29}
 \citation{*}
