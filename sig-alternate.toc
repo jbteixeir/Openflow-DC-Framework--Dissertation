@@ -58,12 +58,12 @@
 \contentsline {subsection}{\numberline {3.10.2}Enabling Virtual Machine migration}{31}
 \contentsline {subsubsection}{State of art: Virtual Machine migration}{31}
 \contentsline {subsubsection}{Virtual Machine migration in the framework}{31}
-\contentsline {subsubsection}{Example}{31}
-\contentsline {chapter}{\numberline {4}Validation and tests }{32}
-\contentsline {section}{\numberline {4.1}Framework Validation}{32}
-\contentsline {section}{\numberline {4.2}Performance Evaluation}{35}
-\contentsline {chapter}{\numberline {5}Conclusions}{39}
-\contentsline {section}{\numberline {5.1}Main contributions}{39}
-\contentsline {section}{\numberline {5.2}Future work}{39}
-\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{40}
-\contentsline {chapter}{Bibliography}{43}
+\contentsline {subsubsection}{Example}{33}
+\contentsline {chapter}{\numberline {4}Validation and tests }{34}
+\contentsline {section}{\numberline {4.1}Framework Validation}{34}
+\contentsline {section}{\numberline {4.2}Performance Evaluation}{37}
+\contentsline {chapter}{\numberline {5}Conclusions}{41}
+\contentsline {section}{\numberline {5.1}Main contributions}{41}
+\contentsline {section}{\numberline {5.2}Future work}{41}
+\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{42}
+\contentsline {chapter}{Bibliography}{45}

@@ -6,7 +6,8 @@ M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
 \newblock {\em Communications Magazine}, 2013.
 
 \bibitem{qosof}
-{\em http://archive.openflow.org/wk/index.php/Slicing}.
+{OpenFlow slicing page}.
+\newblock {\em http://archive.openflow.org/wk/index.php/Slicing}.
 
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
@@ -71,11 +72,11 @@ J.D. Ellithorpe, Z.~Tan, and R.H. Katz.
 
 \bibitem{scp}
 {IBM Smart Cloud Provisioning Home Page}.
-\newblock {\em http://www-01.ibm.com/software/tivoli/products
-  /smartcloud-provisioning.}
+\newblock {\em
+  http://www-01.ibm.com/software/tivoli/products/smartcloud-provisioning.}
 
 \bibitem{icancloud}
-A.~Nunez, J.L. Vázquez-Poletti, A.C. Caminero, G.G. Castañé, J.~Carretero, and
+A.~Nunez, J.L. Vazquez-Poletti, A.C. Caminero, G.G. Castane, J.~Carretero, and
   I.M. Llorente.
 \newblock icancloud: A flexible and scalable cloud infrastructure simulator.
 \newblock {\em Journal of Grid Computing}, 2012.
@@ -117,6 +118,33 @@ H.E. Egilmez, Turkey Koc~Univ., Istanbul, S.T. Dane, K.T. Bagci, and A.M.
 \newblock {\em Signal and Information Processing Association Annual Summit and
   Conference (APSIPA ASC), 2012 Asia-Pacific}, 2012.
 
+\bibitem{vmmig1}
+Alexander Stage and Thomas Setzer.
+\newblock Network-aware migration control and scheduling of differentiated
+  virtual machine workloads.
+\newblock In {\em CLOUD 09 Proceedings of the 2009 ICSE Workshop on Software
+  Engineering Challenges of Cloud Computing}, 2009.
+
+\bibitem{vmmig2}
+B.~Boughzala, R.~Ben~Ali, M.~Lemay, Y.~Lemieux, and O.~Cherkaoui.
+\newblock Openflow supporting inter-domain virtual machine migration.
+\newblock In {\em Wireless and Optical Communications Networks (WOCN), 2011
+  Eighth International Conference}, 2010.
+
+\bibitem{vmmig3}
+Pedro~S. Pisa, Natalia~C. Fernandes, Hugo E.~T. Carvalho, Marcelo D.~D.
+  Moreira, Miguel Elias~M. Campista, LuÃ­s Henrique M.~K. Costa, and Otto
+  Carlos M.~B. Duarte.
+\newblock Openflow and xen-based virtual network migration.
+\newblock In {\em Third IFIP TC 6 International Conference, WCITD 2010 and IFIP
+  TC 6 International Conference, NF 2010}, 2010.
+
+\bibitem{vmmig4}
+M.~Mishra, A.~Das, P.~Kulkarni, and A.~Sahoo.
+\newblock Dynamic resource management using virtual machine migrations.
+\newblock In {\em Communications Magazine, IEEE \(Volume\:50 , Issue\: 9 \)},
+  2012.
+
 \bibitem{ns3}
 {NS3}.
 \newblock {\em http://www.nsnam.org.}
@@ -148,10 +176,16 @@ A.~Tavakoli, M.~Casado, T.~Koponen, and S.~Shenker.
 \newblock In {\em HotNets}. ACM, 2009.
 
 \bibitem{gitg}
-A.~Pescapè A.~Dainotti, A.~Botta.
+A.~Pescap\'e A.~Dainotti, A.~Botta.
 \newblock A tool for the generation of realistic network workload for emerging
   networking scenarios.
 \newblock {\em Computer Networks (Elsevier), 2012, Volume 56, Issue 15, pp
   3531-3547}, 2012.
+
+\bibitem{vmmig}
+Clark C., Fraser K., Hand S., Gorm~Hansen J., Jul E., et~al.
+\newblock Live migration of virtual machines.
+\newblock In {\em NSDI05 Proceedings of the 2nd conference on Symposium on
+  Networked Systems Design and Implementation - Volume 2}, 2005.
 
 \end{thebibliography}

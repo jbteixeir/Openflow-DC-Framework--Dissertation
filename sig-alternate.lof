@@ -1,25 +1,25 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Meridian SDN cloud networking platform architecture (Banikazemi et al.\cite {meridian})}}{7}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Meridian SDN cloud networking platform architecture (Banikazemi et al.\cite {meridian})\relax }}{7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture}}{14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Available port statistics}}{19}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Available flow statistics}}{19}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Photo of the testing environment}}{22}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Photo of the testing environment}}{23}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Photo of the testing environment}}{23}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Photo of the testing environment}}{24}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Photo of the testing environment}}{25}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces QoS - Mininet testing environment}}{30}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}}}{30}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture\relax }}{14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Available port statistics\relax }}{19}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Available flow statistics\relax }}{19}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Photo of the testing environment\relax }}{22}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Photo of the testing environment\relax }}{23}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Photo of the testing environment\relax }}{23}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Photo of the testing environment\relax }}{24}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Photo of the testing environment\relax }}{25}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces QoS - Mininet testing environment\relax }}{30}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{30}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment}}{33}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF}}{33}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic}}{35}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts}}{36}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host}}{36}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated}}{37}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts}}{38}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{35}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{35}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{37}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{38}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{39}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{40}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{40}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
