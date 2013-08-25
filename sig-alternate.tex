@@ -14,12 +14,17 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{setspace}
-\usepackage{algpseudocode}
+\usepackage{algpseudocode, algorithm}
 \usepackage{varwidth}
 \usepackage{caption}
+\usepackage{hyperref}
 \usepackage{cite}\onehalfspacing
 
-
+\hypersetup{
+  citebordercolor=1 1 1,
+  filebordercolor=1 1 1,
+  linkbordercolor=1 1 1
+}
 
 \makeatletter
 
@@ -813,46 +818,72 @@ For this to be possible, a few additions should be made to the controller:
 \end{itemize}
 
 \newpage
-Although all the above should be defined by the administrator/network engineer, it would be an advantage if the \textit{keep DC policy} could be done automatically by using the already implemented policy in the \textit{user-defined logic}.
+Although all the above should be defined by the administrator/network engineer, it would be an advantage if the \textit{keep DC policy} could be done automatically (configurable periodicity) by using the already implemented policy in the \textit{user-defined logic}.
 
 Having that in mind, the following algorithm was developed.\\
 
 % \noindent\fbox{%
 % \begin{varwidth}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\begin{algorithm}[h!]
+\caption{Keep DC policy}
+\label{alg:keepdcpol}
 \begin{algorithmic}[1]
-\State {\textit{\%Retrive an ordered VM list (order can affect how many migration are needed)}}
-\State {$vm\_list\gets getOrderedVmList()$}
+\State {\textit{\%retrieve the VM list}}
+\State {$vm\_list\gets getVmList()$}
 \State {$vm\gets getVmFromList(vm\_list)$}
+% \State{}
 \While{$vm \neq null$}
-\State {\textit{\%Get the server where the vm is allocated}}
+\State {\textit{\%get the server where the vm is allocated}}
 \State {$vm\_place \gets getServer(vm)$}
-\State {\textit{\%Subtract the current vm requirements to the server in which is allocated (to look like the vm was never allocated)}}
+\State {\textit{\%pretend to subtract the vm requirements to the server in which is allocated}}
 \State {$subtractVmToDC(vm)$}
-\State {\textit{\%Run the user-defined policy to get the place where the vm should be allocated}}
+\State {\textit{\%run the user-defined policy to get the place where the vm would be allocated}}
 \State {$new\_vm\_place \gets userDefinedAllocationPollicy(vm)$}
+% \State{}
 \If {$vm\_place \neq new\_vm\_place$}
-\State {\textit{\%Get the migration path for this vm}}
+\State {\textit{\%get the migration path for this vm}}
 \State {$vm\_migration\_path \gets getVmMigrationPath(vm\_place, new\_vm\_place)$}
-\State {\textit{\%Start the vm migration}}
+\State {\textit{\%start the vm migration}}
 \State {$migrateVM(vm, vm\_place, new\_vm\_place, vm\_migration\_path)$}
 \EndIf
+% \State{}
 \State {$vm\gets getVmFromList(vm\_list)$}
 \EndWhile
-
 \end{algorithmic}
+\end{algorithm}
 % \end{varwidth}% 
 % }
-        
-\begin{verbatim}
 
+For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the path which is used by the VM could also be taken into consideration.
 
-\end{verbatim}
--independently of being live or non live migration
--say a diferent view can be applyed, a wider one.
--explain how it was though to be used in the framework, and which where the goals
--make a pseudo code about the ''keeping the DC policy''
+\newpage
 
-\subsubsection{Example}
+For analyzing the algorithms behaviour, two test were made using BF and WF.
+Although they do not, by far, represent all the types of VM allocation policies, they are a good starting point for the validation of the algorithm.
+
+\textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The number of VMs in each server was generated randomly.}
+
+\begin{table}[h!tbp]
+\begin{tabular}{lc|c|c||c|c|c|}
+& \multicolumn{6}{c}{VM Allocation Policies} \\
+\cline{2-7}
+\multicolumn{1}{c|}{}& \multicolumn{3}{c||}{Best Fit} & \multicolumn{3}{c|}{Worst Fit} \\
+\cline{2-7}
+\multicolumn{1}{c|}{}& \multicolumn{3}{|c||}{Number of Virtual Machines}& \multicolumn{3}{c|}{Number of Virtual Machines} \\
+\hline
+\multicolumn{1}{|c|}{Iteration} & Server 1 & Server 2 & Server 3 & Server 1 & Server 2 & Server 3 \\
+\hline
+\multicolumn{1}{|c|}{Start} & 0 & 3 & 3 & 0 & 3 & 3 \\
+\multicolumn{1}{|c|}{1} & 0 & 2 & 4 & 1 & 2 & 3 \\
+\multicolumn{1}{|c|}{2} & 0 & 1 & 5 & 2 & 1 & 3 \\
+\multicolumn{1}{|c|}{3} & 0 & 0 & 6 & 2 & 1 & 3 \\
+\multicolumn{1}{|c|}{4} & 0 & 0 & 6 & 2 & 2 & 2 \\
+\multicolumn{1}{|c|}{5} & 0 & 0 & 6 & 2 & 2 & 2 \\
+\multicolumn{1}{|c|}{6} & 0 & 0 & 6 & 2 & 2 & 2 \\
+\hline
+\end{tabular}
+\caption{Keep DC policy algorithm - Best Fit vs Worst Fit}
+\end{table}
 
 Give two examples with best and worst fit
 images with steps is a good idea (images side by side)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  25 AUG 2013 19:38
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  25 AUG 2013 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -144,10 +144,15 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip60
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+) (./algorithm.sty
+\c@algorithm=\count101
+\Blockindent=\skip61
+\algorithmindent=\skip62
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box28
-\sift@deathcycles=\count101
+\sift@deathcycles=\count102
 \@vwid@loff=\dimen107
 \@vwid@roff=\dimen108
 )
@@ -163,9 +168,120 @@ Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
 \caption@parindent=\dimen113
 \caption@hangindent=\dimen114
 )
-\c@ContinuedFloat=\count102
+\c@ContinuedFloat=\count103
 Package caption Info: float package is loaded.
 Package caption Info: subfigure package is loaded.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen115
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count106
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4062.
+Package hyperref Info: Link nesting OFF on input line 4067.
+Package hyperref Info: Hyper index ON on input line 4070.
+Package hyperref Info: Plain pages OFF on input line 4077.
+Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4300.
+\c@Hy@tempcnt=\count107
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4653.
+\Fld@menulength=\count108
+\Field@Width=\dimen116
+\Fld@charsize=\dimen117
+Package hyperref Info: Hyper figures OFF on input line 5773.
+Package hyperref Info: Link nesting OFF on input line 5778.
+Package hyperref Info: Hyper index ON on input line 5781.
+Package hyperref Info: backreferencing OFF on input line 5788.
+Package hyperref Info: Link coloring OFF on input line 5793.
+Package hyperref Info: Link coloring with OCG OFF on input line 5798.
+Package hyperref Info: PDF/A mode OFF on input line 5803.
+LaTeX Info: Redefining \ref on input line 5843.
+LaTeX Info: Redefining \pageref on input line 5847.
+\Hy@abspage=\count109
+\c@Item=\count110
+\c@Hfootnote=\count111
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
+\Fld@listcount=\count112
+\c@bookmark@seq@number=\count113
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip63
 )
 (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
@@ -173,7 +289,6 @@ LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
 \@float@every@algorithm=\toks19
-\c@algorithm=\count103
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -194,34 +309,30 @@ Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen115
-\extrarowheight=\dimen116
+\col@sep=\dimen118
+\extrarowheight=\dimen119
 \NC@list=\toks22
-\extratabsurround=\skip61
-\backup@length=\skip62
+\extratabsurround=\skip64
+\backup@length=\skip65
 )
 \everycr=\toks23
-\minrowclearance=\skip63
-)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+\minrowclearance=\skip66
 )
 (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read2
-\epsfframemargin=\dimen117
-\epsfframethickness=\dimen118
-\epsfrsize=\dimen119
-\epsftmp=\dimen120
-\epsftsize=\dimen121
-\epsfxsize=\dimen122
-\epsfysize=\dimen123
-\pspoints=\dimen124
+\epsfframemargin=\dimen120
+\epsfframethickness=\dimen121
+\epsfrsize=\dimen122
+\epsftmp=\dimen123
+\epsftsize=\dimen124
+\epsfxsize=\dimen125
+\epsfysize=\dimen126
+\pspoints=\dimen127
 )
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 53.
+less on input line 58.
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
@@ -231,8 +342,8 @@ Language: english 2005/03/30 v3.3o English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count104
-\U@D=\dimen125
+\babel@savecnt=\count114
+\U@D=\dimen128
 )
 \l@british = a dialect from \language\l@english 
 \l@UKenglish = a dialect from \language\l@english 
@@ -256,74 +367,43 @@ LaTeX Warning: Label `fig:realenv' multiply defined.
 )
 \openout1 = `sig-alternate.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 65.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen126
+\scratchcounter=\count115
+\scratchdimen=\dimen129
 \scratchbox=\box29
-\nofMPsegments=\count106
-\nofMParguments=\count107
+\nofMPsegments=\count116
+\nofMParguments=\count117
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen127
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen130
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
 \everyMPtoPDFconversion=\toks25
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+)
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -334,15 +414,35 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 86.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 86.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 86.
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring OFF on input line 65.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 61--88
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count121
+)
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
+
+(./sig-alternate.out) (./sig-alternate.out)
+\@outlinefile=\write3
+\openout3 = `sig-alternate.out'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 91.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 66--93
 []$[]$ 
  []
 
@@ -350,12 +450,12 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 61--88
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 95.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 100.
  [2
 
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 126.
  [3
 
 ]
@@ -369,290 +469,303 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [5])
-\tf@toc=\write3
-\openout3 = `sig-alternate.toc'.
+\tf@toc=\write4
+\openout4 = `sig-alternate.toc'.
 
  [6] [7
 
 
 ] (./sig-alternate.lof)
-\tf@lof=\write4
-\openout4 = `sig-alternate.lof'.
+\tf@lof=\write5
+\openout5 = `sig-alternate.lof'.
 
  [8
 
 ] (./sig-alternate.lot)
-\tf@lot=\write5
-\openout5 = `sig-alternate.lot'.
+\tf@lot=\write6
+\openout6 = `sig-alternate.lot'.
 
  [1
 
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 166.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 171.
 [2
 
 ] [3] [4]
 Chapter 2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 235.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 240.
 [5
 
-] <figures/meridian_arch.png, id=48, 730.73pt x 405.515pt>
+] <figures/meridian_arch.png, id=390, 730.73pt x 405.515pt>
 File: figures/meridian_arch.png Graphic file (type png)
 
 <use figures/meridian_arch.png>
-Package pdftex.def Info: figures/meridian_arch.png used on input line 268.
+Package pdftex.def Info: figures/meridian_arch.png used on input line 273.
 (pdftex.def)             Requested size: 368.57838pt x 204.53903pt.
  [6] [7 <./figures/meridian_arch.png>]
-Overfull \hbox (2.55597pt too wide) in paragraph at lines 288--289
+Overfull \hbox (2.55597pt too wide) in paragraph at lines 293--294
 []\T1/ptm/m/n/12 ''Mininet is a net-work em-u-la-tor which cre-ates a net-work 
 of vir-tual hosts, switches,
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 302.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 307.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 302.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 307.
  [8] [9] [10]
 Chapter 3.
 [11
 
-] [12] [13] <figures/emulator_new.png, id=77, 986.68625pt x 664.4825pt>
+] [12] [13] <figures/emulator_new.png, id=448, 986.68625pt x 664.4825pt>
 File: figures/emulator_new.png Graphic file (type png)
 
 <use figures/emulator_new.png>
-Package pdftex.def Info: figures/emulator_new.png used on input line 374.
+Package pdftex.def Info: figures/emulator_new.png used on input line 379.
 (pdftex.def)             Requested size: 368.57838pt x 248.2171pt.
  [14 <./figures/emulator_new.png>] [15] [16]
-[17] <figures/stats_portstats.png, id=91, 316.18124pt x 343.2825pt>
+[17] <figures/stats_portstats.png, id=469, 316.18124pt x 343.2825pt>
 File: figures/stats_portstats.png Graphic file (type png)
 
 <use figures/stats_portstats.png>
-Package pdftex.def Info: figures/stats_portstats.png used on input line 490.
+Package pdftex.def Info: figures/stats_portstats.png used on input line 495.
 (pdftex.def)             Requested size: 184.28918pt x 200.08873pt.
 
-<figures/stats_flowstats.png, id=92, 399.4925pt x 324.21124pt>
+<figures/stats_flowstats.png, id=470, 399.4925pt x 324.21124pt>
 File: figures/stats_flowstats.png Graphic file (type png)
 
 <use figures/stats_flowstats.png>
-Package pdftex.def Info: figures/stats_flowstats.png used on input line 496.
+Package pdftex.def Info: figures/stats_flowstats.png used on input line 501.
 (pdftex.def)             Requested size: 230.36061pt x 186.94934pt.
  [18] [19 <./figures/stats_portstats.png> <./figures/stats_flowstats.png>] [20]
  [21]
-<figures/webplat_panel.png, id=107, 1126.2075pt x 705.63625pt>
+<figures/webplat_panel.png, id=492, 1126.2075pt x 705.63625pt>
 File: figures/webplat_panel.png Graphic file (type png)
 
 <use figures/webplat_panel.png>
-Package pdftex.def Info: figures/webplat_panel.png used on input line 580.
+Package pdftex.def Info: figures/webplat_panel.png used on input line 585.
 (pdftex.def)             Requested size: 460.72124pt x 288.6667pt.
 
-<figures/webplat_vmgroup.png, id=108, 1123.19624pt x 716.6775pt>
+<figures/webplat_vmgroup.png, id=493, 1123.19624pt x 716.6775pt>
 File: figures/webplat_vmgroup.png Graphic file (type png)
 
 <use figures/webplat_vmgroup.png>
-Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 587.
+Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 592.
 (pdftex.def)             Requested size: 460.72124pt x 293.9709pt.
 
-<figures/webplat_vmlist.png, id=109, 1126.2075pt x 627.34375pt>
+<figures/webplat_vmlist.png, id=494, 1126.2075pt x 627.34375pt>
 File: figures/webplat_vmlist.png Graphic file (type png)
 
 <use figures/webplat_vmlist.png>
-Package pdftex.def Info: figures/webplat_vmlist.png used on input line 594.
+Package pdftex.def Info: figures/webplat_vmlist.png used on input line 599.
 (pdftex.def)             Requested size: 460.72124pt x 256.63824pt.
 
-<figures/webplat_vmreq.png, id=110, 1124.2pt x 655.44875pt>
+<figures/webplat_vmreq.png, id=495, 1124.2pt x 655.44875pt>
 File: figures/webplat_vmreq.png Graphic file (type png)
 
 <use figures/webplat_vmreq.png>
-Package pdftex.def Info: figures/webplat_vmreq.png used on input line 601.
+Package pdftex.def Info: figures/webplat_vmreq.png used on input line 606.
 (pdftex.def)             Requested size: 460.72124pt x 268.6157pt.
  [22 <./figures/webplat_panel.png>] [23 <./figures/webplat_vmgroup.png> <./figu
 res/webplat_vmlist.png>] [24 <./figures/webplat_vmreq.png>] <figures/realenviro
-nment.jpg, id=125, 963.6pt x 722.7pt>
+nment.jpg, id=513, 963.6pt x 722.7pt>
 File: figures/realenvironment.jpg Graphic file (type jpg)
 
 <use figures/realenvironment.jpg>
-Package pdftex.def Info: figures/realenvironment.jpg used on input line 651.
+Package pdftex.def Info: figures/realenvironment.jpg used on input line 656.
 (pdftex.def)             Requested size: 322.50345pt x 241.87717pt.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 656.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 661.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [25 <./figures/realenvironment.jpg>]
-Overfull \hbox (122.47852pt too wide) in paragraph at lines 672--672
+Overfull \hbox (122.47852pt too wide) in paragraph at lines 677--677
 []\T1/pcr/m/n/12 1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit 
 Ethernet Controller[] 
  []
 
 
-Overfull \hbox (309.67844pt too wide) in paragraph at lines 680--680
+Overfull \hbox (309.67844pt too wide) in paragraph at lines 685--685
 []\T1/pcr/m/n/12 NIC Marvell Technology Group Ltd. Yukon Optima 88E8059 [PCIe G
 igabit Ethernet Controller with AVB] (rev 11)[] 
  []
 
 
-Overfull \hbox (122.47852pt too wide) in paragraph at lines 689--689
+Overfull \hbox (122.47852pt too wide) in paragraph at lines 694--694
 []\T1/pcr/m/n/12 1 NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit 
 Ethernet Controller[] 
  []
 
 [26] [27] [28]
-Overfull \hbox (12.1481pt too wide) in paragraph at lines 743--744
+Overfull \hbox (12.1481pt too wide) in paragraph at lines 748--749
 \T1/ptm/m/n/12 ''open-flowlib.ofp_action_enqueue(port = switch_port, queue_id =
  queue_type))'', which
  []
 
-[29] <figures/ofqos.png, id=143, 662.475pt x 412.54124pt>
+[29] <figures/ofqos.png, id=549, 662.475pt x 412.54124pt>
 File: figures/ofqos.png Graphic file (type png)
 
 <use figures/ofqos.png>
-Package pdftex.def Info: figures/ofqos.png used on input line 758.
+Package pdftex.def Info: figures/ofqos.png used on input line 763.
 (pdftex.def)             Requested size: 368.57838pt x 229.52335pt.
 
-<figures/ofqosexample.png, id=144, 513.92pt x 71.26625pt>
+<figures/ofqosexample.png, id=551, 513.92pt x 71.26625pt>
 File: figures/ofqosexample.png Graphic file (type png)
 
 <use figures/ofqosexample.png>
-Package pdftex.def Info: figures/ofqosexample.png used on input line 766.
+Package pdftex.def Info: figures/ofqosexample.png used on input line 771.
 (pdftex.def)             Requested size: 368.57838pt x 51.11264pt.
  [30 <./figures/ofqos.png> <./figures/ofqosexample.png>] [31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 818--819
+Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
-[33]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 828.
+[33] [34]
 Chapter 4.
-<figures/figure1.pdf, id=160, 722.7pt x 542.025pt>
+<figures/figure1.pdf, id=590, 722.7pt x 542.025pt>
 File: figures/figure1.pdf Graphic file (type pdf)
  <use figures/figure1.pdf>
-Package pdftex.def Info: figures/figure1.pdf used on input line 871.
+Package pdftex.def Info: figures/figure1.pdf used on input line 902.
 (pdftex.def)             Requested size: 207.32315pt x 155.48773pt.
 
-[34
+[35
 
-] <figures/use_case.png, id=164, 642.4pt x 481.8pt>
+] <figures/use_case.png, id=597, 642.4pt x 481.8pt>
 File: figures/use_case.png Graphic file (type png)
 
 <use figures/use_case.png>
-Package pdftex.def Info: figures/use_case.png used on input line 882.
+Package pdftex.def Info: figures/use_case.png used on input line 913.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- [35 <./figures/figure1.pdf> <./figures/use_case.png>] [36] <figures/bw_utiliza
-tion.png, id=222, 642.4pt x 481.8pt>
+ [36 <./figures/figure1.pdf> <./figures/use_case.png>] [37] <figures/bw_utiliza
+tion.png, id=657, 642.4pt x 481.8pt>
 File: figures/bw_utilization.png Graphic file (type png)
 
 <use figures/bw_utilization.png>
-Package pdftex.def Info: figures/bw_utilization.png used on input line 910.
+Package pdftex.def Info: figures/bw_utilization.png used on input line 941.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [37 <./figures/bw_utilization.png>]
-<figures/topo.png, id=227, 642.4pt x 481.8pt>
+ [38 <./figures/bw_utilization.png>]
+<figures/topo.png, id=664, 642.4pt x 481.8pt>
 File: figures/topo.png Graphic file (type png)
  <use figures/topo.png>
-Package pdftex.def Info: figures/topo.png used on input line 929.
+Package pdftex.def Info: figures/topo.png used on input line 960.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [38 <./figures/topo.png>] <figures/out_hosts_ratio.png, id=232, 642.4pt x 481.
+ [39 <./figures/topo.png>] <figures/out_hosts_ratio.png, id=671, 642.4pt x 481.
 8pt>
 File: figures/out_hosts_ratio.png Graphic file (type png)
 
 <use figures/out_hosts_ratio.png>
-Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 942.
+Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 973.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [39 <./figures/out_hosts_ratio.png>]
-<figures/mem1_utilization.png, id=237, 642.4pt x 481.8pt>
+ [40 <./figures/out_hosts_ratio.png>]
+<figures/mem1_utilization.png, id=678, 642.4pt x 481.8pt>
 File: figures/mem1_utilization.png Graphic file (type png)
 
 <use figures/mem1_utilization.png>
-Package pdftex.def Info: figures/mem1_utilization.png used on input line 957.
+Package pdftex.def Info: figures/mem1_utilization.png used on input line 988.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
 
-<figures/mem2_utilization.png, id=238, 642.4pt x 481.8pt>
+<figures/mem2_utilization.png, id=679, 642.4pt x 481.8pt>
 File: figures/mem2_utilization.png Graphic file (type png)
 
 <use figures/mem2_utilization.png>
-Package pdftex.def Info: figures/mem2_utilization.png used on input line 964.
+Package pdftex.def Info: figures/mem2_utilization.png used on input line 995.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [40 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
+ [41 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
 Chapter 5.
-[41
+[42
 
 ]
 Appendix A.
 
-Overfull \hbox (50.47855pt too wide) in paragraph at lines 1001--1001
+Overfull \hbox (50.47855pt too wide) in paragraph at lines 1032--1032
 []\T1/pcr/m/n/12 #host_detectacle_time - time in seconds in which the hosts sen
 d packets[] 
  []
 
-[42
+[43
 
 ]
-Overfull \hbox (21.67856pt too wide) in paragraph at lines 1009--1009
+Overfull \hbox (21.67856pt too wide) in paragraph at lines 1040--1040
 []\T1/pcr/m/n/12 #edgetoagglinkno - number of links that connect each edge swit
 ch to[] 
  []
 
 
-Overfull \hbox (50.47855pt too wide) in paragraph at lines 1011--1011
+Overfull \hbox (50.47855pt too wide) in paragraph at lines 1042--1042
 []\T1/pcr/m/n/12 #aggtocorelinkno - number of links that connect each aggregati
 on switch[] 
  []
 
 
-Overfull \hbox (21.67856pt too wide) in paragraph at lines 1013--1013
+Overfull \hbox (21.67856pt too wide) in paragraph at lines 1044--1044
 []\T1/pcr/m/n/12 #coretooutlinkno - number of links that connect each core swit
 ch to[] 
  []
 
 
-Overfull \hbox (302.47844pt too wide) in paragraph at lines 1034--1034
+Overfull \hbox (302.47844pt too wide) in paragraph at lines 1065--1065
 []\T1/pcr/m/n/12 # (please use lower numbers for higher priority so the control
 ler can assign premium users to this queues)[] 
  []
 
-[43] [44] (./sig-alternate.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 23--26
+[44] [45] (./sig-alternate.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 14--17
 []\T1/ptm/m/n/12 O. Bal-don-ado, SDN, Open-Flow, and next-generation data cen-t
 er net-works.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--26
+Underfull \hbox (badness 10000) in paragraph at lines 14--17
 \T1/ptm/m/it/12 http://www.eetimes.com/design/embedded/43715 43/SDN--OpenFlow--
 and-next-
  []
 
-[45
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
+[]\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
+ []
+
+[46
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 60--62
-[]\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--77
+Underfull \hbox (badness 10000) in paragraph at lines 70--73
 []\T1/ptm/m/n/12 IBM Smart Cloud Pro-vi-sion-ing Home Page.  \T1/ptm/m/it/12 ht
 tp://www-
  []
 
-[46]) [47] (./sig-alternate.aux)
+[47])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1097.
+ [48]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1097.
+ (./sig-alternate.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1097.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1097.
+
+Package rerunfilecheck Info: File `sig-alternate.out' has not changed.
+(rerunfilecheck)             Checksum: FD02FBF10AC18EBC480E3063548E4C16;3426.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1097.
  ) 
 Here is how much of TeX's memory you used:
- 4695 strings out of 495059
- 68783 string characters out of 3182030
- 126228 words of memory out of 3000000
- 7740 multiletter control sequences out of 15000+200000
+ 8246 strings out of 495059
+ 122254 string characters out of 3182030
+ 209076 words of memory out of 3000000
+ 11094 multiletter control sequences out of 15000+200000
  37140 words of font info for 47 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,12n,43p,1048b,388s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,12n,43p,1048b,467s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
@@ -661,10 +774,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sig-alternate.pdf (55 pages, 854749 bytes).
+Output written on sig-alternate.pdf (56 pages, 868635 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 797 PDF objects out of 1000 (max. 8388607)
+ 644 compressed objects within 7 object streams
+ 177 named destinations out of 1000 (max. 500000)
+ 507 words of extra memory for PDF output out of 10000 (max. 10000000)
 
