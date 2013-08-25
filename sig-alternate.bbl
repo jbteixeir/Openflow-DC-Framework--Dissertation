@@ -1,5 +1,14 @@
 \begin{thebibliography}{10}
 
+\bibitem{meridian}
+M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
+\newblock Meridian: An sdn platform for cloud network services.
+\newblock {\em Communications Magazine}, 2013.
+
+\bibitem{qosof}
+{OpenFlow slicing page}.
+\newblock {\em http://archive.openflow.org/wk/index.php/Slicing}.
+
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
   N.~Min-Allah, L.~Wang, and D.~Chen.
@@ -57,11 +66,6 @@ J.D. Ellithorpe, Z.~Tan, and R.H. Katz.
   fpga's.
 \newblock In {\em Design Automation Conference}. ACM/IEEE, 2009.
 
-\bibitem{meridian}
-M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
-\newblock Meridian: An sdn platform for cloud network services.
-\newblock {\em Communications Magazine}, 2013.
-
 \bibitem{openstack}
 {Openstack Home Page}.
 \newblock {\em http://www.openstack.org.}
@@ -92,10 +96,6 @@ S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
 \bibitem{mininet}
 {Mininet Home Page}.
 \newblock {\em https://mininet.github.com.}
-
-\bibitem{qosof}
-{OpenFlow slicing page}.
-\newblock {\em http://archive.openflow.org/wk/index.php/Slicing}.
 
 \bibitem{ofqos2}
 S.~Civanlar, M.~Parlakisik, A.M. Tekalp, B.~Gorkemli, B.~Kaytaz, and E.~Onem.

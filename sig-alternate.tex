@@ -814,11 +814,10 @@ For this to be possible, a few additions should be made to the controller:
  \item \textit{Where to migrate} -- Define where the VMs should be migrated.
  \item \textit{Which path to do the migration} -- Choose which path each migration should take.
  \end{itemize}
- Include methods for catching the hotspot raisen events where user defines what actions to take
 \end{itemize}
 
 \newpage
-Although all the above should be defined by the administrator/network engineer, it would be an advantage if the \textit{keep DC policy} could be done automatically (configurable periodicity) by using the already implemented policy in the \textit{user-defined logic}.
+Although all the above should be defined by the administrator/network engineer, it would be an advantage if the \textit{keep DC policy} could be done automatically (with configurable periodicity) by using the already implemented policy in the \textit{user-defined logic}.
 
 Having that in mind, the following algorithm was developed.\\
 
@@ -854,12 +853,16 @@ Having that in mind, the following algorithm was developed.\\
 % \end{varwidth}% 
 % }
 
-For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the path which is used by the VM could also be taken into consideration.
+The algorithm consists in, subtracting each VM to the DC server in which it is allocated its requirements (so apparently the VM has not been allocated) and after run the user-defined VM allocation policy to see if it would change place.
+If so, the path for migration is calculated, and the VM migration process starts.
+
+For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the network path and other vm related aspects could also be included.
+
+The algorithm as at least N complexity, but this varies as it must be multiplied by the complexity of the user-defined VM allocation algorithm and correspondent VM migration path calculation.
 
 \newpage
 
 For analyzing the algorithms behaviour, two test were made using BF and WF.
-Although they do not, by far, represent all the types of VM allocation policies, they are a good starting point for the validation of the algorithm.
 
 \textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The number of VMs in each server was generated randomly.}
 
@@ -883,10 +886,15 @@ Although they do not, by far, represent all the types of VM allocation policies,
 \hline
 \end{tabular}
 \caption{Keep DC policy algorithm - Best Fit vs Worst Fit}
+\label{table:keepdcpol}
 \end{table}
 
-Give two examples with best and worst fit
-images with steps is a good idea (images side by side)
+Althought it is a very basic example, as can be seen in table \ref{table:keepdcpol}, the algorithm successfully recovered the DC policy.
+On both cases, after the $3$rd iteration, no more migration were performed, however, as the algorithm runs through all the VMs, all $6$ iterations were made.
+
+Although BF and WF do not, by far, represent all the types of VM allocation policies, they are a good starting point for the validation of the algorithm.
+Further test should be made to ensure the algorithms correctiveness.
+Assessing the efficiency and effective gain in the framework and real DC is yet to be made, but it is a point to be addressed in a near future.
 
 \chapter{Validation and tests \label{cha:valtes} }
 
