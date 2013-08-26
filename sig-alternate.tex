@@ -457,9 +457,12 @@ These two modules where added to fill the missing support for traffic generation
 
 Mininet allows their topology generator to create tree topologies but they do not have a Gateway, meaning that they cannot correctly emulate a DC since when traffic reaches the core switches it has nowhere to go (if it is traffic that addresses the outside of the DC).
 
-Using its API, an algorithm for generating costume DC tree and fat tree topologies was created. Details on the algorithm can be seen here\ref{app:tpalg}.
+Using its API, an algorithm for generating costume DC tree and fat tree topologies was created.
+
+The algorithm works by creating the gateways (as hosts on mininet) and core switches, and iterating through each gateway assigning the correspondent link and their caracteristics to the core switches. Similarly, the same logic is used between the core and aggregation switches, followed by the aggregation and edge switches, and lastly with the edge switches and the servers (created as hosts on mininet).
+Details on the algorithm can be seen here\ref{app:tpalg}.
 It is able to generate any number of gateways, hosts and core, aggregation and edge switches.
-Is also generates the links between them, and the number of links between different levels (\textit{e.g.} from the gateways to the core switches) can be chosen.
+Is also generates the links between them, and the number of links between different levels (\textit{e.g.} from the gateways to the core switches) can be chosen. This way it is possible to create fat tree topologies.
 Link bandwidth is also configurable by level, meaning one needs only to setup the bandwidth for the $4$ network levels.
 
 \subsection{Traffic Generator}
