@@ -41,7 +41,7 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true
-  tabsize=3
+  tabsize=2
 }
 
 \hypersetup{
@@ -163,13 +163,16 @@ Datacenter, Cloud, SDN, OpenFlow.
 
 \begin{lyxlist}{00.00.0000}
 \begin{singlespace}
+\item [CPU]Central Processing Unit
 \item [DC]Datacenter
 \item [DCN]Datacenter Networks
+\item [IO]Input\/Output
 \item [IP]Internet Protocol 
 \item [IT]Information Technology
 \item [OF]Openflow
 \item [QoS] Quality of Service
 \item [QoE] Quality of Experience
+\item [RAM]Random-access Memory
 \item [SDN]Software Defined Networking
 \item [VM]Virtual Machine
 \item [VMM]Virtual Machine Manager
@@ -449,7 +452,7 @@ The framework directory is structured as follows:
 
 \section{Framework modules: Mininet Environment}
 
-The Mininet Environment is composed by both mininet and two costume modules named \textit{Topology Generator} and \textit{Traffic Generator}.
+The Mininet Environment is composed by both mininet and custom two modules named \textit{Topology Generator} and \textit{Traffic Generator}.
 These two modules where added to fill the missing support for traffic generation and the basic integrated topology generator.
 
 \subsection{Topology Generator}
@@ -457,10 +460,10 @@ These two modules where added to fill the missing support for traffic generation
 
 Mininet allows their topology generator to create tree topologies but they do not have a Gateway, meaning that they cannot correctly emulate a DC since when traffic reaches the core switches it has nowhere to go (if it is traffic that addresses the outside of the DC).
 
-Using its API, an algorithm for generating costume DC tree and fat tree topologies was created.
+Using its API, an algorithm for generating custom DC tree and fat tree topologies was created.
 
 The algorithm works by creating the gateways (as hosts on mininet) and core switches, and iterating through each gateway assigning the correspondent link and their caracteristics to the core switches. Similarly, the same logic is used between the core and aggregation switches, followed by the aggregation and edge switches, and lastly with the edge switches and the servers (created as hosts on mininet).
-Details on the algorithm can be seen here\ref{app:tpalg}.
+Details on the algorithm can be seen on appendix \ref{app:tpalg}.
 It is able to generate any number of gateways, hosts and core, aggregation and edge switches.
 Is also generates the links between them, and the number of links between different levels (\textit{e.g.} from the gateways to the core switches) can be chosen. This way it is possible to create fat tree topologies.
 Link bandwidth is also configurable by level, meaning one needs only to setup the bandwidth for the $4$ network levels.
@@ -468,9 +471,95 @@ Link bandwidth is also configurable by level, meaning one needs only to setup th
 \subsection{Traffic Generator}
 \hspace{0.6cm}
 
-Talk about the first approach:
--Use tcpreplay with a DC traffic sample
--Modify the sample to suit each server
+For mininet to simulate the VM allocation, since their hosts are already virtualized and have limited CPU access, generation of traffic as VMs get allocated was chosen.
+
+As mininet does not give any support to traffic generation, it is up to the user to do it. Since generating traffic manually for each VM allocation would be impractical for testing the DC policies, an automatic traffic generator was created.
+
+For the mininet environment to know the traffic characteristics it should start generating for each VM, a network socket was open for communication with the controller.
+In this socket the following information is exchanged,
+\begin{itemize}
+  \item Server where traffic should be sent from;
+  \item For how long is the VM allocated, so traffic is generated in this interval;
+  \item Traffic characteristics (bandwidth, etc);
+  \item Optional custom information (for supporting other features);
+\end{itemize}
+
+\subsubsection{TCPReplay}
+
+With the goal of reproducing as closely as possible a DC behaviour, traffic samples from a real cluster were collected, and \textit{tcpreplay}\cite{tcprep} was used to replay them. The sample was collected from the clusters of the Department of Informatics - University of Minho and has approximately $500$Mb size.
+
+As the sample packets had to be adapted to suit the server interface's IP, the \textit{sniffex.c}\cite{sniffex} program (given as an example of pcap library usage) was modified.
+
+For modifying traffic samples instead of live capturing the packets, offline capture mode must be set and then the \textit{pcap\_loop} can be started. \textit{Pcap\_loop} iterates throw each packet and applies the function passed as argument, in this case \textit{pcap\_spoof\_ip}.
+
+\lstset{language=C,frame=lines}
+\begin{lstlisting}
+  /* setup offline capture */
+  handle = pcap_open_offline(filename, errbuf);
+  ...
+  /* now we can set our callback function */
+  pcap_loop(handle, -1, pcap_spoof_ip, NULL);
+  pcap_close(handle);
+\end{lstlisting}
+
+Because part of the traffic sample captured contained VLAN tags, an if statement add to added for pushing the pointer $4$ bytes further ($4$ bytes is the VLAN tag size).
+After knowing where the ip header was, it was changed to the desired one, recalculated the checksum\footnote{checksum calculation credits to Gianni Antichi.}, and dumped the new packet into a different file.
+
+\begin{lstlisting}
+  /* Remake IP Addresses on the copied packet */
+  if(ether_type == 0x0800)
+    ip = (struct sniff_ip*)(packet_cpy+SIZE_ETHERNET);
+  else if(ether_type == 0x8100)
+    ip = (struct sniff_ip*)(packet_cpy+SIZE_ETHERNET+4);
+  ...
+  /*Change IP addresses*/
+  inet_aton(ipSourceAddressString,  new_s);
+  ip->ip_src = *new_s;
+  
+  inet_aton(ipDestAddressString,  new_d);
+  ip->ip_dst = *new_d;
+  ...
+  /* Recalculate Checksum */
+  ip->ip_sum=0;
+  uint16_t new_cksm = 0;
+  if(ether_type == 0x0800)
+    new_cksm=do_cksum(reinterpret_cast<uint16_t*>(packet_cpy+SIZE_ETHERNET),
+      sizeof(struct sniff_ip));
+  else if(ether_type == 0x8100)
+    new_cksm=do_cksum(reinterpret_cast<uint16_t*>(packet_cpy+SIZE_ETHERNET+4),
+      sizeof(struct sniff_ip));
+    ip->ip_sum=htons(new_cksm);
+  ...
+  /* Dump the packet */    
+  pcap_dump((u_char*)file,pkt_hdr,packet_cpy);
+
+\end{lstlisting}
+
+When received a new VM allocation from the controller, the traffic generator started rewriting the traffic sample to fit the VM characteristics, and when ready, the modified sample was replayed from the server which was selected for the allocation.
+
+\begin{verbatim}
+"./sniffex -f TrafficSample/traffic -s 131.114.53.74 -d "
+\end{verbatim}
+
+Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, the only thing needed to be done was replaying the already generated traffic sample with the requires characteristics.
+
+The traffic generator was tested with some hybrid VM allocation policies.
+Unfortunately, due to the TCPreplay poor performance it was not possible to achieve the expected switch and link utilization.
+Trying to understand the problem, it was realised that TCPreplay uses a great amount of CPU independently of the bandwidth which it generates. As an instance of TCPreplay was running for each VM, there was not enough processing power for all of them to run normally.
+As can be seen in figure \ref{fig:tcpreplay}, the switch utilization went little above the 2\%.
+Despite the low switch/link utilization, it was still possible to see the implemented hybrid VM allocation working.
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/tcpreplay2.png}
+        \caption{Tcpreplay performance in hybrid VM allocation policy - Switch utilization. Taken from \cite{im2013}}
+        \label{fig:tcpreplay}
+\end{figure}
+
+\newpage
+
+\subsubsection{Iperf}
+
 -Use server/client for ordering the starting of the traffic
 -play it at the requested speed from the servers that got the vm allocation
 -problems found: Samples must be generated with the corrrect ip addresses (takes time), short term solution was generate them previously for all the possible servers, so they can be just reproduced when ask (instead of waiting)
@@ -483,6 +572,8 @@ Talk about the Iperf solution
 -although is not accurate to "imitate" DC traffic behaviour, it is good for testing the DC limits and how it behaves when is overloaded, or near overloading
 -doesn't have the problem that tcp replay had
 -included possible configuration in the configuration file for simplicity
+
+\subsubsection{D-ITG}
 
 Talk about d-itg:
 -doesnt have the problem Tcpreplay has
@@ -1126,7 +1217,27 @@ socket_path = /home/mininet/socket.tmp
 
 \end{lstlisting}
 
-\chapter{Mininet - DC Topology Generator Algorithm \label{app:tgalg}}
+
+\chapter{Mininet - DC Topology Generator Algorithm}
+\label{app:tpalg}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=2
+}
+
+
 \begin{lstlisting}
     def generateTopology(self):
         #Out self.myhosts (self.myhosts that pretend to be the next thing after the gateway)
@@ -1251,6 +1362,712 @@ socket_path = /home/mininet/socket.tmp
             
             #Add hosts until you can separate the host network and the outside host network
             len(self.myhosts)+len(self.outside_hosts)+1
+\end{lstlisting}
+
+
+\chapter{Sniffex.c Modified}
+\label{app:sniffex}
+\lstset{language=C,frame=lines}
+\begin{lstlisting}
+*
+ * sniffex.c
+ *
+ * Sniffer example of TCP/IP packet capture using libpcap.
+ * 
+ * Version 0.1.1 (2005-07-05)
+ * Copyright (c) 2005 The Tcpdump Group
+ *
+ * This software is intended to be used as a practical example and 
+ * demonstration of the libpcap library; available at:
+ * http://www.tcpdump.org/
+ *
+ ****************************************************************************
+ *
+ * This software is a modification of Tim Carstens' "sniffer.c"
+ * demonstration source code, released as follows:
+ * 
+ * sniffer.c
+ * Copyright (c) 2002 Tim Carstens
+ * 2002-01-07
+ * Demonstration of using libpcap
+ * timcarst -at- yahoo -dot- com
+ * 
+ * "sniffer.c" is distributed under these terms:
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 4. The name "Tim Carstens" may not be used to endorse or promote
+ *    products derived from this software without prior written permission
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ * <end of "sniffer.c" terms>
+ *
+ * This software, "sniffex.c", is a derivative work of "sniffer.c" and is
+ * covered by the following terms:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Because this is a derivative work, you must comply with the "sniffer.c"
+ *    terms reproduced above.
+ * 2. Redistributions of source code must retain the Tcpdump Group copyright
+ *    notice at the top of this source file, this list of conditions and the
+ *    following disclaimer.
+ * 3. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 4. The names "tcpdump" or "libpcap" may not be used to endorse or promote
+ *    products derived from this software without prior written permission.
+ *
+ * THERE IS ABSOLUTELY NO WARRANTY FOR THIS PROGRAM.
+ * BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+ * FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
+ * OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+ * PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
+ * OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS
+ * TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE
+ * PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
+ * REPAIR OR CORRECTION.
+ * 
+ * IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+ * WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+ * REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
+ * INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
+ * OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED
+ * TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
+ * YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
+ * PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGES.
+ * <end of "sniffex.c" terms>
+ * 
+ ****************************************************************************
+ *
+ * Below is an excerpt from an email from Guy Harris on the tcpdump-workers
+ * mail list when someone asked, "How do I get the length of the TCP
+ * payload?" Guy Harris' slightly snipped response (edited by him to
+ * speak of the IPv4 header length and TCP data offset without referring
+ * to bitfield structure members) is reproduced below:
+ * 
+ * The Ethernet size is always 14 bytes.
+ * 
+ * <snip>...</snip>
+ *
+ * In fact, you *MUST* assume the Ethernet header is 14 bytes, *and*, if 
+ * you're using structures, you must use structures where the members 
+ * always have the same size on all platforms, because the sizes of the 
+ * fields in Ethernet - and IP, and TCP, and... - headers are defined by 
+ * the protocol specification, not by the way a particular platform's C 
+ * compiler works.)
+ *
+ * The IP header size, in bytes, is the value of the IP header length,
+ * as extracted from the "ip_vhl" field of "struct sniff_ip" with
+ * the "IP_HL()" macro, times 4 ("times 4" because it's in units of
+ * 4-byte words).  If that value is less than 20 - i.e., if the value
+ * extracted with "IP_HL()" is less than 5 - you have a malformed
+ * IP datagram.
+ *
+ * The TCP header size, in bytes, is the value of the TCP data offset,
+ * as extracted from the "th_offx2" field of "struct sniff_tcp" with
+ * the "TH_OFF()" macro, times 4 (for the same reason - 4-byte words).
+ * If that value is less than 20 - i.e., if the value extracted with
+ * "TH_OFF()" is less than 5 - you have a malformed TCP segment.
+ *
+ * So, to find the IP header in an Ethernet packet, look 14 bytes after 
+ * the beginning of the packet data.  To find the TCP header, look 
+ * "IP_HL(ip)*4" bytes after the beginning of the IP header.  To find the
+ * TCP payload, look "TH_OFF(tcp)*4" bytes after the beginning of the TCP
+ * header.
+ * 
+ * To find out how much payload there is:
+ *
+ * Take the IP *total* length field - "ip_len" in "struct sniff_ip" 
+ * - and, first, check whether it's less than "IP_HL(ip)*4" (after
+ * you've checked whether "IP_HL(ip)" is >= 5).  If it is, you have
+ * a malformed IP datagram.
+ *
+ * Otherwise, subtract "IP_HL(ip)*4" from it; that gives you the length
+ * of the TCP segment, including the TCP header.  If that's less than
+ * "TH_OFF(tcp)*4" (after you've checked whether "TH_OFF(tcp)" is >= 5),
+ * you have a malformed TCP segment.
+ *
+ * Otherwise, subtract "TH_OFF(tcp)*4" from it; that gives you the
+ * length of the TCP payload.
+ *
+ * Note that you also need to make sure that you don't go past the end 
+ * of the captured data in the packet - you might, for example, have a 
+ * 15-byte Ethernet packet that claims to contain an IP datagram, but if 
+ * it's 15 bytes, it has only one byte of Ethernet payload, which is too 
+ * small for an IP header.  The length of the captured data is given in 
+ * the "caplen" field in the "struct pcap_pkthdr"; it might be less than 
+ * the length of the packet, if you're capturing with a snapshot length 
+ * other than a value >= the maximum packet size.
+ * <end of response>
+ * 
+ ****************************************************************************
+ * 
+ * Example compiler command-line for GCC:
+ *   gcc -Wall -o sniffex sniffex.c -lpcap
+ * 
+ ****************************************************************************
+ *
+ * Code Comments
+ *
+ * This section contains additional information and explanations regarding
+ * comments in the source code. It serves as documentaion and rationale
+ * for why the code is written as it is without hindering readability, as it
+ * might if it were placed along with the actual code inline. References in
+ * the code appear as footnote notation (e.g. [1]).
+ *
+ * 1. Ethernet headers are always exactly 14 bytes, so we define this
+ * explicitly with "#define". Since some compilers might pad structures to a
+ * multiple of 4 bytes - some versions of GCC for ARM may do this -
+ * "sizeof (struct sniff_ethernet)" isn't used.
+ * 
+ * 2. Check the link-layer type of the device that's being opened to make
+ * sure it's Ethernet, since that's all we handle in this example. Other
+ * link-layer types may have different length headers (see [1]).
+ *
+ * 3. This is the filter expression that tells libpcap which packets we're
+ * interested in (i.e. which packets to capture). Since this source example
+ * focuses on IP and TCP, we use the expression "ip", so we know we'll only
+ * encounter IP packets. The capture filter syntax, along with some
+ * examples, is documented in the tcpdump man page under "expression."
+ * Below are a few simple examples:
+ *
+ * Expression     Description
+ * ----------     -----------
+ * ip         Capture all IP packets.
+ * tcp          Capture only TCP packets.
+ * tcp port 80      Capture only TCP packets with a port equal to 80.
+ * ip host 10.1.2.3   Capture all IP packets to or from host 10.1.2.3.
+ *
+ ****************************************************************************
+ *
+ */
+
+#define APP_NAME    "sniffex"
+#define APP_DESC    "Sniffer example using libpcap"
+#define APP_COPYRIGHT "Copyright (c) 2005 The Tcpdump Group"
+#define APP_DISCLAIMER  "THERE IS ABSOLUTELY NO WARRANTY FOR THIS PROGRAM."
+
+#include <pcap.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <signal.h>
+#include <byteswap.h>
+#include <math.h>
+#include <errno.h>
+
+#define min(a,b) ( (a) < (b) ? (a) : (b) )
+#define SR_PACKET_DUMP_SIZE 1514
+#define DEFAULT_IFACE "nf2c0"
+
+/*Handle arguments*/
+int c;
+char *logfile = NULL;
+char *interface = NULL;
+char *filename = NULL;
+pcap_dumper_t* file;
+
+char *dev = NULL;         /* capture device name */
+pcap_t *handle;           /* packet capture handle */
+bpf_u_int32 mask;         /* subnet mask */
+bpf_u_int32 net;          /* ip */
+char errbuf[PCAP_ERRBUF_SIZE];    /* error buffer */
+
+char ipSourceAddressString[16] = "";
+char ipDestAddressString[16] = "";
+
+
+/* default snap length (maximum bytes per packet to capture) */
+#define SNAP_LEN 1518
+
+/* ethernet headers are always exactly 14 bytes [1] */
+#define SIZE_ETHERNET 14
+
+/* Ethernet addresses are 6 bytes */
+#define ETHER_ADDR_LEN  6
+
+/* Ethernet header */
+struct sniff_ethernet {
+        u_char  ether_dhost[ETHER_ADDR_LEN];    /* destination host address */
+        u_char  ether_shost[ETHER_ADDR_LEN];    /* source host address */
+        u_short ether_type;                     /* IP? ARP? RARP? etc */
+};
+
+/* IP header */
+struct sniff_ip {
+        u_char  ip_vhl;                 /* version << 4 | header length >> 2 */
+        u_char  ip_tos;                 /* type of service */
+        u_short ip_len;                 /* total length */
+        u_short ip_id;                  /* identification */
+        u_short ip_off;                 /* fragment offset field */
+        #define IP_RF 0x8000            /* reserved fragment flag */
+        #define IP_DF 0x4000            /* dont fragment flag */
+        #define IP_MF 0x2000            /* more fragments flag */
+        #define IP_OFFMASK 0x1fff       /* mask for fragmenting bits */
+        u_char  ip_ttl;                 /* time to live */
+        u_char  ip_p;                   /* protocol */
+        u_short ip_sum;                 /* checksum */
+        struct  in_addr ip_src,ip_dst;  /* source and dest address */
+};
+
+#define IP_HL(ip)               (((ip)->ip_vhl) & 0x0f)
+#define IP_V(ip)                (((ip)->ip_vhl) >> 4)
+
+/* TCP header */
+typedef u_int tcp_seq;
+
+struct sniff_tcp {
+        u_short th_sport;               /* source port */
+        u_short th_dport;               /* destination port */
+        tcp_seq th_seq;                 /* sequence number */
+        tcp_seq th_ack;                 /* acknowledgement number */
+        u_char  th_offx2;               /* data offset, rsvd */
+#define TH_OFF(th)      (((th)->th_offx2 & 0xf0) >> 4)
+        u_char  th_flags;
+        #define TH_FIN  0x01
+        #define TH_SYN  0x02
+        #define TH_RST  0x04
+        #define TH_PUSH 0x08
+        #define TH_ACK  0x10
+        #define TH_URG  0x20
+        #define TH_ECE  0x40
+        #define TH_CWR  0x80
+        #define TH_FLAGS        (TH_FIN|TH_SYN|TH_RST|TH_ACK|TH_URG|TH_ECE|TH_CWR)
+        u_short th_win;                 /* window */
+        u_short th_sum;                 /* checksum */
+        u_short th_urp;                 /* urgent pointer */
+};
+
+void
+print_payload(const u_char *payload, int len);
+
+void
+print_hex_ascii_line(const u_char *payload, int len, int offset);
+
+void
+print_app_banner(void);
+
+void
+print_app_usage(void);
+
+/*
+ * app name/banner
+ */
+void
+print_app_banner(void)
+{
+
+  printf("%s - %s\n", APP_NAME, APP_DESC);
+  printf("%s\n", APP_COPYRIGHT);
+  printf("%s\n", APP_DISCLAIMER);
+  printf("\n");
+
+return;
+}
+
+/*
+ * print help text
+ */
+void
+print_app_usage(void)
+{
+
+  printf("Usage: %s [interface]\n", APP_NAME);
+  printf("\n");
+  printf("Options:\n");
+  printf("    interface    Listen on <interface> for packets.\n");
+  printf("\n");
+
+return;
+}
+
+/*
+ * print data in rows of 16 bytes: offset   hex   ascii
+ *
+ * 00000   47 45 54 20 2f 20 48 54  54 50 2f 31 2e 31 0d 0a   GET / HTTP/1.1..
+ */
+void
+print_hex_ascii_line(const u_char *payload, int len, int offset)
+{
+
+  int i;
+  int gap;
+  const u_char *ch;
+
+  /* offset */
+  printf("%05d   ", offset);
+  
+  /* hex */
+  ch = payload;
+  for(i = 0; i < len; i++) {
+    printf("%02x ", *ch);
+    ch++;
+    /* print extra space after 8th byte for visual aid */
+    if (i == 7)
+      printf(" ");
+  }
+  /* print space to handle line less than 8 bytes */
+  if (len < 8)
+    printf(" ");
+  
+  /* fill hex gap with spaces if not full line */
+  if (len < 16) {
+    gap = 16 - len;
+    for (i = 0; i < gap; i++) {
+      printf("   ");
+    }
+  }
+  printf("   ");
+  
+  /* ascii (if printable) */
+  ch = payload;
+  for(i = 0; i < len; i++) {
+    if (isprint(*ch))
+      printf("%c", *ch);
+    else
+      printf(".");
+    ch++;
+  }
+
+  printf("\n");
+
+return;
+}
+
+/*
+ * print packet payload data (avoid printing binary data)
+ */
+void
+print_payload(const u_char *payload, int len)
+{
+
+  int len_rem = len;
+  int line_width = 16;      /* number of bytes per line */
+  int line_len;
+  int offset = 0;         /* zero-based offset counter */
+  const u_char *ch = payload;
+
+  if (len <= 0)
+    return;
+
+  /* data fits on one line */
+  if (len <= line_width) {
+    print_hex_ascii_line(ch, len, offset);
+    return;
+  }
+
+  /* data spans multiple lines */
+  for ( ;; ) {
+    /* compute current line length */
+    line_len = line_width % len_rem;
+    /* print line */
+    print_hex_ascii_line(ch, line_len, offset);
+    /* compute total remaining */
+    len_rem = len_rem - line_len;
+    /* shift pointer to remaining bytes to print */
+    ch = ch + line_len;
+    /* add offset */
+    offset = offset + line_width;
+    /* check if we have line width chars or less */
+    if (len_rem <= line_width) {
+      /* print last line and get out */
+      print_hex_ascii_line(ch, len_rem, offset);
+      break;
+    }
+  }
+
+return;
+}
+
+uint16_t do_cksum(uint16_t *addr, int len)
+{
+    int nleft = len;
+    uint16_t *w = addr;
+    uint16_t answer;
+    uint32_t sum = 0;
+
+    /*
+     *  Our algorithm is simple, using a 32 bit accumulator (sum),
+     *  we add sequential 16 bit words to it, and at the end, fold
+     *  back all the carry bits from the top 16 bits into the lower
+     *  16 bits.
+     */
+    while (nleft > 1)  {
+        sum += ntohs(*w++);
+        nleft -= 2;
+    }
+
+    /* mop up an odd byte, if necessary */
+    if (nleft == 1){
+        sum += *(reinterpret_cast<u_char *>(w));
+    }
+
+    /*
+     * add back carry outs from top 16 bits to low 16 bits
+     */
+    sum = (sum >> 16) + (sum & 0xffff); /* add hi 16 to low 16 */
+    sum += (sum >> 16);         /* add carry */
+    answer = ~sum;              /* truncate to 16 bits */
+    return (answer);
+}
+
+void ex_programm(int sig){
+    pcap_dump_close(file);
+    (void)signal(SIGINT, SIG_DFL);
+}
+
+void pcap_spoof_ip(unsigned char* arg, const struct pcap_pkthdr * pkt_hdr, unsigned char const* packet) {
+    
+  struct pcap_pkthdr h;
+  int size;
+    int len;
+    int i;
+    int size_ip;
+    unsigned char s_octet[4] = {0,0,0,0};
+    unsigned char d_octet[4] = {0,0,0,0};
+    
+    /* declare pointers to packet headers */
+  const struct sniff_ethernet *ethernet;  /* The ethernet header [1] */
+  struct sniff_ip *ip;              /* The IP header */
+    
+    (void)signal(SIGINT,ex_programm);
+ 
+  /* Get info from packet header */
+    len = pkt_hdr->caplen;
+    size = min(SR_PACKET_DUMP_SIZE, len);
+    
+    /* Copy packet */
+    unsigned char* packet_cpy;
+  packet_cpy = (unsigned char*) malloc(len);
+  memcpy(packet_cpy, packet, len);
+    
+    ethernet = (const struct sniff_ethernet *)packet;
+    
+    uint16_t ether_type = ntohs(ethernet->ether_type);
+    
+    /* Remake IP Addresses on the copied packet */
+    if(ether_type == 0x0800)
+    ip = (struct sniff_ip*)(packet_cpy+SIZE_ETHERNET);
+  else if(ether_type == 0x8100)
+    ip = (struct sniff_ip*)(packet_cpy+SIZE_ETHERNET+4);
+    
+    ip->ip_ttl = 14;
+    
+    size_ip = IP_HL(ip)*4;
+  if (size_ip < 20) {
+    printf("* Invalid IP header length: %u bytes\n", size_ip);
+    return;
+  }
+  
+    
+    in_addr *new_s;
+    new_s = (in_addr*) malloc(sizeof(struct in_addr));
+    
+    
+    in_addr *new_d;
+    new_d = (in_addr*) malloc(sizeof(struct in_addr));
+    
+    inet_aton(ipSourceAddressString,  new_s);
+    ip->ip_src = *new_s;
+  
+  inet_aton(ipDestAddressString,  new_d);
+    ip->ip_dst = *new_d;
+    
+    /* For Debug Purposes
+  ip->saddr = ntohl(new_saddr);
+    ip->daddr = ntohl(new_daddr);
+    
+    for (i=0; i<4; i++)
+  s_octet[i] = (ip->saddr >>(i*8)) & 0xFF;
+
+    for (i=0; i<4; i++)
+        d_octet[i] = (ip->daddr >>(i*8)) & 0xFF;
+        
+  printf("NEW source ip: %d.%d.%d.%d\n",s_octet[3],s_octet[2],s_octet[1],s_octet[0]);
+    printf("NEW destination ip: %d.%d.%d.%d\n",d_octet[3],d_octet[2],d_octet[1],d_octet[0]);
+  */
+  
+  /* Recalculate Checksum */
+  ip->ip_sum=0;
+  uint16_t new_cksm = 0;
+  if(ether_type == 0x0800)
+    new_cksm=do_cksum(reinterpret_cast<uint16_t*>(packet_cpy+SIZE_ETHERNET),sizeof(struct sniff_ip));
+  else if(ether_type == 0x8100)
+    new_cksm=do_cksum(reinterpret_cast<uint16_t*>(packet_cpy+SIZE_ETHERNET+4),sizeof(struct sniff_ip));
+    ip->ip_sum=htons(new_cksm);
+    
+    
+    /* Dump the packet */    
+    //h.caplen = pkt_hdr->caplen;
+    //h.len = (size < SR_PACKET_DUMP_SIZE) ? size : SR_PACKET_DUMP_SIZE;
+    
+    pcap_dump((u_char*)file,pkt_hdr,packet_cpy);
+    
+    //printf("New packet dumped\n");
+}
+
+int setup_live_capture(char *dev, pcap_t *handle, bpf_u_int32 net, bpf_u_int32 mask, char *errbuf){
+  
+  /* find a capture device if not specified on command-line */
+  dev = pcap_lookupdev(errbuf);
+  if (dev == NULL) {
+    fprintf(stderr, "Couldn't find default device: %s\n",
+      errbuf);
+    exit(EXIT_FAILURE);
+  }
+  
+  /* get network number and mask associated with capture device */
+  if (pcap_lookupnet(dev, &net, &mask, errbuf) == -1) {
+    fprintf(stderr, "Couldn't get netmask for device %s: %s\n",
+      dev, errbuf);
+    net = 0;
+    mask = 0;
+  }
+  /* print capture info */
+  printf("Device: %s\n", dev);
+
+  /* open live capture device */
+  handle = pcap_open_live(dev, SNAP_LEN, 1, 1000, errbuf);
+  if (handle == NULL) {
+    fprintf(stderr, "Couldn't open device %s: %s\n", dev, errbuf);
+    exit(EXIT_FAILURE);
+  }
+  
+  /* make sure we're capturing on an Ethernet device [2] */
+  if (pcap_datalink(handle) != DLT_EN10MB) {
+    fprintf(stderr, "%s is not an Ethernet\n", dev);
+    exit(EXIT_FAILURE);
+  }
+}
+
+int setup_filter(pcap_t* handle, bpf_u_int32 net, char* filter_exp, struct bpf_program* fp){
+  /* compile the filter expression */
+  if (pcap_compile(handle, fp, filter_exp, 0, net) == -1) {
+    fprintf(stderr, "Couldn't parse filter %s: %s\n",
+        filter_exp, pcap_geterr(handle));
+    exit(EXIT_FAILURE);
+  }
+
+  /* apply the compiled filter */
+  if (pcap_setfilter(handle, fp) == -1) {
+    fprintf(stderr, "Couldn't install filter %s: %s\n",
+        filter_exp, pcap_geterr(handle));
+    exit(EXIT_FAILURE);
+  }
+}
+int main(int argc, char **argv)
+{
+  
+
+  char filter_exp[] = "ip";     /* filter expression [3] */
+  struct bpf_program fp;        /* compiled filter program (expression) */
+  int num_packets = 10;       /* number of packets to capture */
+  int s = 0 ;
+  int d = 0 ;
+  
+  while ((c = getopt(argc, argv, "f:i:l:s:d:")) != EOF)
+  {
+   switch (c)
+   {
+    case 'f':
+      filename = optarg;
+      break;
+    case 'i':
+      interface = optarg;
+      break;
+    case 'l':
+      logfile = optarg;
+      break;
+    case 's':
+      memcpy(ipSourceAddressString, optarg, sizeof(ipSourceAddressString));
+      s++;
+      break;
+    case 'd':
+      d++;
+      memcpy(ipDestAddressString, optarg, sizeof(ipSourceAddressString));
+      break;
+        }
+    }
+    
+    /*PRINT DISCLAIMER STUFF */
+  print_app_banner();
+
+  /* check for log file and capture device name or pacap filename on command-line */
+  if (s == 0 || d == 0){
+    fprintf(stdout, "No Source IP or Dest IP indicated\n");
+    return -1;
+  }
+  if (!logfile){
+    fprintf(stdout, "No log file indicated, using default (log.log)\n");
+    logfile = (char *)"log.log";
+  }
+  if (!interface)
+    if (!filename){
+      fprintf(stdout, "An interface or a pcap file must be entered (use -i or -f, respectively)\n");
+      return -1;
+    }
+  else
+  {
+    /* set device name as interface name */
+    //dev = interface;
+    
+    /* setup a live capture */
+    //setup_live_capture(dev, handle, net, mask, errbuf);
+  }
+  
+  /* open offline capture file */
+  handle = pcap_open_offline(filename, errbuf);
+  if(handle == 0){
+    fprintf(stderr, "Couldn't open pcap file %s: %s\n", filename, errbuf);
+          exit(EXIT_FAILURE);
+      }
+
+  /* setup filter for capture/pcap packets */
+  //setup_filter(handle, net, filter_exp, &fp);
+  
+  /* setup dump file */
+    file = pcap_dump_open(handle, logfile);
+        if(file == NULL){
+                printf("pcap_dump_open(): %s\n", errbuf);
+                exit(1);
+        }
+  
+  /* now we can set our callback function */
+  pcap_loop(handle, -1, pcap_spoof_ip, NULL);
+  pcap_close(handle);
+
+  printf("\nPcap changed successfully.\n");
+
+  return 0;
+}
 \end{lstlisting}
 
 \cleardoublepage

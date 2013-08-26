@@ -1,5 +1,21 @@
 \begin{thebibliography}{10}
 
+\bibitem{meridian}
+M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
+\newblock Meridian: An sdn platform for cloud network services.
+\newblock {\em Communications Magazine}, 2013.
+
+\bibitem{im2013}
+D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
+\newblock Effective resource control strategies using openflow in cloud data
+  center.
+\newblock In {\em International Symposium on Integrated Network Management}.
+  IEEE/IFIP, 2013.
+
+\bibitem{qosof}
+{OpenFlow Slicing Page}.
+\newblock {\em http://archive.openflow.org/wk/index.php/Slicing}.
+
 \bibitem{dc_arch}
 K.~Bilal, S.U. Khan, J.~Kolodziej, L.~Zhang, K.~Hayat, S.A. Madani,
   N.~Min-Allah, L.~Wang, and D.~Chen.
@@ -27,13 +43,6 @@ J.~Oltsik and B.~Laliberte.
 {Open Networking Foundation Home Page}.
 \newblock {\em https://www.opennetworking.org.}
 
-\bibitem{im2013}
-D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
-\newblock Effective resource control strategies using openflow in cloud data
-  center.
-\newblock In {\em International Symposium on Integrated Network Management}.
-  IEEE/IFIP, 2013.
-
 \bibitem{cloudsim}
 N.~Calheiros, R.~Ranjan, A.~Beloglazov, C.A.F. De~Rose, and R.~Buyya.
 \newblock Cloudsim: A toolkit for modeling and simulation of cloud computing
@@ -56,11 +65,6 @@ J.D. Ellithorpe, Z.~Tan, and R.H. Katz.
 \newblock Internet-in-a-box: Emulating datacenter network architectures using
   fpga's.
 \newblock In {\em Design Automation Conference}. ACM/IEEE, 2009.
-
-\bibitem{meridian}
-M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
-\newblock Meridian: An sdn platform for cloud network services.
-\newblock {\em Communications Magazine}, 2013.
 
 \bibitem{openstack}
 {Openstack Home Page}.
@@ -93,9 +97,13 @@ S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
 {Mininet Home Page}.
 \newblock {\em https://mininet.github.com.}
 
-\bibitem{qosof}
-{OpenFlow slicing page}.
-\newblock {\em http://archive.openflow.org/wk/index.php/Slicing}.
+\bibitem{tcprep}
+{TCPReplay Home Page}.
+\newblock {\em http://tcpreplay.synfin.net/}.
+
+\bibitem{sniffex}
+{Sniffex (Example of pcap Library Usage)}.
+\newblock {\em http://www.tcpdump.org/sniffex.c}.
 
 \bibitem{ofqos2}
 S.~Civanlar, M.~Parlakisik, A.M. Tekalp, B.~Gorkemli, B.~Kaytaz, and E.~Onem.
