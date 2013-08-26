@@ -626,10 +626,17 @@ All the rules are defined by the user in the \textit{user-defined logic}, but th
 
 For future work it is expected to implement supernetting with the goal of decreasing the amount of rules that are installed in each switch, which will have a direct impact on the rule searching time.
 
+\newpage
 \subsection{Stats (Statistics Handler)}
 
 \subsubsection{Statistics}
 \hspace{0.6cm}
+
+The \textit{statistics} module allows for statistics to be collected and saved.
+Aiming to provide easier access to the statistics provided by OF, the \textit{statistics} module was developed.
+As having access previous data collected is an important feature since it might be crucial to understand the DC behaviour.
+
+OF by default provides statistics regarding the ports of a switch and the installed flows. In figures \ref{fig:stats_portstats} and \ref{fig:stats_flowstats} a list of the available values is shown.
 
 \begin{figure}[h!tbp]
 \centering
@@ -647,32 +654,63 @@ For future work it is expected to implement supernetting with the goal of decrea
 \end{minipage}%
 \end{figure}
 
-In figure \ref{fig:stats_portstats}, it can be seen all the statistics available for switch ports and flows.
+Although a lot of port statistical values are available, bitrate is not one of them.
+Without bitrate it is not possible to know the port usage ratio and as a consequence the switch usage ratio.
+As this is a threat if one wants to develop an algorithm considering the network (\textit{e.g.} If network is considered for VM allocation, it makes no sense to allocate a VM in a server which is only connected to a overloaded switch).
 
--explain the statistics available
--say there is no bitrate, and since it is an important one (and modifying OF protocols was not a good option) we opted by calculating the bitrate based on the time and the packet count (that's the definition of bitrate, but our approach is not 100\% accurate) (explain how it works)
--talk about the algorithm used for showing the statistics (so its not so reactive, it was adopted a mecanism similar to the one used bu the tcp to calculate the windows size, historical ponderation can be also configured in the configuration file)
--statistics can be retrieved periodically (the peridiodicity is indicated by the configuration file), or can be retrieved whenever is required (for example when a vm request arrives)
+Despite bitrate not being directly available, there are at least $2$ ways to obtain it.
+One would be to change the OF switch implementation and protocol to implement it, but it is excessively intrusive and would turn the framework into a non standard option.
+The other one would be to use the byte count (in and out) and a time counter. Although it is not an accurate solution, it is the most viable.
 
--maybe talk about the strcuture in which they are saved and which methods are given for accessing them. 
+Respecting the statistics, POX implementation of the OF controller uses events for notifying that the statistics request is ready.
+To obtain the bitrate as accurate as possible, a statistics request is made, the timestamp of the event with the statistical data is registered, a new request is made, and again the timestamp of the latest event is registered.
+By subtracting the oldest timestamp to the newest it is obtained the time between the statistical data. The amount of bytes that were counted in that interval can be obtained in the same way. Finally by converting the bytes into bits (multiplying by $8$) and divide it by the time (converted to seconds), the bitrate is obtained.
 
--Switch/Link ratio
--Switch/link ratio with safe margin (for newer allocation) (configurable by the configuration file - allow over proviioning)
+\begin{verbatim}
+#obtain the bit_rate for this port in mbps
+bit_rate = ((bytes_count*8)/(time_elapsed))/1000000
+\end{verbatim}
 
+To calculate the port ratio the bitrate is divided by the port capacity. For the switch ratio, an average of all its ports ratios is made.
+% warning, since now there is intervm communication, the way the switch ratio was being calculated is now wrong
+
+Despite methods for accessing the statistics as they were collected is available, an alternative method is provided, which does a ponderation of the latest collected values with the average of the historical ones. The historical ponderation value can be changed in the configuration file.
+
+\begin{verbatim}
+bit_rate_port_stats[port_no] = 
+        (self.historical_ponderation * temp_hist_bit_rate) + 
+        ((1-self.historical_ponderation)* newest_bit_rate)
+
+\end{verbatim}
+
+Statistics can be collected, periodically (with periodicy indicated in the configuration file), can be retrieved whenever requested (\textit{e.g.} a VM request arrives) or both.
 
 \subsubsection{Statistics Exporter}
 \hspace{0.6cm}
 
-For now the Statistics exporter is just saving the values collected into '.csv' files. Two files are generated: one for switches and one for links.
--where the files are placed can be chosen in the configuration file.
--show an example of a file about the bitrate.
+\textit{Statistics Exporter} was created with the purpose of allowing statistics to be analyzed outside the running environment.
+To do so, it periodically checks the \textit{statitics} module, collecting and saving all the information into '.csv' files.
+\textit{Statistics exporter} should have the same periodicity for statistics collection than the \textit{statistics} module, in order to maximize the information gathered.
+Two types of files are generated: for switches and for links.
 
-Future work:
-Export the data into the webplatform.
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figures/statsexport.png}
+        \caption{Edge switch link statistics exported '.csv' file}
+        \label{fig:statsexport}
+\end{figure}
+
+A link statistics file can be seen in figure \ref{fig:statsexport}. Columns represent the switch and its port, and lines the link ratio in each timestamp.
+Where the files are saved can be chosen in the configuration file.
+
+For future work it is expected to export the statistics into the \textit{WEB platform}.
 
 \subsection{VM Request Handler}
 \hspace{0.6cm}
 
+This module is responsible for parsing the VM requests that came from both the \textit{VM Request Generator} and the \textit{WEB Platform}, raise events with their requirements, and notify the respective source of the VM request with the state of the allocation.
+
+For allowing multiple requests, a threads were used
 -Explain how it works (by threads and raising events)
 -Explain what it does:
   -receives VM requests (process them - make sure they are valid)
@@ -704,6 +742,8 @@ This is a space for the Admin/network engineer to define the DC managemnt
 -as all the information can be easily retrieved from the other modules, its easier to focus on the developement of the algorithms.
 
 -talk about what was implemented (the algorithm) and also the inter vm communication (the usage fo dijkstra)
+-Switch/Link ratio
+-Switch/link ratio with safe margin (for newer allocation) (configurable by the configuration file - allow over proviioning)
 
 \subsection{POX Modules used}
 \hspace{0.6cm}

@@ -39,37 +39,37 @@
 \contentsline {section}{\numberline {3.6}Framework modules: Controller}{22}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Topology (Discovery Module)}{22}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Rules (OF Rules Handler)}{23}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Stats (Statistics Handler)}{23}{subsection.3.6.3}
-\contentsline {subsubsection}{Statistics}{23}{section*.19}
-\contentsline {subsubsection}{Statistics Exporter}{24}{section*.21}
-\contentsline {subsection}{\numberline {3.6.4}VM Request Handler}{24}{subsection.3.6.4}
-\contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{25}{subsection.3.6.5}
-\contentsline {subsection}{\numberline {3.6.6}VMM - Virtual Machines Manager}{25}{subsection.3.6.6}
-\contentsline {subsection}{\numberline {3.6.7}User Defined Logic}{25}{subsection.3.6.7}
-\contentsline {subsection}{\numberline {3.6.8}POX Modules used}{25}{subsection.3.6.8}
-\contentsline {subsection}{\numberline {3.6.9}Configuration File}{26}{subsection.3.6.9}
-\contentsline {section}{\numberline {3.7}Framework modules: Web Platform}{27}{section.3.7}
-\contentsline {section}{\numberline {3.8}Framework modules: VM Requester}{29}{section.3.8}
-\contentsline {section}{\numberline {3.9}Using the framework}{30}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Emulator}{30}{subsection.3.9.1}
-\contentsline {subsubsection}{Setting up the development environment}{30}{section*.26}
-\contentsline {subsection}{\numberline {3.9.2}Real Environment}{30}{subsection.3.9.2}
-\contentsline {subsubsection}{Setting up the real environment}{30}{section*.27}
-\contentsline {subsubsection}{Real environment tests}{32}{section*.29}
-\contentsline {section}{\numberline {3.10}Framework extensions }{33}{section.3.10}
-\contentsline {subsection}{\numberline {3.10.1}Enabling QoS}{33}{subsection.3.10.1}
-\contentsline {subsubsection}{State of art: QoS in Openflow}{33}{section*.30}
-\contentsline {subsubsection}{QoS in the framework}{33}{section*.31}
-\contentsline {subsection}{\numberline {3.10.2}Enabling Virtual Machine migration}{36}{subsection.3.10.2}
-\contentsline {subsubsection}{State of art: Virtual Machine migration}{36}{section*.34}
-\contentsline {subsubsection}{Virtual Machine migration in the framework}{36}{section*.35}
-\contentsline {chapter}{\numberline {4}Validation and tests }{40}{chapter.4}
-\contentsline {section}{\numberline {4.1}Framework Validation}{40}{section.4.1}
-\contentsline {section}{\numberline {4.2}Performance Evaluation}{43}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{47}{chapter.5}
-\contentsline {section}{\numberline {5.1}Main contributions}{47}{section.5.1}
-\contentsline {section}{\numberline {5.2}Future work}{47}{section.5.2}
-\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{48}{appendix.A}
-\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{51}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{56}{appendix.C}
-\contentsline {chapter}{Bibliography}{78}{lstnumber.-5.699}
+\contentsline {subsection}{\numberline {3.6.3}Stats (Statistics Handler)}{24}{subsection.3.6.3}
+\contentsline {subsubsection}{Statistics}{24}{section*.19}
+\contentsline {subsubsection}{Statistics Exporter}{25}{section*.21}
+\contentsline {subsection}{\numberline {3.6.4}VM Request Handler}{26}{subsection.3.6.4}
+\contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{26}{subsection.3.6.5}
+\contentsline {subsection}{\numberline {3.6.6}VMM - Virtual Machines Manager}{27}{subsection.3.6.6}
+\contentsline {subsection}{\numberline {3.6.7}User Defined Logic}{27}{subsection.3.6.7}
+\contentsline {subsection}{\numberline {3.6.8}POX Modules used}{27}{subsection.3.6.8}
+\contentsline {subsection}{\numberline {3.6.9}Configuration File}{27}{subsection.3.6.9}
+\contentsline {section}{\numberline {3.7}Framework modules: Web Platform}{28}{section.3.7}
+\contentsline {section}{\numberline {3.8}Framework modules: VM Requester}{30}{section.3.8}
+\contentsline {section}{\numberline {3.9}Using the framework}{31}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Emulator}{31}{subsection.3.9.1}
+\contentsline {subsubsection}{Setting up the development environment}{31}{section*.27}
+\contentsline {subsection}{\numberline {3.9.2}Real Environment}{31}{subsection.3.9.2}
+\contentsline {subsubsection}{Setting up the real environment}{31}{section*.28}
+\contentsline {subsubsection}{Real environment tests}{33}{section*.30}
+\contentsline {section}{\numberline {3.10}Framework extensions }{34}{section.3.10}
+\contentsline {subsection}{\numberline {3.10.1}Enabling QoS}{34}{subsection.3.10.1}
+\contentsline {subsubsection}{State of art: QoS in Openflow}{34}{section*.31}
+\contentsline {subsubsection}{QoS in the framework}{34}{section*.32}
+\contentsline {subsection}{\numberline {3.10.2}Enabling Virtual Machine migration}{37}{subsection.3.10.2}
+\contentsline {subsubsection}{State of art: Virtual Machine migration}{37}{section*.35}
+\contentsline {subsubsection}{Virtual Machine migration in the framework}{37}{section*.36}
+\contentsline {chapter}{\numberline {4}Validation and tests }{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}Framework Validation}{41}{section.4.1}
+\contentsline {section}{\numberline {4.2}Performance Evaluation}{44}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusions}{48}{chapter.5}
+\contentsline {section}{\numberline {5.1}Main contributions}{48}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future work}{48}{section.5.2}
+\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{49}{appendix.A}
+\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{52}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{57}{appendix.C}
+\contentsline {chapter}{Bibliography}{79}{lstnumber.-5.699}
