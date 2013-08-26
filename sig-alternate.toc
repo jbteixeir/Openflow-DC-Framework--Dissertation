@@ -31,7 +31,8 @@
 \contentsline {section}{\numberline {3.4}Directory structure}{15}{section.3.4}
 \contentsline {section}{\numberline {3.5}Framework modules: Mininet Environment}{16}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Topology Generator}{16}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Traffic Generator}{16}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.2}Traffic Generator}{17}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Configuration file}{17}{subsection.3.5.3}
 \contentsline {section}{\numberline {3.6}Framework modules: Controller}{18}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Topology}{18}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Rules (OF Rules Handler)}{18}{subsection.3.6.2}
@@ -65,4 +66,5 @@
 \contentsline {section}{\numberline {5.1}Main contributions}{42}{section.5.1}
 \contentsline {section}{\numberline {5.2}Future work}{42}{section.5.2}
 \contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{43}{appendix.A}
-\contentsline {chapter}{Bibliography}{46}{appendix.A}
+\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm }{46}{appendix.B}
+\contentsline {chapter}{Bibliography}{51}{lstnumber.-2.123}

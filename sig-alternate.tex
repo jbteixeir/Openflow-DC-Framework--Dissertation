@@ -18,7 +18,31 @@
 \usepackage{varwidth}
 \usepackage{caption}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
 \usepackage{cite}\onehalfspacing
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
 
 \hypersetup{
   citebordercolor=1 1 1,
@@ -326,7 +350,6 @@ Despite its flexibility, Mininet lacks of a complete set of tools that easily al
 
 \chapter{The Framework \label{cha:framework} }
 
-
 \section{Requirements}
 \hspace{0.6cm}
 
@@ -408,26 +431,36 @@ An important feature that was taken into consideration when designing the framew
 
 \section{Directory structure}
 
--also explain that it was an evolving process, and it was change to make it easier to understand
-Explain the directory /file structure and how it maps to the architecture
+POX defined an \textit{ext} folder so controller extensions could be added without interfering with their development. This folder is used by the framework to store most of the modules (including the ones that are not used by the controller).
+The framework directory is structured as follows:
+
+\begin{itemize}
+  \item INIHandler -- used only to read and write configuration files
+  \item Rules -- contains \textit{OF Rules Handler}
+  \item Stats -- contains \textit{Statistics Handler}
+  \item Structures -- used to stored basic class structures and event (Switch, Host, etc)
+  \item Tools -- external tools used in the framework (\textit{e.g.} Dijkstra algorithm for calculating inter VM path)
+  \item Topology -- contains \textit{Topology Discover}
+  \item VM -- Contains all VM related modules. User-defined logic (VM Allocation Manager) and VM Request Handler (VM Request Manager) are implemented here.
+  \item XenCommunicator -- VMM Handler (for now only supporting XEN hypervisor)
+  \item Topology Generator (MN) -- contains Mininet \textit{Topology and traffic generator}
+  \item VM Requests Generator -- contains the \textit{VM requester}
+\end{itemize}
 
 \section{Framework modules: Mininet Environment}
 
-Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
-
-Talk about the configuration file
+The Mininet Environment is composed by both mininet and two costume modules named \textit{Topology Generator} and \textit{Traffic Generator}.
+These two modules where added to fill the missing support for traffic generation and the basic integrated topology generator.
 
 \subsection{Topology Generator}
+\hspace{0.6cm}
 
-Mininet predefined topology generator only have tree topologies and they don't have a Gateway, so after traffic reaches the core switches it goes nowhere (if it is traffic that addresses the internet).
+Mininet allows their topology generator to create tree topologies but they do not have a Gateway, meaning that they cannot correctly emulate a DC since when traffic reaches the core switches it has nowhere to go (if it is traffic that addresses the outside of the DC).
 
-As so, using the API it was generated a costume topology.
--allows to choose the number of edge,agg and core switches,
-- how many connection exist between them. (links are created automatically)
--number of servers also and how much edge switches does each of them connects
--same thing for the DC gateways with the core switches
--links bandwidth can be chosen for each link category
--everything can be configured by the configuration file, so it's easy to create different cenarious
+Using its API, an algorithm for generating costume DC tree and fat tree topologies was created. Details on the algorithm can be seen here\ref{app:tpalg}.
+It is able to generate any number of gateways, hosts and core, aggregation and edge switches.
+Is also generates the links between them, and the number of links between different levels (\textit{e.g.} from the gateways to the core switches) can be chosen.
+Link bandwidth is also configurable by level, meaning one needs only to setup the bandwidth for the $4$ network levels.
 
 \subsection{Traffic Generator}
 \hspace{0.6cm}
@@ -451,6 +484,8 @@ Talk about the Iperf solution
 Talk about d-itg:
 -doesnt have the problem Tcpreplay has
 -its much more dynamic then iperf (allows to generate voip,...)
+
+\subsection{Configuration file}
 
 \newpage
 
@@ -1021,7 +1056,7 @@ This chapter provides ...
 
 \chapter{Mininet Environment -- Configuration File\label{app:minconf}}
 
-\begin{verbatim}
+\begin{lstlisting}
 Filename: conf.ini
 
 [TopologySwitches]
@@ -1086,7 +1121,134 @@ iperf_port = 16000
 #path for the unix socket
 socket_path = /home/mininet/socket.tmp
 
-\end{verbatim}
+\end{lstlisting}
+
+\chapter{Mininet - DC Topology Generator Algorithm \label{app:tgalg}}
+\begin{lstlisting}
+    def generateTopology(self):
+        #Out self.myhosts (self.myhosts that pretend to be the next thing after the gateway)
+        for h in range(self.out_no):
+            host_id = 'o%i'% (len(self.myhosts)+len(self.outside_hosts)+1)
+            # Each outside host gets 30%/n of system CPU
+            host = self.addHost(host_id)
+            #host = self.addHost(host_id, cpu=0.5/((self.host_no*self.edge_no)+(self.out_no)))
+            
+            #set the ip of the outside host so it doesn't belong to the same subnet as the other hosts
+            #TODO:net.getNodeByName(host).setIp("10.10.0."+str(h))
+
+            #initialize link record
+            self.alllinks[host_id] = list()
+            
+            #add host records
+            self.outside_hosts.append(host_id)
+                
+        #Core Switches
+        for s in range(self.core_no):
+            switch_id = 'c%i'%(len(self.core_switches)+len(self.agg_switches)+len(self.edge_switches)+1)
+            switch = self.addSwitch(switch_id)
+            
+            #Add edge switch records
+            self.core_switches.append(switch_id)
+            
+            #initialize link records
+            if not self.alllinks.has_key(switch_id):
+                self.alllinks[switch_id] = list()
+            
+            #add link to out
+            switch_link_no = 0
+            self.outside_hosts.sort()
+            for host_id in self.outside_hosts :
+                if len(self.alllinks[host_id])<((self.core_no*self.core_out_link_no)/self.out_no):
+                    self.addLink(switch_id, host_id, bw=self.out_bw)
+                    #add link to record
+                    self.alllinks[host_id].append(switch_id)
+                    self.alllinks[switch_id].append(host_id)
+                    switch_link_no += 1
+                    
+                if switch_link_no >= self.core_out_link_no:
+                    break
+            
+            
+             
+            
+        #Agg Switches
+        for s in range(self.agg_no):
+            switch_id = 'a%i'%(len(self.core_switches)+len(self.agg_switches)+len(self.edge_switches)+1)
+            switch = self.addSwitch(switch_id)
+            
+            #Add edge switch records
+            self.agg_switches.append(switch_id)
+            
+            #initialize link records
+            if not self.alllinks.has_key(switch_id):
+                self.alllinks[switch_id] = list()
+            
+            #TODO: add link to core
+            switch_link_no = 0
+            self.core_switches.sort()
+            for core_id in self.core_switches :
+                if len(self.alllinks[core_id])-self.core_out_link_no<((self.agg_no*self.agg_core_link_no)/self.core_no):
+                    self.addLink(switch_id, core_id, bw = self.core_bw)
+                    #add link to record
+                    self.alllinks[core_id].append(switch_id)
+                    self.alllinks[switch_id].append(core_id)
+                    switch_link_no += 1
+                    
+                if switch_link_no >= self.agg_core_link_no:
+                    break
+
+                    
+        #Edge Switches
+        for s in range(self.edge_no):
+            switch_id = 'e%i'%(len(self.core_switches)+len(self.agg_switches)+len(self.edge_switches)+1)
+            switch = self.addSwitch(switch_id)
+            
+            #Add edge switch records
+            self.edge_switches.append(switch_id)
+            
+            #initialize link records
+            if not self.alllinks.has_key(switch_id):
+                self.alllinks[switch_id] = list()
+            
+            #TODO: add link to agg
+            switch_link_no = 0
+            self.agg_switches.sort()
+            for agg_id in self.agg_switches :
+                if len(self.alllinks[agg_id])-self.agg_core_link_no<((self.edge_no*self.edge_agg_link_no)/self.agg_no):
+                    mylink = self.addLink(switch_id, agg_id, bw = self.agg_bw)
+                    #add link to record
+                    self.alllinks[agg_id].append(switch_id)
+                    self.alllinks[switch_id].append(agg_id)
+                    switch_link_no += 1
+                    
+                if switch_link_no >= self.edge_agg_link_no:
+                    break
+            
+            #add self.myhosts and connection to self.myhosts
+            for h in range(self.host_no):
+                host_id = 'h%i' % (len(self.myhosts)+len(self.outside_hosts)+1)
+                # Each host gets 50%/n of system CPU
+                host = self.addHost(host_id)
+                #host = self.addHost(host_id, cpu=0.5/((self.host_no*self.edge_no)+(self.out_no)))
+                
+                #add link 100 Mbps, 5ms delay, 10% loss
+                #self.addLink(host_id, switch_id, bw=10, delay='5ms', loss=10, max_queue_size=1000, use_htb=True
+                self.addLink(host_id, switch_id, bw = self.edge_bw)
+                
+                #initialize link records
+                if not self.alllinks.has_key(host_id):
+                    self.alllinks[host_id] = list()
+                    
+                #add link records
+                self.alllinks[host_id].append(switch_id)
+                self.alllinks[switch_id].append(host_id)
+                
+                #add host records
+                self.myhosts.append(host_id)
+            
+            #Add hosts until you can separate the host network and the outside host network
+            len(self.myhosts)+len(self.outside_hosts)+1
+\end{lstlisting}
 
 \cleardoublepage
 
