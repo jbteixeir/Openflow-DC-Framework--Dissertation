@@ -432,6 +432,7 @@ Outside of the the mininet environment and the controller there is the {\it WEB 
 
 An important feature that was taken into consideration when designing the framework's architecture is that all the modules are independent from each other, and they can be changed, removed or added in order to fulfill all the user requirements.
 
+\newpage
 \section{Directory structure}
 
 POX defined an \textit{ext} folder so controller extensions could be added without interfering with their development. This folder is used by the framework to store most of the modules (including the ones that are not used by the controller).
@@ -451,6 +452,7 @@ The framework directory is structured as follows:
 \end{itemize}
 
 \section{Framework modules: Mininet Environment}
+\hspace{0.6cm}
 
 The Mininet Environment is composed by both mininet and custom two modules named \textit{Topology Generator} and \textit{Traffic Generator}.
 These two modules where added to fill the missing support for traffic generation and the basic integrated topology generator.
@@ -471,7 +473,7 @@ Link bandwidth is also configurable by level, meaning one needs only to setup th
 \subsection{Traffic Generator}
 \hspace{0.6cm}
 
-For mininet to simulate the VM allocation, since their hosts are already virtualized and have limited CPU access, generation of traffic as VMs get allocated was chosen.
+Since emulating traffic sources is a key point, reproducing both VM-to-VM and VM to out-of-DC data exchange is necessary to create an environment as close as possible to real scenarios.
 
 As mininet does not give any support to traffic generation, it is up to the user to do it. Since generating traffic manually for each VM allocation would be impractical for testing the DC policies, an automatic traffic generator was created.
 
@@ -485,6 +487,7 @@ In this socket the following information is exchanged,
 \end{itemize}
 
 \subsubsection{TCPReplay}
+\hspace{0.6cm}
 
 With the goal of reproducing as closely as possible a DC behaviour, traffic samples from a real cluster were collected, and \textit{tcpreplay}\cite{tcprep} was used to replay them. The sample was collected from the clusters of the Department of Informatics - University of Minho and has approximately $500$Mb size.
 
@@ -535,17 +538,17 @@ After knowing where the ip header was, it was changed to the desired one, recalc
 
 \end{lstlisting}
 
-When received a new VM allocation from the controller, the traffic generator started rewriting the traffic sample to fit the VM characteristics, and when ready, the modified sample was replayed from the server which was selected for the allocation.
+When received a new VM allocation from the controller, the traffic generator started rewriting the traffic sample to fit the VM characteristics, and when ready, the modified sample was replayed from the server which was selected for the allocation. In order to generate traffic only during the time which the VM was allocated, the \textit{timeout} program was used.
 
 \begin{verbatim}
-"./sniffex -f TrafficSample/traffic -s 131.114.53.74 -d "
+"./sniffex -f TrafficSample/traffic -s source_ip -d dest_ip"
 \end{verbatim}
 
 Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, the only thing needed to be done was replaying the already generated traffic sample with the requires characteristics.
 
 The traffic generator was tested with some hybrid VM allocation policies.
-Unfortunately, due to the TCPreplay poor performance it was not possible to achieve the expected switch and link utilization.
-Trying to understand the problem, it was realised that TCPreplay uses a great amount of CPU independently of the bandwidth which it generates. As an instance of TCPreplay was running for each VM, there was not enough processing power for all of them to run normally.
+Unfortunately, due to the TCPreplay' poor performance it was not possible to achieve the expected switch and link utilization.
+Trying to understand the problem, it was realized that TCPreplay uses a large amount of CPU independently of the bandwidth which it generates. As an instance of TCPreplay was running for each VM, there was not enough processing power for all of them to run normally.
 As can be seen in figure \ref{fig:tcpreplay}, the switch utilization went little above the 2\%.
 Despite the low switch/link utilization, it was still possible to see the implemented hybrid VM allocation working.
 
@@ -556,49 +559,63 @@ Despite the low switch/link utilization, it was still possible to see the implem
         \label{fig:tcpreplay}
 \end{figure}
 
-\newpage
-
 \subsubsection{Iperf}
+\hspace{0.6cm}
 
--Use server/client for ordering the starting of the traffic
--play it at the requested speed from the servers that got the vm allocation
--problems found: Samples must be generated with the corrrect ip addresses (takes time), short term solution was generate them previously for all the possible servers, so they can be just reproduced when ask (instead of waiting)
--problems found: tcpreplay takes to much cpu independently of the amount of traffic that is generated
--"amostra" de tráfego do cluster do DI com 500mb
+As an alternative to TCPreplay, Iperf\cite{iperf} is a network diagnosing tool which is able to reproduce both TCP and UDP traffic.
+Although it does not allow to replay traffic samples, it is a good tool for testing the DC behaviour at its peak utilization.
+Spending few CPU is also an advantage since many instances of it are required to run at the same time.
 
-
-Talk about the Iperf solution
--able to generate UDP and TCP traffic
--although is not accurate to "imitate" DC traffic behaviour, it is good for testing the DC limits and how it behaves when is overloaded, or near overloading
--doesn't have the problem that tcp replay had
--included possible configuration in the configuration file for simplicity
+Because it uses the server/client paradigm it had run both on the servers and on the gateways in order to work properly. In order to do so and coordinated with the controller VM allocations, the same method as before was used, but instead of running TCPreplay with the traffic sample, two instances of iperf were ran (both bidirectional, one with TCP and other with UDP). For allowing some flexibility, the balance of TCP against UDP traffic per VM can be changed.
 
 \subsubsection{D-ITG}
+\hspace{0.6cm}
 
-Talk about d-itg:
--doesnt have the problem Tcpreplay has
--its much more dynamic then iperf (allows to generate voip,...)
+Traffic emulation must be fully customizable (which \textit{iperf} is not) in order to allow the user's experiments: while traffic modeling is out of the scope of this framework, giving the user tools that allows to easily create different traffic profiles is a main issue.
+For this reason it is planned to integrate D-ITG\cite{gitg}, a distributed traffic generator that allows to generate a large spectrum of network traffic profiles({\it e.g.}, poisson distribution, DNS, VoIP, etc..).
+Application-specific traffic profiles can be defined, inserting their statistical parameters, possibily in the configuration file ({\it i.e.}, traffic shape, transport protocol, transmission rate, traffic duration, etc..).
+Moreover, during the configuration phase, the user should be able to specify how frequently these applications run into the DC.
+Similarly to what was happening before, every time a new VM is successfully allocated ({\it i.e.}, the OF controller chooses the host to allocate the VM and set up the rules on the OF switches) at least a new bidirectional traffic instance starts between one outside host and the one that hosts the new VM.
+We point out that the number of instances and the type of traffic strictly should only depend on the application chosen in the configuration phase.
 
 \subsection{Configuration file}
+\hspace{0.6cm}
+
+The configuration file for the \textit{Mininet environment} includes parameters for both the \textit{Topology Generator} and \textit{Traffic generator}.
+It follows the normal structure of the \textit{.ini} files, and all the configurations explained above can be made here. For organization purposes it is divided into types of configuration. An example of a configuration file can be seen in appendix \ref{app:minconf}.
+
+\begin{itemize}
+  \item TopologySwitches -- for changing the number of switches of each type;
+  \item TopologyHosts -- for changing the number of hosts (servers or gateways);
+  \item TopologyLinks -- for changing the number of links between DC network level;
+  \item SwitchBandwidth -- for changing the link bandwidth of each DC network level;
+  \item Traffic -- for changing Iperf settings (UDP VS TCP ratio, etc);
+  \item SwitchQueues -- EXPERIMENTAL: for setting port queues - QoS experiment;
+\end{itemize}
 
 \newpage
 
 \section{Framework modules: Controller}
 \hspace{0.6cm}
 
-Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
-
-Talk about the configuration file, and talk about how it was before (interactive parametrization (consoles asks for info), if no config file exists, it can be created this way)
+The controller is the most important part of the framework, since all the interaction with the network and the IT resources is made through it.
 
 \subsection{Topology}
 \hspace{0.6cm}
 
--saves all the info regarding topology (switches, hosts(servers or gateways(NOTE: non OF switches are viewed as hosts)), their interfaces, and the links)
--saved in disctionaries for easy and fast access to information
--responsible for discovering the topology and update the information acording to the changes that occur.
--explain how topology is discovered and which modules are used (Pox discovery which uses lldp packets and host\_tracker which uses ping (i guess, check it))
--explain how host tracker was modified and which events where added
--explain to which event it listens and what does it do with them.
+The \textit{Topology} is where all the information regarding the switches, links and it resources is kept and managed. It uses basic classes implemented under the \textit{structures} directory and saves the information in the form of dictionaries for easy and fast access to it.
+
+It also automatically detects the topology, and topology changes. To do so, it listens to the POX core events and uses two POX modules, the \textit{discovery} and the \textit{host\_tracker}.
+For basic information about the OF switches it handles the \textit{ConnectionUp, ConnectionDown, SwitchJoin, SwitchTimeout} and \textit{PortStatus} events.
+The first four give information about the switch state, id (known as dpid) and connection (so rules can be installed), while the last one gives information about all their ports and their ports state (down, up, administratively down).
+
+Regarding the \textit{discovery module}, it raises an event related to the links (allowing to know if they exists, are up or are down). To do it, it uses LLDP (Link Layer Discovery Protocol) packets which are sent through the switches interfaces, and with this information, it raises a LinkEvent saying if a link is up or down, and which switches and ports it connects.
+
+As for the \textit{host\_tracker} it allows to detect non OF devices(servers and gateways). The process for discovering them is similar to the one used by the \textit{discovery module}, but it uses \textit{ping} instead.
+Because this module does not raise any events, it was slightly modified to do so.
+$3$ type of events where added \textit{HostJoin, HostTimeout and HostMove}. Like the name suggests, \textit{HostJoin} is raisen when a host is detected and provides information to which switch and port it is connected; HostTimeout is raised when a host previously detected stop answering the ping request; and HostMove is raised when the host is connected to a different switch or port than the one registered before.
+
+For classifying the level which the switches belong to (edge, aggregation or core), gateways need to be distinguished from the servers, otherwise all the directly connected switches will be recognized as edge. As the addressing schemes are typically different from inside DC to the outside, this was used to differentiate them. To be fully parameterizable, the IP addresses/network addresses of both can be configured in the provided configuration file.
 
 \subsection{Rules (OF Rules Handler)}
 \hspace{0.6cm}
@@ -694,6 +711,11 @@ This is a space for the Admin/network engineer to define the DC managemnt
 
 besides using this two modules embedded on the topology module, another modules was also used: DHCP
 -Once again, by the configuration file, all the parameters can be configured.
+
+\subsection{Configuration File}
+\hspace{0.6cm}
+
+Talk about the configuration file, and talk about how it was before (interactive parametrization (consoles asks for info), if no config file exists, it can be created this way)
 
 \newpage
 
@@ -1210,10 +1232,6 @@ queue_bw2 = 0.2
 #starting port for iperf to run on each host
 udp_ratio = 0.5
 iperf_port = 16000
-
-[Socket]
-#path for the unix socket
-socket_path = /home/mininet/socket.tmp
 
 \end{lstlisting}
 

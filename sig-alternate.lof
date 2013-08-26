@@ -7,21 +7,21 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Tcpreplay performance in hybrid VM allocation policy - Switch utilization. Taken from \cite {im2013}\relax }}{20}{figure.caption.16}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Available port statistics\relax }}{23}{figure.caption.20}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Available flow statistics\relax }}{23}{figure.caption.20}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Photo of the testing environment\relax }}{26}{figure.caption.22}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Photo of the testing environment\relax }}{27}{figure.caption.23}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Photo of the testing environment\relax }}{27}{figure.caption.24}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Photo of the testing environment\relax }}{28}{figure.caption.25}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Photo of the testing environment\relax }}{29}{figure.caption.28}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces QoS - Mininet testing environment\relax }}{34}{figure.caption.32}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{34}{figure.caption.33}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Photo of the testing environment\relax }}{27}{figure.caption.22}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Photo of the testing environment\relax }}{28}{figure.caption.23}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Photo of the testing environment\relax }}{28}{figure.caption.24}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Photo of the testing environment\relax }}{29}{figure.caption.25}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Photo of the testing environment\relax }}{30}{figure.caption.28}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces QoS - Mininet testing environment\relax }}{35}{figure.caption.32}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{35}{figure.caption.33}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{40}{figure.caption.37}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{40}{figure.caption.38}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{42}{figure.caption.39}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{43}{figure.caption.40}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{44}{figure.caption.41}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{45}{figure.caption.42}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{45}{figure.caption.43}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{41}{figure.caption.37}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{41}{figure.caption.38}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{43}{figure.caption.39}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{44}{figure.caption.40}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{45}{figure.caption.41}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{46}{figure.caption.42}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{46}{figure.caption.43}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

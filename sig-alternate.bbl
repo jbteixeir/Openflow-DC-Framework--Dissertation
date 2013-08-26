@@ -105,6 +105,17 @@ S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
 {Sniffex (Example of pcap Library Usage)}.
 \newblock {\em http://www.tcpdump.org/sniffex.c}.
 
+\bibitem{iperf}
+{Iperf Home Page}.
+\newblock {\em http://iperf.sourceforge.net/}.
+
+\bibitem{gitg}
+A.~Pescap\'e A.~Dainotti, A.~Botta.
+\newblock A tool for the generation of realistic network workload for emerging
+  networking scenarios.
+\newblock {\em Computer Networks (Elsevier), 2012, Volume 56, Issue 15, pp
+  3531-3547}, 2012.
+
 \bibitem{ofqos2}
 S.~Civanlar, M.~Parlakisik, A.M. Tekalp, B.~Gorkemli, B.~Kaytaz, and E.~Onem.
 \newblock A qos-enabled openflow environment for scalable video streaming.
@@ -182,13 +193,6 @@ R.~Raghavendra, J.~Lobo, and K.W. Lee.
 A.~Tavakoli, M.~Casado, T.~Koponen, and S.~Shenker.
 \newblock Applying nox to the datacenter.
 \newblock In {\em HotNets}. ACM, 2009.
-
-\bibitem{gitg}
-A.~Pescap\'e A.~Dainotti, A.~Botta.
-\newblock A tool for the generation of realistic network workload for emerging
-  networking scenarios.
-\newblock {\em Computer Networks (Elsevier), 2012, Volume 56, Issue 15, pp
-  3531-3547}, 2012.
 
 \bibitem{vmmig}
 Clark C., Fraser K., Hand S., Gorm~Hansen J., Jul E., et~al.
