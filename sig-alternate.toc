@@ -37,17 +37,17 @@
 \contentsline {subsubsection}{D-ITG}{21}{section*.18}
 \contentsline {subsection}{\numberline {3.5.3}Configuration file}{21}{subsection.3.5.3}
 \contentsline {section}{\numberline {3.6}Framework modules: Controller}{22}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Topology}{22}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.1}Topology (Discovery Module)}{22}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Rules (OF Rules Handler)}{23}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Stats (Statistics Handler)}{23}{subsection.3.6.3}
 \contentsline {subsubsection}{Statistics}{23}{section*.19}
 \contentsline {subsubsection}{Statistics Exporter}{24}{section*.21}
 \contentsline {subsection}{\numberline {3.6.4}VM Request Handler}{24}{subsection.3.6.4}
-\contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{24}{subsection.3.6.5}
+\contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{25}{subsection.3.6.5}
 \contentsline {subsection}{\numberline {3.6.6}VMM - Virtual Machines Manager}{25}{subsection.3.6.6}
 \contentsline {subsection}{\numberline {3.6.7}User Defined Logic}{25}{subsection.3.6.7}
 \contentsline {subsection}{\numberline {3.6.8}POX Modules used}{25}{subsection.3.6.8}
-\contentsline {subsection}{\numberline {3.6.9}Configuration File}{25}{subsection.3.6.9}
+\contentsline {subsection}{\numberline {3.6.9}Configuration File}{26}{subsection.3.6.9}
 \contentsline {section}{\numberline {3.7}Framework modules: Web Platform}{27}{section.3.7}
 \contentsline {section}{\numberline {3.8}Framework modules: VM Requester}{29}{section.3.8}
 \contentsline {section}{\numberline {3.9}Using the framework}{30}{section.3.9}

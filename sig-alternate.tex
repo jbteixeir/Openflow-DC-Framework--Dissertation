@@ -600,7 +600,7 @@ It follows the normal structure of the \textit{.ini} files, and all the configur
 
 The controller is the most important part of the framework, since all the interaction with the network and the IT resources is made through it.
 
-\subsection{Topology}
+\subsection{Topology (Discovery Module)}
 \hspace{0.6cm}
 
 The \textit{Topology} is where all the information regarding the switches, links and it resources is kept and managed. It uses basic classes implemented under the \textit{structures} directory and saves the information in the form of dictionaries for easy and fast access to it.
@@ -620,10 +620,10 @@ For classifying the level which the switches belong to (edge, aggregation or cor
 \subsection{Rules (OF Rules Handler)}
 \hspace{0.6cm}
 
--Saves info about the rules that were installed on each switch
--install/deletes rules as VMs are install /expire
--routing is defined by user, this modules just provides abstraction for the lower level methods provided by pox.
--methods based only on dest and source ip, and more complex methods for higher traffic control.
+The \textit{Rules} module provides methods for easily installing and deleting rules from the OF switches, and keeps track of all that was installed.
+Once again the information is saved into dictionaries and both rules for outside DC communication and inter VM communication are stored.
+All the rules are defined by the user in the \textit{user-defined logic}, but this modules provides easier methods for installing them (based only on destination and source ip). As more complex rules with special matching condition might be used, more complete methods are also available, giving the user higher control over the traffic.
+
 Future work:
 -aggregate rules?
 -suppernetting?
@@ -705,6 +705,8 @@ This is a space for the Admin/network engineer to define the DC managemnt
 -keep track of servers occupation
 -defined the policies (network or server or hybrid)
 -as all the information can be easily retrieved from the other modules, its easier to focus on the developement of the algorithms.
+
+-talk about what was implemented (the algorithm) and also the inter vm communication (the usage fo dijkstra)
 
 \subsection{POX Modules used}
 \hspace{0.6cm}
