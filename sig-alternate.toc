@@ -71,13 +71,13 @@
 \contentsline {section}{\numberline {4.2}Usecase: Hybrid VM Allocation policy}{53}{section.4.2}
 \contentsline {section}{\numberline {4.3}Performance Evaluation}{55}{section.4.3}
 \contentsline {chapter}{\numberline {5}Conclusions}{59}{chapter.5}
-\contentsline {section}{\numberline {5.1}Main contributions}{59}{section.5.1}
-\contentsline {section}{\numberline {5.2}Future work}{59}{section.5.2}
-\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{60}{appendix.A}
-\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{63}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{68}{appendix.C}
-\contentsline {chapter}{\numberline {D}clone\_vms.sh}{90}{appendix.D}
-\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{93}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{95}{appendix.F}
-\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{97}{appendix.G}
-\contentsline {chapter}{Bibliography}{99}{lstnumber.-11.34}
+\contentsline {section}{\numberline {5.1}Main contributions}{60}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future work}{60}{section.5.2}
+\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{61}{appendix.A}
+\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{64}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{69}{appendix.C}
+\contentsline {chapter}{\numberline {D}clone\_vms.sh}{91}{appendix.D}
+\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{94}{appendix.E}
+\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{96}{appendix.F}
+\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{98}{appendix.G}
+\contentsline {chapter}{Bibliography}{100}{lstnumber.-11.34}

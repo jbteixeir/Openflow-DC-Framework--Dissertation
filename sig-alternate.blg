@@ -9,45 +9,45 @@ Warning--empty booktitle in cloudsim3
 Warning--empty year in cloudsim3
 Name 1 in "Hilmi E. Egilmez, Student Member, IEEE Seyhan Civanlar, and A. Murat Tekalp, Fellow, IEEE" has a comma at the end for entry ofqos3
 while executing---line 944 of file unsrt.bst
-You've used 41 entries,
+You've used 42 entries,
             1791 wiz_defined-function locations,
-            606 strings with 9420 characters,
-and the built_in function-call counts, 6762 in all, are:
-= -- 450
-> -- 424
+            609 strings with 9462 characters,
+and the built_in function-call counts, 6871 in all, are:
+= -- 457
+> -- 428
 < -- 0
-+ -- 161
-- -- 120
-* -- 324
-:= -- 1139
-add.period$ -- 112
-call.type$ -- 41
++ -- 163
+- -- 121
+* -- 326
+:= -- 1156
+add.period$ -- 114
+call.type$ -- 42
 change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 45
-duplicate$ -- 371
-empty$ -- 763
-format.name$ -- 120
-if$ -- 1498
+cite$ -- 46
+duplicate$ -- 378
+empty$ -- 778
+format.name$ -- 121
+if$ -- 1522
 int.to.chr$ -- 0
-int.to.str$ -- 41
+int.to.str$ -- 42
 missing$ -- 24
-newline$ -- 189
-num.names$ -- 41
-pop$ -- 220
+newline$ -- 193
+num.names$ -- 42
+pop$ -- 225
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 110
+skip$ -- 113
 stack$ -- 0
 substring$ -- 19
-swap$ -- 71
+swap$ -- 73
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 4
-while$ -- 43
-width$ -- 43
-write$ -- 364
+while$ -- 44
+width$ -- 44
+write$ -- 371
 (There was 1 error message)

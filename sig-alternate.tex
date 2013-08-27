@@ -712,8 +712,6 @@ Two types of files are generated: for switches and for links.
 A link statistics file can be seen in figure \ref{fig:statsexport}. Columns represent the switch and its port, and lines the link ratio in each timestamp.
 Where the files are saved can be chosen in the configuration file.
 
-For future work it is expected to export the statistics into the \textit{WEB platform}.
-
 \subsection{VM Request Handler}
 \hspace{0.6cm}
 
@@ -957,6 +955,7 @@ For communicating with the OF controller a socket is opened and the requests are
 
 It would be interesting in the future to include a place where the administrator/network engineer could not only monitor the whole DC, but also interact with the switches and the controller (\textit{e.g.} shutdown interfaces).
 
+For future work it is expected to export the statistics into the \textit{WEB platform}.
 \newpage
 
 \section{Framework modules: VM Requester (VM Requests Generator)}
@@ -1469,14 +1468,35 @@ On the other hand, as shown in figure \ref{fig:mem2}, as the topology size grows
 \newpage
 
 \chapter{Conclusions\label{cha:conclusions}}
+\hspace{0.6cm}
 
-In this paper, we presented a novel SDN Cloud DC framework, built on top of Mininet and POX, that allows the user to evaluate performances of their OF cloud DC controllers. Our framework addresses several issues in testing such controllers providing some useful APIs (i.e., topology discovery, traffic generation, DC configuration and VM request). This work has been validated showing one use--case where two different well--known VMs scheduling algorithms were implemented. Framework scalability and stability has been also evaluated increasing both the number of emulated hosts and the DC links load. Work is still ongoing. We are planning to insert new features in order to consider VM migration and storage.
+In this thesis, it was presented a novel SDN Cloud DC framework, built on top of Mininet and POX, that allows the DC administrator/network engineer to evaluate performances of their OF cloud DC controllers.
+The framework addresses several issues in testing such controllers providing some useful APIs (i.e., topology discovery, traffic generation, DC configuration and VM request).
+This work has been validated showing one use--case where two different well--known VMs scheduling algorithms were implemented.
+Some of its potentials have also been demonstrated by implementing and testing VM hybrid policies.
+Framework scalability and stability were also evaluated increasing both the number of emulated hosts and the DC links load. 
+
+Openflow has been catching companies attention and gaining a lot of importance is a recent technology, however, as a new technology, a lot of features that usually can be seen on any router are still missing, which ends up limiting the features the framework makes available (\textit{e.g} regarding QoS).
+Also, as a new technology, the existing controllers do not provide a lot of support, and solutions for encountered errors are not easily found or not found at all. For overcoming this errors, sometimes a deep knowledge of how the controller works is required.
+
+A similar problem was faced when integrating \textit{XEN}, as the documentation is very poor, and few examples are available. This leds to conclude that even opensource projects that have success tend to neglect documentation.
+
+Aiming to make the framework a more complete and mature solution, work is still in progress.
 
 \section{Main contributions}
+\hspace{0.6cm}
+
+As a direct result of the work developed in this thesis, a contribution to the paper \textit{Virtualization-aware Network Control Strategies exploiting OpenFlow in Cloud Data Centers}\cite{im2013} emulation results was made.
+
+Additionally, a paper focused only on the framework was created \textit{Datacenter in a box: test your SDN cloud-datacenter controller at home} and accepted into the EWSDN2013(Second European Workshop on Software Defined Networks)\cite{ewsdn}.
+
 
 \section{Future work}
 
-Show information in the \textit{WEB platform} and allow higher interaction with the controller (for admin and allow admin to override controller actions (change routes, shutdown links, etc))
+As an ongoing project, improvements can always be done, however, a few are already planned.
+
+One would be to be able to access XEN through their API, since it would bring much more control and information over the servers and virtual machines.
+The other would be to greatly improve the WEB Platform by not only giving the DC clients more information about their VMs and pricing tags but also to create a space for the DC administrator/network engineer to control and monitor the whole infrastructure.
 
 \appendix
 
