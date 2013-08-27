@@ -170,6 +170,7 @@ Datacenter, Cloud, SDN, OpenFlow.
 \item [IP]Internet Protocol 
 \item [IT]Information Technology
 \item [OF]Openflow
+\item [OS]Operative System
 \item [QoS] Quality of Service
 \item [QoE] Quality of Experience
 \item [RAM]Random-access Memory
@@ -566,7 +567,14 @@ As an alternative to TCPreplay, Iperf\cite{iperf} is a network diagnosing tool w
 Although it does not allow to replay traffic samples, it is a good tool for testing the DC behaviour at its peak utilization.
 Spending few CPU is also an advantage since many instances of it are required to run at the same time.
 
-Because it uses the server/client paradigm it had run both on the servers and on the gateways in order to work properly. In order to do so and coordinated with the controller VM allocations, the same method as before was used, but instead of running TCPreplay with the traffic sample, two instances of iperf were ran (both bidirectional, one with TCP and other with UDP). For allowing some flexibility, the balance of TCP against UDP traffic per VM can be changed.
+Because it uses the server/client paradigm it had run both on the servers and on the gateways in order to work properly. In order to do so and coordinated with the controller VM allocations, the same method as before was used, but instead of running TCPreplay with the traffic sample, two instances of iperf were ran (both bidirectional, one with TCP and other with UDP). For allowing some flexibility, the balance of TCP against UDP traffic per VM can be changed. In figure \ref{fig:trafficgen} can be seen the output of the \textit{Traffic Generator}, where \textit{Iperf} is used and the generated traffic is half TCP and half UDP.
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/traffic_gen.png}
+        \caption{Print screen of \textit{Traffic Generator} with Iperf}
+        \label{fig:trafficgen}
+\end{figure}
 
 \subsubsection{D-ITG}
 \hspace{0.6cm}
@@ -617,6 +625,7 @@ $3$ type of events where added \textit{HostJoin, HostTimeout and HostMove}. Like
 
 For classifying the level which the switches belong to (edge, aggregation or core), gateways need to be distinguished from the servers, otherwise all the directly connected switches will be recognized as edge. As the addressing schemes are typically different from inside DC to the outside, this was used to differentiate them. To be fully parameterizable, the IP addresses/network addresses of both can be configured in the provided configuration file.
 
+Unfortunately, OF does not provide yet information about the ports bandwidth, so it has to be configured manually.
 \subsection{Rules (OF Rules Handler)}
 \hspace{0.6cm}
 
@@ -708,115 +717,262 @@ For future work it is expected to export the statistics into the \textit{WEB pla
 \subsection{VM Request Handler}
 \hspace{0.6cm}
 
-This module is responsible for parsing the VM requests that came from both the \textit{VM Request Generator} and the \textit{WEB Platform}, raise events with their requirements, and notify the respective source of the VM request with the state of the allocation.
+This module is responsible for parsing the VM requests (allocation or inter VM communication) and raising events with their requirements.
+It creates a thread and a socket inside it for receiving and parsing the VM requests from both the \textit{VM Request Generator} and the \textit{WEB Platform}.
+After the VM requests have been validated, an event with the VM requirements is raised.
 
-For allowing multiple requests, a threads were used
--Explain how it works (by threads and raising events)
--Explain what it does:
-  -receives VM requests (process them - make sure they are valid)
-  -raise and event saying there is a new VM request
-  -waits doe event saying the VM as been allocated or rejected
-  -notifies about the state of the request
+For the VM allocation request the following event is raisen,
+
+\begin{verbatim}
+class VMRequest (Event) :
+    '''
+    Event with new virtual machine allocation request
+    '''
+    def __init__ (self, vm_id, time, cpu, ram, disk, network, request_type, timeout) :
+        Event.__init__(self)
+        self.vm_id = vm_id
+        self.time = time
+        self.cpu = cpu
+        self.ram = ram
+        self.disk = disk
+        self.network = network
+        self.request_type = request_type
+        self.timeout = timeout
+\end{verbatim}
+
+Since inter VM communication is frequent in the DCs, allowing their communication without the need for the traffic to go to the gateway is important. For this reason, and because it is relevant that it is the administrator/network engineer defining the path, and event with the list of VM to allow intercommunication is raised.
+
+\begin{verbatim}
+class InterVMComRequest (Event):
+    """
+    Event with the inter virtual machine communication request
+    """
+    def __init__(self, inter_vm_id, vm_list):
+        Event.__init__(self)
+        self.inter_vm_id = inter_vm_id
+        self.vm_list = vm_list
+\end{verbatim}
+
+After the \textit{VMRequest} or the \textit{InterVMComRequest} have been processed and either allocated/accepted or rejected (typically in the \textit{User-defined logic}), this module communicates the state back to the source of the request.
 
 \subsection{Network Traffic Requester}
 \hspace{0.6cm}
 
--when receives the event wich says the vm as been allocated, it checks if the its is connected to mininet, and if ti is, send a request saying which type of traffic (in case of D-itg - since the type of VM may request the traffic to be of some specific type). In case of iperf, just say the amount of bandwidth.
+The \textit{Network Traffic Requester} only function is to capture the event which says the VM as been allocated, and notify the mininet module \textit{Traffic Generator} to start generating traffic from the server in which the VM as been chosen to be allocated, with the network required characteristics and during the time the VM remains allocated
+
+The network requirement varies according to the traffic generator being used, but in the case of \textit{Iperf}, just the amount of bandwidth is requested.
 
 \subsection{VMM - Virtual Machines Manager}
 \hspace{0.6cm}
 
-When the algortithm for choosing the server ends, the VMM contacts the hypervisor and requests the vm to be allocated. (waits for confirmation and then returns new vm ip address).
+This modules provides an abstraction level for the communication with the hypervisor. However, there are a lot of configurations that must be made before it can be used. These configurations vary from hypervisor to hypervisor, but in the case of \textit{XEN} are the installation of \textit{XCP} in each server, and the configuration of a VM template.
 
-Talk about the problems with xen API and what was the workaround done (ssh the hypervisor and run a script for cloning a virtual machine/start it and then the controller knows the ip the dhcp gave, so it nows the VM is up and reachable)
+For the allocation process to be agile, a debian VM (other OSs are also supported) was previously installed and configured for external access. The idea is to clone this VM template, reducing the allocation time drastically.
+
+By using XEN API, this process should not be hard to implement, however, what seemed like a simple implementation, rapidly became a ''nightmare'' since the available documentation is very poor, and there is a lack of examples.
+With the impossibility of correctly interacting with \textit{Xen API}, a different approach was taken. By using ssh to control the machine where the hypervisor was installed, the \textit{xe} commands and a script created by citrix for cloning VM templates (can be seen in appendix \ref{app:clonevms}), a new VM was successfully allocated into a server.
+When the VM gets allocated, it is automatically started up, and an IP addressed is given (this IP address which is later communicated to the sorce of the VM Request, so the VM can be accessed.
 
 \subsection{User Defined Logic}
 \hspace{0.6cm}
- 
-This is a space for the Admin/network engineer to define the DC managemnt
--choose which vm goes to which server
--choose the path for the traffic from/to an specific virtual machine
--choose the path for multiple vm to communicate
--keep track of servers occupation
--defined the policies (network or server or hybrid)
--as all the information can be easily retrieved from the other modules, its easier to focus on the developement of the algorithms.
 
--talk about what was implemented (the algorithm) and also the inter vm communication (the usage fo dijkstra)
--Switch/Link ratio
--Switch/link ratio with safe margin (for newer allocation) (configurable by the configuration file - allow over proviioning)
+Once all the other modules provide methods or data structures that ease the process of accessing and manipulating the information, this module just have to use those tools to produce the desired logic.
+The \textit{User Define Logic} is a space for the administrators/network engineers to define their DC management policy (\textit{e.g.}VM allocation policies, smart DC routing, etc).
+No limitations in terms of management functionalities are present. As long as everything is OF compliant and can be accessed through some provided API, it can be used in the logic.
 
-\subsection{POX Modules used}
+Aiming to help the administrator/network engineer understanding in which ways it could be used, an hybrid VM allocation policy is included (takes into consideration the switches statistics and the server occupation), and also the Dijkstra algorithm is applied for calculating the shortest path between VMs that wish to communicate directly.
+
+The hybrid VM allocation policy is fully described in \cite{im2013}. It includes $2$ algorithms for VM allocation: a server driven; and a network driven.
+
+\begin{quotation}
+''
+a) Server-Driven algorithm
+
+In the Server-Driven algorithm, first a physical server is selected for placing the VM, then a sequence of switches is chosen for forwarding the traffic flows to/from that VM across the DC network(...)\\
+
+b) Network-Driven algorithm
+
+In case of the Network-Driven algorithm, when a new VM placement request arrives, candidate core, aggregation and edge switches are firstly selected using a specific selection policy (e.g., FF, BF or WF) and checking that switches are able to process and forward the overall traffic possibly exchanged by the VM (i.e., the switches are not overloaded and at least one downlink is not congested) (...) Next, the physical server is selected within the set of servers directly connected to the candidate edge switch by applying a VM placement policy (e.g., FF, BF or WF) and checking that its network link is not congested (...) The VM placement process ends when the OF Controller inserts the proper forwarding rule in the edge, aggregation and core switches.''
+
+\hfill Adami, D. et al.\cite{im2013}
+\end{quotation}
+
+With respect to the inter VM communication, an already implemented Dijkstra algorithm for shortest path was adopted (appendix \ref{app:dijkstra}). As the data structure for the topology (graph) was different, it had to be converted before calling the \textit{shortestpath} method. This method was used to calculate the shortest path between all combination of VM pairs.
+
+The code for both implementations can be seen in \footnote{\url{https://github.com/jbteixeir/Openflow-DC-Framework/blob/master/ext/VM/vm\_allocation\_manager.py}}. For allocation algorithms please check the methods \textit{networkDrivenAlgorithm} and \textit{serverDrivenAlgorithm}, and for inter VM communication \textit{interVMPathAlgorithm}.
+
+\subsection{Other POX Modules used}
 \hspace{0.6cm}
 
-besides using this two modules embedded on the topology module, another modules was also used: DHCP
--Once again, by the configuration file, all the parameters can be configured.
+Besides using two POX modules on the topology module (\textit{Discovery} and \textit{host\_tracker}), another module was also used: dhcpd.
+It is a simple DHCP server, which in the framework is used for attributing IP addresses for the newly created VMs.
+For simplicity, all the parameters can be configured in the controllers configuration file.
 
 \subsection{Configuration File}
 \hspace{0.6cm}
 
-Talk about the configuration file, and talk about how it was before (interactive parametrization (consoles asks for info), if no config file exists, it can be created this way)
+The configuration file on the controller makes it easier to configure parameters that can easily change.
+As one might prefer to insert the values in an interactive way, in case the configuration file does not exist, there is the possibility that each modules asks for the configuration it needs, and in the end it everything is written into a file.
+
+\begin{minipage}{.5\textwidth}
+  \begin{lstlisting}
+[topology]
+# link capacities in mbps
+outside_link = 60
+core_link = 60
+agg_link = 30
+edge_link = 10
+
+[host]
+#HOst Capacity
+# cpu - number of cores
+# Ram and Disk - GB
+cpu = 8
+ram = 16
+disk = 2000
+
+[hostippool]
+#dhcpip - ip of the dhcp server
+server=10.0.0.0/16
+gateway=10.128.0.0/16
+dhcpip=10.0.0.254
+vm=10.128.128.0/24
+dns=8.8.8.8
+
+[stats]
+# polling time - seconds
+#Historial statistics weight
+polling_time = 100
+hist_weight = 0.125
+
+[statsexport]
+#directory where the switch and link statistics will be placed
+switchsratiodir = ./stats
+linksratiodir = ./stats
+\end{lstlisting}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+    \begin{lstlisting}
+
+[vmallocation]
+# algorithms - ND/SD
+#ND - Network Driven
+#SD - Server Driven
+algorithm = ND
+
+# policies - FF/BF/WF
+core_policy = BF
+agg_policy = BF
+edge_policy = BF
+host_policy = BF
+
+#maximum ratio a switch can have so it is chosen for new vm allocation
+#maximum ratio a link can have so it is chosen for new vm allocation
+switch_ratio = 1.20
+link_ratio = 1.20
+
+[vmreceiver]
+#IP and port for listening to the VM requests
+ip = 10.0.2.15
+port = 3000
+
+[credencial]
+#Credential for xen hosts
+username = root
+password = xensource
+\end{lstlisting}
+\end{minipage}%
+
+In the example above, the configuration file includes sections for the main framework modules, but as can be seen, a section for the VM allocation as been added, where it can be chosen which algorithms will be used, and even the maximum ratio for switches and links to still be considered when choosing the path.
+
+Adding parameters is as simple as inserting them in the configuration file, and, in the module where they are used, assign them to variables.
 
 \newpage
 
 \section{Framework modules: Web Platform}
 \hspace{0.6cm}
 
--explain it follows the MVC model and it is developed in PHP
--using sockets for communicating with the controller
--very basic for now
--include prints
--allows to request a vm, view the current request, request a vm group (for multiple intervm communication)
--mysql database
- -talk about the tables created
-Describe each module, it's functionalities, limitations, how it can be used/improved (improved if the user wants to add new features)
+The \textit{WEB Platform} was created to provide the DC clients with a platform where their VM requests could be made and their VMs could be managed.
 
-\begin{figure}[htbp]
+\subsection{Features and usage}
+\hspace{0.6cm}
+
+Although it still is an early development phase, the included features are:
+\begin{itemize}
+\item Authentication system for clients;
+\item Request and View VMs;
+\item Request and View VMs Groups (for inter VM communication);
+\end{itemize}
+
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=1\textwidth]{figures/webplat_panel.png}
-        \caption{Photo of the testing environment}
-        \label{fig:realenv}
+        \caption{WEB Platform - Top Panel}
+        \label{fig:webplattop}
 \end{figure}
 
-\begin{figure}[htbp]
-        \centering
-        \includegraphics[width=1\textwidth]{figures/webplat_vmgroup.png}
-        \caption{Photo of the testing environment}
-        \label{fig:realenv}
-\end{figure}
+The top panel of the WEB Platform is where the client can access all the available features, including to sign up or log in.
+It can be seen in figure \ref{fig:webplattop}.
 
-\begin{figure}[htbp]
-        \centering
-        \includegraphics[width=1\textwidth]{figures/webplat_vmlist.png}
-        \caption{Photo of the testing environment}
-        \label{fig:realenv}
-\end{figure}
-
-\begin{figure}[htbp]
+\begin{figure}[h!tbp]
         \centering
         \includegraphics[width=1\textwidth]{figures/webplat_vmreq.png}
-        \caption{Photo of the testing environment}
-        \label{fig:realenv}
+        \caption{WEB Platform - VM Request}
+        \label{fig:webplatemreq}
 \end{figure}
 
-Future work:
-All the information in the database and both the controller access it
-This would be good including for adding later monitoring (show statistics and everything - not only about the vm, but also about the switches (this last part just for the admin))
--basically add to the web platform a space where the admin/network engineer can interact with the controller without shutting it down change the code and run again (controller can be overrided in extreme cases - shutdown interfaces and stuff)
+For requesting a VM the client needs to click in ''Request a new virtual machine'', fill the VM requirement fields and submit the request (figure \ref{fig:webplatemreq}). This request is sent to the controller, that after running the implemented allocation policy will install the rules and order the hypervisor to start the allocation process. When all these tasks are completed, the \textit{WEB Platform} is informed of the success state of the operation, and information for the VM to be accessed is returned.
+If the client wants to view the VMs that it requested and their characteristics and current state, they are made available in ''View all virtual machines'' on the top panel (\ref{fig:webplatvmlist}).
 
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_vmlist.png}
+        \caption{WEB Platform - VM list}
+        \label{fig:webplatvmlist}
+\end{figure}
+
+For requesting inter VM communication, a place for VM groups was created. The textit{VM group} page as similar looks to the \textit{VM list} page, but with checkboxes for choosing the VMs that belong to the same group (figure \ref{fig:webplatvmgroup}).
+After requesting a VM group, a similar process to the VM allocation request is started. Instead of running the allocation policy, the VM group policy is ran, the rules are installed and the feedback about whole process is given back to the \textit{WEB Platform}.
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/webplat_vmgroup.png}
+        \caption{WEB Platform - VM Groups}
+        \label{fig:webplatvmgroup}
+\end{figure}
+
+\subsection{Design}
+\hspace{0.6cm}
+
+The architecture of the \textit{WEB Platform} follows the MVC (Model-view-controller) model.
+It includes a MySql\cite{mysql} database to save information that is important for the \textit{WEB Platform} normal functioning. For now, most of the information is just a copy of the one kept by the OF controller. Security concerns are beyond this decision.
+The database contains $3$ tables: ''users'' for keeping personal information about the users; ''vms'' for information related to the VMs (\textit{e.g} CPU, RAM, etc); and ''vm\_groups'' for mapping the VMs into the group they belong.
+A script for creating this configuration can be seen in appendix \ref{app:mysql}.
+
+For communicating with the OF controller a socket is opened and the requests are sent. For now they are string based requests, but it is planned to use an encrypted json\cite{JSON} notation.
+
+\subsection{Future work}
+\hspace{0.6cm}
+
+It would be interesting in the future to include a place where the administrator/network engineer could not only monitor the whole DC, but also interact with the switches and the controller (\textit{e.g.} shutdown interfaces).
 
 \newpage
 
-\section{Framework modules: VM Requester}
+\section{Framework modules: VM Requester (VM Requests Generator)}
+\hspace{0.6cm}
 
-As explained before, this modules is only to be used when testing.
-Its purpose is to automatically generate VM requests.
-In order to do so, it was used a poisson random variable, for both the interval between requests and the caracteristics of the request (CPU, RAM, DISK and IO). (When QoS was behing studied, the type of request was also variable according to the poisson random variable)
-Its a simple python program that communicates with the controller VM request manager to send the request.
--threads were used for receiving the status of the VM request.
--show a print of it working
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figures/vmreq.png}
+        \caption{VM Requester console output}
+        \label{fig:vmreq}
+\end{figure}
 
-Future work:
--more random variables?
+As explained before, this modules is only to be used when testing. Its purpose is to automatically generate VM requests.
+In order to do so, it uses a poisson random variable, for generating both the time interval between requests and the each of the requirements of the VM requests (CPU, RAM, DISK and Network).
+
+Also developed in python, this independent program communicates with the controller \textit{VM request manager} to send VM requests.
+It implements threads for receiving the status of the VM request, so it can at the same time keep making VM requests. The status are printed as the VM get allocated.
 
 \newpage
 
@@ -826,7 +982,30 @@ Future work:
 
 \subsubsection{Setting up the development environment}
 
-Describe how to use the framework (emulation part) and how to access the API..
+The mininet website provides a \textit{Ubuntu 12.04 LTS} virtual machine image with mininet (and all its dependencies) already installed and configured. By using this image in \textit{e.g} Virtualbox\cite{vbox} there is no need to change the native OS. If additionally ssh and ftp access to the Mininet VM are given, the administrator/network engineer can use its favorite text editor or IDE to change the code and test it.
+For adding the framework to the Mininet VM, one just needs to copy the framework folder inside the VM.
+
+\subsubsection{Developing and testing new DC allocation policies}
+
+\begin{verbatim}
+sudo ~/poxbetta/pox.py ercs log.level --DEBUG
+\end{verbatim}
+
+\begin{verbatim}
+sudo ./poxbetta/ext/Topology\ Generator\ \(MN\)/tpgeneratormn2.0.py 
+\end{verbatim}
+
+\begin{verbatim}
+sudo python poxbetta/ext/VM\ Requests\ Generator/vmrequesterpoisson.py 10.0.2.15 3000 1 290 1 1
+\end{verbatim}
+For testing
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=1\textwidth]{figures/emulenv.png}
+        \caption{Using the emulation environment}
+        \label{fig:emulenv}
+\end{figure}
 
 -add the photo
 
@@ -2129,6 +2308,161 @@ int main(int argc, char **argv)
 }
 \end{lstlisting}
 
+
+\chapter{clone\_vms.sh}
+\label{app:clonevms}
+\lstset{language=c,frame=lines}
+\begin{lstlisting}
+#!/bin/sh
+
+# Copyright (c) 2006-2007 XenSource, Inc.
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# Allow the path to the 'xe' binary to be overridden by the XE environment variable
+if [ -z "${XE}" ]; then
+  XE=xe
+fi
+
+if [ ! -e "${HOME}/.xe" ]; then
+  read -p "Server name: " SERVER
+  read -p "Username: " USERNAME
+  read -p "Password: " PASSWORD
+  XE="${XE} -s ${SERVER} -u ${USERNAME} -pw ${PASSWORD}"
+fi
+
+# Check there's a vm uuid parameter to the command
+if [ $# -ne 1 ]; then
+  echo "usage: $0 <vm_uuid_to_duplicate>"
+  exit 1
+fi
+vmuuid=$1
+
+# Check if there's a VM by the uuid specified
+${XE} vm-list params=uuid | grep -q " ${vmuuid}$"
+if [ $? -ne 0 ]; then
+  echo "error: no vm uuid \"${vmuuid}\" found"
+  exit 2
+fi
+
+# Check the power state of the vm
+name=$(${XE} vm-list uuid=${vmuuid} params=name-label --minimal)
+state=$(${XE} vm-list uuid=${vmuuid} params=power-state --minimal)
+wasrunning=0
+
+# If the VM state is running, we shutdown the vm first
+if [ "${state}" = "running" ]; then
+  ${XE} vm-shutdown uuid=${vmuuid}
+  ${XE} event-wait class=vm power-state=halted uuid=${vmuuid}
+  wasrunning=1
+fi
+
+# Clone the VM
+newuuid=$(${XE} vm-clone uuid=${vmuuid} new-name-label=cloned_vm)
+
+# If the VM state was running before cloning, we start it again
+# along with the new VM.
+if [ "$wasrunning" -eq 1 ]; then
+  ${XE} vm-start uuid=${vmuuid}
+  ${XE} vm-start uuid=${newuuid}
+fi
+\end{lstlisting}
+
+
+\chapter{Dijkstra Algorithm in Python}
+\label{app:dijkstra}
+\lstset{language=Python,frame=lines}
+\begin{lstlisting}
+
+from priodict.priodict import priorityDictionary
+
+def Dijkstra(G,start,end=None):
+
+  D = {}  # distace
+  P = {}  # predecessors
+  Q = priorityDictionary()
+  Q[start] = 0
+
+  for v in Q:
+    D[v] = Q[v]
+    if v == end: break
+
+    for w in G[v]:
+      vwLength = D[v] + G[v][w]
+      if w in D:
+        if vwLength < D[w]:
+          raise ValueError
+      elif w not in Q or vwLength < Q[w]:
+        Q[w] = vwLength
+        P[w] = v
+
+  return (D,P)
+
+def shortestPath(G,start,end):
+
+  D,P = Dijkstra(G,start,end)
+  Path = []
+  while 1:
+    Path.append(end)
+    if end == start: break
+    end = P[end]
+  Path.reverse()
+  return Path
+\end{lstlisting}
+
+
+\chapter{Table creation script for MySQL database}
+\label{app:mysql}
+\lstset{language=sql,frame=lines}
+\begin{lstlisting}
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `usr` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `pass` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `email` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `regIP` varchar(15) collate utf8_unicode_ci NOT NULL default '',
+  `dt` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `usr` (`usr`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `vms` (
+  `id` int(11) NOT NULL auto_increment,
+  `usr_id` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `cpu` int(4) NOT NULL,
+  `ram` int(4) NOT NULL,
+  `disk` int(4) NOT NULL,
+  `io` int(4) NOT NULL,
+  `ipv4` int unsigned NOT NULL,
+  `time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `dt` datetime NOT NULL default '0000-00-00 00:00:00',
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`usr_id`) REFERENCES users(`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `vm_groups` (
+  `id` int(11) NOT NULL auto_increment,
+  `group_id` int(10) NOT NULL,
+  `vm_id` int unsigned NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`vm_id`) REFERENCES vms(`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+\end{lstlisting}
 \cleardoublepage
 
 \markright{\slshape Appendix}

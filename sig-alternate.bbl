@@ -116,6 +116,18 @@ A.~Pescap\'e A.~Dainotti, A.~Botta.
 \newblock {\em Computer Networks (Elsevier), 2012, Volume 56, Issue 15, pp
   3531-3547}, 2012.
 
+\bibitem{mysql}
+{MySQL Home Page}.
+\newblock {\em http://www.mysql.com/}.
+
+\bibitem{JSON}
+{JSON Home Page}.
+\newblock {\em http://www.json.org/}.
+
+\bibitem{vbox}
+{Virtualbox Home Page}.
+\newblock {\em https://www.virtualbox.org/}.
+
 \bibitem{ofqos2}
 S.~Civanlar, M.~Parlakisik, A.M. Tekalp, B.~Gorkemli, B.~Kaytaz, and E.~Onem.
 \newblock A qos-enabled openflow environment for scalable video streaming.
@@ -171,6 +183,10 @@ M.~Mishra, A.~Das, P.~Kulkarni, and A.~Sahoo.
 \bibitem{pox}
 {POX Home Page}.
 \newblock {\em http://ww.noxrepo.org.}
+
+\bibitem{login}
+{Login system}.
+\newblock {\em http://tutorialzine.com/2009/10/cool-login-system-php-jquery/}.
 
 \bibitem{of_virtual}
 J.~Matia, E.~Jacob, D.~Sanchez, and Y.~Demchenko.
