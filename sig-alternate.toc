@@ -3,9 +3,9 @@
 \contentsline {chapter}{Abstract}{iii}{chapter*.2}
 \contentsline {paragraph}{Keywords:}{iii}{section*.3}
 \contentsline {chapter}{Contents}{iv}{section*.3}
-\contentsline {chapter}{List of Acronyms}{vii}{chapter*.5}
-\contentsline {chapter}{List of Figures}{vii}{chapter*.5}
-\contentsline {chapter}{List of Tables}{ix}{chapter*.6}
+\contentsline {chapter}{List of Acronyms}{viii}{chapter*.5}
+\contentsline {chapter}{List of Figures}{viii}{chapter*.5}
+\contentsline {chapter}{List of Tables}{x}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Introduction}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Motivation and objectives}{3}{section.1.2}
@@ -68,15 +68,16 @@
 \contentsline {subsubsection}{Virtual Machine migration in the framework}{47}{section*.40}
 \contentsline {chapter}{\numberline {4}Validation and tests }{51}{chapter.4}
 \contentsline {section}{\numberline {4.1}Framework Validation}{51}{section.4.1}
-\contentsline {section}{\numberline {4.2}Performance Evaluation}{54}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{58}{chapter.5}
-\contentsline {section}{\numberline {5.1}Main contributions}{58}{section.5.1}
-\contentsline {section}{\numberline {5.2}Future work}{58}{section.5.2}
-\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{59}{appendix.A}
-\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{62}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{67}{appendix.C}
-\contentsline {chapter}{\numberline {D}clone\_vms.sh}{89}{appendix.D}
-\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{92}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{94}{appendix.F}
-\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{96}{appendix.G}
-\contentsline {chapter}{Bibliography}{98}{lstnumber.-11.34}
+\contentsline {section}{\numberline {4.2}Usecase: Hybrid VM Allocation policy}{53}{section.4.2}
+\contentsline {section}{\numberline {4.3}Performance Evaluation}{55}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusions}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Main contributions}{59}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future work}{59}{section.5.2}
+\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{60}{appendix.A}
+\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{63}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{68}{appendix.C}
+\contentsline {chapter}{\numberline {D}clone\_vms.sh}{90}{appendix.D}
+\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{93}{appendix.E}
+\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{95}{appendix.F}
+\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{97}{appendix.G}
+\contentsline {chapter}{Bibliography}{99}{lstnumber.-11.34}
