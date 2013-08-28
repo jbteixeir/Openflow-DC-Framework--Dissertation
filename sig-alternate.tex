@@ -125,10 +125,10 @@ Master of Science, under scientific supervision of Prof. Stefano Giordano and Pr
 
 \addcontentsline{toc}{chapter}{Acknowledgments}
 
-\noindent I would like...
+% \noindent I would like...
 
-\medskip{}
-\noindent I also...
+% \medskip{}
+% \noindent I also...
 
 \chapter*{Abstract}
 
@@ -142,7 +142,8 @@ Providing heterogeneous services and satisfying users' experience is really chal
 As the Software Defined Networking (SDN) approach seems to be a promising way to address innovation in Datacenters, the thesis presents a new framework that allows to develop and test new OpenFlow--based controllers for Cloud Datacenters.
 More specifically, the framework enhances both Mininet (a well--known SDN emulator) and POX (a Openflow controller written in python), with all the extensions necessary to experiment novel control and management strategies of IT and network resources.
 
-... talk about obtained results and conclusions(not finished yet, complete when you finish everything)
+Further more, the framework was validated by implementing and testing well known policies.
+Hybrid allocation policies (considering both network and servers) were also implemented and scalability tests were performed.
 
 \end{singlespace}
 
@@ -178,7 +179,6 @@ Datacenter, Cloud, SDN, OpenFlow.
 \item [VM]Virtual Machine
 \item [VMM]Virtual Machine Manager
 \item [WAN] Wide Area Network
-\item Add as needed...
 \end{singlespace}
 \end{lyxlist}
 
@@ -217,7 +217,6 @@ Since SDN allows to re-define and re-configure network functionalities, the basi
 Nevertheless, before deploying the novel architectural solutions, huge test campaigns must be performed in experimental environments reproducing a real DC.
 To this aim, a novel framework is introduced that allows to develop and assess novel SDN-Cloud-DC controllers, and to compare the performance of control and management strategies jointly considering both IT and network resources\cite{im2013}.
 
-TODO:should describe better openflow and SDN
 % \begin{quote}''OpenFlow allows, for the first time, an external control plane to abstract the entire underlying network fabric so that fabric is universally addressable and all topology and state information is commonly managed''{ --- \textup{ Jason Matlof}, vice president of marketing at Big Switch}\end{quote}
 
 % \newpage
@@ -253,7 +252,7 @@ With this is is expected to endue the administrator/network engineer with all th
 \section{Thesis layout}
 \hspace{0.6cm}
 
-This thesis is structured into five chapters: the present Chapter \ref{cha:introduction} is a brief introduction of the proposed work, its motivation and objectives; the second is the state of art, it addresses the currently available solutions relating innovation in DCs, OF controllers and VM allocation and migration algorithms; the third one fully describes the framework, its evolution, extensions and how it can be used; in the forth chapter is presented the framework validation and performance tests; and in the last chapter are made conclusions about the developed work, as well as suggestions for future work.
+This thesis is structured into five chapters: the present Chapter \ref{cha:introduction} is a brief introduction of the proposed work, its motivation and objectives; the second is the state of art, it addresses the currently available solutions relating innovation in DCs, OF controllers and VM allocation and migration algorithms; the third one fully describes the framework, its evolution, extensions and how it can be used; in the forth chapter is presented the framework validation, the results of a hybrid allocation algorithm and performance tests; and in the last chapter are made conclusions about the developed work, as well as suggestions for future work.
 
 
 
@@ -306,7 +305,7 @@ framework for cloud services in real environments.
 As shown in figure \ref{fig:meridian_arch}, the architecture is divided into three main layers: Network abstractions and API, where the network information can be accessed and manipulated (\textit{e.g.} access controlling policies, prioritizing traffic); Network Orchestration, translates the command provided by the API into physical network commands and orchestrates them for more complex operations. it also reveals the network topology and its variations; finally the ''drivers'' layer is an interface for underlying the network devices so several network devices and tools can be used.
 
 Generally, this platform allows to create and manage different kind of logical network topologies and use their information for providing a greater control of the DC.
-But as it works on top of a cloud Iaas platform (i.e., Openstack\cite{openstack}, IBM SmartCloud Provisioning\cite{scp}), it is limited to their management strategies and is only useful if one already has this type of infrastructure. Not having a testing environment is also a downside since the normal operation can be compromised and also alter the testing results.
+But as it works on top of a cloud Iaas platform (i.e., Openstack\cite{openstack}, IBM SmartCloud Provisioning\cite{scp}), it is limited to their management strategies and is only useful if one already has this type of infrastructure. Not having a testing environment is also a downside since the normal operation of the real DC can be compromised and also alter the testing results.
 
 \subsection{ICanCloud, GreenCloud and GroudSim}
 \hspace{0.6cm}
@@ -383,7 +382,7 @@ For the deployment, the framework should be easy to configure and monitor, and n
 \hspace{0.6cm}
 
 Being POX a python derivative of the NOX controller, which was developed by the same people who developed the Openflow protocol, adopting it would be a surplus since there is a higher chance it will continue to support Openflow, and that the new versions/features are available as soon as possible.
-Besides, being a high level (comparing to C and C++), object and event oriented programming language, helps to create the abstraction level required for agile development and turn the controller more interactive.
+Besides, being a high level (comparing to C and C++), object and event oriented programming language, helps to create the abstraction level required for agile development and to make a more interactive controller.
 
 \subsubsection{Datacenter Emulator: Mininet}
 \hspace{0.6cm}
@@ -395,7 +394,7 @@ It also provides an API in python for the development of custom made topologies 
 \hspace{0.6cm}
 
 As a free and opensource platform though for the cloud, XCP bring all the features belonging to Xen, plus it comes with ready-to-install images, making it simpler to install and configure.
-Having multiple interaction option is also an attractive feature, but having a Xen python API was decisive since hit gave the possibility to write all the code in one programming language which helps keeping the platform consistent.
+Having multiple interaction option is also an attractive feature, but having a Xen python API was decisive since hit gives the possibility to write all the code in one programming language which helps keeping the platform consistent.
 \newpage
 
 \section{Framework architecture}
@@ -417,7 +416,7 @@ One of them is the {\it Topology Generator}, which allows to easily create multi
 The other one is the {\it Traffic Generator} that allows to correctly simulate the allocation of VM into each server by generating traffic from that server to the exterior of the DC. It also allows to simulate inter VM communication.
 
 As for the controller, it automatically manages the modules in order to only use the ones that are needed for each phase (development and testing or deployment).
-Depending on it, the controller will interact with the mininet environment or the Cloud DC, which represents the real Cloud DC infrastructure.
+Depending on it, the controller will interact with the mininet environment or the Cloud DC (i.e. the real Cloud DC infrastructure).
 In the figure \ref{fig:framework}, in the controller part, it can be seen a darker area which corresponds to the modules that are used in both phases. These modules are:
 \begin{itemize}
   \item VM Request Handler -- Connects with the Web platform and/or the VM requester, and processes the VM requests;
@@ -429,12 +428,13 @@ In the figure \ref{fig:framework}, in the controller part, it can be seen a dark
 
 Regarding the other controller modules: the {\it Network Traffic Requester} which is only used when performing tests, tells the mininet environment how much, when, from where and where to, the traffic should be generated; and the {\it VMM Handler} which is only active when the controller is in a real environment, communicates with the hypervisor to perform all the operations regarding the VMs (allocate, deallocate, upgrade, etc).
 
-Outside of the the mininet environment and the controller there is the {\it WEB platform} and the {\it VM Requester}, that where created for making VM requests. While the first one is a platform where DC clients can request (and manage) VMs that will be processed by the controller and later allocated by the hypervisor (oriented for the deployment phase), the {\it VM Requester} is an automatic full configurable VM request generator powered by random variables (oriented for the testing phase).
+Outside of the the mininet environment and the controller there is the {\it WEB platform} and the {\it VM Requester}, that were created for making VM requests. While the first one is a platform where DC clients can request (and manage) VMs that will be processed by the controller and later allocated by the hypervisor (oriented for the deployment phase), the {\it VM Requester} is an automatic full configurable VM request generator powered by random variables (oriented for the testing phase).
 
 An important feature that was taken into consideration when designing the framework's architecture is that all the modules are independent from each other, and they can be changed, removed or added in order to fulfill all the user requirements.
 
 \newpage
 \section{Directory structure}
+\hspace{0.6cm}
 
 POX defined an \textit{ext} folder so controller extensions could be added without interfering with their development. This folder is used by the framework to store most of the modules (including the ones that are not used by the controller).
 The framework directory is structured as follows:
@@ -467,6 +467,7 @@ Using its API, an algorithm for generating custom DC tree and fat tree topologie
 
 The algorithm works by creating the gateways (as hosts on mininet) and core switches, and iterating through each gateway assigning the correspondent link and their caracteristics to the core switches. Similarly, the same logic is used between the core and aggregation switches, followed by the aggregation and edge switches, and lastly with the edge switches and the servers (created as hosts on mininet).
 Details on the algorithm can be seen on appendix \ref{app:tpalg}.
+
 It is able to generate any number of gateways, hosts and core, aggregation and edge switches.
 Is also generates the links between them, and the number of links between different levels (\textit{e.g.} from the gateways to the core switches) can be chosen. This way it is possible to create fat tree topologies.
 Link bandwidth is also configurable by level, meaning one needs only to setup the bandwidth for the $4$ network levels.
@@ -492,7 +493,7 @@ In this socket the following information is exchanged,
 
 With the goal of reproducing as closely as possible a DC behaviour, traffic samples from a real cluster were collected, and \textit{tcpreplay}\cite{tcprep} was used to replay them. The sample was collected from the clusters of the Department of Informatics - University of Minho and has approximately $500$Mb size.
 
-As the sample packets had to be adapted to suit the server interface's IP, the \textit{sniffex.c}\cite{sniffex} program (given as an example of pcap library usage) was modified.
+As the sample traffic had to be adapted to suit the server interface's IP, the \textit{sniffex.c}\cite{sniffex} program (given as an example of pcap library usage) was modified.
 
 For modifying traffic samples instead of live capturing the packets, offline capture mode must be set and then the \textit{pcap\_loop} can be started. \textit{Pcap\_loop} iterates throw each packet and applies the function passed as argument, in this case \textit{pcap\_spoof\_ip}.
 
@@ -506,8 +507,8 @@ For modifying traffic samples instead of live capturing the packets, offline cap
   pcap_close(handle);
 \end{lstlisting}
 
-Because part of the traffic sample captured contained VLAN tags, an if statement add to added for pushing the pointer $4$ bytes further ($4$ bytes is the VLAN tag size).
-After knowing where the ip header was, it was changed to the desired one, recalculated the checksum\footnote{checksum calculation credits to Gianni Antichi.}, and dumped the new packet into a different file.
+Because part of the traffic sample captured contained VLAN tags, an if statement add to be added for pushing the pointer $4$ bytes further ($4$ bytes is the VLAN tag size).
+After knowing where the ip header was, it was changed to the desired one, recalculated the checksum\footnote{checksum calculation credits go to Gianni Antichi.}, and dumped the new packet into a different file.
 
 \begin{lstlisting}
   /* Remake IP Addresses on the copied packet */
@@ -545,9 +546,9 @@ When received a new VM allocation from the controller, the traffic generator sta
 "./sniffex -f TrafficSample/traffic -s source_ip -d dest_ip"
 \end{verbatim}
 
-Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, the only thing needed to be done was replaying the already generated traffic sample with the requires characteristics.
+Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, since the only thing needed to be done was replaying the already generated traffic sample with the requires characteristics.
 
-The traffic generator was tested with some hybrid VM allocation policies.
+The traffic generator was tested with a hybrid VM allocation policies.
 Unfortunately, due to the TCPreplay' poor performance it was not possible to achieve the expected switch and link utilization.
 Trying to understand the problem, it was realized that TCPreplay uses a large amount of CPU independently of the bandwidth which it generates. As an instance of TCPreplay was running for each VM, there was not enough processing power for all of them to run normally.
 As can be seen in figure \ref{fig:tcpreplay}, the switch utilization went little above the 2\%.
@@ -583,8 +584,9 @@ Traffic emulation must be fully customizable (which \textit{iperf} is not) in or
 For this reason it is planned to integrate D-ITG\cite{gitg}, a distributed traffic generator that allows to generate a large spectrum of network traffic profiles({\it e.g.}, poisson distribution, DNS, VoIP, etc..).
 Application-specific traffic profiles can be defined, inserting their statistical parameters, possibily in the configuration file ({\it i.e.}, traffic shape, transport protocol, transmission rate, traffic duration, etc..).
 Moreover, during the configuration phase, the user should be able to specify how frequently these applications run into the DC.
-Similarly to what was happening before, every time a new VM is successfully allocated ({\it i.e.}, the OF controller chooses the host to allocate the VM and set up the rules on the OF switches) at least a new bidirectional traffic instance starts between one outside host and the one that hosts the new VM.
-We point out that the number of instances and the type of traffic strictly should only depend on the application chosen in the configuration phase.
+
+Similarly to what was happening before, every time a new VM is successfully allocated ({\it i.e.}, the OF controller chooses the server to allocate the VM and sets up the rules on the OF switches) at least a new bidirectional traffic instance starts between one outside host and the one that hosts the new VM.
+It is worth pointing out that the number of instances and the type of traffic should only strictly depend on the application chosen in the configuration phase.
 
 \subsection{Configuration file}
 \hspace{0.6cm}
@@ -606,7 +608,7 @@ It follows the normal structure of the \textit{.ini} files, and all the configur
 \section{Framework modules: Controller}
 \hspace{0.6cm}
 
-The controller is the most important part of the framework, since all the interaction with the network and the IT resources is made through it.
+The controller is the most important part of the framework, since all the interaction with the network and the IT resources are made through it.
 
 \subsection{Topology (Discovery Module)}
 \hspace{0.6cm}
@@ -617,7 +619,7 @@ It also automatically detects the topology, and topology changes. To do so, it l
 For basic information about the OF switches it handles the \textit{ConnectionUp, ConnectionDown, SwitchJoin, SwitchTimeout} and \textit{PortStatus} events.
 The first four give information about the switch state, id (known as dpid) and connection (so rules can be installed), while the last one gives information about all their ports and their ports state (down, up, administratively down).
 
-Regarding the \textit{discovery module}, it raises an event related to the links (allowing to know if they exists, are up or are down). To do it, it uses LLDP (Link Layer Discovery Protocol) packets which are sent through the switches interfaces, and with this information, it raises a LinkEvent saying if a link is up or down, and which switches and ports it connects.
+Regarding the \textit{discovery module}, it raises an event related to the links (allowing to know if they exist, are up or are down). To do it, it uses LLDP (Link Layer Discovery Protocol) packets which are sent through the switches interfaces, and with this information, it raises a LinkEvent saying if a link is up or down, and which switches and ports it connects.
 
 As for the \textit{host\_tracker} it allows to detect non OF devices(servers and gateways). The process for discovering them is similar to the one used by the \textit{discovery module}, but it uses \textit{ping} instead.
 Because this module does not raise any events, it was slightly modified to do so.
@@ -642,8 +644,8 @@ For future work it is expected to implement supernetting with the goal of decrea
 \hspace{0.6cm}
 
 The \textit{statistics} module allows for statistics to be collected and saved.
-Aiming to provide easier access to the statistics provided by OF, the \textit{statistics} module was developed.
-As having access previous data collected is an important feature since it might be crucial to understand the DC behaviour.
+Aiming to provide easier access to the statistics provided by OF, this module was developed.
+having access previous data collected is an important feature since it might be crucial to understand the DC behaviour.
 
 OF by default provides statistics regarding the ports of a switch and the installed flows. In figures \ref{fig:stats_portstats} and \ref{fig:stats_flowstats} a list of the available values is shown.
 
@@ -726,7 +728,8 @@ class VMRequest (Event) :
     '''
     Event with new virtual machine allocation request
     '''
-    def __init__ (self, vm_id, time, cpu, ram, disk, network, request_type, timeout) :
+    def __init__ (self, vm_id, time, cpu, ram, disk, 
+                  network, request_type, timeout) :
         Event.__init__(self)
         self.vm_id = vm_id
         self.time = time
@@ -738,7 +741,7 @@ class VMRequest (Event) :
         self.timeout = timeout
 \end{verbatim}
 
-Since inter VM communication is frequent in the DCs, allowing their communication without the need for the traffic to go to the gateway is important. For this reason, and because it is relevant that it is the administrator/network engineer defining the path, and event with the list of VM to allow intercommunication is raised.
+Since inter VM communication is frequent in the DCs, allowing their communication without the need for the traffic to go to the gateway is important. For this reason, and because it is relevant that it is the administrator/network engineer defining the path, and event with the list of VMs to allow intercommunication is raised.
 
 \begin{verbatim}
 class InterVMComRequest (Event):
@@ -769,13 +772,13 @@ For the allocation process to be agile, a debian VM (other OSs are also supporte
 
 By using XEN API, this process should not be hard to implement, however, what seemed like a simple implementation, rapidly became a ''nightmare'' since the available documentation is very poor, and there is a lack of examples.
 With the impossibility of correctly interacting with \textit{Xen API}, a different approach was taken. By using ssh to control the machine where the hypervisor was installed, the \textit{xe} commands and a script created by citrix for cloning VM templates (can be seen in appendix \ref{app:clonevms}), a new VM was successfully allocated into a server.
-When the VM gets allocated, it is automatically started up, and an IP addressed is given (this IP address which is later communicated to the sorce of the VM Request, so the VM can be accessed.
+When the VM gets allocated, it is automatically started up, and an IP addressed is given (this IP address which is later communicated to the sorce of the VM Request, so the VM can be accessed).
 
 \subsection{User Defined Logic}
 \label{subsec:userdeflog}
 \hspace{0.6cm}
 
-Once all the other modules provide methods or data structures that ease the process of accessing and manipulating the information, this module just have to use those tools to produce the desired logic.
+While all the other modules provide methods or data structures that ease the process of accessing and manipulating the information, this module just has to use those tools to produce the desired logic.
 The \textit{User Define Logic} is a space for the administrators/network engineers to define their DC management policy (\textit{e.g.}VM allocation policies, smart DC routing, etc).
 No limitations in terms of management functionalities are present. As long as everything is OF compliant and can be accessed through some provided API, it can be used in the logic.
 
@@ -798,9 +801,9 @@ In case of the Network-Driven algorithm, when a new VM placement request arrives
 
 With respect to the inter VM communication, an already implemented Dijkstra algorithm for shortest path was adopted (appendix \ref{app:dijkstra}). As the data structure for the topology (graph) was different, it had to be converted before calling the \textit{shortestpath} method. This method was used to calculate the shortest path between all combination of VM pairs.
 
-The code for both implementations can be seen in \footnote{\url{https://github.com/jbteixeir/Openflow-DC-Framework/blob/master/ext/VM/vm\_allocation\_manager.py}}. For allocation algorithms please check the methods \textit{networkDrivenAlgorithm} and \textit{serverDrivenAlgorithm}, and for inter VM communication \textit{interVMPathAlgorithm}.
+The code for both implementations can be seen in \footnote{\url{https://github.com/jbteixeir/Openflow-DC-Framework/blob/master/ext/VM/vm\_allocation\_manager.py}. For allocation algorithms please check the methods \textit{networkDrivenAlgorithm} and \textit{serverDrivenAlgorithm}, and for inter VM communication \textit{interVMPathAlgorithm}}.
 
-\subsection{Other POX Modules used}
+\subsection{Other POX Modules Used}
 \hspace{0.6cm}
 
 Besides using two POX modules on the topology module (\textit{Discovery} and \textit{host\_tracker}), another module was also used: dhcpd.
@@ -930,8 +933,8 @@ If the client wants to view the VMs that it requested and their characteristics 
         \label{fig:webplatvmlist}
 \end{figure}
 
-For requesting inter VM communication, a place for VM groups was created. The textit{VM group} page as similar looks to the \textit{VM list} page, but with checkboxes for choosing the VMs that belong to the same group (figure \ref{fig:webplatvmgroup}).
-After requesting a VM group, a similar process to the VM allocation request is started. Instead of running the allocation policy, the VM group policy is ran, the rules are installed and the feedback about whole process is given back to the \textit{WEB Platform}.
+For requesting inter VM communication, a place for VM groups was created. The \textit{VM group} page as similar looks to the \textit{VM list} page, but with checkboxes for choosing the VMs that belong to the same group (figure \ref{fig:webplatvmgroup}).
+After requesting a VM group, a similar process to the VM allocation request is started. Instead of running the allocation policy, the VM group policy is ran, the rules are installed and the feedback about the process is given back to the \textit{WEB Platform}.
 
 \begin{figure}[h!tbp]
         \centering
@@ -939,6 +942,8 @@ After requesting a VM group, a similar process to the VM allocation request is s
         \caption{WEB Platform - VM Groups}
         \label{fig:webplatvmgroup}
 \end{figure}
+
+\newpage
 
 \subsection{Design}
 \hspace{0.6cm}
@@ -950,14 +955,7 @@ A script for creating this configuration can be seen in appendix \ref{app:mysql}
 
 For communicating with the OF controller a socket is opened and the requests are sent. For now they are string based requests, but it is planned to use an encrypted json\cite{JSON} notation.
 
-\subsection{Future work}
-\hspace{0.6cm}
-
-It would be interesting in the future to include a place where the administrator/network engineer could not only monitor the whole DC, but also interact with the switches and the controller (\textit{e.g.} shutdown interfaces).
-
-For future work it is expected to export the statistics into the \textit{WEB platform}.
 \newpage
-
 \section{Framework modules: VM Requester (VM Requests Generator)}
 \hspace{0.6cm}
 
@@ -972,7 +970,7 @@ As explained before, this modules is only to be used when testing. Its purpose i
 In order to do so, it uses a poisson random variable, for generating both the time interval between requests and the each of the requirements of the VM requests (CPU, RAM, DISK and Network).
 
 Also developed in python, this independent program communicates with the controller \textit{VM request manager} to send VM requests.
-It implements threads for receiving the status of the VM request, so it can at the same time keep making VM requests. The status are printed as the VM get allocated.
+It implements threads for receiving the status of the VM request, so it can at the same time keep making VM requests. The status are printed as the VMs get allocated.
 
 \newpage
 
@@ -1035,7 +1033,7 @@ The implemented architecture is shown in figure \ref{fig:realenvarch}.
         \label{fig:realenvarch}
 \end{figure}
 
-Since OF separates the data plane from the control plane, two separate network are required. Thus, a switch was added connecting the controller with all the OF switches.
+Since OF separates the data plane from the control plane, two separate networks are required. Thus, a switch was added connecting the controller with all the OF switches.
 For simplicity reasons, the laptop in the figure\ref{fig:realenvarch}, is simultaneously the gateway, the OF controller and the WEB Platform.
 
 The specifications of the equipment used is shown below.
@@ -1048,15 +1046,7 @@ The specifications of the equipment used is shown below.
       \item NIC Intel 82566DM-2 Gigabit Network Connection
       \item NIC Intel 82541GI Gigabit Network Connection
     \end{itemize}
-  \item 2 x Edge Switches
-    \begin{itemize}
-      \item AMD Phenom 9650 Quad-Core \@ 1.16Ghz
-      \item 450 GB HD
-      \item 4 GiB RAM
-      \item 2 x NIC Intel 82571EB Gigabit Ethernet Controller
-      \item NIC Realtek Semiconductor RTL8111/8168B Pci Express Gigabit Ethernet Controller
-    \end{itemize}
-  \item 2 x Aggregation Switches
+  \item 2 x Edge Switches and 2 x Aggregation Switches
     \begin{itemize}
       \item AMD Phenom 9650 Quad-Core \@ 1.16Ghz
       \item 450 GB HD
@@ -1157,7 +1147,7 @@ Unfortunately, by analysing the ratios of the blue and red links, it was not pos
         \label{fig:ofqos}
 \end{figure}
 
-A closer look to the article published online by the Openflow group\cite{qosof}, showed that the \textit{ENQUEUE} action was \textbf not supported yet, but that the queues could still be created and the flows could still be mapped to the queues by using the SET\_TOS and SET\_VLAN\_PCP OF parameters.
+A closer look to the article published online by the Openflow group\cite{qosof}, showed that the \textit{ENQUEUE} action was \textbf{not} supported yet, but that the queues could still be created and the flows could still be mapped to the queues by using the SET\_TOS and SET\_VLAN\_PCP OF parameters.
 \begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.8\textwidth]{figures/ofqosexample.png}
@@ -1172,6 +1162,7 @@ As in their example they did not use any of these parameters, and the rules inst
 
 \subsection{Enabling Virtual Machine migration}
 \subsubsection{State of art: Virtual Machine migration}
+\hspace{0.6cm}
 
 VM migration is mostly handled by the hypervisors, which depending on the type of migration (live or not) take into consideration more or less requirements.
 Research have been focus on helping making this tasks faster, simpler and without affecting the normal functioning of the DC.
@@ -1186,6 +1177,7 @@ At last, Mishra, M. et al. in \cite{vmmig4}, present and overview of the VM migr
 They point out the important characteristics of cloud-based DCs (Making resources available on demand, flexible resource provisioning and fine-grained metering), classify the resource management actions into types (server consolidation, load balancing and hotspot mitigation) and which heuristics are adopted (for each action) for answering when, which VM and where to migrate.
 
 \subsubsection{Virtual Machine migration in the framework}
+\hspace{0.6cm}
 
 Aiming for providing full featured and generic access and control of the VM migration (being it live or not), a modified approach to the techniques previously presented was taken.
 
@@ -1245,10 +1237,10 @@ Having that in mind, the following algorithm was developed.\\
 % \end{varwidth}% 
 % }
 
-The algorithm consists in, subtracting each VM to the DC server in which it is allocated its requirements (so apparently the VM has not been allocated) and after run the user-defined VM allocation policy to see if it would change place.
+The algorithm consists in, subtracting each VM requirements to the DC server in which it is allocated(so apparently the VM has not been allocated) and after run the user-defined VM allocation policy to see if it would change place.
 If so, the path for migration is calculated, and the VM migration process starts.
 
-For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the network path and other vm related aspects could also be included.
+For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the VM network path and other vm related aspects could also be included.
 
 The algorithm as at least N complexity, but this varies as it must be multiplied by the complexity of the user-defined VM allocation algorithm and correspondent VM migration path calculation.
 
@@ -1256,7 +1248,7 @@ The algorithm as at least N complexity, but this varies as it must be multiplied
 
 For analyzing the algorithms behaviour, two test were made using BF and WF.
 
-\textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The number of VMs in each server was generated randomly.}
+\textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The starting number of VMs was generated randomly.}
 
 \begin{table}[h!tbp]
 \begin{tabular}{lc|c|c||c|c|c|}
@@ -1289,8 +1281,6 @@ Further test should be made to ensure the algorithms correctiveness.
 Assessing the efficiency and effective gain in the framework and real DC is yet to be made, but it is a point to be addressed in a near future.
 
 \chapter{Validation and tests \label{cha:valtes} }
-
-Usually test and validation of the proposed solution ...
 
 \section{Framework Validation}
 
