@@ -115,7 +115,7 @@ Master of Science, under scientific supervision of Prof. Stefano Giordano and Pr
 \begin{center}{\large September, 2013}\end{center}\end{minipage}%
 \thispagestyle{empty}
 
-\pagenumbering{roman}
+\pagenumbering{Roman}
 
 
 \newpage
@@ -261,7 +261,7 @@ This thesis is structured into five chapters: the present Chapter \ref{cha:intro
 \section{Available solutions}
 
 A number of research efforts have focused on novel solutions for emulation/simulation of Cloud DCs.
-The available solutions provide a reference and material to analise and explore the concepts addressed along this thesis. 
+The available solutions provide a reference and material to analyze and explore the concepts addressed along this thesis. 
 This section presents and overview of them, highlighting their architecture, features and limitations.
 
 \subsection{CloudSim}
@@ -465,7 +465,7 @@ Mininet allows their topology generator to create tree topologies but they do no
 
 Using its API, an algorithm for generating custom DC tree and fat tree topologies was created.
 
-The algorithm works by creating the gateways (as hosts on mininet) and core switches, and iterating through each gateway assigning the correspondent link and their caracteristics to the core switches. Similarly, the same logic is used between the core and aggregation switches, followed by the aggregation and edge switches, and lastly with the edge switches and the servers (created as hosts on mininet).
+The algorithm works by creating the gateways (as hosts on mininet) and core switches, and iterating through each gateway assigning the correspondent link and their characteristics to the core switches. Similarly, the same logic is used between the core and aggregation switches, followed by the aggregation and edge switches, and lastly with the edge switches and the servers (created as hosts on mininet).
 Details on the algorithm can be seen on appendix \ref{app:tpalg}.
 
 It is able to generate any number of gateways, hosts and core, aggregation and edge switches.
@@ -582,7 +582,7 @@ Because it uses the server/client paradigm it had run both on the servers and on
 
 Traffic emulation must be fully customizable (which \textit{iperf} is not) in order to allow the user's experiments: while traffic modeling is out of the scope of this framework, giving the user tools that allows to easily create different traffic profiles is a main issue.
 For this reason it is planned to integrate D-ITG\cite{gitg}, a distributed traffic generator that allows to generate a large spectrum of network traffic profiles({\it e.g.}, poisson distribution, DNS, VoIP, etc..).
-Application-specific traffic profiles can be defined, inserting their statistical parameters, possibily in the configuration file ({\it i.e.}, traffic shape, transport protocol, transmission rate, traffic duration, etc..).
+Application-specific traffic profiles can be defined, inserting their statistical parameters, possibly in the configuration file ({\it i.e.}, traffic shape, transport protocol, transmission rate, traffic duration, etc..).
 Moreover, during the configuration phase, the user should be able to specify how frequently these applications run into the DC.
 
 Similarly to what was happening before, every time a new VM is successfully allocated ({\it i.e.}, the OF controller chooses the server to allocate the VM and sets up the rules on the OF switches) at least a new bidirectional traffic instance starts between one outside host and the one that hosts the new VM.
@@ -623,7 +623,7 @@ Regarding the \textit{discovery module}, it raises an event related to the links
 
 As for the \textit{host\_tracker} it allows to detect non OF devices(servers and gateways). The process for discovering them is similar to the one used by the \textit{discovery module}, but it uses \textit{ping} instead.
 Because this module does not raise any events, it was slightly modified to do so.
-$3$ type of events where added \textit{HostJoin, HostTimeout and HostMove}. Like the name suggests, \textit{HostJoin} is raisen when a host is detected and provides information to which switch and port it is connected; HostTimeout is raised when a host previously detected stop answering the ping request; and HostMove is raised when the host is connected to a different switch or port than the one registered before.
+$3$ type of events where added \textit{HostJoin, HostTimeout and HostMove}. Like the name suggests, \textit{HostJoin} is raised when a host is detected and provides information to which switch and port it is connected; HostTimeout is raised when a host previously detected stop answering the ping request; and HostMove is raised when the host is connected to a different switch or port than the one registered before.
 
 For classifying the level which the switches belong to (edge, aggregation or core), gateways need to be distinguished from the servers, otherwise all the directly connected switches will be recognized as edge. As the addressing schemes are typically different from inside DC to the outside, this was used to differentiate them. To be fully parameterizable, the IP addresses/network addresses of both can be configured in the provided configuration file.
 
@@ -694,13 +694,13 @@ bit_rate_port_stats[port_no] =
 
 \end{verbatim}
 
-Statistics can be collected, periodically (with periodicy indicated in the configuration file), can be retrieved whenever requested (\textit{e.g.} a VM request arrives) or both.
+Statistics can be collected, periodically (with periodicity indicated in the configuration file), can be retrieved whenever requested (\textit{e.g.} a VM request arrives) or both.
 
 \subsubsection{Statistics Exporter}
 \hspace{0.6cm}
 
 \textit{Statistics Exporter} was created with the purpose of allowing statistics to be analyzed outside the running environment.
-To do so, it periodically checks the \textit{statitics} module, collecting and saving all the information into '.csv' files.
+To do so, it periodically checks the \textit{statistics} module, collecting and saving all the information into '.csv' files.
 \textit{Statistics exporter} should have the same periodicity for statistics collection than the \textit{statistics} module, in order to maximize the information gathered.
 Two types of files are generated: for switches and for links.
 
@@ -721,7 +721,7 @@ This module is responsible for parsing the VM requests (allocation or inter VM c
 It creates a thread and a socket inside it for receiving and parsing the VM requests from both the \textit{VM Request Generator} and the \textit{WEB Platform}.
 After the VM requests have been validated, an event with the VM requirements is raised.
 
-For the VM allocation request the following event is raisen,
+For the VM allocation request the following event is raised,
 
 \begin{verbatim}
 class VMRequest (Event) :
@@ -772,7 +772,7 @@ For the allocation process to be agile, a debian VM (other OSs are also supporte
 
 By using XEN API, this process should not be hard to implement, however, what seemed like a simple implementation, rapidly became a ''nightmare'' since the available documentation is very poor, and there is a lack of examples.
 With the impossibility of correctly interacting with \textit{Xen API}, a different approach was taken. By using ssh to control the machine where the hypervisor was installed, the \textit{xe} commands and a script created by citrix for cloning VM templates (can be seen in appendix \ref{app:clonevms}), a new VM was successfully allocated into a server.
-When the VM gets allocated, it is automatically started up, and an IP addressed is given (this IP address which is later communicated to the sorce of the VM Request, so the VM can be accessed).
+When the VM gets allocated, it is automatically started up, and an IP addressed is given (this IP address which is later communicated to the source of the VM Request, so the VM can be accessed).
 
 \subsection{User Defined Logic}
 \label{subsec:userdeflog}
@@ -986,7 +986,7 @@ For adding the framework to the Mininet VM, one just needs to copy the framework
 
 \subsubsection{Testing new DC allocation policies}
 
-The controller part of framework can be ran like a normal POX module. Its name is \textit{ercs}, and its responsible for calling all the submodules inside the controller. When testing, the \textit{DEBUG} log level should be activated, as it prints more information into the console.
+The controller part of framework can be ran like a normal POX module. Its name is \textit{ercs}, and its responsible for calling all the sub-modules inside the controller. When testing, the \textit{DEBUG} log level should be activated, as it prints more information into the console.
 \begin{verbatim}
 ~/poxbetta/pox.py ercs log.level --DEBUG
 \end{verbatim}
@@ -1005,7 +1005,7 @@ The list of arguments comprises the controller socket IP and port, the VM reques
 
 \newpage
 
-In figure \ref{fig:emulenv} is a printscreen of all the components running.
+In figure \ref{fig:emulenv} is a print-screen of all the components running.
 
 \begin{figure}[h!tbp]
         \centering
@@ -1033,7 +1033,7 @@ The implemented architecture is shown in figure \ref{fig:realenvarch}.
         \label{fig:realenvarch}
 \end{figure}
 
-Since OF separates the data plane from the control plane, two separate networks are required. Thus, a switch was added connecting the controller with all the OF switches.
+Since OF separates the data plane from the control plane, two separate networks are required. Thus, a non OF switch was added connecting the controller with all the OF switches an the servers.
 For simplicity reasons, the laptop in the figure\ref{fig:realenvarch}, is simultaneously the gateway, the OF controller and the WEB Platform.
 
 The specifications of the equipment used is shown below.
@@ -1092,8 +1092,7 @@ In figure \ref{fig:realenv}, a photo of the real environment is shown.
 \section{Framework extensions \label{Sec:fraext} }
 \hspace{0.6cm}
 
-Framework extensions were though to allow a wider range of experiments and to show that important subjects are been taken into consideration. QoS and VM migration were the two chosen, one from the network side and the other from the IT resources.
-As most of the framework, the extensions are still a work-in-progress, thus they should only be seen as experiments.
+Framework extensions were though to allow a wider range of experiments and to show that important subjects are been taken into consideration. QoS and VM migration were the two chosen, one from the network side and the other from the IT resources. Although both of the topics have been addressed, only QoS have been implemented.
 
 \subsection{Enabling QoS}
 \subsubsection{State of art: QoS in Openflow}
@@ -1103,7 +1102,7 @@ The OF protocol as been evolving to provide support for QoS.
 However, as they argue that will bring extra complexity \cite{qosof}, until version 1.3.1 (latest) they only added support for simple queuing mechanisms.
 Version 1.0 started by bringing to queues minimum guaranteed rate but queue configuration was still done outside the OF protocol. Later, in version 1.2, maximum rate was also included.
 
-Although this features are available most research efforts focus on QoS approaches to OF using, among other techniques, dynamic routing and are oriented for either streamming\cite{ofqos2}\cite{ofqos3} or multimedia\cite{ofqos1}.
+Although this features are available most research efforts focus on QoS approaches to OF using, among other techniques, dynamic routing and are oriented for either streaming\cite{ofqos2}\cite{ofqos3} or multimedia\cite{ofqos1}.
 
 Regarding mininet and its OF switches implementation, the latest version is 2.0 and contains Open VSwitch driver 1.3.4, which fully supports OF 1.0.
 More recent versions of OF can be integrated by upgrading the version of Open VSwitch, however, they are still experimental and may not include all the features provided in the protocol specification.
@@ -1111,7 +1110,7 @@ More recent versions of OF can be integrated by upgrading the version of Open VS
 \subsubsection{QoS in the framework}
 \hspace{0.6cm}
 
-As the framework aims for providing the administrators/network engineers the tools for developing and testing their logic, it is their responsibility to develop QoS tecniques/algorithms similar to the ones shown previously, while the framework should limit itself to help with the interaction with the OF supported QoS features and their expected usage in the cloud DC.
+As the framework aims for providing the administrators/network engineers the tools for developing and testing their logic, it is their responsibility to develop QoS techniques/algorithms similar to the ones shown previously, while the framework should limit itself to help with the interaction with the OF supported QoS features and their expected usage in the cloud DC.
 
 However, as an experiment, we went for a different perspective on how QoS is used.
 It was implemented traffic differentiation for giving different type of user, different types of QoE.
@@ -1138,7 +1137,7 @@ It started by creating the shown topology and setting the links bandwidth equal 
 By allocating two VMs of different types into two servers that share the same edge switch, and by setting their IO requirements to the maximum bandwidth capacity of the edge-to-aggregation link that they share (first green link counting from the bottom), it should be possible to see the class with more "minimum rate" have at least the bandwidth corresponding to its class.
 The minimum rate configuration for the classes was 70\%-30\%.
 
-Unfortunately, by analysing the ratios of the blue and red links, it was not possible to see any differentiation. Both servers got half of the available bandwidth - an output that was not expected.
+Unfortunately, by analyzing the ratios of the blue and red links, it was not possible to see any differentiation. Both servers got half of the available bandwidth - an output that was not expected.
 
 \begin{figure}[h!tbp]
         \centering
@@ -1191,7 +1190,7 @@ Further more, since it is important to provide full access to DC, another questi
 For this to be possible, a few additions should be made to the controller:
 \begin{itemize}
  \item Collect and save statistics from the servers.
- \item Add VM migration manager submodule to \textit{User-defined Logic}.
+ \item Add VM migration manager sub-module to \textit{User-defined Logic}.
  \begin{itemize}
  \item \textit{When to migrate} -- Methods where it is defined how hotspots occurrence, for both network or server, are detected (or expected occurrence, so reactive and proactive VM migration are possible). Also a method for analyzing the current DC occupation (network and servers) and if it is not according to the defined policy (or combination of policies) start a VM migration process.
  \item \textit{Which VMs to migrate} -- Place for defining which VMs should be migrated.
@@ -1203,7 +1202,7 @@ For this to be possible, a few additions should be made to the controller:
 \newpage
 Although all the above should be defined by the administrator/network engineer, it would be an advantage if it was possible to automatically manage the VMs so the logic defined for the allocation was kept over time. 
 Meaning that, as time passes and VMs get allocated and deallocated, the way they are spread through the servers might not be the one which was previously defined.
-\textit{E.g.} lets assume the best fit (server consolidation) algorithm is implemented and $2$ servers were full with VM allocations (6/6). If, after a while, half of the VMs in each server expire, instead of having just a server with all the VMs, we have two servers with half their capacity used -- table \ref{table:vmfrag}.
+\textit{E.g.} lets assume the best fit (server consolidation) algorithm is implemented and $2$ servers were full with VM allocations (6/6). If, after a while, half of the VMs in each server expire, instead of having just a server with all the VMs, we have two servers with half their capacity used (the best fit policy is no longer present) -- table \ref{table:vmfrag}.
 
 \begin{table}[h!tbp]
 \centering
@@ -1225,7 +1224,7 @@ Meaning that, as time passes and VMs get allocated and deallocated, the way they
 \label{table:vmfrag}
 \end{table}
 
-Having that in mind, but aiming for a generic way to keep any DC allocation logic over time, the following algorithm \ref{alg:keepdcpol} was developed.\\
+Having that in mind, and aiming for a way to keep the DC VM organization over the time independently of the defined allocation policy, the following algorithm \ref{alg:keepdcpol} was developed.\\
 
 \newpage
 % \noindent\fbox{%
@@ -1307,24 +1306,24 @@ For analyzing the algorithms behaviour, two test were made using BF and WF.
 \label{table:keepdcpol}
 \end{table}
 
-Althought it is a very basic example, as can be seen in table \ref{table:keepdcpol}, the algorithm successfully recovered the DC policy.
+Although it is a very basic example, as can be seen in table \ref{table:keepdcpol}, the algorithm successfully recovered the DC policy.
 On both cases, after the $3$rd iteration, no more migration were performed, however, as the algorithm runs through all the VMs, all $6$ iterations were made.
 
 Although BF and WF do not, by far, represent all the types of VM allocation policies, they are a good starting point for the validation of the algorithm.
-Further test should be made to ensure the algorithms correctiveness.
+Further test should be made to ensure the algorithms correctness.
 Assessing the efficiency and effective gain in the framework and real DC is yet to be made, but it is a point to be addressed in a near future.
 
 -explain the goal of the keep dc policy
--explain better the tsarting opint of the example table
+-explain better the starting point of the example table
 -explain the condition for choosing VMs
 -take the on going part from the whole thesis
--trace statistics (average value, minimum and maxium levle of overall trafiic) time length peak traffic
+-trace statistics (average value, minimum and maximum level of overall traffic) time length peak traffic
 
 \chapter{Validation and tests \label{cha:valtes} }
 
 \section{Framework Validation}
 
-Understanding the impact on the DC network infrastructure of well--known VM allocation policies represents the first step for finding more and more optimized solutions. The main concern was to validate th framework by analyzing the behaviour of the system under common situations, in order to compare the obtained results with the theoretical ones.
+Understanding the impact on the DC network infrastructure of well--known VM allocation policies represents the first step for finding more and more optimized solutions. The main concern was to validate the framework by analyzing the behaviour of the system under common situations, in order to compare the obtained results with the theoretical ones.
 
 For this reason in the \textit{user-defined logic} part of the controller, it was firstly implemented Best Fit (BF), then Worst Fit (WF).
 The BF algorithm chooses the server with the smallest available resources that still suits the requirements.
@@ -1509,7 +1508,7 @@ Framework scalability and stability were also evaluated increasing both the numb
 Openflow has been catching companies attention and gaining a lot of importance is a recent technology, however, as a new technology, a lot of features that usually can be seen on any router are still missing, which ends up limiting the features the framework makes available (\textit{e.g} regarding QoS).
 Also, as a new technology, the existing controllers do not provide a lot of support, and solutions for encountered errors are not easily found or not found at all. For overcoming this errors, sometimes a deep knowledge of how the controller works is required.
 
-A similar problem was faced when integrating \textit{XEN}, as the documentation is very poor, and few examples are available. This leds to conclude that even opensource projects that have success tend to neglect documentation.
+A similar problem was faced when integrating \textit{XEN}, as the documentation is very poor, and few examples are available. This leads to conclude that even opensource projects that have success tend to neglect documentation.
 
 Aiming to make the framework a more complete and mature solution, work is still in progress.
 
@@ -1523,7 +1522,7 @@ Additionally, a paper focused only on the framework was created \textit{Datacent
 
 \section{Future work}
 
-As an ongoing project, improvements can always be done, however, a few are already planned.
+Although all the proposed objectives were accomplished, improvements can always be done, and a few are already planned.
 
 One would be to be able to access XEN through their API, since it would bring much more control and information over the servers and virtual machines.
 The other would be to greatly improve the WEB Platform by not only giving the DC clients more information about their VMs and pricing tags but also to create a space for the DC administrator/network engineer to control and monitor the whole infrastructure.
