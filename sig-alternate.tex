@@ -1173,7 +1173,7 @@ Taking a step further, Boughzala, B. et al. \cite{vmmig2} used OF for supporting
 
 By using OF rules to assist the Xen-based VM migration, Pedro S. Pisa et al \cite{vmmig3}, were able to have zero downtime. They also support WAN migration without packet loss due to the bilateral rule installation.
 
-At last, Mishra, M. et al. in \cite{vmmig4}, present and overview of the VM migration techniques and how to use them to obtain dynamic resource management.
+At last, Mishra, M. et al. in \cite{vmmig4}, present an overview of the VM migration techniques and how to use them to obtain dynamic resource management.
 They point out the important characteristics of cloud-based DCs (Making resources available on demand, flexible resource provisioning and fine-grained metering), classify the resource management actions into types (server consolidation, load balancing and hotspot mitigation) and which heuristics are adopted (for each action) for answering when, which VM and where to migrate.
 
 \subsubsection{Virtual Machine migration in the framework}
@@ -1201,54 +1201,88 @@ For this to be possible, a few additions should be made to the controller:
 \end{itemize}
 
 \newpage
-Although all the above should be defined by the administrator/network engineer, it would be an advantage if the \textit{keep DC policy} could be done automatically (with configurable periodicity) by using the already implemented policy in the \textit{user-defined logic}.
+Although all the above should be defined by the administrator/network engineer, it would be an advantage if it was possible to automatically manage the VMs so the logic defined for the allocation was kept over time. 
+Meaning that, as time passes and VMs get allocated and deallocated, the way they are spread through the servers might not be the one which was previously defined.
+\textit{E.g.} lets assume the best fit (server consolidation) algorithm is implemented and $2$ servers were full with VM allocations (6/6). If, after a while, half of the VMs in each server expire, instead of having just a server with all the VMs, we have two servers with half their capacity used -- table \ref{table:vmfrag}.
 
-Having that in mind, the following algorithm was developed.\\
+\begin{table}[h!tbp]
+\centering
+\begin{tabular}{c|c|c|}
 
+\hline
+\multicolumn{1}{|c|}{}& Server 1 & Server 2 \\
+\hline
+\multicolumn{1}{|c|}{When VMs were allocated} & 6/6 & 6/6 \\
+\hline
+\multicolumn{1}{|c|}{After some of them expired} & 3/6 & 3/6 \\
+\hline
+\hline
+\multicolumn{1}{|c|}{What it should be if DC policy was kept (BF)} & 6/6 & 0/6 \\
+\hline
+\end{tabular}
+
+\caption{DC servers occupation example. (VMs allocated / server VM allocation capacity)}
+\label{table:vmfrag}
+\end{table}
+
+Having that in mind, but aiming for a generic way to keep any DC allocation logic over time, the following algorithm \ref{alg:keepdcpol} was developed.\\
+
+\newpage
 % \noindent\fbox{%
 % \begin{varwidth}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
 \begin{algorithm}[h!]
 \caption{Keep DC policy}
 \label{alg:keepdcpol}
 \begin{algorithmic}[1]
+\State {\textit{\%retrieve the server list}}
+\State {$server\_list\gets getServerList()$}
+\State {\textit{\%retrieve server from the server list}}
+\State {$server\gets getServerFromList(server\_list)$}
+\While{$server \neq null$}
 \State {\textit{\%retrieve the VM list}}
-\State {$vm\_list\gets getVmList()$}
+\State {$vm\_list\gets getVmList(server)$}
+\State {\textit{\%retrieve vm from the VM list}}
 \State {$vm\gets getVmFromList(vm\_list)$}
 % \State{}
 \While{$vm \neq null$}
-\State {\textit{\%get the server where the vm is allocated}}
-\State {$vm\_place \gets getServer(vm)$}
 \State {\textit{\%pretend to subtract the vm requirements to the server in which is allocated}}
 \State {$subtractVmToDC(vm)$}
 \State {\textit{\%run the user-defined policy to get the place where the vm would be allocated}}
-\State {$new\_vm\_place \gets userDefinedAllocationPollicy(vm)$}
+\State {$new\_server \gets userDefinedAllocationPollicy(vm)$}
 % \State{}
-\If {$vm\_place \neq new\_vm\_place$}
+\If {$server \neq new\_server$}
 \State {\textit{\%get the migration path for this vm}}
-\State {$vm\_migration\_path \gets getVmMigrationPath(vm\_place, new\_vm\_place)$}
+\State {$vm\_migration\_path \gets getVmMigrationPath(server, new\_server)$}
 \State {\textit{\%start the vm migration}}
-\State {$migrateVM(vm, vm\_place, new\_vm\_place, vm\_migration\_path)$}
+\State {$migrateVM(vm, server, new\_server, vm\_migration\_path)$}
 \EndIf
 % \State{}
+\State {\textit{\%Remove this vm from the list}}
+\State {$vm\_list\gets removeVmFromList(vm\_list, vm)$}
+\State {\textit{\%retrieve other vm from the VM list}}
 \State {$vm\gets getVmFromList(vm\_list)$}
+\EndWhile
+
+\State {\textit{\%Remove this server from the list}}
+\State {$server\_list\gets removeServerFromList(server\_list, server)$}
+\State {\textit{\%retrieve other server from the server list}}
+\State {$server\gets getServerFromList(server\_list)$}
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
 % \end{varwidth}% 
 % }
 
-The algorithm consists in, subtracting each VM requirements to the DC server in which it is allocated(so apparently the VM has not been allocated) and after run the user-defined VM allocation policy to see if it would change place.
+The algorithm consists in, going to each server and each of its VMs and subtracting the VM requirements to the DC server in which it is allocated(so apparently the VM has not been allocated) and after run the user-defined VM allocation policy to see if it would change place.
 If so, the path for migration is calculated, and the VM migration process starts.
 
 For simplicity purpose, the algorithm took only into consideration the servers, but as it follows the same logic, the VM network path and other vm related aspects could also be included.
 
 The algorithm as at least N complexity, but this varies as it must be multiplied by the complexity of the user-defined VM allocation algorithm and correspondent VM migration path calculation.
 
-\newpage
-
 For analyzing the algorithms behaviour, two test were made using BF and WF.
 
-\textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The starting number of VMs was generated randomly.}
+\textit{Note: For the sake of simplicity, $3$ servers where taken into consideration with $3$ possible VM allocations, and all with the same requirements. The number of allocated VMs considered for the start of the algorithm was randomly generated (this set of numbers represents the state of the DC in a given time and results from the dynamics between the VM allocations and expirations. The order in which the VMs were chosen}
 
 \begin{table}[h!tbp]
 \begin{tabular}{lc|c|c||c|c|c|}
@@ -1279,6 +1313,12 @@ On both cases, after the $3$rd iteration, no more migration were performed, howe
 Although BF and WF do not, by far, represent all the types of VM allocation policies, they are a good starting point for the validation of the algorithm.
 Further test should be made to ensure the algorithms correctiveness.
 Assessing the efficiency and effective gain in the framework and real DC is yet to be made, but it is a point to be addressed in a near future.
+
+-explain the goal of the keep dc policy
+-explain better the tsarting opint of the example table
+-explain the condition for choosing VMs
+-take the on going part from the whole thesis
+-trace statistics (average value, minimum and maxium levle of overall trafiic) time length peak traffic
 
 \chapter{Validation and tests \label{cha:valtes} }
 

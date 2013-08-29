@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  28 AUG 2013 01:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  29 AUG 2013 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -526,7 +526,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 267.
 [5
 
-] <figures/meridian_arch.png, id=467, 730.73pt x 405.515pt>
+] <figures/meridian_arch.png, id=469, 730.73pt x 405.515pt>
 File: figures/meridian_arch.png Graphic file (type png)
 
 <use figures/meridian_arch.png>
@@ -549,7 +549,7 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 Chapter 3.
 [11
 
-] [12] [13] <figures/emulator_new.png, id=526, 986.68625pt x 664.4825pt>
+] [12] [13] <figures/emulator_new.png, id=528, 986.68625pt x 664.4825pt>
 File: figures/emulator_new.png Graphic file (type png)
 
 <use figures/emulator_new.png>
@@ -581,14 +581,14 @@ Overfull \hbox (45.16801pt too wide) in paragraph at lines 534--535
 [][][][][][][][][][][][][][][][][]  
  []
 
-[19] <figures/tcpreplay2.png, id=600, 716.6775pt x 351.3125pt>
+[19] <figures/tcpreplay2.png, id=602, 716.6775pt x 351.3125pt>
 File: figures/tcpreplay2.png Graphic file (type png)
 
 <use figures/tcpreplay2.png>
 Package pdftex.def Info: figures/tcpreplay2.png used on input line 559.
 (pdftex.def)             Requested size: 460.72124pt x 225.84702pt.
 
-<figures/traffic_gen.png, id=605, 443.6575pt x 115.43124pt>
+<figures/traffic_gen.png, id=607, 443.6575pt x 115.43124pt>
 File: figures/traffic_gen.png Graphic file (type png)
 
 <use figures/traffic_gen.png>
@@ -596,21 +596,21 @@ Package pdftex.def Info: figures/traffic_gen.png used on input line 575.
 (pdftex.def)             Requested size: 276.43555pt x 71.92241pt.
  [20 <./figures/tcpreplay2.png>] [21 <./figures/traffic_gen.png>] [22] [23] [24
 ]
-<figures/stats_portstats.png, id=637, 316.18124pt x 343.2825pt>
+<figures/stats_portstats.png, id=639, 316.18124pt x 343.2825pt>
 File: figures/stats_portstats.png Graphic file (type png)
 
 <use figures/stats_portstats.png>
 Package pdftex.def Info: figures/stats_portstats.png used on input line 656.
 (pdftex.def)             Requested size: 184.28918pt x 200.08873pt.
 
-<figures/stats_flowstats.png, id=638, 399.4925pt x 324.21124pt>
+<figures/stats_flowstats.png, id=640, 399.4925pt x 324.21124pt>
 File: figures/stats_flowstats.png Graphic file (type png)
 
 <use figures/stats_flowstats.png>
 Package pdftex.def Info: figures/stats_flowstats.png used on input line 662.
 (pdftex.def)             Requested size: 230.36061pt x 186.94934pt.
  [25 <./figures/stats_portstats.png> <./figures/stats_flowstats.png>]
-<figures/statsexport.png, id=646, 555.07375pt x 194.7275pt>
+<figures/statsexport.png, id=648, 555.07375pt x 194.7275pt>
 File: figures/statsexport.png Graphic file (type png)
 
 <use figures/statsexport.png>
@@ -633,28 +633,28 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 819--887
 []$[]$$[]$ 
  []
 
-[31] [32] [33] <figures/webplat_panel.png, id=754, 1126.2075pt x 603.25375pt>
+[31] [32] [33] <figures/webplat_panel.png, id=756, 1126.2075pt x 603.25375pt>
 File: figures/webplat_panel.png Graphic file (type png)
 
 <use figures/webplat_panel.png>
 Package pdftex.def Info: figures/webplat_panel.png used on input line 911.
 (pdftex.def)             Requested size: 460.72124pt x 246.78334pt.
 
-<figures/webplat_vmreq.png, id=756, 1124.2pt x 655.44875pt>
+<figures/webplat_vmreq.png, id=758, 1124.2pt x 655.44875pt>
 File: figures/webplat_vmreq.png Graphic file (type png)
 
 <use figures/webplat_vmreq.png>
 Package pdftex.def Info: figures/webplat_vmreq.png used on input line 921.
 (pdftex.def)             Requested size: 460.72124pt x 268.6157pt.
  [34 <./figures/webplat_panel.png>]
-<figures/webplat_vmlist.png, id=765, 1126.2075pt x 627.34375pt>
+<figures/webplat_vmlist.png, id=767, 1126.2075pt x 627.34375pt>
 File: figures/webplat_vmlist.png Graphic file (type png)
 
 <use figures/webplat_vmlist.png>
 Package pdftex.def Info: figures/webplat_vmlist.png used on input line 931.
 (pdftex.def)             Requested size: 460.72124pt x 256.63824pt.
 
-<figures/webplat_vmgroup.png, id=767, 1123.19624pt x 716.6775pt>
+<figures/webplat_vmgroup.png, id=769, 1123.19624pt x 716.6775pt>
 File: figures/webplat_vmgroup.png Graphic file (type png)
 
 <use figures/webplat_vmgroup.png>
@@ -662,7 +662,7 @@ Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 941.
 (pdftex.def)             Requested size: 460.72124pt x 293.9709pt.
  [35 <./figures/webplat_vmreq.png>] [36 <./figures/webplat_vmlist.png> <./figur
 es/webplat_vmgroup.png>] [37]
-<figures/vmreq.png, id=788, 670.505pt x 302.12875pt>
+<figures/vmreq.png, id=790, 670.505pt x 302.12875pt>
 File: figures/vmreq.png Graphic file (type png)
  <use figures/vmreq.png>
 Package pdftex.def Info: figures/vmreq.png used on input line 964.
@@ -674,21 +674,21 @@ Overfull \hbox (72.07854pt too wide) in paragraph at lines 1001--1001
 on.py {args} 
  []
 
-[39] <figures/emulenv.png, id=803, 1247.66125pt x 602.25pt>
+[39] <figures/emulenv.png, id=805, 1247.66125pt x 602.25pt>
 File: figures/emulenv.png Graphic file (type png)
 
 <use figures/emulenv.png>
 Package pdftex.def Info: figures/emulenv.png used on input line 1012.
 (pdftex.def)             Requested size: 460.72124pt x 222.38791pt.
  [40 <./figures/emulenv.png>]
-<figures/realenvirscheme.png, id=812, 1271.75125pt x 485.815pt>
+<figures/realenvirscheme.png, id=814, 1271.75125pt x 485.815pt>
 File: figures/realenvirscheme.png Graphic file (type png)
 
 <use figures/realenvirscheme.png>
 Package pdftex.def Info: figures/realenvirscheme.png used on input line 1031.
 (pdftex.def)             Requested size: 368.57838pt x 140.8012pt.
  [41 <./figures/realenvirscheme.png>] [42]
-<figures/realenvironment.jpg, id=827, 963.6pt x 722.7pt>
+<figures/realenvironment.jpg, id=829, 963.6pt x 722.7pt>
 File: figures/realenvironment.jpg Graphic file (type jpg)
 
 <use figures/realenvironment.jpg>
@@ -700,194 +700,195 @@ Overfull \hbox (12.1481pt too wide) in paragraph at lines 1130--1131
  queue_type))'', which
  []
 
-[45] <figures/ofqos.png, id=850, 662.475pt x 412.54124pt>
+[45] <figures/ofqos.png, id=852, 662.475pt x 412.54124pt>
 File: figures/ofqos.png Graphic file (type png)
 
 <use figures/ofqos.png>
 Package pdftex.def Info: figures/ofqos.png used on input line 1145.
 (pdftex.def)             Requested size: 368.57838pt x 229.52335pt.
 
-<figures/ofqosexample.png, id=852, 513.92pt x 71.26625pt>
+<figures/ofqosexample.png, id=854, 513.92pt x 71.26625pt>
 File: figures/ofqosexample.png Graphic file (type png)
 
 <use figures/ofqosexample.png>
 Package pdftex.def Info: figures/ofqosexample.png used on input line 1153.
 (pdftex.def)             Requested size: 368.57838pt x 51.11264pt.
  [46 <./figures/ofqos.png> <./figures/ofqosexample.png>] [47] [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1207
+Underfull \hbox (badness 10000) in paragraph at lines 1228--1229
 
  []
 
+[49]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 1211.
-[49] [50]
+put line 1234.
+ [50] [51]
 Chapter 4.
-<figures/figure1.pdf, id=891, 722.7pt x 542.025pt>
+<figures/figure1.pdf, id=899, 722.7pt x 542.025pt>
 File: figures/figure1.pdf Graphic file (type pdf)
  <use figures/figure1.pdf>
-Package pdftex.def Info: figures/figure1.pdf used on input line 1301.
+Package pdftex.def Info: figures/figure1.pdf used on input line 1341.
 (pdftex.def)             Requested size: 368.57838pt x 276.43736pt.
 
-[51
+[52
 
-] <figures/use_case.png, id=897, 642.4pt x 481.8pt>
+] <figures/use_case.png, id=906, 642.4pt x 481.8pt>
 File: figures/use_case.png Graphic file (type png)
 
 <use figures/use_case.png>
-Package pdftex.def Info: figures/use_case.png used on input line 1313.
+Package pdftex.def Info: figures/use_case.png used on input line 1353.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- [52 <./figures/figure1.pdf>] [53 <./figures/use_case.png>] <figures/im2013grap
-h.png, id=960, 742.775pt x 576.1525pt>
+ [53 <./figures/figure1.pdf>] [54 <./figures/use_case.png>] <figures/im2013grap
+h.png, id=968, 742.775pt x 576.1525pt>
 File: figures/im2013graph.png Graphic file (type png)
 
 <use figures/im2013graph.png>
-Package pdftex.def Info: figures/im2013graph.png used on input line 1361.
+Package pdftex.def Info: figures/im2013graph.png used on input line 1401.
 (pdftex.def)             Requested size: 460.72124pt x 357.37788pt.
- [54 <./figures/im2013graph.png>]
-<figures/bw_utilization.png, id=968, 642.4pt x 481.8pt>
+ [55 <./figures/im2013graph.png>]
+<figures/bw_utilization.png, id=976, 642.4pt x 481.8pt>
 File: figures/bw_utilization.png Graphic file (type png)
 
 <use figures/bw_utilization.png>
-Package pdftex.def Info: figures/bw_utilization.png used on input line 1396.
+Package pdftex.def Info: figures/bw_utilization.png used on input line 1436.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [55 <./figures/bw_utilization.png>]
-<figures/topo.png, id=975, 642.4pt x 481.8pt>
+ [56 <./figures/bw_utilization.png>]
+<figures/topo.png, id=983, 642.4pt x 481.8pt>
 File: figures/topo.png Graphic file (type png)
  <use figures/topo.png>
-Package pdftex.def Info: figures/topo.png used on input line 1415.
+Package pdftex.def Info: figures/topo.png used on input line 1455.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [56 <./figures/topo.png>] <figures/out_hosts_ratio.png, id=982, 642.4pt x 481.
+ [57 <./figures/topo.png>] <figures/out_hosts_ratio.png, id=990, 642.4pt x 481.
 8pt>
 File: figures/out_hosts_ratio.png Graphic file (type png)
 
 <use figures/out_hosts_ratio.png>
-Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 1429.
+Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 1469.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [57 <./figures/out_hosts_ratio.png>]
-<figures/mem1_utilization.png, id=989, 642.4pt x 481.8pt>
+ [58 <./figures/out_hosts_ratio.png>]
+<figures/mem1_utilization.png, id=999, 642.4pt x 481.8pt>
 File: figures/mem1_utilization.png Graphic file (type png)
 
 <use figures/mem1_utilization.png>
-Package pdftex.def Info: figures/mem1_utilization.png used on input line 1444.
+Package pdftex.def Info: figures/mem1_utilization.png used on input line 1484.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
 
-<figures/mem2_utilization.png, id=990, 642.4pt x 481.8pt>
+<figures/mem2_utilization.png, id=1000, 642.4pt x 481.8pt>
 File: figures/mem2_utilization.png Graphic file (type png)
 
 <use figures/mem2_utilization.png>
-Package pdftex.def Info: figures/mem2_utilization.png used on input line 1451.
+Package pdftex.def Info: figures/mem2_utilization.png used on input line 1491.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [58 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
+ [59 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
 Chapter 5.
-[59
+[60
 
 ]
-Overfull \hbox (5.4231pt too wide) in paragraph at lines 1479--1480
+Overfull \hbox (5.4231pt too wide) in paragraph at lines 1519--1520
 []\T1/ptm/m/n/12 As a di-rect re-sult of the work de-vel-oped in this the-sis, 
 a con-tri-bu-tion to the pa-per \T1/ptm/m/it/12 Virtualization-
  []
 
-[60]
+[61]
 Appendix A.
-[61
+[62
 
-] [62] [63]
+] [63] [64]
 Appendix B.
-[64
+[65
 
 ]
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1599--1600
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1639--1640
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (157.14749pt too wide) in paragraph at lines 1613--1614
+Overfull \hbox (157.14749pt too wide) in paragraph at lines 1653--1654
 [][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1628--1629
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-[65]
-Overfull \hbox (301.68732pt too wide) in paragraph at lines 1642--1643
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1655--1656
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1668--1669
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
 [66]
-Overfull \hbox (295.11732pt too wide) in paragraph at lines 1669--1670
+Overfull \hbox (301.68732pt too wide) in paragraph at lines 1682--1683
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[67] [68]
+
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1695--1696
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[67]
+Overfull \hbox (295.11732pt too wide) in paragraph at lines 1709--1710
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[68] [69]
 Appendix C.
 
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1722--1723
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1762--1763
 [][][][][]  
  []
 
-[69
+[70
 
-] [70] [71]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1798--1799
+] [71] [72]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1838--1839
 [][][][][][][]  
  []
 
-[72] [73]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1861--1862
+[73] [74]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1901--1902
 [][][][][]  
  []
 
 
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1866--1867
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1906--1907
 [][][][][]  
  []
 
-[74] [75]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1899--1900
+[75] [76]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1939--1940
 [][][][][]  
  []
 
-[76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
-Overfull \hbox (124.00792pt too wide) in paragraph at lines 2260--2261
+[77] [78] [79] [80] [81] [82] [83] [84] [85] [86]
+Overfull \hbox (124.00792pt too wide) in paragraph at lines 2300--2301
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (137.1479pt too wide) in paragraph at lines 2262--2263
+Overfull \hbox (137.1479pt too wide) in paragraph at lines 2302--2303
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[86] [87] [88] [89] [90]
+[87] [88] [89] [90] [91]
 Appendix D.
-[91
+[92
 
-] [92] [93]
+] [93] [94]
 Appendix E.
-[94
+[95
 
-] [95]
+] [96]
 Appendix F.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [96
+) [97
 
-] [97]
+] [98]
 Appendix G.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [98
+) [99
 
-] [99]
+] [100]
 (./sig-alternate.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 30--33
 []\T1/ptm/m/n/12 O. Bal-don-ado, SDN, Open-Flow, and next-generation data cen-t
@@ -900,7 +901,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--33
 and-next-
  []
 
-[100
+[101
 
 
 
@@ -915,13 +916,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--77
 tp://www-
  []
 
-[101] [102])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2621.
- [103]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2621.
+[102] [103])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2661.
+ [104]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2661.
  (./sig-alternate.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2621.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2621.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2661.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2661.
 
 Package rerunfilecheck Info: File `sig-alternate.out' has not changed.
 (rerunfilecheck)             Checksum: 6ABD5661C7ECBBF982B577EF813D5A3A;4247.
@@ -929,13 +930,13 @@ Package rerunfilecheck Info: File `sig-alternate.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2621.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2661.
  ) 
 Here is how much of TeX's memory you used:
- 13143 strings out of 495059
- 186516 string characters out of 3182030
- 382282 words of memory out of 3000000
- 14712 multiletter control sequences out of 15000+200000
+ 13150 strings out of 495059
+ 186617 string characters out of 3182030
+ 382392 words of memory out of 3000000
+ 14717 multiletter control sequences out of 15000+200000
  48318 words of font info for 58 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,12n,49p,775b,2042s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -947,10 +948,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sig-alternate.pdf (112 pages, 2147314 bytes).
+Output written on sig-alternate.pdf (113 pages, 2149476 bytes).
 PDF statistics:
- 2593 PDF objects out of 2984 (max. 8388607)
- 2353 compressed objects within 24 object streams
- 1418 named destinations out of 1440 (max. 500000)
+ 2601 PDF objects out of 2984 (max. 8388607)
+ 2360 compressed objects within 24 object streams
+ 1420 named destinations out of 1440 (max. 500000)
  630 words of extra memory for PDF output out of 10000 (max. 10000000)
 

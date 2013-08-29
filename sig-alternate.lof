@@ -20,13 +20,13 @@
 \contentsline {figure}{\numberline {3.15}{\ignorespaces QoS - Mininet testing environment\relax }}{46}{figure.caption.37}
 \contentsline {figure}{\numberline {3.16}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{46}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{52}{figure.caption.42}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{53}{figure.caption.43}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{55}{figure.caption.45}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{56}{figure.caption.46}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{57}{figure.caption.47}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{58}{figure.caption.48}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{58}{figure.caption.49}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{53}{figure.caption.43}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{54}{figure.caption.44}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{56}{figure.caption.46}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{57}{figure.caption.47}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{58}{figure.caption.48}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{59}{figure.caption.49}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{59}{figure.caption.50}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
