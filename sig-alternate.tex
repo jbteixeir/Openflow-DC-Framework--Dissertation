@@ -30,6 +30,7 @@
 \lstset{frame=tb,
   language=Python,
   aboveskip=3mm,
+  captionpos=b,
   belowskip=3mm,
   showstringspaces=false,
   columns=flexible,
@@ -145,6 +146,7 @@ More specifically, the framework enhances both Mininet (a well--known SDN emulat
 Further more, the framework was validated by implementing and testing well known policies.
 Hybrid allocation policies (considering both network and servers) were also implemented and scalability tests were performed.
 
+This work was developed under the ERASMUS student mobility program, in the Telecommunication Networks Research Group, Dept. of Information Engineering, University of Pisa, and resulted in the paper \textit{Datacenter in a box: test your SDN cloud-datacenter controller at home} that was accepted into EWSDN2013.
 \end{singlespace}
 
 \paragraph{Keywords:}
@@ -216,6 +218,7 @@ Openflow allows a controller to install into OF--compliant network devices forwa
 Since SDN allows to re-define and re-configure network functionalities, the basic idea is to introduce an SDN-cloud-DC controller that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
 Nevertheless, before deploying the novel architectural solutions, huge test campaigns must be performed in experimental environments reproducing a real DC.
 To this aim, a novel framework is introduced that allows to develop and assess novel SDN-Cloud-DC controllers, and to compare the performance of control and management strategies jointly considering both IT and network resources\cite{im2013}.
+
 
 % \begin{quote}''OpenFlow allows, for the first time, an external control plane to abstract the entire underlying network fabric so that fabric is universally addressable and all topology and state information is commonly managed''{ --- \textup{ Jason Matlof}, vice president of marketing at Big Switch}\end{quote}
 
@@ -817,7 +820,9 @@ The configuration file on the controller makes it easier to configure parameters
 As one might prefer to insert the values in an interactive way, in case the configuration file does not exist, there is the possibility that each modules asks for the configuration it needs, and in the end it everything is written into a file.
 
 \begin{minipage}{.5\textwidth}
+\lstset{language=Python, caption={Configuration file - controller (1/2)},label=conffilecont}
   \begin{lstlisting}
+
 [topology]
 # link capacities in mbps
 outside_link = 60
@@ -854,6 +859,7 @@ linksratiodir = ./stats
 \end{lstlisting}
 \end{minipage}%
 \begin{minipage}{.5\textwidth}
+\lstset{language=Python, caption={Configuration file - controller (2/2)},label=conffilecont2}
     \begin{lstlisting}
 
 [vmallocation]
@@ -862,16 +868,19 @@ linksratiodir = ./stats
 #SD - Server Driven
 algorithm = ND
 
+
 # policies - FF/BF/WF
 core_policy = BF
 agg_policy = BF
 edge_policy = BF
 host_policy = BF
 
+
 #maximum ratio a switch can have so it is chosen for new vm allocation
 #maximum ratio a link can have so it is chosen for new vm allocation
 switch_ratio = 1.20
 link_ratio = 1.20
+
 
 [vmreceiver]
 #IP and port for listening to the VM requests
@@ -885,7 +894,7 @@ password = xensource
 \end{lstlisting}
 \end{minipage}%
 
-In the example above, the configuration file includes sections for the main framework modules, but as can be seen, a section for the VM allocation as been added, where it can be chosen which algorithms will be used, and even the maximum ratio for switches and links to still be considered when choosing the path.
+In the example above (listings \ref{conffilecont} and \ref{conffilecont2}), the configuration file includes sections for the main framework modules, but as can be seen, a section for the VM allocation as been added, where it can be chosen which algorithms will be used, and even the maximum ratio for switches and links to still be considered when choosing the path.
 
 Adding parameters is as simple as inserting them in the configuration file, and, in the module where they are used, assign them to variables.
 
@@ -1515,12 +1524,14 @@ Additionally, a paper focused only on the framework was created \textit{Datacent
 
 
 \section{Future work}
+\hspace{0.6cm}
 
 Although all the proposed objectives were accomplished, improvements can always be done, and a few are already planned.
 
 One would be to be able to access XEN through their API, since it would bring much more control and information over the servers and virtual machines.
 The other would be to greatly improve the WEB Platform by not only giving the DC clients more information about their VMs and pricing tags but also to create a space for the DC administrator/network engineer to control and monitor the whole infrastructure.
 
+Additionally, tests should be extended to compare the behaviour of different algorithms using the framework and a DC of significant size. Deeper tests and analysis of results regarding each of the framework features and comparing with dedicated OpenFlow controllers would allow to see possible bottlenecks and possibly extend the frameworks scalability.
 \appendix
 
 \chapter{Mininet Environment -- Configuration File\label{app:minconf}}
