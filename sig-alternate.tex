@@ -213,7 +213,7 @@ In this scenario, a recent approach to programmable networks (\textit{i.e.}, Sof
 Unlike the classic approach where network devices forward traffic according to the adjacent devices, SDN is a new network paradigm that decouples routing decisions (control plane) from the traffic forwarding (data plane). This routing decisions are made by a programmable centralized intelligence called controller that helps make this architecture more dynamic, automated and manageable.
 
 Following the SDN--based architecture the most deployed SDN protocol is OpenFlow\cite{openflow}\cite{onf}, and it is the open standard protocol to communicate and control OF-compliant network devices.
-Openflow allows a controller to install into OF--compliant network devices forwarding rules which are defined by the administrator/network engineer and match specific traffic flows.
+Openflow allows a controller to install into OF--compliant network devices (called switches) forwarding rules which are defined by the administrator/network engineer and match specific traffic flows.
 
 Since SDN allows to re-define and re-configure network functionalities, the basic idea is to introduce an SDN-cloud-DC controller that enables a more efficient, agile, scalable and simple use of both VMs and network resources.
 Nevertheless, before deploying the novel architectural solutions, huge test campaigns must be performed in experimental environments reproducing a real DC.
@@ -236,7 +236,7 @@ Although Openflow allows the use of slices of the real network for testing purpo
 Despite its flexible API, Mininet does not provide any type of traffic generator and is not DC--oriented: poor topology generation regarding DCs; no support for VMs;
 
 A whole framework composed by a modified OF controller that allows the access to both IT and network resources through an easy-to-use but full featured API, and a testing environment that communicates with it to provide a real DC emulation is the the main objective.
-With this is is expected to endue the administrator/network engineer with all the tools needed to quickly develop, test and deploy VM and network management strategies into a DC.
+With this it is expected to endue the administrator/network engineer with all the tools needed to quickly develop, test and deploy VM and network management strategies into a DC.
 
 % When the admin wants to try new DC VM allocation algorithms, first it takes to long to develop since the current controllers are still low level, and second if they want to test, or they try on their own DC (which could compromise the normal functioning and unless they try on a small part of the DC the result wont be accurate since they would be influences by the usual workload.
 % Or they would use simulators(the problem with simulator is that usually you have to rewrite the algorithms that you will implement, and the results might not be accurate (correspond to the real environment)).
@@ -255,13 +255,14 @@ With this is is expected to endue the administrator/network engineer with all th
 \section{Thesis layout}
 \hspace{0.6cm}
 
-This thesis is structured into five chapters: the present Chapter \ref{cha:introduction} is a brief introduction of the proposed work, its motivation and objectives; the second is the state of art, it addresses the currently available solutions relating innovation in DCs, OF controllers and VM allocation and migration algorithms; the third one fully describes the framework, its evolution, extensions and how it can be used; in the forth chapter is presented the framework validation, the results of a hybrid allocation algorithm and performance tests; and in the last chapter are made conclusions about the developed work, as well as suggestions for future work.
+This thesis is structured into five chapters: the present Chapter \ref{cha:introduction} is a brief introduction of the proposed work, its motivation and objectives; the second is the state of art, it addresses the currently available solutions relating innovation in DCs and OF controllers; the third one fully describes the framework, its evolution, extensions and how it can be used; in the forth chapter is presented the framework validation, the results of a hybrid allocation algorithm and performance tests; and in the last chapter are made conclusions about the developed work, as well as suggestions for future work.
 
 
 
 \chapter{State of art \label{cha:stateofart} }
 
 \section{Available solutions}
+\hspace{0.6cm}
 
 A number of research efforts have focused on novel solutions for emulation/simulation of Cloud DCs.
 The available solutions provide a reference and material to analyze and explore the concepts addressed along this thesis. 
@@ -343,15 +344,50 @@ Despite its flexibility, Mininet lacks of a complete set of tools that easily al
 \section{Openflow Controllers}
 \hspace{0.6cm}
 
+In this section an overview of the most deployed and well-known controllers is presented.
+
+\subsection{NOX}
+\hspace{0.6cm}
+
+\textit{NOX}\cite{nox} was the first Openflow controller and was created jointly with the Openflow protocol by a company named Nicira Networks.
+It is based in C++ programming language and made to provide fast and asynchronous IO. This controller supports Openflow 1.0 and give access to it through its API.
+It has a scalable approach for managing flows in multiple switches, which consists in sending only the first packet of a flow to the controller (when there are no rules that match the flow), so it can create a rule, and send it to the switches. After this all the packets belonging to that flow are forwarded according to that rule.
+
+It already includes sample components like \textit{Topology Discovery, Learning Switch and Network-wide Switch} to help the developers and researchers write code for programmatically controlling the switches.
+
+\subsection{POX}
+\hspace{0.6cm}
+
+\textit{POX}\cite{pox} is presented as ''NOX's younger sibling'', and is a Python-based controller. With a similar structure as \textit{NOX}, it supports the same GUI and visualization tools as NOX.
+
+\textit{POX} aims for the rapid development and prototyping of network control software and it also comes with sample components, but a bigger list of them (comparing to \textit{NOX}).
 
 \newpage
-\section{Virtualization Platforms}
+
+\begin{figure}[h!tbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/poxnoxperf.png}
+        \caption{POX vs NOX \cite{pox}}
+        \label{fig:poxnox}
+\end{figure}
+
+As can be seen in figure \ref{fig:poxnox} where performance between \textit{NOX} and \textit{POX} is compared, \textit{NOX} allows a smaller delay and handles more flows per second (possibility due to the programming language chosen), but \textit{POX} taking into consideration that is written in Python, provides a good flow throughput (30000 flows per second) and delay (0.6ms per flow).
+
+\subsection{Beacon}
 \hspace{0.6cm}
-% Uncomment to include file.pdf
-%\begin{figure}%[H]
-%\begin{center}\includegraphics[scale=0.8]{file}\end{center}
-%\caption{Legend \label{fig:LABEL}}
-%\end{figure}
+
+\textit{Beacon}\cite{beacon} is a fast, cross-platform Openflow controller both event and thread--oriented. It is a Java-based controller making it easier to develop. It allows hot-swapping of code bundles (\textit{i.e} replace the learning switch application without disconnecting the switches) and can be embedded in the Jetty enterprise web server and in a custom UI extensible framework.
+
+Its development as started in 2010 and ''currently powers a 100-vswitch, 20-physical switch experimental data center and has run for months without downtime''\cite{beacon} making it a stable controller.
+
+% \newpage
+% \section{Virtualization Platforms}
+% \hspace{0.6cm}
+% % Uncomment to include file.pdf
+% %\begin{figure}%[H]
+% %\begin{center}\includegraphics[scale=0.8]{file}\end{center}
+% %\caption{Legend \label{fig:LABEL}}
+% %\end{figure}
 
 
 \chapter{The Framework \label{cha:framework} }
@@ -398,6 +434,8 @@ It also provides an API in python for the development of custom made topologies 
 
 As a free and opensource platform though for the cloud, XCP bring all the features belonging to Xen, plus it comes with ready-to-install images, making it simpler to install and configure.
 Having multiple interaction option is also an attractive feature, but having a Xen python API was decisive since hit gives the possibility to write all the code in one programming language which helps keeping the platform consistent.
+
+\textit{Note: although XCP was the virtualization technology adopted, support for others can be easily added.}
 \newpage
 
 \section{Framework architecture}
@@ -458,7 +496,7 @@ The framework directory is structured as follows:
 \section{Framework modules: Mininet Environment}
 \hspace{0.6cm}
 
-The Mininet Environment is composed by both mininet and custom two modules named \textit{Topology Generator} and \textit{Traffic Generator}.
+The Mininet Environment is composed by both mininet and two custom modules named \textit{Topology Generator} and \textit{Traffic Generator}.
 These two modules where added to fill the missing support for traffic generation and the basic integrated topology generator.
 
 \subsection{Topology Generator}
@@ -549,7 +587,7 @@ When received a new VM allocation from the controller, the traffic generator sta
 "./sniffex -f TrafficSample/traffic -s source_ip -d dest_ip"
 \end{verbatim}
 
-Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, since the only thing needed to be done was replaying the already generated traffic sample with the requires characteristics.
+Has the modification of the traffic sample was taking to long, compromising the testing capabilities of the framework, the modified samples started to be generated when mininet was started (since the IP addressing scheme was already known). This allowed for much agile testing since when a VM allocation arrived, the only thing needed to be done was replaying the already generated traffic sample with the required characteristics.
 
 The traffic generator was tested with a hybrid VM allocation policies.
 Unfortunately, due to the TCPreplay' poor performance it was not possible to achieve the expected switch and link utilization.
@@ -817,7 +855,7 @@ For simplicity, all the parameters can be configured in the controllers configur
 \hspace{0.6cm}
 
 The configuration file on the controller makes it easier to configure parameters that can easily change.
-As one might prefer to insert the values in an interactive way, in case the configuration file does not exist, there is the possibility that each modules asks for the configuration it needs, and in the end it everything is written into a file.
+As one might prefer to insert the values in an interactive way, in case the configuration file does not exist, there is the possibility that each modules asks for the configuration it needs, and in the end everything is written into a file.
 
 \begin{minipage}{.5\textwidth}
 \lstset{language=Python, caption={Configuration file - controller (1/2)},label=conffilecont}
@@ -1085,6 +1123,7 @@ The specifications of the equipment used is shown below.
 \end{itemize}
 
 For enabling OF on the network interfaces of the non NetFPGA cards, a script was used. Although this configuration changes according to the network interfaces and their quantity, an example of the script can be found in appendix \ref{app:openvscript}.
+As for the NetFPGAs another script was also necessary, but this one for programming into the netFPGA the correct OF 1.0 Switches (appendix \ref{app:netfpgascript}).
 
 Some problems where encountered while configuring the environment, namely: understanding why the controller was not able to connect the switches. Solved by creating a parallel network for the OF control plane; and network interfaces that were not detecting the network cable. Some network interfaces do not negotiate the link speed, so when some 100mbps NICs were connected to 1gbps NICs, they were not working. Solved by only connecting interfaces with the same link speed;
 
@@ -1325,6 +1364,7 @@ Assessing the efficiency and effective gain in the framework and real DC is yet 
 \chapter{Validation and tests \label{cha:valtes} }
 
 \section{Framework Validation}
+\hspace{0.6cm}
 
 Understanding the impact on the DC network infrastructure of well--known VM allocation policies represents the first step for finding more and more optimized solutions. The main concern was to validate the framework by analyzing the behaviour of the system under common situations, in order to compare the obtained results with the theoretical ones.
 
@@ -1332,7 +1372,7 @@ For this reason in the \textit{user-defined logic} part of the controller, it wa
 The BF algorithm chooses the server with the smallest available resources that still suits the requirements.
 On the other hand WF chooses the one with the most available resources.
 Therefore, it is expected that as each request comes, using a BF policy, all the VMs should be allocated in one single host until it is able to fulfill the requirements.
-Then a new host will be selected, and so on until all the hosts have no more free space
+Then a new host will be selected, and so on until all the hosts have no more free space.
  In the second case (\textit{i.e.}, WF policy), the VMs should be firstly equally spread through all 
 the hosts.
 
@@ -1349,6 +1389,7 @@ The DC topology was configured with $1$ outside host, $2$ core switches, $4$ agg
 Figure \ref{fig:use_case} shows an high--level vision of the proposed environment. Starting from the framework, few lines of code were necessary to implement the allocation policy, since it provides all the necessary APIs to make sure that the controller can interact with the VM Requester, Traffic Generator and the DC switches.
 Every time the controller receives a new VM allocation request (\textit{i.e.}, generated by the VM requester according to the DC configuration) it installs the proper rules on the switches (optionally it can ask for switches statistics -- even periodically). Once this process is completed, the controller informs the VM requester about the result of the allocation process and the traffic generation starts.
 
+\newpage
 
 \begin{figure}[h!tbp]
         \centering
@@ -1364,8 +1405,9 @@ Using the WF policy instead, the VMs should be firstly equally spread through al
 \newpage
 
 \section{Usecase: Hybrid VM Allocation policy}
+\hspace{0.6cm}
 
-For demonstrating the potential of combining the network and it resources management, and for showing that the framework is able to help doing it, the algorithms developed in \cite{im2013} were implemented and tested. The algorithms logic as already been explained previously on subsection \label{subsec:userdeflog}.
+For demonstrating the potential of combining the network and it resources management, and for showing that the framework is able to help doing it, the algorithms developed in \cite{im2013} were implemented and tested. The algorithms logic as already been explained previously on subsection \ref{subsec:userdeflog}.
 
 The results presented in the emulation part of \cite{im2013} were generated using this framework.
 
@@ -1464,8 +1506,6 @@ This means that as long as the total amount of generated traffic per host and th
 
 Finally it was investigated the relationship between the number of hosts connected to just one outside host and the average link ratio.
 
-\newpage
-
 \begin{figure}[h!tbp]
         \centering
         \includegraphics[width=0.7\textwidth]{figures/out_hosts_ratio.png}
@@ -1526,7 +1566,7 @@ Additionally, a paper focused only on the framework was created \textit{Datacent
 \section{Future work}
 \hspace{0.6cm}
 
-Although all the proposed objectives were accomplished, improvements can always be done, and a few are already planned.
+Although all the proposed objectives were accomplished, improvements can always be done, a few are already planned.
 
 One would be to be able to access XEN through their API, since it would bring much more control and information over the servers and virtual machines.
 The other would be to greatly improve the WEB Platform by not only giving the DC clients more information about their VMs and pricing tags but also to create a space for the DC administrator/network engineer to control and monitor the whole infrastructure.
@@ -1535,7 +1575,7 @@ Additionally, tests should be extended to compare the behaviour of different alg
 \appendix
 
 \chapter{Mininet Environment -- Configuration File\label{app:minconf}}
-
+\lstset{language=bash,frame=lines}
 \begin{lstlisting}
 Filename: conf.ini
 
@@ -2455,7 +2495,7 @@ int main(int argc, char **argv)
 
 \chapter{clone\_vms.sh}
 \label{app:clonevms}
-\lstset{language=c,frame=lines}
+\lstset{language=bash,frame=lines}
 \begin{lstlisting}
 #!/bin/sh
 
@@ -2614,18 +2654,14 @@ CREATE TABLE `vm_groups` (
 \begin{lstlisting}
 echo 1 > /proc/sys/net/ipv4/ip_forward
 service network-manager stop
-for tap in `seq 1 4`; do
-        ip tuntap add mode tap switchpoxp$tap
-done;
-ip tuntap list
-for tap in `seq 1 4`; do
-  ifconfig switchpoxp$tap up
-done;
-for tap in `seq 1 4`; do
-        ip link set switchpoxp$tap up
-done;
-#Load openvswitch module
-insmod /home/mekos/openvswitch-1.7.3/datapath/linux/openvswitch.ko
+
+ifconfig eth0 192.168.2.5/24
+
+#comment if you don't want to load kernel module at the starting point.
+/sbin/rmmod bridge
+
+insmod /home/openvswitch-1.9.0/datapath/linux/openvswitch.ko
+
 ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
                      --remote=db:Open_vSwitch,manager_options \
                      --private-key=db:SSL,private_key \
@@ -2634,18 +2670,67 @@ ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
                      --pidfile --detach
 ovs-vsctl --no-wait init
 ovs-vswitchd --pidfile --detach
-ovs-vsctl add-br switchpox
-ovs-vsctl set bridge switchpox datapath_type=netdev
-ovs-vsctl add-port switchpox eth0 
-ovs-vsctl set interface eth0 type=internal
-ovs-vsctl set-controller switchpox tcp:192.168.0.1:6633
-for tap in `seq 1 4`; do
-        ovs-vsctl add-port switchpox switchpoxp$tap
-done;
-ovs-vsctl list-ports switchpox
-ifconfig eth0 192.168.2.2/24
-route add default gw 192.168.2.1
-ip link
+ovs-vsctl add-br switchpox1
+ovs-vsctl set bridge switchpox1 datapath_type=netdev
+#ovs-vsctl add-port switchpox1 eth0
+ovs-vsctl add-port switchpox1 eth1
+ovs-vsctl add-port switchpox1 eth3
+ovs-vsctl add-port switchpox1 eth4
+
+ovs-vsctl set-controller eth0 tcp:192.168.2.1:6633
+
+ovs-vsctl list-ports switchpox1
+\end{lstlisting}
+
+\chapter{Script for enabling NetFPGA}
+\label{app:netfpgascript}
+\lstset{language=bash,frame=lines}
+\begin{lstlisting}
+#caricare modulo kernel
+#cd /root/netfpga/lib/C/kernel/
+#insmod nf2.ko
+#ifconfig eth0 192.168.0.2 netmask 255.255.255.0
+
+#caricare la netfpga
+
+/usr/local/netfpga/lib/scripts/cpci_reprogram/cpci_reprogram.pl --all
+
+
+
+
+#cd /root/netfpga/bitfiles
+#nf_download openflow_switch.bit
+
+##QUESTO DA USARE
+nf_download /root/nf2_top_par.bit
+
+#settare in modalità switch la netfpga
+
+#la roba tra parentesi e per il vecchio openflow
+
+
+#(cd /home/netlab/openflow/utilities
+#./dpctl adddp nl:0
+#ifconfig of0 hw ether 00:4E:46:32:43:01
+#./dpctl addif nl:0 nf2c0
+#./dpctl addif nl:0 nf2c1
+#./dpctl addif nl:0 nf2c2
+#./dpctl addif nl:0 nf2c3
+#)
+
+
+#/root/openflow/udatapath/ofdatapath --detach punix:/var/run/dp0 -d 004e46324302  -i nf2c0,nf2c1,nf2c2,nf2c3
+/root/openflow/udatapath/ofdatapath --detach punix:/var/run/dp0 -d 0C0C00000002  -i eth0,eth1,nf2c0,nf2c1,nf2c2,nf2c3
+#/root/openflow/udatapath/ofdatapath --detach punix:/var/run/dp0 -d 0C0C00000002  -i eth0,eth2
+#/root/openflow/secchan/ofprotocol unix:/var/run/dp0 tcp:192.168.0.100:6633
+#/root/openflow/secchan/ofprotocol unix:/var/run/dp0 tcp:10.216.176.4:6633
+/root/openflow/secchan/ofprotocol unix:/var/run/dp0 tcp:192.168.2.1:6633
+#/root/openflow/secchan/ofprotocol unix:/var/run/dp0 tcp:131.114.152.113:6633
+
+#/root/openflow/secchan/ofprotocol unix:/var/run/dp0 tcp:131.114.53.73:6633
+
+#./home/netlab/openflow/utilities/dpctl dump-flows unix:/var/run/dp0
+
 \end{lstlisting}
 
 \cleardoublepage

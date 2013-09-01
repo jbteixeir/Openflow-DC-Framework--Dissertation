@@ -2,31 +2,33 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Meridian SDN cloud networking platform architecture (Banikazemi et al.\cite {meridian})\relax }}{7}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces POX vs NOX \cite {pox}\relax }}{10}{figure.caption.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture\relax }}{14}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Tcpreplay performance in hybrid VM allocation policy - Switch utilization. Taken from \cite {im2013}\relax }}{20}{figure.caption.16}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Print screen of \textit {Traffic Generator} with Iperf\relax }}{21}{figure.caption.18}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Available port statistics\relax }}{25}{figure.caption.21}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Available flow statistics\relax }}{25}{figure.caption.21}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Edge switch link statistics exported '.csv' file\relax }}{27}{figure.caption.23}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces WEB Platform - Top Panel\relax }}{34}{figure.caption.24}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces WEB Platform - VM Request\relax }}{35}{figure.caption.25}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces WEB Platform - VM list\relax }}{36}{figure.caption.26}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces WEB Platform - VM Groups\relax }}{36}{figure.caption.27}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces VM Requester console output\relax }}{38}{figure.caption.28}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Using the emulation environment. Top left: MN Topology Generator; Bottom left: VM Requests Generator; Right: Controller\relax }}{40}{figure.caption.31}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Architecture of the real environment\relax }}{41}{figure.caption.33}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Photo of the testing environment. \textit {Table}: under the monitor - 2 servers; cube computer - aggregation and edge switches; laptop - DC gateway, controller and WEB Platform; \textit {Under the table}: core switch\relax }}{43}{figure.caption.34}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces QoS - Mininet testing environment\relax }}{46}{figure.caption.37}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{46}{figure.caption.38}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Framework Architecture\relax }}{14}{figure.caption.15}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Tcpreplay performance in hybrid VM allocation policy - Switch utilization. Taken from \cite {im2013}\relax }}{20}{figure.caption.17}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Print screen of \textit {Traffic Generator} with Iperf\relax }}{21}{figure.caption.19}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Available port statistics\relax }}{25}{figure.caption.22}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Available flow statistics\relax }}{25}{figure.caption.22}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Edge switch link statistics exported '.csv' file\relax }}{27}{figure.caption.24}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces WEB Platform - Top Panel\relax }}{34}{figure.caption.25}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces WEB Platform - VM Request\relax }}{35}{figure.caption.26}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces WEB Platform - VM list\relax }}{36}{figure.caption.27}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces WEB Platform - VM Groups\relax }}{36}{figure.caption.28}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces VM Requester console output\relax }}{38}{figure.caption.29}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Using the emulation environment. Top left: MN Topology Generator; Bottom left: VM Requests Generator; Right: Controller\relax }}{40}{figure.caption.32}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Architecture of the real environment\relax }}{41}{figure.caption.34}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Photo of the testing environment. \textit {Table}: under the monitor - 2 servers; cube computer - aggregation and edge switches; laptop - DC gateway, controller and WEB Platform; \textit {Under the table}: core switch\relax }}{43}{figure.caption.35}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces QoS - Mininet testing environment\relax }}{46}{figure.caption.38}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces QoS - Example of installed rules. Taken from \cite {qosof}\relax }}{46}{figure.caption.39}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{53}{figure.caption.43}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{54}{figure.caption.44}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{56}{figure.caption.46}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{57}{figure.caption.47}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{58}{figure.caption.48}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{59}{figure.caption.49}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{59}{figure.caption.50}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The environment\relax }}{53}{figure.caption.44}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces WF vs BF\relax }}{54}{figure.caption.45}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Average Host link Ratio vs per Host Generated Traffic\relax }}{58}{figure.caption.47}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Average Host Link Ratio vs number of Hosts\relax }}{58}{figure.caption.48}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Average Host Link Ratio vs number of Hosts per Outside Host\relax }}{59}{figure.caption.49}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Host-PC Memory Utilization vs per Host Traffic Generated\relax }}{60}{figure.caption.50}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Host-PC Memory Utilization vs number of Hosts\relax }}{60}{figure.caption.51}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

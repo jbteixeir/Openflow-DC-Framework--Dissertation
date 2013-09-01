@@ -3,9 +3,9 @@
 \contentsline {chapter}{Abstract}{III}{chapter*.2}
 \contentsline {paragraph}{Keywords:}{III}{section*.3}
 \contentsline {chapter}{Contents}{IV}{section*.3}
-\contentsline {chapter}{List of Acronyms}{VII}{chapter*.5}
-\contentsline {chapter}{List of Figures}{VII}{chapter*.5}
-\contentsline {chapter}{List of Tables}{IX}{chapter*.6}
+\contentsline {chapter}{List of Acronyms}{VIII}{chapter*.5}
+\contentsline {chapter}{List of Figures}{VIII}{chapter*.5}
+\contentsline {chapter}{List of Tables}{X}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Introduction}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Motivation and objectives}{3}{section.1.2}
@@ -18,30 +18,32 @@
 \contentsline {subsection}{\numberline {2.1.4}ICanCloud, GreenCloud and GroudSim}{7}{subsection.2.1.4}
 \contentsline {subsection}{\numberline {2.1.5}Mininet}{8}{subsection.2.1.5}
 \contentsline {section}{\numberline {2.2}Openflow Controllers}{9}{section.2.2}
-\contentsline {section}{\numberline {2.3}Virtualization Platforms}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.2.1}NOX}{9}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}POX}{9}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Beacon}{10}{subsection.2.2.3}
 \contentsline {chapter}{\numberline {3}The Framework }{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Requirements}{11}{section.3.1}
-\contentsline {paragraph}{Development \& Testing Phase}{11}{section*.9}
-\contentsline {paragraph}{Deployment Phase}{12}{section*.10}
+\contentsline {paragraph}{Development \& Testing Phase}{11}{section*.10}
+\contentsline {paragraph}{Deployment Phase}{12}{section*.11}
 \contentsline {section}{\numberline {3.2}Chosen technologies}{12}{section.3.2}
-\contentsline {subsubsection}{Openflow Controller: POX}{12}{section*.11}
-\contentsline {subsubsection}{Datacenter Emulator: Mininet}{12}{section*.12}
-\contentsline {subsubsection}{Virtualization platform: XCP 1.6 (Xen Cloud Platform)}{12}{section*.13}
+\contentsline {subsubsection}{Openflow Controller: POX}{12}{section*.12}
+\contentsline {subsubsection}{Datacenter Emulator: Mininet}{12}{section*.13}
+\contentsline {subsubsection}{Virtualization platform: XCP 1.6 (Xen Cloud Platform)}{12}{section*.14}
 \contentsline {section}{\numberline {3.3}Framework architecture}{14}{section.3.3}
 \contentsline {section}{\numberline {3.4}Directory structure}{16}{section.3.4}
 \contentsline {section}{\numberline {3.5}Framework modules: Mininet Environment}{16}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Topology Generator}{17}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Traffic Generator}{17}{subsection.3.5.2}
-\contentsline {subsubsection}{TCPReplay}{18}{section*.15}
-\contentsline {subsubsection}{Iperf}{20}{section*.17}
-\contentsline {subsubsection}{D-ITG}{21}{section*.19}
+\contentsline {subsubsection}{TCPReplay}{18}{section*.16}
+\contentsline {subsubsection}{Iperf}{20}{section*.18}
+\contentsline {subsubsection}{D-ITG}{21}{section*.20}
 \contentsline {subsection}{\numberline {3.5.3}Configuration file}{21}{subsection.3.5.3}
 \contentsline {section}{\numberline {3.6}Framework modules: Controller}{23}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Topology (Discovery Module)}{23}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Rules (OF Rules Handler)}{24}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Stats (Statistics Handler)}{25}{subsection.3.6.3}
-\contentsline {subsubsection}{Statistics}{25}{section*.20}
-\contentsline {subsubsection}{Statistics Exporter}{26}{section*.22}
+\contentsline {subsubsection}{Statistics}{25}{section*.21}
+\contentsline {subsubsection}{Statistics Exporter}{26}{section*.23}
 \contentsline {subsection}{\numberline {3.6.4}VM Request Handler}{27}{subsection.3.6.4}
 \contentsline {subsection}{\numberline {3.6.5}Network Traffic Requester}{28}{subsection.3.6.5}
 \contentsline {subsection}{\numberline {3.6.6}VMM - Virtual Machines Manager}{29}{subsection.3.6.6}
@@ -54,29 +56,30 @@
 \contentsline {section}{\numberline {3.8}Framework modules: VM Requester (VM Requests Generator)}{38}{section.3.8}
 \contentsline {section}{\numberline {3.9}Using the framework}{39}{section.3.9}
 \contentsline {subsection}{\numberline {3.9.1}Emulator}{39}{subsection.3.9.1}
-\contentsline {subsubsection}{Setting up the development environment}{39}{section*.29}
-\contentsline {subsubsection}{Testing new DC allocation policies}{39}{section*.30}
+\contentsline {subsubsection}{Setting up the development environment}{39}{section*.30}
+\contentsline {subsubsection}{Testing new DC allocation policies}{39}{section*.31}
 \contentsline {subsection}{\numberline {3.9.2}Real Environment}{41}{subsection.3.9.2}
-\contentsline {subsubsection}{Setting up the real environment}{41}{section*.32}
+\contentsline {subsubsection}{Setting up the real environment}{41}{section*.33}
 \contentsline {section}{\numberline {3.10}Framework extensions }{44}{section.3.10}
 \contentsline {subsection}{\numberline {3.10.1}Enabling QoS}{44}{subsection.3.10.1}
-\contentsline {subsubsection}{State of art: QoS in Openflow}{44}{section*.35}
-\contentsline {subsubsection}{QoS in the framework}{44}{section*.36}
+\contentsline {subsubsection}{State of art: QoS in Openflow}{44}{section*.36}
+\contentsline {subsubsection}{QoS in the framework}{44}{section*.37}
 \contentsline {subsection}{\numberline {3.10.2}Enabling Virtual Machine migration}{47}{subsection.3.10.2}
-\contentsline {subsubsection}{State of art: Virtual Machine migration}{47}{section*.39}
-\contentsline {subsubsection}{Virtual Machine migration in the framework}{47}{section*.40}
+\contentsline {subsubsection}{State of art: Virtual Machine migration}{47}{section*.40}
+\contentsline {subsubsection}{Virtual Machine migration in the framework}{47}{section*.41}
 \contentsline {chapter}{\numberline {4}Validation and tests }{52}{chapter.4}
 \contentsline {section}{\numberline {4.1}Framework Validation}{52}{section.4.1}
-\contentsline {section}{\numberline {4.2}Usecase: Hybrid VM Allocation policy}{54}{section.4.2}
-\contentsline {section}{\numberline {4.3}Performance Evaluation}{56}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusions}{60}{chapter.5}
-\contentsline {section}{\numberline {5.1}Main contributions}{61}{section.5.1}
-\contentsline {section}{\numberline {5.2}Future work}{61}{section.5.2}
-\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{62}{appendix.A}
-\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{65}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{70}{appendix.C}
-\contentsline {chapter}{\numberline {D}clone\_vms.sh}{92}{appendix.D}
-\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{95}{appendix.E}
-\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{97}{appendix.F}
-\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{99}{appendix.G}
-\contentsline {chapter}{Bibliography}{101}{lstnumber.-9.34}
+\contentsline {section}{\numberline {4.2}Usecase: Hybrid VM Allocation policy}{55}{section.4.2}
+\contentsline {section}{\numberline {4.3}Performance Evaluation}{57}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusions}{61}{chapter.5}
+\contentsline {section}{\numberline {5.1}Main contributions}{62}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future work}{62}{section.5.2}
+\contentsline {chapter}{\numberline {A}Mininet Environment -- Configuration File}{63}{appendix.A}
+\contentsline {chapter}{\numberline {B}Mininet - DC Topology Generator Algorithm}{66}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sniffex.c Modified}{71}{appendix.C}
+\contentsline {chapter}{\numberline {D}clone\_vms.sh}{93}{appendix.D}
+\contentsline {chapter}{\numberline {E}Dijkstra Algorithm in Python}{96}{appendix.E}
+\contentsline {chapter}{\numberline {F}Table creation script for MySQL database}{98}{appendix.F}
+\contentsline {chapter}{\numberline {G}Script for enabling OpenVswitch on NICs}{100}{appendix.G}
+\contentsline {chapter}{\numberline {H}Script for enabling NetFPGA}{102}{appendix.H}
+\contentsline {chapter}{Bibliography}{104}{lstnumber.-10.45}

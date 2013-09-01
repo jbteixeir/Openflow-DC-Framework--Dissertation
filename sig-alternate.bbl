@@ -5,6 +5,10 @@ M.~Banikazemi, D.~Olshefski, A.~Shaikh, J.~Tracey, and G.~Wang.
 \newblock Meridian: An sdn platform for cloud network services.
 \newblock {\em Communications Magazine}, 2013.
 
+\bibitem{pox}
+{POX Home Page}.
+\newblock {\em http://ww.noxrepo.org}.
+
 \bibitem{im2013}
 D.~Adami, B.~Martini, G.~Antichi, S.~Giordano, M.~Gharbaoui, and P.~Castoldi.
 \newblock Effective resource control strategies using openflow in cloud data
@@ -97,6 +101,14 @@ S.~Ostermann, K.~Plankensteiner, R.~Prodan, and T.~Fahringer.
 {Mininet Home Page}.
 \newblock {\em https://mininet.github.com.}
 
+\bibitem{nox}
+{NOX Home Page}.
+\newblock {\em http://ww.noxrepo.org}.
+
+\bibitem{beacon}
+{Beacon Home Page}.
+\newblock {\em https://openflow.stanford.edu/display/Beacon/Home}.
+
 \bibitem{tcprep}
 {TCPReplay Home Page}.
 \newblock {\em http://tcpreplay.synfin.net/}.
@@ -183,10 +195,6 @@ M.~Mishra, A.~Das, P.~Kulkarni, and A.~Sahoo.
 \bibitem{ns3}
 {NS3}.
 \newblock {\em http://www.nsnam.org.}
-
-\bibitem{pox}
-{POX Home Page}.
-\newblock {\em http://ww.noxrepo.org.}
 
 \bibitem{login}
 {Login system}.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  31 AUG 2013 20:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.21)  1 SEP 2013 02:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,11 +379,7 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(./sig-alternate.aux
-
-LaTeX Warning: Label `subsec:userdeflog' multiply defined.
-
-)
+(./sig-alternate.aux)
 \openout1 = `sig-alternate.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
@@ -403,8 +399,7 @@ LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 90.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+) (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count123
 \scratchdimen=\dimen133
@@ -489,26 +484,26 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5])
+[5] [6])
 \tf@toc=\write4
 \openout4 = `sig-alternate.toc'.
 
- [6] [7
+ [7] [8
 
 
 ] (./sig-alternate.lof
-Overfull \hbox (3.75867pt too wide) in paragraph at lines 7--7
+Overfull \hbox (3.75867pt too wide) in paragraph at lines 8--8
  [][] [][]\T1/ptm/m/n/12 Tcpreplay per-for-mance in hy-brid VM al-lo-ca-tion po
 l-icy - Switch uti-liza-tion. Taken 
  []
 
-[8
+[9
 
 ])
 \tf@lof=\write5
 \openout5 = `sig-alternate.lof'.
 
- [9] (./sig-alternate.lot)
+ [10] (./sig-alternate.lot)
 \tf@lot=\write6
 \openout6 = `sig-alternate.lot'.
 
@@ -523,37 +518,49 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 ] [3] [4]
 Chapter 2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 270.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 271.
 [5
 
-] <figures/meridian_arch.png, id=469, 730.73pt x 405.515pt>
+] <figures/meridian_arch.png, id=492, 730.73pt x 405.515pt>
 File: figures/meridian_arch.png Graphic file (type png)
 
 <use figures/meridian_arch.png>
-Package pdftex.def Info: figures/meridian_arch.png used on input line 303.
+Package pdftex.def Info: figures/meridian_arch.png used on input line 304.
 (pdftex.def)             Requested size: 368.57838pt x 204.53903pt.
  [6] [7 <./figures/meridian_arch.png>]
-Overfull \hbox (2.55597pt too wide) in paragraph at lines 323--324
+Overfull \hbox (2.55597pt too wide) in paragraph at lines 324--325
 []\T1/ptm/m/n/12 ''Mininet is a net-work em-u-la-tor which cre-ates a net-work 
 of vir-tual hosts, switches,
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 337.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 338.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 337.
- [8] [9] [10]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 338.
+ [8]
+Overfull \hbox (8.1114pt too wide) in paragraph at lines 356--357
+[]\T1/ptm/m/n/12 It al-ready in-cludes sam-ple com-po-nents like \T1/ptm/m/it/1
+2 Topol-ogy Dis-cov-ery, Learn-ing Switch and Network-
+ []
+
+[9] <figures/poxnoxperf.png, id=533, 385.44pt x 309.155pt>
+File: figures/poxnoxperf.png Graphic file (type png)
+
+<use figures/poxnoxperf.png>
+Package pdftex.def Info: figures/poxnoxperf.png used on input line 369.
+(pdftex.def)             Requested size: 276.43555pt x 221.72343pt.
+ [10 <./figures/poxnoxperf.png>]
 Chapter 3.
 [11
 
-] [12] [13] <figures/emulator_new.png, id=528, 986.68625pt x 664.4825pt>
+] [12] [13] <figures/emulator_new.png, id=562, 986.68625pt x 664.4825pt>
 File: figures/emulator_new.png Graphic file (type png)
 
 <use figures/emulator_new.png>
-Package pdftex.def Info: figures/emulator_new.png used on input line 408.
+Package pdftex.def Info: figures/emulator_new.png used on input line 446.
 (pdftex.def)             Requested size: 368.57838pt x 248.2171pt.
  [14 <./figures/emulator_new.png>] [15] [16]
 [17] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -562,77 +569,77 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 504.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 542.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 514.
+(Font)              <7> on input line 552.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 514.
+(Font)              <5> on input line 552.
  [18]
-Overfull \hbox (32.02803pt too wide) in paragraph at lines 534--535
+Overfull \hbox (32.02803pt too wide) in paragraph at lines 572--573
 [][][][][][][][][][][][][][][][][]  
  []
 
 
-Overfull \hbox (45.16801pt too wide) in paragraph at lines 537--538
+Overfull \hbox (45.16801pt too wide) in paragraph at lines 575--576
 [][][][][][][][][][][][][][][][][]  
  []
 
-[19] <figures/tcpreplay2.png, id=602, 716.6775pt x 351.3125pt>
+[19] <figures/tcpreplay2.png, id=636, 716.6775pt x 351.3125pt>
 File: figures/tcpreplay2.png Graphic file (type png)
 
 <use figures/tcpreplay2.png>
-Package pdftex.def Info: figures/tcpreplay2.png used on input line 562.
+Package pdftex.def Info: figures/tcpreplay2.png used on input line 600.
 (pdftex.def)             Requested size: 460.72124pt x 225.84702pt.
 
-<figures/traffic_gen.png, id=607, 443.6575pt x 115.43124pt>
+<figures/traffic_gen.png, id=641, 443.6575pt x 115.43124pt>
 File: figures/traffic_gen.png Graphic file (type png)
 
 <use figures/traffic_gen.png>
-Package pdftex.def Info: figures/traffic_gen.png used on input line 578.
+Package pdftex.def Info: figures/traffic_gen.png used on input line 616.
 (pdftex.def)             Requested size: 276.43555pt x 71.92241pt.
  [20 <./figures/tcpreplay2.png>] [21 <./figures/traffic_gen.png>] [22] [23] [24
 ]
-<figures/stats_portstats.png, id=639, 316.18124pt x 343.2825pt>
+<figures/stats_portstats.png, id=673, 316.18124pt x 343.2825pt>
 File: figures/stats_portstats.png Graphic file (type png)
 
 <use figures/stats_portstats.png>
-Package pdftex.def Info: figures/stats_portstats.png used on input line 659.
+Package pdftex.def Info: figures/stats_portstats.png used on input line 697.
 (pdftex.def)             Requested size: 184.28918pt x 200.08873pt.
 
-<figures/stats_flowstats.png, id=640, 399.4925pt x 324.21124pt>
+<figures/stats_flowstats.png, id=674, 399.4925pt x 324.21124pt>
 File: figures/stats_flowstats.png Graphic file (type png)
 
 <use figures/stats_flowstats.png>
-Package pdftex.def Info: figures/stats_flowstats.png used on input line 665.
+Package pdftex.def Info: figures/stats_flowstats.png used on input line 703.
 (pdftex.def)             Requested size: 230.36061pt x 186.94934pt.
  [25 <./figures/stats_portstats.png> <./figures/stats_flowstats.png>]
-<figures/statsexport.png, id=648, 555.07375pt x 194.7275pt>
+<figures/statsexport.png, id=682, 555.07375pt x 194.7275pt>
 File: figures/statsexport.png Graphic file (type png)
 
 <use figures/statsexport.png>
-Package pdftex.def Info: figures/statsexport.png used on input line 712.
+Package pdftex.def Info: figures/statsexport.png used on input line 750.
 (pdftex.def)             Requested size: 322.50345pt x 113.13812pt.
  [26] [27 <./figures/statsexport.png>] [28]
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 796--797
+Underfull \hbox (badness 10000) in paragraph at lines 834--835
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 807--807
+Underfull \hbox (badness 10000) in paragraph at lines 845--845
 [][][][]$\T1/pcr/m/n/10 https : / / github . com / jbteixeir / Openflow-[]DC-[]
 Framework / blob / master / ext / VM / vm _
  []
 
 [30]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 824.
+nput line 862.
 
-Overfull \hbox (17.6248pt too wide) in paragraph at lines 822--896
+Overfull \hbox (17.6248pt too wide) in paragraph at lines 860--934
 []$[]$$[]$ 
  []
 
@@ -640,325 +647,330 @@ Overfull \hbox (17.6248pt too wide) in paragraph at lines 822--896
 Overfull \vbox (1.10109pt too high) has occurred while \output is active []
 
 
-[32] [33] <figures/webplat_panel.png, id=762, 1126.2075pt x 603.25375pt>
+[32] [33] <figures/webplat_panel.png, id=797, 1126.2075pt x 603.25375pt>
 File: figures/webplat_panel.png Graphic file (type png)
 
 <use figures/webplat_panel.png>
-Package pdftex.def Info: figures/webplat_panel.png used on input line 920.
+Package pdftex.def Info: figures/webplat_panel.png used on input line 958.
 (pdftex.def)             Requested size: 460.72124pt x 246.78334pt.
 
-<figures/webplat_vmreq.png, id=764, 1124.2pt x 655.44875pt>
+<figures/webplat_vmreq.png, id=799, 1124.2pt x 655.44875pt>
 File: figures/webplat_vmreq.png Graphic file (type png)
 
 <use figures/webplat_vmreq.png>
-Package pdftex.def Info: figures/webplat_vmreq.png used on input line 930.
+Package pdftex.def Info: figures/webplat_vmreq.png used on input line 968.
 (pdftex.def)             Requested size: 460.72124pt x 268.6157pt.
  [34 <./figures/webplat_panel.png>]
-<figures/webplat_vmlist.png, id=773, 1126.2075pt x 627.34375pt>
+<figures/webplat_vmlist.png, id=807, 1126.2075pt x 627.34375pt>
 File: figures/webplat_vmlist.png Graphic file (type png)
 
 <use figures/webplat_vmlist.png>
-Package pdftex.def Info: figures/webplat_vmlist.png used on input line 940.
+Package pdftex.def Info: figures/webplat_vmlist.png used on input line 978.
 (pdftex.def)             Requested size: 460.72124pt x 256.63824pt.
 
-<figures/webplat_vmgroup.png, id=775, 1123.19624pt x 716.6775pt>
+<figures/webplat_vmgroup.png, id=809, 1123.19624pt x 716.6775pt>
 File: figures/webplat_vmgroup.png Graphic file (type png)
 
 <use figures/webplat_vmgroup.png>
-Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 950.
+Package pdftex.def Info: figures/webplat_vmgroup.png used on input line 988.
 (pdftex.def)             Requested size: 460.72124pt x 293.9709pt.
  [35 <./figures/webplat_vmreq.png>] [36 <./figures/webplat_vmlist.png> <./figur
 es/webplat_vmgroup.png>] [37]
-<figures/vmreq.png, id=796, 670.505pt x 302.12875pt>
+<figures/vmreq.png, id=831, 670.505pt x 302.12875pt>
 File: figures/vmreq.png Graphic file (type png)
  <use figures/vmreq.png>
-Package pdftex.def Info: figures/vmreq.png used on input line 973.
+Package pdftex.def Info: figures/vmreq.png used on input line 1011.
 (pdftex.def)             Requested size: 322.50345pt x 145.31981pt.
 
 [38 <./figures/vmreq.png>]
-Overfull \hbox (72.07854pt too wide) in paragraph at lines 1010--1010
+Overfull \hbox (72.07854pt too wide) in paragraph at lines 1048--1048
 []\T1/pcr/m/n/12 python ~/poxbetta/ext/VM\ Requests\ Generator/vmrequesterpoiss
 on.py {args} 
  []
 
-[39] <figures/emulenv.png, id=811, 1247.66125pt x 602.25pt>
+[39] <figures/emulenv.png, id=847, 1247.66125pt x 602.25pt>
 File: figures/emulenv.png Graphic file (type png)
 
 <use figures/emulenv.png>
-Package pdftex.def Info: figures/emulenv.png used on input line 1021.
+Package pdftex.def Info: figures/emulenv.png used on input line 1059.
 (pdftex.def)             Requested size: 460.72124pt x 222.38791pt.
  [40 <./figures/emulenv.png>]
-<figures/realenvirscheme.png, id=820, 1271.75125pt x 485.815pt>
+<figures/realenvirscheme.png, id=855, 1271.75125pt x 485.815pt>
 File: figures/realenvirscheme.png Graphic file (type png)
 
 <use figures/realenvirscheme.png>
-Package pdftex.def Info: figures/realenvirscheme.png used on input line 1040.
+Package pdftex.def Info: figures/realenvirscheme.png used on input line 1078.
 (pdftex.def)             Requested size: 368.57838pt x 140.8012pt.
  [41 <./figures/realenvirscheme.png>] [42]
-<figures/realenvironment.jpg, id=835, 963.6pt x 722.7pt>
+<figures/realenvironment.jpg, id=870, 963.6pt x 722.7pt>
 File: figures/realenvironment.jpg Graphic file (type jpg)
 
 <use figures/realenvironment.jpg>
-Package pdftex.def Info: figures/realenvironment.jpg used on input line 1095.
+Package pdftex.def Info: figures/realenvironment.jpg used on input line 1134.
 (pdftex.def)             Requested size: 368.57838pt x 276.42633pt.
  [43 <./figures/realenvironment.jpg>] [44]
-Overfull \hbox (12.1481pt too wide) in paragraph at lines 1138--1139
+Overfull \hbox (12.1481pt too wide) in paragraph at lines 1177--1178
 \T1/ptm/m/n/12 ''open-flowlib.ofp_action_enqueue(port = switch_port, queue_id =
  queue_type))'', which
  []
 
-[45] <figures/ofqos.png, id=858, 662.475pt x 412.54124pt>
+[45] <figures/ofqos.png, id=894, 662.475pt x 412.54124pt>
 File: figures/ofqos.png Graphic file (type png)
 
 <use figures/ofqos.png>
-Package pdftex.def Info: figures/ofqos.png used on input line 1153.
+Package pdftex.def Info: figures/ofqos.png used on input line 1192.
 (pdftex.def)             Requested size: 368.57838pt x 229.52335pt.
 
-<figures/ofqosexample.png, id=860, 513.92pt x 71.26625pt>
+<figures/ofqosexample.png, id=896, 513.92pt x 71.26625pt>
 File: figures/ofqosexample.png Graphic file (type png)
 
 <use figures/ofqosexample.png>
-Package pdftex.def Info: figures/ofqosexample.png used on input line 1161.
+Package pdftex.def Info: figures/ofqosexample.png used on input line 1200.
 (pdftex.def)             Requested size: 368.57838pt x 51.11264pt.
  [46 <./figures/ofqos.png> <./figures/ofqosexample.png>] [47] [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1237
+Underfull \hbox (badness 10000) in paragraph at lines 1275--1276
 
  []
 
 [49]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 1242.
+put line 1281.
  [50] [51]
 Chapter 4.
-<figures/figure1.pdf, id=905, 722.7pt x 542.025pt>
+<figures/figure1.pdf, id=941, 722.7pt x 542.025pt>
 File: figures/figure1.pdf Graphic file (type pdf)
  <use figures/figure1.pdf>
-Package pdftex.def Info: figures/figure1.pdf used on input line 1343.
+Package pdftex.def Info: figures/figure1.pdf used on input line 1383.
 (pdftex.def)             Requested size: 368.57838pt x 276.43736pt.
 
 [52
 
-] <figures/use_case.png, id=912, 642.4pt x 481.8pt>
+] [53 <./figures/figure1.pdf>]
+<figures/use_case.png, id=1001, 642.4pt x 481.8pt>
 File: figures/use_case.png Graphic file (type png)
-
-<use figures/use_case.png>
-Package pdftex.def Info: figures/use_case.png used on input line 1355.
+ <use figures/use_case.png>
+Package pdftex.def Info: figures/use_case.png used on input line 1396.
 (pdftex.def)             Requested size: 276.43555pt x 207.3317pt.
- [53 <./figures/figure1.pdf>] [54 <./figures/use_case.png>] <figures/im2013grap
-h.png, id=974, 742.775pt x 576.1525pt>
+
+[54 <./figures/use_case.png>]
+<figures/im2013graph.png, id=1011, 742.775pt x 576.1525pt>
 File: figures/im2013graph.png Graphic file (type png)
 
 <use figures/im2013graph.png>
-Package pdftex.def Info: figures/im2013graph.png used on input line 1403.
+Package pdftex.def Info: figures/im2013graph.png used on input line 1445.
 (pdftex.def)             Requested size: 460.72124pt x 357.37788pt.
- [55 <./figures/im2013graph.png>]
-<figures/bw_utilization.png, id=982, 642.4pt x 481.8pt>
+ [55] [56 <./figures/im2013graph.png>]
+<figures/bw_utilization.png, id=1023, 642.4pt x 481.8pt>
 File: figures/bw_utilization.png Graphic file (type png)
 
 <use figures/bw_utilization.png>
-Package pdftex.def Info: figures/bw_utilization.png used on input line 1438.
+Package pdftex.def Info: figures/bw_utilization.png used on input line 1480.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [56 <./figures/bw_utilization.png>]
-<figures/topo.png, id=989, 642.4pt x 481.8pt>
+
+<figures/topo.png, id=1025, 642.4pt x 481.8pt>
 File: figures/topo.png Graphic file (type png)
  <use figures/topo.png>
-Package pdftex.def Info: figures/topo.png used on input line 1457.
+Package pdftex.def Info: figures/topo.png used on input line 1499.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [57 <./figures/topo.png>] <figures/out_hosts_ratio.png, id=997, 642.4pt x 481.
-8pt>
+ [57]
+[58 <./figures/bw_utilization.png> <./figures/topo.png>]
+<figures/out_hosts_ratio.png, id=1038, 642.4pt x 481.8pt>
 File: figures/out_hosts_ratio.png Graphic file (type png)
 
 <use figures/out_hosts_ratio.png>
-Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 1471.
+Package pdftex.def Info: figures/out_hosts_ratio.png used on input line 1511.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [58 <./figures/out_hosts_ratio.png>]
-<figures/mem1_utilization.png, id=1005, 642.4pt x 481.8pt>
+ [59 <./figures/out_hosts_ratio.png>]
+<figures/mem1_utilization.png, id=1045, 642.4pt x 481.8pt>
 File: figures/mem1_utilization.png Graphic file (type png)
 
 <use figures/mem1_utilization.png>
-Package pdftex.def Info: figures/mem1_utilization.png used on input line 1486.
+Package pdftex.def Info: figures/mem1_utilization.png used on input line 1526.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
 
-<figures/mem2_utilization.png, id=1006, 642.4pt x 481.8pt>
+<figures/mem2_utilization.png, id=1046, 642.4pt x 481.8pt>
 File: figures/mem2_utilization.png Graphic file (type png)
 
 <use figures/mem2_utilization.png>
-Package pdftex.def Info: figures/mem2_utilization.png used on input line 1493.
+Package pdftex.def Info: figures/mem2_utilization.png used on input line 1533.
 (pdftex.def)             Requested size: 322.50345pt x 241.88452pt.
- [59 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
+ [60 <./figures/mem1_utilization.png> <./figures/mem2_utilization.png>]
 Chapter 5.
-[60
+[61
 
 ]
-Overfull \hbox (5.4231pt too wide) in paragraph at lines 1521--1522
+Overfull \hbox (5.4231pt too wide) in paragraph at lines 1561--1562
 []\T1/ptm/m/n/12 As a di-rect re-sult of the work de-vel-oped in this the-sis, 
 a con-tri-bu-tion to the pa-per \T1/ptm/m/it/12 Virtualization-
  []
 
-[61]
+[62]
 Appendix A.
-[62
-
-] [63] [64]
-Appendix B.
-[65
-
-]
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1643--1644
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-
-Overfull \hbox (157.14749pt too wide) in paragraph at lines 1657--1658
-[][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1672--1673
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-[66]
-Overfull \hbox (301.68732pt too wide) in paragraph at lines 1686--1687
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-
-Overfull \hbox (144.00764pt too wide) in paragraph at lines 1699--1700
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-[67]
-Overfull \hbox (295.11732pt too wide) in paragraph at lines 1713--1714
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-[68] [69]
-Appendix C.
-
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1766--1767
-[][][][][]  
- []
-
-[70
-
-] [71] [72]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1842--1843
-[][][][][][][]  
- []
-
-[73] [74]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1905--1906
-[][][][][]  
- []
-
-
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1910--1911
-[][][][][]  
- []
-
-[75] [76]
-Overfull \hbox (43.52562pt too wide) in paragraph at lines 1943--1944
-[][][][][]  
- []
-
-[77] [78] [79] [80] [81] [82] [83] [84] [85] [86]
-Overfull \hbox (124.00792pt too wide) in paragraph at lines 2304--2305
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (137.1479pt too wide) in paragraph at lines 2306--2307
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[87] [88] [89] [90] [91]
-Appendix D.
-[92
-
-] [93] [94]
-Appendix E.
-[95
-
-] [96]
-Appendix F.
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [97
-
-] [98]
-Appendix G.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [99
+) [63
 
-] [100]
-(./sig-alternate.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 30--33
+] [64]
+[65]
+Appendix B.
+[66
+
+]
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1683--1684
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (157.14749pt too wide) in paragraph at lines 1697--1698
+[][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1712--1713
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[67]
+Overfull \hbox (301.68732pt too wide) in paragraph at lines 1726--1727
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (144.00764pt too wide) in paragraph at lines 1739--1740
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[68]
+Overfull \hbox (295.11732pt too wide) in paragraph at lines 1753--1754
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+[69] [70]
+Appendix C.
+
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1806--1807
+[][][][][]  
+ []
+
+[71
+
+] [72] [73]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1882--1883
+[][][][][][][]  
+ []
+
+[74] [75]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1945--1946
+[][][][][]  
+ []
+
+
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1950--1951
+[][][][][]  
+ []
+
+[76] [77]
+Overfull \hbox (43.52562pt too wide) in paragraph at lines 1983--1984
+[][][][][]  
+ []
+
+[78] [79] [80] [81] [82] [83] [84] [85] [86] [87]
+Overfull \hbox (124.00792pt too wide) in paragraph at lines 2344--2345
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (137.1479pt too wide) in paragraph at lines 2346--2347
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[88] [89] [90] [91] [92]
+Appendix D.
+[93
+
+] [94] [95]
+Appendix E.
+[96
+
+] [97]
+Appendix F.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) [98
+
+] [99]
+Appendix G.
+[100
+
+] [101]
+Appendix H.
+[102
+
+] [103] (./sig-alternate.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
 []\T1/ptm/m/n/12 O. Bal-don-ado, SDN, Open-Flow, and next-generation data cen-t
 er net-works.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--33
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
 \T1/ptm/m/it/12 http://www.eetimes.com/design/embedded/43715 43/SDN--OpenFlow--
 and-next-
  []
 
-[101
+[104
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 60--62
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
 []\T1/ptm/m/n/12 A. Ku-mar, N. Sid-dhartha, A. Soni, and K. Dubey.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--77
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
 []\T1/ptm/m/n/12 IBM Smart Cloud Pro-vi-sion-ing Home Page.  \T1/ptm/m/it/12 ht
 tp://www-
  []
 
-[102] [103])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2665.
- [104]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2665.
+[105] [106])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2750.
+ [107]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2750.
  (./sig-alternate.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2665.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2665.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2750.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2750.
 
 Package rerunfilecheck Info: File `sig-alternate.out' has not changed.
-(rerunfilecheck)             Checksum: 3EAC2D3352CCFD7DF4889C6C5AEA8568;4246.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2665.
+(rerunfilecheck)             Checksum: F209FA9C425E2F5BBE7B001340DC0EDD;4414.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2750.
  ) 
 Here is how much of TeX's memory you used:
- 13099 strings out of 495059
- 186052 string characters out of 3182030
- 382533 words of memory out of 3000000
- 14662 multiletter control sequences out of 15000+200000
+ 12927 strings out of 495059
+ 184441 string characters out of 3182030
+ 379784 words of memory out of 3000000
+ 14439 multiletter control sequences out of 15000+200000
  48318 words of font info for 58 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,12n,49p,775b,2042s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sig-alternate.pdf (113 pages, 2150707 bytes).
+pdfTeX warning (dest): name{lstnumber.-10.45} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sig-alternate.pdf (117 pages, 2248636 bytes).
 PDF statistics:
- 2608 PDF objects out of 2984 (max. 8388607)
- 2367 compressed objects within 24 object streams
- 1424 named destinations out of 1440 (max. 500000)
- 630 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2706 PDF objects out of 2984 (max. 8388607)
+ 2457 compressed objects within 25 object streams
+ 1474 named destinations out of 1728 (max. 500000)
+ 659 words of extra memory for PDF output out of 10000 (max. 10000000)
 
